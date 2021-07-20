@@ -116,8 +116,8 @@ lua vim.api.nvim_set_keymap('v', '<Leader>f', '<Plug>NERDCommenterToggle', {})
 " コメントアウトしてインサートモード
 lua vim.api.nvim_set_keymap('n', '<Leader>r', '<Plug>NERDCommenterAppend', {})
 " ブロックコメントアウト
-lua vim.api.nvim_set_keymap('n', '<Leader>b', '<Plug>NERDCommenterSexy', {})
-lua vim.api.nvim_set_keymap('v', '<Leader>b', '<Plug>NERDCommenterSexy', {})
+lua vim.api.nvim_set_keymap('n', '<Leader>bf', '<Plug>NERDCommenterSexy', {})
+lua vim.api.nvim_set_keymap('v', '<Leader>bf', '<Plug>NERDCommenterSexy', {})
 """
 
 [[plugins]]
