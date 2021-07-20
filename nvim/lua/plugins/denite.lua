@@ -1,7 +1,8 @@
 local opt = { noremap = true, silent = true }
 vim.api.nvim_set_keymap('n', ';r', ':<C-u>Dgrep<CR>', opt)
+vim.api.nvim_set_keymap('n', ';;', ':<C-u>DeniteCursorWord grep:.<CR>', opt)
 vim.api.nvim_set_keymap('n', ';f', ':<C-u>Denite file/rec -start-filter<CR>', opt)
-vim.api.nvim_set_keymap('n', ';;', ':<C-u>Denite command command_history<CR>', opt)
+vim.api.nvim_set_keymap('n', ';gr', ':<C-u>Denite command command_history<CR>', opt)
 vim.api.nvim_set_keymap('n', ';e', ':<C-u>Denite -resume<CR>', opt)
 
 vim.cmd('augroup denite_filter')
