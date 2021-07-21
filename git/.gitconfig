@@ -2,9 +2,8 @@
 	excludesfile = ~/.gitignore_global
   editor = nvim
   quotepath = false
-[user]
-	name = uki
-	email = yucchini.yuki1014@gmail.com
+[include]
+  path = ~/.gitconfig.user
 [url "ssh://git@github.com/"]
   insteadOf = https://github.com/
 [filter "lfs"]
