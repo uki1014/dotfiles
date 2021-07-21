@@ -9,7 +9,7 @@
     "typescript",
     "typescriptreact"
   ],
-  "eslint.autoFixOnSave": true,
+  // "eslint.autoFixOnSave": true,
   "eslint.options": {
     "$or": [
       { "configFile": "./.eslintrc.json" },
