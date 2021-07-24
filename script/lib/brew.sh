@@ -38,7 +38,11 @@ target_brew_list=(
 
 # GUI tools
 target_brew_cask_list=(
+  alacritty
+  figma
+  sketch
   chromedriver
+  firefox
   docker
   xquartz
   google-chrome
