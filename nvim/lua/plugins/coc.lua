@@ -18,8 +18,8 @@ vim.api.nvim_set_keymap('i', '<CR>', 'pumvisible() ? "<C-y>" : "<C-g>u<CR>"', { 
 
 -- Use tab for trigger completion with characters ahead and navigate.
 --Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
-vim.api.nvim_set_keymap('i', '<TAB>', 'pumvisible() ? "<C-n>" : <SID>check_back_space() ? "<TAB>" : coc#refresh()', { noremap = true, silent = true, expr = true })
-vim.api.nvim_set_keymap('i', '<S-TAB>', 'pumvisible() ? "<C-p>" : "<C-h>"', { expr = true })
+-- vim.api.nvim_set_keymap('i', '<TAB>', 'pumvisible() ? "<C-n>" : <SID>check_back_space() ? "<TAB>" : coc#refresh()', { noremap = true, silent = true, expr = true })
+-- vim.api.nvim_set_keymap('i', '<S-TAB>', 'pumvisible() ? "<C-p>" : "<C-h>"', { expr = true })
 
 vim.cmd('let coc_path = globpath(&rtp, "autoload/coc.vim")')
 if not vim.fn.empty(coc_path) then
