@@ -23,7 +23,7 @@ else
 fi
 
 if [ ! -d ${HOME}/.anyenv/plugins ]; then
-  mkdir -p $(anyenv root)/plugins
-  git clone https://github.com/znz/anyenv-update.git $(anyenv root)/plugins/anyenv-update
+  mkdir -p ${ANYENV_ROOT}/plugins
+  git clone https://github.com/znz/anyenv-update.git ${ANYENV_ROOT}/plugins/anyenv-update
   anyenv update
 fi
