@@ -148,6 +148,22 @@ function update_nvim
   end
 end
 
+function update_5nvim
+  if test (uname) = 'Darwin'
+    cd
+    rm -rf ~/nvim-osx64
+    curl -LO https://github.com/neovim/neovim/releases/download/v0.5.0/nvim-macos.tar.gz
+    tar xzf ~/nvim-macos.tar.gz
+    rm -f ~/nvim-macos.tar.gz
+  else if test (uname) = 'Linux'
+    cd
+    rm ~/nvim.appimage
+    curl -LO https://github.com/neovim/neovim/releases/download/v0.5.0/nvim.appimage
+    chmod u+x nvim.appimage
+    sudo mv ~/nvim.appimage /usr/local/bin
+  end
+end
+
 # Install fisher
 if not functions -q fisher
   set -q XDG_CONFIG_HOME; or set XDG_CONFIG_HOME ~/.config
