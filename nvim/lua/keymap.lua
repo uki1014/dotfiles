@@ -15,6 +15,12 @@ vim.api.nvim_set_keymap('i', '<CR>', 'pumvisible() ? "<C-y>" : "<CR>"', { norema
 vim.api.nvim_set_keymap('i', '<C-n>', 'pumvisible() ? "<Down>" : "<C-n>"', { noremap = true, expr = true })
 vim.api.nvim_set_keymap('i', '<C-p>', 'pumvisible() ? "<Up>" : "<C-p>"', { noremap = true, expr = true })
 
+-- よく使うText挿入
+-- debugger
+vim.api.nvim_set_keymap('n', '<Leader>de', ':call append(line("."), "debugger;")<CR>', { noremap = true })
+-- console.log
+vim.api.nvim_set_keymap('n', '<Leader>log', ':call append(line("."), "console.log();")<CR>', { noremap = true })
+
 -- bufferの再読み込み
 vim.api.nvim_set_keymap('n', '<Leader>e', ':edit<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<Leader>te', ':tabdo edit<CR>', { noremap = true })
