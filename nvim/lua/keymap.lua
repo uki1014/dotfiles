@@ -44,6 +44,9 @@ vim.api.nvim_set_keymap('n', '<Leader>ca', ':!', { noremap = true })
 -- 置換(ファイル内で対象のものを全て置換したいときはサイトに/gつける)
 vim.api.nvim_set_keymap('n', '<Leader>c', ':%s//', { noremap = true })
 
+-- 文字列一括削除
+vim.api.nvim_set_keymap('n', '<Leader>d', ':g//d', { noremap = true })
+
 -- 保存・終了
 vim.api.nvim_set_keymap('n', ';s', ':w<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', ';d', ':q!<CR>', { noremap = true })
