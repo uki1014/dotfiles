@@ -20,6 +20,8 @@ vim.api.nvim_set_keymap('i', '<C-p>', 'pumvisible() ? "<Up>" : "<C-p>"', { norem
 vim.api.nvim_set_keymap('n', '<Leader>de', ':call append(line("."), "debugger;")<CR>', { noremap = true })
 -- console.log
 vim.api.nvim_set_keymap('n', '<Leader>log', ':call append(line("."), "console.log();")<CR>', { noremap = true })
+-- binding.pry
+vim.api.nvim_set_keymap('n', '<Leader>bi', ':call append(line("."), "binding.pry")<CR>', { noremap = true })
 
 -- bufferの再読み込み
 vim.api.nvim_set_keymap('n', '<Leader>e', ':edit<CR>', { noremap = true })
