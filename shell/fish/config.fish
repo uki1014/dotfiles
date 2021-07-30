@@ -34,7 +34,7 @@ if status --is-interactive
   set -xg NODENV_ROOT $ANYENV_ROOT/envs/nodenv
   set -xg PATH $NODENV_ROOT/bin $NODENV_ROOT/shims $PATH
 
-  # rbenv（tmuxを使用している場合はtmuxがシステムデフォルトのrubyを見に行ってしまうのであえてPATHを指定する）
+  # rbenv
   set -xg RBENV_ROOT $ANYENV_ROOT/envs/rbenv
   set -xg PATH $RBENV_ROOT/bin $RBENV_ROOT/shims $PATH
 
@@ -50,7 +50,7 @@ if status --is-interactive
   set -xg GOENV_ROOT $ANYENV_ROOT/envs/goenv
   set -xg PATH $GOENV_ROOT/bin $GOENV_ROOT/shims $PATH
   set -xg GOPATH "$HOME/go"
-   set -x GO111MODULE on
+  set -xg GO111MODULE on
   #set -xg GO111MODULE off
 
   # tfenv
@@ -59,7 +59,6 @@ if status --is-interactive
 
   # direnv
   eval (direnv hook fish)
-
 end
 
 # fish vi-mode
