@@ -20,7 +20,6 @@ public/
 norinium/
 integration_test/
 images/
-data/
 dist/
 mysql
 Session.vim
