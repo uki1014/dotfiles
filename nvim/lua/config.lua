@@ -95,24 +95,24 @@ vim.opt.suffixesadd = '.js,.es,.jsx,.ts,.tsx,.json,.css,.less,.sass,.style,.php,
 vim.opt.path:append('**')
 vim.opt.wildignore:append('*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store/*,*/node_modules/*')
 -- Enable json comment(only tsconfig)
-vim.cmd('au BufRead,BufNewFile tsconfig.json setf filetype=jsonc')
+vim.cmd('au BufRead,BufNewFile tsconfig.json setf jsonc')
 -- vim.cmd('au FileType json syntax match Comment +\b/\b/.\b+$+')
 -- JavaScript
 vim.cmd('au BufNewFile,BufRead *.es6 setf javascript')
 -- TypeScript
 vim.cmd('au BufNewFile,BufRead *.ts setf typescript')
-vim.cmd('au BufNewFile,BufRead *.tsx setf filetype=typescript.tsx')
+vim.cmd('au BufNewFile,BufRead *.tsx setf typescript.tsx')
 -- Markdown
-vim.cmd('au BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} setf filetype=markdown')
+vim.cmd('au BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} setf markdown')
 -- Flow
-vim.cmd('au BufNewFile,BufRead *.flow setf filetype=javascript')
+vim.cmd('au BufNewFile,BufRead *.flow setf javascript')
 -- fish
-vim.cmd('au BufNewFile,BufRead fish_funced setf filetype=fish')
+vim.cmd('au BufNewFile,BufRead fish_funced setf fish')
 
 -- vim.cmd('augroup ReactFiletypes')
 -- vim.cmd('au!')
--- vim.cmd('au BufRead,BufNewFile *.jsx setf filetype=javascriptreact')
--- vim.cmd('au BufRead,BufNewFile *.tsx setf filetype=typescriptreact')
+-- vim.cmd('au BufRead,BufNewFile *.jsx setf javascriptreact')
+-- vim.cmd('au BufRead,BufNewFile *.tsx setf typescriptreact')
 -- vim.cmd('augroup END')
 --[[
 ]]
