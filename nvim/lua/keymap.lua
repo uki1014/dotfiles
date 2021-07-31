@@ -23,6 +23,9 @@ vim.api.nvim_set_keymap('n', '<Leader>log', ':call append(line("."), "console.lo
 -- binding.pry
 vim.api.nvim_set_keymap('n', '<Leader>bi', ':call append(line("."), "binding.pry")<CR>', { noremap = true })
 
+-- yank
+vim.api.nvim_set_keymap('n', 'Y', 'y$', { noremap = true })
+
 -- bufferの再読み込み
 vim.api.nvim_set_keymap('n', '<Leader>e', ':edit<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<Leader>te', ':tabdo edit<CR>', { noremap = true })
