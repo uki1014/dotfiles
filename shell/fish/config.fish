@@ -124,11 +124,19 @@ end
 
 # rails/npm/resque/gitなどeditor以外のpane
 function cide
+  # 右下のpaneも縦に分割するパターン
+  # tmux split-window -h -p 50
+  # tmux split-window -v -p 50
+  # tmux split-window -h -p 50
+  # tmux select-pane -t :.-
+  # tmux select-pane -t :.-
+  # tmux split-window -h -p 50
+
+  # 右下のpaneは分割しないパターン
   tmux split-window -h -p 50
   tmux split-window -v -p 50
-  tmux split-window -h -p 50
-  tmux select-pane -t :.-
-  tmux select-pane -t :.-
+  tmux select-pane -t :.+
+  tmux select-pane -t :.+
   tmux split-window -h -p 50
 end
 
