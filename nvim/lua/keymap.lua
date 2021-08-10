@@ -26,6 +26,9 @@ vim.api.nvim_set_keymap('n', '<Leader>bi', ':call append(line("."), "binding.pry
 -- yank
 vim.api.nvim_set_keymap('n', 'Y', 'y$', { noremap = true })
 
+-- current cursorより前を削除
+vim.api.nvim_set_keymap('n', 'fd', 'v^d', { noremap = true })
+
 -- bufferの再読み込み
 vim.api.nvim_set_keymap('n', '<Leader>e', ':edit<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<Leader>te', ':tabdo edit<CR>', { noremap = true })
