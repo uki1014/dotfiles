@@ -44,7 +44,6 @@ repo = 'lewis6991/gitsigns.nvim'
 depends = ['plenary.nvim']
 hook_add = """
 lua require('gitsigns').setup()
-set statusline+=%{get(b:,'gitsigns_status','')}
 """
 
 ##################
