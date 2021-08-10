@@ -183,5 +183,6 @@ if vim.fn.exists('&termguicolors') and vim.fn.exists('&winblend') then
   vim.opt.wildoptions = 'pum'
   vim.opt.pumblend = 5
   vim.g.solarized_termcolors = 256
-  vim.cmd('runtime ../colors/NeoSolarized.vim')
+  vim.cmd('colorscheme NeoSolarized')
+  -- vim.cmd('runtime ../colors/NeoSolarized.vim')
 end
