@@ -10,16 +10,11 @@ vim.cmd('au FileType denite lua denite_my_settings()')
 function denite_my_settings()
   local opt = { noremap = true, silent = true, expr = true }
   vim.api.nvim_buf_set_keymap(0, 'n', '<CR>', 'denite#do_map("do_action")', opt)
-  vim.api.nvim_buf_set_keymap(0, 'n', 'l', 'denite#do_map("do_action", "vsplit")', opt)
-  vim.api.nvim_buf_set_keymap(0, 'n', '<Space>', 'denite#do_map("do_action", "split")', opt)
-  vim.api.nvim_buf_set_keymap(0, 'n', 'd', 'denite#do_map("do_action", "delete")', opt)
+  vim.api.nvim_buf_set_keymap(0, 'n', 'sv', 'denite#do_map("do_action", "vsplit")', opt)
+  vim.api.nvim_buf_set_keymap(0, 'n', 'ss', 'denite#do_map("do_action", "split")', opt)
   vim.api.nvim_buf_set_keymap(0, 'n', 'p', 'denite#do_map("do_action", "preview")', opt)
   vim.api.nvim_buf_set_keymap(0, 'n', 'q', 'denite#do_map("quit")', opt)
   vim.api.nvim_buf_set_keymap(0, 'n', 'i', 'denite#do_map("open_filter_buffer")', opt)
-  vim.api.nvim_buf_set_keymap(0, 'n', 't', 'denite#do_map("toggle_select")."j"', opt)
-  vim.api.nvim_buf_set_keymap(0, 'i', '<C-n>', '<Plug>(denite_filter_quit)<DOWN>', { silent = true })
-  vim.api.nvim_buf_set_keymap(0, 'i', '<C-p>', '<Plug>(denite_filter_quit)<UP>', { silent = true })
-  vim.api.nvim_buf_set_keymap(0, 'i', '<CR>', '<Plug>(denite_filter_quit)<CR>', { silent = true })
 end
 vim.cmd('augroup END')
 
