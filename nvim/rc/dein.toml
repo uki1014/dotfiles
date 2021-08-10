@@ -37,7 +37,15 @@ lua vim.g.git_messenger_date_format = '%Y/%m/%d %H:%M'
 """
 
 [[plugins]]
-repo = 'airblade/vim-gitgutter'
+repo = 'nvim-lua/plenary.nvim'
+
+[[plugins]]
+repo = 'lewis6991/gitsigns.nvim'
+depends = ['plenary.nvim']
+hook_add = """
+lua require('gitsigns').setup()
+set statusline+=%{get(b:,'gitsigns_status','')}
+"""
 
 ##################
 # Filer
