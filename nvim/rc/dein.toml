@@ -18,6 +18,12 @@ lua vim.api.nvim_set_keymap('n', '<Leader>gb', ':ToGithubBlame<CR>', { noremap =
 """
 
 [[plugins]]
+repo = 'hoob3rt/lualine.nvim'
+hook_add = """
+source ~/.config/nvim/lua/plugins/lualine.lua
+"""
+
+[[plugins]]
 repo = 'itchyny/lightline.vim'
 hook_add = """
 source ~/.config/nvim/lua/plugins/lightline.lua
