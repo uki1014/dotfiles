@@ -166,6 +166,12 @@ hook_add = """
 lua vim.api.nvim_set_keymap('n', '<Leader>y', ':FixWhitespace<CR>', { noremap = true })
 """
 
+[[plugins]]
+repo = 'numToStr/BufOnly.nvim'
+hook_add = """
+lua vim.api.nvim_set_keymap('n', '<Leader>bg', ':BufOnly<CR>', { noremap = true })
+"""
+
 # [[plugins]]
 # repo = 'nvim-treesitter/nvim-treesitter'
 # hook_add = """
