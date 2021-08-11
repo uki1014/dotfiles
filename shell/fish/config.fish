@@ -326,6 +326,7 @@ alias dvprune='docker volume prune' # 未使用ボリューム一括削除
 alias dnprune='docker network prune' # 未使用ネットワーク一括削除
 alias dbprune='docker builder prune' # build cacheの削除
 alias ddf='docker system df' # Dockerが使っているストレージ容量を確認
+alias dcu='docui'
 
 # Rails
 alias b='bundle'

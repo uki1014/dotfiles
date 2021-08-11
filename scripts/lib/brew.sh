@@ -34,6 +34,7 @@ target_brew_list=(
   shared-mime-info
   tree-sitter
   luajit
+  docui
 )
 
 # CUI tools for macOS
