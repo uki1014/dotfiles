@@ -29,12 +29,12 @@ hook_add = """
 lua vim.api.nvim_set_keymap('n', '<Leader>z', ':LazyGit<CR>', { noremap = true, silent = true })
 """
 
-[[plugins]]
-repo = 'rhysd/git-messenger.vim'
-hook_add = """
-lua vim.api.nvim_set_keymap('n', '<Leader>gl', ':GitMessenger<CR>', {})
-lua vim.g.git_messenger_date_format = '%Y/%m/%d %H:%M'
-"""
+# [[plugins]]
+# repo = 'rhysd/git-messenger.vim'
+# hook_add = """
+# lua vim.api.nvim_set_keymap('n', '<Leader>gl', ':GitMessenger<CR>', {})
+# lua vim.g.git_messenger_date_format = '%Y/%m/%d %H:%M'
+# """
 
 [[plugins]]
 repo = 'nvim-lua/plenary.nvim'
@@ -44,6 +44,7 @@ repo = 'lewis6991/gitsigns.nvim'
 depends = ['plenary.nvim']
 hook_add = """
 lua require('gitsigns').setup()
+lua vim.api.nvim_set_keymap('n', '<Leader>gl', '<cmd>lua require"gitsigns".blame_line(true)<CR>', { noremap = true, silent = true })
 """
 
 ##################
