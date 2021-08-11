@@ -41,6 +41,8 @@ target_brew_list_for_mac_os=(
   coreutils
   findutils
   gnu-sed
+  grep
+  gzip
 )
 
 # GUI tools

@@ -14,9 +14,18 @@ if status --is-interactive
   if test (uname) = 'Darwin'
     set -xg PATH $HOME/nvim-osx64/bin $PATH
     alias sa='ssh-add -K ~/.ssh/id_rsa'
-    alias sed='gsed'
-    alias date='gdate'
-    alias xargs='gxargs'
+    # coreutils
+    set -xg PATH /usr/local/opt/coreutils/libexec/gnubin $PATH
+    set -xg MANPATH /usr/local/opt/coreutils/libexec/gnuman $MANPATH
+    # findutils
+    set -xg PATH /usr/local/opt/findutils/libexec/gnubin $PATH
+    set -xg MANPATH /usr/local/opt/findutils/libexec/gnuman $MANPATH
+    # gnu-sed
+    set -xg PATH /usr/local/opt/gnu-sed/libexec/gnubin $PATH
+    set -xg MANPATH /usr/local/opt/gnu-sed/libexec/gnuman $MANPATH
+    # grep
+    set -xg PATH /usr/local/opt/grep/libexec/gnubin $PATH
+    set -xg MANPATH /usr/local/opt/grep/libexec/gnuman $MANPATH
   else if test (uname) = 'Linux'
     eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
     source ~/.asdf/asdf.fish
