@@ -36,6 +36,13 @@ target_brew_list=(
   luajit
 )
 
+# CUI tools for macOS
+target_brew_list_for_mac_os=(
+  coreutils
+  findutils
+  gnu-sed
+)
+
 # GUI tools
 target_brew_cask_list=(
   alacritty
@@ -90,6 +97,14 @@ done
 
 if [ "$(uname)"  == "Darwin" ]; then
   echo 'darwin'
+  for target in $target_brew_list_for_mac_os{[@]}; do
+    if ! has "$target"; then
+      brew install $target
+    else
+      echo "$target has been already installed."
+    fi
+  done
+
   for target in ${target_brew_cask_list[@]}; do
     if ! has "$target"; then
       brew install --cask $target

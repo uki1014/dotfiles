@@ -14,6 +14,9 @@ if status --is-interactive
   if test (uname) = 'Darwin'
     set -xg PATH $HOME/nvim-osx64/bin $PATH
     alias sa='ssh-add -K ~/.ssh/id_rsa'
+    alias sed='gsed'
+    alias date='gdate'
+    alias xargs='gxargs'
   else if test (uname) = 'Linux'
     eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
     source ~/.asdf/asdf.fish
