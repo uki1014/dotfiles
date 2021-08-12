@@ -175,7 +175,7 @@ lua vim.api.nvim_set_keymap('n', '<Leader>y', ':FixWhitespace<CR>', { noremap = 
 [[plugins]]
 repo = 'numToStr/BufOnly.nvim'
 hook_add = """
-lua vim.api.nvim_set_keymap('n', '<Leader>bg', ':BufOnly<CR>', { noremap = true })
+lua vim.api.nvim_set_keymap('n', '<Leader>ba', ':BufOnly<CR>', { noremap = true })
 """
 
 # [[plugins]]
