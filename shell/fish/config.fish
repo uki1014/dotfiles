@@ -8,6 +8,13 @@ set -xg TERM tmux-256color
 set -xg OSTYPE darwin20
 set -xg DOCKER_BUILDKIT 1
 set -xg DOCKER_HOST_NAME 172.17.0.1
+set -xg GHQ_SELECTOR peco
+set -xg theme_date_format "+%Y-%m-%d %H:%M:%S"
+set -g fish_prompt_pwd_dir_length 0
+set -g fish_user_paths "/usr/local/opt/openssl@1.1/bin" $fish_user_paths
+
+# fish vi-mode
+fish_vi_key_bindings
 
 if status --is-interactive
   # macOSとLinuxそれぞれの設定
@@ -72,14 +79,6 @@ if status --is-interactive
   # direnv
   eval (direnv hook fish)
 end
-
-# fish vi-mode
-fish_vi_key_bindings
-
-set GHQ_SELECTOR peco
-set -g theme_date_format "+%Y-%m-%d %H:%M:%S"
-set -g fish_prompt_pwd_dir_length 0
-set -g fish_user_paths "/usr/local/opt/openssl@1.1/bin" $fish_user_paths
 
 # function ssh
 #   # tmux起動時
@@ -368,10 +367,10 @@ alias yc='yarn run clean'
 # Util
 alias re='exec $SHELL -l'
 alias ressh='sudo launchctl stop com.openssh.sshd'
-alias bashc='nvim ~/.bashrc'
-alias zshc='nvim ~/.zshrc'
-alias fishc='nvim ~/.config/fish/config.fish'
-alias tmuxc='nvim ~/.tmux.conf'
+alias bashc='nvim $DOTFILES_PATH/.bashrc'
+alias zshc='nvim $DOTFILES_PATH/.zshrc'
+alias fishc='nvim $DOTFILES_PATH/.config/fish/config.fish'
+alias tmuxc='nvim $DOTFILES_PATH/.tmux.conf'
 alias vimc='nvim $DOTFILES_PATH/nvim/init.lua'
 alias maps='nvim $DOTFILES_PATH/nvim/lua/keymap.lua'
 alias cdd='cd $DOTFILES_PATH'
