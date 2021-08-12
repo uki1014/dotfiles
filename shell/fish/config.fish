@@ -161,9 +161,10 @@ function update_nvim
     rm -f ~/nvim-macos.tar.gz
   else if test (uname) = 'Linux'
     cd
-    rm ~/nvim.appimage
+    rm -f /usr/local/bin/nvim
     curl -LO https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage
-    chmod u+x nvim.appimage
+    chmod u+x ~/nvim.appimage
+    sudo mv ~/nvim.appimage ~/nvim
     sudo mv ~/nvim.appimage /usr/local/bin
   end
 end
