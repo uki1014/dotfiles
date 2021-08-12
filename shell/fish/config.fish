@@ -355,6 +355,7 @@ alias nig='npm install -g'
 alias nui='npm uninstall'
 alias nci='npm ci'
 alias npmlistg='npm list --depth=0 -g'
+alias reflow='npx flow stop && npx flow start'
 
 # yarn
 alias ya='yarn add'
