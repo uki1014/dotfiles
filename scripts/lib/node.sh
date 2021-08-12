@@ -4,7 +4,7 @@
 # set -x
 set -ue
 
-NODEJS_LATEST_LTS_VERSION=12.13.0
+NODEJS_LATEST_LTS_VERSION=12.22.5
 
 has() {
   type "$1" > /dev/null 2>&1
