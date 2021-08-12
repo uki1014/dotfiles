@@ -4,7 +4,7 @@ set -xg LANG en_US.UTF-8
 set -xg PATH $PATH $HOME
 set -xg DOTFILES_PATH $HOME/dotfiles
 set -xg EDITOR nvim
-set -xg TERM tmux-256color
+set -xg TERM screen-256color
 set -xg OSTYPE darwin20
 set -xg DOCKER_BUILDKIT 1
 set -xg DOCKER_HOST_NAME 172.17.0.1
