@@ -405,6 +405,6 @@ alias drunuo='docker run -it --rm --privileged -e DISPLAY=(hostname):0 -v ~/.Xau
 alias xlaunch='xhost + 127.0.0.1'
 alias kl='kill -9'
 
-if [ -d ~/dotfiles/freee ]
-  source ~/dotfiles/freee/freee.config.fish
+if [ -d $DOTFILES_PATH/freee ]
+  source $DOTFILES_PATH/freee/freee.config.fish
 end
