@@ -154,33 +154,34 @@ end
 function update_nvim
   if test (uname) = 'Darwin'
     cd
-    rm -rf ~/nvim-osx64
+    sudo rm -rf ~/nvim-osx64
     curl -LO https://github.com/neovim/neovim/releases/download/nightly/nvim-macos.tar.gz
     tar xzf ~/nvim-macos.tar.gz
-    rm -f ~/nvim-macos.tar.gz
+    sudo rm -f ~/nvim-macos.tar.gz
   else if test (uname) = 'Linux'
     cd
-    rm -f /usr/local/bin/nvim
+    sudo rm -f /usr/local/bin/nvim
     curl -LO https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage
     chmod u+x ~/nvim.appimage
     sudo mv ~/nvim.appimage ~/nvim
-    sudo mv ~/nvim.appimage /usr/local/bin
+    sudo mv ~/nvim /usr/local/bin
   end
 end
 
-function update_5nvim
+function update_nvim_v5
   if test (uname) = 'Darwin'
     cd
-    rm -rf ~/nvim-osx64
+    sudo rm -rf ~/nvim-osx64
     curl -LO https://github.com/neovim/neovim/releases/download/v0.5.0/nvim-macos.tar.gz
     tar xzf ~/nvim-macos.tar.gz
-    rm -f ~/nvim-macos.tar.gz
+    sudo rm -f ~/nvim-macos.tar.gz
   else if test (uname) = 'Linux'
     cd
-    rm ~/nvim.appimage
+    sudo rm ~/nvim.appimage
     curl -LO https://github.com/neovim/neovim/releases/download/v0.5.0/nvim.appimage
     chmod u+x nvim.appimage
-    sudo mv ~/nvim.appimage /usr/local/bin
+    sudo mv ~/nvim.appimage ~/nvim
+    sudo mv ~/nvim /usr/local/bin
   end
 end
 
