@@ -54,7 +54,12 @@ vim.fn['denite#custom#var']('file/rec', 'command', {
 -- Ripgrep command on grep source
 vim.fn['denite#custom#var']('grep', {
   command = { 'rg' },
-  default_opts = { '-i', '--vimgrep', '--no-heading' },
+  default_opts = {
+    '-i',
+    '--hidden',
+    '--vimgrep',
+    '--no-heading'
+  },
   recursive_opts = {},
   pattern_opt = { '--regexp' },
   separator = { '--' },
