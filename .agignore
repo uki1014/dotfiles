@@ -14,7 +14,6 @@ __tests__/
 __snapshots__/
 dict/
 .bundle
-.github/
 bin/
 public/
 norinium/
