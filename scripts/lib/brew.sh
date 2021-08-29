@@ -13,9 +13,7 @@ target_brew_list=(
   ag
   ripgrep
   peco
-  ghq
   tmux
-  tig
   hub
   lazygit
   jq
@@ -77,39 +75,24 @@ target_brew_cask_list=(
 # - JIRA
 # - Slack
 
-if [ "$(uname)" == "Darwin" ]; then
-  if ! has "brew"; then
-    echo "Installing Homebrew..."
-    bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-  else
-    echo "Homebrew has been already installed."
-  fi
-
-  echo "brew update..."
-  brew update
-
-  echo "brew upgrade..."
-  brew upgrade
+if ! has "brew"; then
+  echo "Installing Homebrew..."
+  bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 else
-  sudo apt-get update
-  sudo apt-get upgrade
-  sudo apt-get autoremove
+  echo "Homebrew has been already installed."
 fi
 
+echo "brew update..."
+brew update
+
+echo "brew upgrade..."
+brew upgrade
+
 for target in ${target_brew_list[@]}; do
-  if [ "$(uname)" == "Darwin" ]; then
-    if ! has "$target"; then
-      brew install $target
-    else
-      echo "$target has been already installed."
-    fi
+  if ! has "$target"; then
+    brew install $target
   else
-    if ! has "$target"; then
-      brew uninstall $target
-      sudo apt-get install $target
-    else
-      echo "$target has been already installed."
-    fi
+    echo "$target has been already installed."
   fi
 done
 
