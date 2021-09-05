@@ -224,6 +224,13 @@ function cmm
   git commit -m "$argv"
 end
 
+function cmmno
+  git add .
+  git status
+  git diff --staged
+  git commit -m "$argv" --no-verify
+end
+
 function cm
   git commit -m "$argv"
 end
