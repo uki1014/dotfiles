@@ -12,7 +12,10 @@ set -xg GHQ_SELECTOR peco
 set -xg theme_date_format "+%Y-%m-%d %H:%M:%S"
 set -g fish_prompt_pwd_dir_length 0
 set -g fish_user_paths "/usr/local/opt/openssl@1.1/bin" $fish_user_paths
-source $DOTFILES_PATH/git/token.fish
+
+if [ -e $DOTFILES_PATH/git/token.fish ]
+  source $DOTFILES_PATH/git/token.fish
+end
 
 # fish vi-mode
 fish_vi_key_bindings
@@ -410,6 +413,7 @@ alias xlaunch='xhost + 127.0.0.1'
 alias kl='kill -9'
 alias chils='cd ~/program/projects/chillers/server'
 alias chilf='cd ~/program/projects/chillers/frontend'
+alias update_apt='sudo apt update && sudo apt upgrade'
 
 if [ -d $DOTFILES_PATH/freee ]
   source $DOTFILES_PATH/freee/freee.config.fish
