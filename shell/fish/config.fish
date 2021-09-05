@@ -155,12 +155,13 @@ function update_nvim
   if test (uname) = 'Darwin'
     cd
     sudo rm -rf ~/nvim-osx64
+    sudo mv ~/nvim-osx64 ~/nvim-osx64-(date '+%Y-%m-%d_%H:%M:%S')
     curl -LO https://github.com/neovim/neovim/releases/download/nightly/nvim-macos.tar.gz
     tar xzf ~/nvim-macos.tar.gz
     sudo rm -f ~/nvim-macos.tar.gz
   else if test (uname) = 'Linux'
     cd
-    sudo rm -f /usr/local/bin/nvim
+    sudo mv /usr/local/bin/nvim ~/nvim-linux-(date '+%Y-%m-%d_%H:%M:%S')
     curl -LO https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage
     chmod u+x ~/nvim.appimage
     sudo mv ~/nvim.appimage ~/nvim
