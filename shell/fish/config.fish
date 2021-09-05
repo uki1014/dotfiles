@@ -407,6 +407,8 @@ alias ukios='cd ~/program/projects/uki_os'
 alias drunuo='docker run -it --rm --privileged -e DISPLAY=(hostname):0 -v ~/.Xauthority:/root/.Xauthority -v $HOME/program/projects/uki_os/os:/root/os/ uki-os'
 alias xlaunch='xhost + 127.0.0.1'
 alias kl='kill -9'
+alias chils='cd ~/program/projects/chillers/server'
+alias chilf='cd ~/program/projects/chillers/frontend'
 
 if [ -d $DOTFILES_PATH/freee ]
   source $DOTFILES_PATH/freee/freee.config.fish
