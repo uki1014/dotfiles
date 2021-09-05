@@ -4,3 +4,4 @@ sessions/
 undo/
 Session.vim
 .undodir/
+token.fish
