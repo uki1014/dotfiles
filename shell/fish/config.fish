@@ -158,7 +158,6 @@ end
 function update_nvim
   if test (uname) = 'Darwin'
     cd
-    sudo rm -rf ~/nvim-osx64
     sudo mv ~/nvim-osx64 ~/nvim-osx64-(date '+%Y-%m-%d_%H:%M:%S')
     curl -LO https://github.com/neovim/neovim/releases/download/nightly/nvim-macos.tar.gz
     tar xzf ~/nvim-macos.tar.gz
