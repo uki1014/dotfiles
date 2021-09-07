@@ -14,10 +14,10 @@ if [ ! -d ${HOME}/.anyenv ]; then
   anyenv install tfenv
   exec $SHELL -l
 
-  ~/dotfiles/script/lib/node.sh
-  ~/dotfiles/script/lib/ruby.sh
-  ~/dotfiles/script/lib/python.sh
-  ~/dotfiles/script/lib/go.sh
+  ~/dotfiles/scripts/lib/node.sh
+  ~/dotfiles/scripts/lib/ruby.sh
+  ~/dotfiles/scripts/lib/python.sh
+  ~/dotfiles/scripts/lib/go.sh
 else
   echo "anyenv has been already installed."
 fi

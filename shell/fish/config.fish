@@ -74,7 +74,6 @@ if status --is-interactive
   set -xg PATH $GOENV_ROOT/bin $GOENV_ROOT/shims $PATH
   set -xg GOPATH "$HOME/go"
   set -xg GO111MODULE on
-  #set -xg GO111MODULE off
 
   # tfenv
   set -xg TFENV_ROOT $ANYENV_ROOT/envs/tfenv
