@@ -13,8 +13,10 @@ repo = 'wsdjeg/dein-ui.vim'
 [[plugins]]
 repo = 'uki1014/vim-to-github'
 hook_add = """
-lua vim.api.nvim_set_keymap('n', '<Leader>g', ':ToGithubBlob<CR>', { noremap = true })
-lua vim.api.nvim_set_keymap('n', '<Leader>gb', ':ToGithubBlame<CR>', { noremap = true })
+lua vim.api.nvim_set_keymap('n', '<Leader>g', ':ToGithubBlobDevelopBranch<CR>', { noremap = true })
+lua vim.api.nvim_set_keymap('n', '<Leader>gb', ':ToGithubBlameDevelopBranch<CR>', { noremap = true })
+lua vim.api.nvim_set_keymap('n', '<Leader>G', ':ToGithubBlobCommitHash<CR>', { noremap = true })
+lua vim.api.nvim_set_keymap('n', '<Leader>GB', ':ToGithubBlameCommitHash<CR>', { noremap = true })
 """
 
 [[plugins]]
