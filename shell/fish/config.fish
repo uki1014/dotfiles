@@ -144,13 +144,13 @@ function chilide
   # chillers-server
   tmux new-window
   tmux rename-window chill-server
+  ide
   chilf
 
   # chillers-frontend
   tmux new-window
   tmux rename-window chill-frontend
-  chil
-  cide
+  ide
 
   # 順番にやるとおかしくなるので最後にdotfilesに移動
   tmux next-window
