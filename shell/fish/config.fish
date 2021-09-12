@@ -136,6 +136,27 @@ function idet
   tmux split-window -h -p 50
 end
 
+function chilide
+  # dotfiles
+  tmux rename-window dotfiles
+  chils
+
+  # chillers-server
+  tmux new-window
+  tmux rename-window chill-server
+  chilf
+
+  # chillers-frontend
+  tmux new-window
+  tmux rename-window chill-frontend
+  chil
+  cide
+
+  # 順番にやるとおかしくなるので最後にdotfilesに移動
+  tmux next-window
+  cdd
+end
+
 # rails/npm/resque/gitなどeditor以外のpane
 function cide
   # 右下のpaneも縦に分割するパターン
@@ -420,6 +441,7 @@ alias ukios='cd ~/program/projects/uki_os'
 alias drunuo='docker run -it --rm --privileged -e DISPLAY=(hostname):0 -v ~/.Xauthority:/root/.Xauthority -v $HOME/program/projects/uki_os/os:/root/os/ uki-os'
 alias xlaunch='xhost + 127.0.0.1'
 alias kl='kill -9'
+alias chil='cd ~/program/projects/Chillers'
 alias chils='cd ~/program/projects/chillers/server'
 alias chilf='cd ~/program/projects/chillers/frontend'
 alias update_apt='sudo apt update && sudo apt upgrade'
