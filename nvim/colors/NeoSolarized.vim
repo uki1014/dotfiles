@@ -883,10 +883,10 @@ exe "hi! SignifySignDelete"         . s:fg_red      .s:bg_none  .s:fmt_none
 exe "hi! SignifySignChangeDelete"   . s:fg_red      .s:bg_none  .s:fmt_none
 " }}}"
 
-" ALE highlighting "{{{
+" coc.nvim highlighting "{{{
 " ---------------------------------------------------------------------
-exe "hi! ALEErrorSign"          . s:fg_orange   .s:bg_none   .s:fmt_none
-exe "hi! ALEWarningSign"        . s:fg_yellow   .s:bg_none   .s:fmt_none
+hi! CocErrorSign guifg=#d1666a
+hi! CocWarningSign guifg=#d1cd66
 " }}}"
 
 " NeoVim terminal buffer colours "{{{
