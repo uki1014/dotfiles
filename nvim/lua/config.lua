@@ -142,7 +142,7 @@ vim.cmd('au WinEnter,BufRead,BufNew,Syntax * call matchadd("Todo", "\bW\bzs\b(TO
 vim.g.python_host_prog = os.getenv('PYENV_ROOT')..'/versions/neovim2/bin/python'
 vim.g.python3_host_prog = os.getenv('PYENV_ROOT')..'/versions/neovim3/bin/python'
 vim.g.ruby_host_prog = os.getenv('RBENV_ROOT')..'/versions/2.6.6/bin/neovim-ruby-host'
-vim.g.node_host_prog = os.getenv('NODENV_ROOT')..'/versions/12.22.5/bin/neovim-node-host'
+vim.g.node_host_prog = os.getenv('NODENV_ROOT')..'/shims/neovim-node-host'
 
 --[[
 " ペーストするときに自動インデントでずれないようにする
