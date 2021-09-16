@@ -9,7 +9,6 @@
     "typescript",
     "typescriptreact"
   ],
-  // "eslint.autoFixOnSave": true,
   "eslint.options": {
     "$or": [
       { "configFile": "./.eslintrc.json" },
@@ -25,6 +24,7 @@
   "prettier.eslintIntegration": true,
   "tsserver.enableJavascript": false,
   "tsserver.npm": "npm",
+  "solargraph.commandPath": "solargraph",
   "languageserver": {
     "flow": {
       "command": "${workspaceFolder}/node_modules/.bin/flow",
@@ -51,7 +51,6 @@
   "diagnostic.warningSign": "▲",
   "diagnostic.infoSign": ">",
   "suggest.enablePreselect": true,
-  "solargraph.commandPath": "solargraph",
   "suggest.completionItemKindLabels": {
     "keyword": "\uf1de",
     "variable": "\ue79b",
