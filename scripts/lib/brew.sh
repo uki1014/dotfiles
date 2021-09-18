@@ -98,7 +98,7 @@ done
 
 if [ "$(uname)" == "Darwin" ]; then
   echo 'Darwin'
-  for target in $target_brew_list_for_mac_os{[@]}; do
+  for target in ${target_brew_list_for_mac_os[@]}; do
     if ! has "$target"; then
       brew install $target
     else
