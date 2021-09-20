@@ -26,19 +26,6 @@ source ~/.config/nvim/lua/plugins/lightline.lua
 """
 
 [[plugins]]
-repo = 'kdheepak/lazygit.nvim'
-hook_add = """
-lua vim.api.nvim_set_keymap('n', '<Leader>z', ':LazyGit<CR>', { noremap = true, silent = true })
-"""
-
-# [[plugins]]
-# repo = 'rhysd/git-messenger.vim'
-# hook_add = """
-# lua vim.api.nvim_set_keymap('n', '<Leader>gl', ':GitMessenger<CR>', {})
-# lua vim.g.git_messenger_date_format = '%Y/%m/%d %H:%M'
-# """
-
-[[plugins]]
 repo = 'nvim-lua/plenary.nvim'
 
 [[plugins]]
@@ -174,11 +161,8 @@ hook_add = """
 lua vim.api.nvim_set_keymap('n', '<Leader>ba', ':BufOnly<CR>', { noremap = true })
 """
 
-# [[plugins]]
-# repo = 'nvim-treesitter/nvim-treesitter'
-# hook_add = """
-# source ~/.config/nvim/plugins/treesitter.vim
-# """
+[[plugins]]
+repo = 'machakann/vim-highlightedyank'
 
 # [[plugins]]
 # repo = 'jamestthompson3/nvim-remote-containers'
