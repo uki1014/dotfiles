@@ -1,8 +1,10 @@
+local maps = require 'maps'
+
 vim.g.mapleader = ","
 
-vim.api.nvim_set_keymap('n', '<S-C-p>ud', '"0p', { noremap = true })
-vim.api.nvim_set_keymap('n', '<Leader>d', '"_d', { noremap = true })
-vim.api.nvim_set_keymap('n', 'x', '"_x', { noremap = true })
+maps.nmap('<S-C-p>ud', '"0p', maps.n)
+maps.nmap('<Leader>d', '"_d', maps.n)
+maps.nmap('x', '"_x', maps.n)
 
 --[[
  Increment/decrement(memo用)
@@ -11,98 +13,98 @@ vim.api.nvim_set_keymap('n', 'x', '"_x', { noremap = true })
 ]]
 
 -- 補完表示時のEnterで改行をしない
-vim.api.nvim_set_keymap('i', '<CR>', 'pumvisible() ? "<C-y>" : "<CR>"', { noremap = true, expr = true })
-vim.api.nvim_set_keymap('i', '<C-n>', 'pumvisible() ? "<Down>" : "<C-n>"', { noremap = true, expr = true })
-vim.api.nvim_set_keymap('i', '<C-p>', 'pumvisible() ? "<Up>" : "<C-p>"', { noremap = true, expr = true })
+maps.imap('<CR>', 'pumvisible() ? "<C-y>" : "<CR>"', maps.ne)
+maps.imap('<C-n>', 'pumvisible() ? "<Down>" : "<C-n>"', maps.ne)
+maps.imap('<C-p>', 'pumvisible() ? "<Up>" : "<C-p>"', maps.ne)
 
 -- よく使うText挿入
 -- debugger
-vim.api.nvim_set_keymap('n', '<Leader>de', ':call append(line("."), "debugger;")<CR>', { noremap = true })
+maps.nmap('<Leader>de', ':call append(line("."), "debugger;")<CR>', maps.n)
 -- console.log
-vim.api.nvim_set_keymap('n', '<Leader>log', ':call append(line("."), "console.log();")<CR>', { noremap = true })
+maps.nmap('<Leader>log', ':call append(line("."), "console.log();")<CR>', maps.n)
 -- binding.pry
-vim.api.nvim_set_keymap('n', '<Leader>bi', ':call append(line("."), "binding.pry")<CR>', { noremap = true })
+maps.nmap('<Leader>bi', ':call append(line("."), "binding.pry")<CR>', maps.n)
 
 -- yank
-vim.api.nvim_set_keymap('n', 'Y', 'y$', { noremap = true })
+maps.nmap('Y', 'y$', maps.n)
 
 -- current cursorより前を削除
-vim.api.nvim_set_keymap('n', 'fd', 'v^d', { noremap = true })
+maps.nmap('fd', 'v^d', maps.n)
 
 -- bufferの再読み込み
-vim.api.nvim_set_keymap('n', '<Leader>e', ':edit<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<Leader>te', ':tabdo edit<CR>', { noremap = true })
+maps.nmap('<Leader>e', ':edit<CR>', maps.n)
+maps.nmap('<Leader>te', ':tabdo edit<CR>', maps.n)
 
 -- set number
-vim.api.nvim_set_keymap('n', '<Leader>s', ':set number<CR>', { noremap = true, silent = true })
+maps.nmap('<Leader>s', ':set number<CR>', maps.ns)
 -- set nonumber
-vim.api.nvim_set_keymap('n', '<Leader>ns', ':set nonumber<CR>', { noremap = true, silent = true })
+maps.nmap('<Leader>ns', ':set nonumber<CR>', maps.ns)
 
 -- redo
-vim.api.nvim_set_keymap('n', '<S-u>', '<C-r>', { noremap = true })
+maps.nmap('<S-u>', '<C-r>', maps.n)
 
 -- 現在開いているファイルのパスをcopyする
-vim.api.nvim_set_keymap('n', '<Leader>b', ':let @+ = expand("%")<CR>', { noremap = true, silent = true })
+maps.nmap('<Leader>b', ':let @+ = expand("%")<CR>', maps.ns)
 
 -- 外部コマンド
-vim.api.nvim_set_keymap('n', '<Leader>ca', ':!', { noremap = true })
+maps.nmap('<Leader>ca', ':!', maps.n)
 
 -- 置換(ファイル内で対象のものを全て置換したいときはサイトに/gつける)
-vim.api.nvim_set_keymap('n', '<Leader>c', ':%s//', { noremap = true })
+maps.nmap('<Leader>c', ':%s//', maps.n)
 
 -- 文字列一括削除
-vim.api.nvim_set_keymap('n', '<Leader>d', ':g//d', { noremap = true })
+maps.nmap('<Leader>d', ':g//d', maps.n)
 
 -- 保存・終了
-vim.api.nvim_set_keymap('n', ';s', ':w<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', ';d', ':q!<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', ';a', ':qa<CR>', { noremap = true })
+maps.nmap(';s', ':w<CR>', maps.n)
+maps.nmap(';d', ':q!<CR>', maps.n)
+maps.nmap(';a', ':qa<CR>', maps.n)
 
 -- messages
-vim.api.nvim_set_keymap('n', ';h', ':messages<CR>', { noremap = true })
+maps.nmap(';h', ':messages<CR>', maps.n)
 
 -- 改行してnormal mode
-vim.api.nvim_set_keymap('n', '<Space><CR>', 'o<ESC>', { noremap = true, silent = true })
+maps.nmap('<Space><CR>', 'o<ESC>', maps.ns)
 
 -- open init.lua
-vim.api.nvim_set_keymap('n', '<Leader>.', ':new ~/.config/nvim/init.lua<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<Leader>vi', ':source~/.config/nvim/init.lua<CR>', { noremap = true })
+maps.nmap('<Leader>.', ':new ~/.config/nvim/init.lua<CR>', maps.n)
+maps.nmap('<Leader>vi', ':source~/.config/nvim/init.lua<CR>', maps.n)
 
 -- UpdateRemotePlugins
-vim.api.nvim_set_keymap('n', '<Leader>ur', ':UpdateRemotePlugins<CR>', { noremap = true })
+maps.nmap('<Leader>ur', ':UpdateRemotePlugins<CR>', maps.n)
 
 -- backspaceキーで削除
-vim.api.nvim_set_keymap('n', 'dw', 'vb"_d', { noremap = true, silent = true })
+maps.nmap('dw', 'vb"_d', maps.ns)
 
 -- Select All
-vim.api.nvim_set_keymap('n', 'aa', 'gg<S-v>G', { noremap = false, silent = true })
+maps.nmap('aa', 'gg<S-v>G', maps.s)
 
 -- Open BufExplorer
-vim.api.nvim_set_keymap('n', '\\', '\be', { noremap = false })
+maps.nmap('\\', '\be', maps.none)
 
 -- ハイライトを解除する
-vim.api.nvim_set_keymap('n', '-', ':noh<CR>', { noremap = true, silent = true })
+maps.nmap('-', ':noh<CR>', maps.ns)
 
 -- syntax highlight再読み込み
-vim.api.nvim_set_keymap('n', '<F9>', ':syntax sync fromstart<CR>', { noremap = true })
+maps.nmap('<F9>', ':syntax sync fromstart<CR>', maps.n)
 
 -- Tabs
-vim.api.nvim_set_keymap('n', 'te', ':tabedit<Return>sf', { silent = true })
-vim.api.nvim_set_keymap('n', 'fl', ':tabnext<Return>', { silent = true })
-vim.api.nvim_set_keymap('n', 'fj', ':tabprev<Return>', { silent = true })
-vim.api.nvim_set_keymap('n', 'cl', ':tabclose<Return>', { silent = true })
+maps.nmap('te', ':tabedit<Return>sf', maps.s)
+maps.nmap('fl', ':tabnext<Return>', maps.s)
+maps.nmap('fj', ':tabprev<Return>', maps.s)
+maps.nmap('cl', ':tabclose<Return>', maps.s)
 
 -- Windows
-vim.api.nvim_set_keymap('n', 'ss', ':split<Return><C-w>w', { noremap = false })
-vim.api.nvim_set_keymap('n', 'sv', ':vsplit<Return><C-w>w', { noremap = false })
+maps.nmap('ss', ':split<Return><C-w>w', maps.none)
+maps.nmap('sv', ':vsplit<Return><C-w>w', maps.none)
 -- Move Window
-vim.api.nvim_set_keymap('', 'sh', '<C-w>h', { silent = true })
-vim.api.nvim_set_keymap('', 'sk', '<C-w>k', { silent = true })
-vim.api.nvim_set_keymap('', 'sj', '<C-w>j', { silent = true })
-vim.api.nvim_set_keymap('', 'sl', '<C-w>l', { silent = true })
+maps.map('sh', '<C-w>h', maps.s)
+maps.map('sk', '<C-w>k', maps.s)
+maps.map('sj', '<C-w>j', maps.s)
+maps.map('sl', '<C-w>l', maps.s)
 -- Resize Window
-vim.api.nvim_set_keymap('n', '<Leader>h', '<C-w><', { silent = true })
-vim.api.nvim_set_keymap('n', '<Leader>k', '<C-w>>', { silent = true })
-vim.api.nvim_set_keymap('n', '<Leader>j', '<C-w>+', { silent = true })
-vim.api.nvim_set_keymap('n', '<Leader>l', '<C-w>-', { silent = true })
+maps.nmap('<Leader>h', '<C-w><', maps.s)
+maps.nmap('<Leader>k', '<C-w>>', maps.s)
+maps.nmap('<Leader>j', '<C-w>+', maps.s)
+maps.nmap('<Leader>l', '<C-w>-', maps.s)
 
