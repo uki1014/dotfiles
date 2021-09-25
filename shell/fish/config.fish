@@ -1,3 +1,7 @@
+if [ $SHLVL = 1 ]
+  tmux new-session
+end
+
 set -xg LC_CTYPE en_US.UTF-8
 set -xg LC_ALL en_US.UTF-8
 set -xg LANG en_US.UTF-8
@@ -234,11 +238,6 @@ end
 
 # fzf settings
 set -U FZF_LEGACY_KEYBINDINGS 0
-
-# 初回シェル時のみ tmux実行
-# if test $SHLVL = 1
-#   tmux new-session
-# end
 
 function cmm
   git add .
