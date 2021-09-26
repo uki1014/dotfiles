@@ -170,6 +170,11 @@ if vim.fn.has('persistent_undo') == 1 then
   vim.opt.undofile = true
 end
 
+function CopyCurrentPath()
+  vim.cmd('let @+ = expand("%")')
+  vim.cmd('echo expand("%")')
+end
+
 -------------------------------------------------------------------------------
 -- Color scheme
 -------------------------------------------------------------------------------

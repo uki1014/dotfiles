@@ -44,7 +44,7 @@ maps.nmap('<Leader>ns', ':set nonumber<CR>', maps.ns)
 maps.nmap('<S-u>', '<C-r>', maps.n)
 
 -- 現在開いているファイルのパスをcopyする
-maps.nmap('<Leader>b', ':let @+ = expand("%")<CR>', maps.ns)
+maps.nmap('<Leader>b', ':lua CopyCurrentPath()<CR>', maps.ns)
 
 -- 外部コマンド
 maps.nmap('<Leader>ca', ':!', maps.n)
