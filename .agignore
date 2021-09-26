@@ -20,6 +20,5 @@ norinium/
 integration_test/
 images/
 dist/
-mysql/
 Session.vim
 .undodir/
