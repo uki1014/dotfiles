@@ -1,5 +1,5 @@
 if [ $SHLVL = 1 ]
-  tmux new-session
+  tmux
 end
 
 set -xg LC_CTYPE en_US.UTF-8
