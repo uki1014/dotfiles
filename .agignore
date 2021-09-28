@@ -22,3 +22,5 @@ images/
 dist/
 Session.vim
 .undodir/
+docker-entrypoint-initdb.d/
+*.sql
