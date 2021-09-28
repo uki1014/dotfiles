@@ -1,7 +1,3 @@
-if [ $SHLVL = 1 ]
-  tmux
-end
-
 set -xg LC_CTYPE en_US.UTF-8
 set -xg LC_ALL en_US.UTF-8
 set -xg LANG en_US.UTF-8
@@ -26,7 +22,7 @@ fish_vi_key_bindings
 
 if status --is-interactive
   # macOSとLinuxそれぞれの設定
-  if test (uname) = 'Darwin'
+  if [ (uname) = 'Darwin' ]
     set -xg PATH $HOME/nvim-osx64/bin $PATH
     alias sa='ssh-add -K ~/.ssh/id_rsa'
     # coreutils
@@ -41,14 +37,19 @@ if status --is-interactive
     # grep
     set -xg PATH /usr/local/opt/grep/libexec/gnubin $PATH
     set -xg MANPATH /usr/local/opt/grep/libexec/gnuman $MANPATH
+
+    if [ $SHLVL = 1 ]
+      tmux
+    end
   else if test (uname) = 'Linux'
     eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
     source ~/.asdf/asdf.fish
     alias sa='ssh-add'
 
-    if test $SHLVL = 1
+    if [ $SHLVL = 1 ]
       eval (ssh-agent -c)
       ssh-add
+      tmux
     end
   end
 
