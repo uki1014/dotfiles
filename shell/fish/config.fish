@@ -38,9 +38,6 @@ if status --is-interactive
     set -xg PATH /usr/local/opt/grep/libexec/gnubin $PATH
     set -xg MANPATH /usr/local/opt/grep/libexec/gnuman $MANPATH
 
-    if [ $SHLVL = 1 ]
-      tmux
-    end
   else if test (uname) = 'Linux'
     eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
     source ~/.asdf/asdf.fish
@@ -49,7 +46,6 @@ if status --is-interactive
     if [ $SHLVL = 1 ]
       eval (ssh-agent -c)
       ssh-add
-      tmux
     end
   end
 
