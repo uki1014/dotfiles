@@ -49,7 +49,11 @@ maps.nmap('<Leader>b', ':lua CopyCurrentPath()<CR>', maps.ns)
 -- 外部コマンド
 maps.nmap('<Leader>ca', ':!', maps.n)
 
--- 置換(ファイル内で対象のものを全て置換したいときはサイトに/gつける)
+-- [[
+-- 置換
+--  /g: 対象全て
+--  /c: 1つずつ確認しながら
+-- ]]
 maps.nmap('<Leader>c', ':%s//', maps.n)
 
 -- 文字列一括削除
