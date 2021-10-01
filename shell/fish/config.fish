@@ -1,20 +1,20 @@
 function attach_tmux_session_if_needed
   set ID (tmux list-sessions)
-  if test -z "$ID"
+  if [ -z "$ID" ]
     tmux new-session
     return
   end
 
   set new_session "Create New Session"
   set ID (echo $ID\n$new_session | peco --on-cancel=error | cut -d: -f1)
-  if test "$ID" = "$new_session"
+  if [ "$ID" = "$new_session" ]
     tmux new-session
-  else if test -n "$ID"
+  else if [ -n "$ID" ]
     tmux attach-session -t "$ID"
   end
 end
 
-if test -z $TMUX
+if [ -z $TMUX ]
   attach_tmux_session_if_needed
 end
 
@@ -58,7 +58,7 @@ if status --is-interactive
     set -xg PATH /usr/local/opt/grep/libexec/gnubin $PATH
     set -xg MANPATH /usr/local/opt/grep/libexec/gnuman $MANPATH
 
-  else if test (uname) = 'Linux'
+  else if [ (uname) = 'Linux' ]
     eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
     source ~/.asdf/asdf.fish
     alias sa='ssh-add'
@@ -201,13 +201,13 @@ function update_nvim
     mkdir ~/nvim_backup
   end
 
-  if test (uname) = 'Darwin'
+  if [ (uname) = 'Darwin' ]
     cd
     sudo mv ~/nvim-osx64 ~/nvim_backup/nvim-osx64-(date '+%Y-%m-%d_%H:%M:%S')
     curl -LO https://github.com/neovim/neovim/releases/download/nightly/nvim-macos.tar.gz
     tar xzf ~/nvim-macos.tar.gz
     sudo rm -f ~/nvim-macos.tar.gz
-  else if test (uname) = 'Linux'
+  else if [ (uname) = 'Linux' ]
     cd
     sudo mv /usr/local/bin/nvim ~/nvim_backup/nvim-linux-(date '+%Y-%m-%d_%H:%M:%S')
     curl -LO https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage
@@ -218,13 +218,13 @@ function update_nvim
 end
 
 function update_nvim_v5
-  if test (uname) = 'Darwin'
+  if [ (uname) = 'Darwin' ]
     cd
     sudo rm -rf ~/nvim-osx64
     curl -LO https://github.com/neovim/neovim/releases/download/v0.5.0/nvim-macos.tar.gz
     tar xzf ~/nvim-macos.tar.gz
     sudo rm -f ~/nvim-macos.tar.gz
-  else if test (uname) = 'Linux'
+  else if [ (uname) = 'Linux' ]
     cd
     sudo rm ~/nvim.appimage
     curl -LO https://github.com/neovim/neovim/releases/download/v0.5.0/nvim.appimage
