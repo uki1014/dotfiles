@@ -1,21 +1,19 @@
 function attach_tmux_session_if_needed
-  set ID (tmux list-sessions)
-  if [ -z "$ID" ]
-    tmux new-session
-    return
-  end
+  if [ -z $TMUX ]
+    set ID (tmux list-sessions)
+    if [ -z "$ID" ]
+      tmux new-session
+      return
+    end
 
-  set new_session "Create New Session"
-  set ID (echo $ID\n$new_session | peco --on-cancel=error | cut -d: -f1)
-  if [ "$ID" = "$new_session" ]
-    tmux new-session
-  else if [ -n "$ID" ]
-    tmux attach-session -t "$ID"
+    set new_session "Create New Session"
+    set ID (echo $ID\n$new_session | peco --on-cancel=error | cut -d: -f1)
+    if [ "$ID" = "$new_session" ]
+      tmux new-session
+    else if [ -n "$ID" ]
+      tmux attach-session -t "$ID"
+    end
   end
-end
-
-if [ -z $TMUX ]
-  attach_tmux_session_if_needed
 end
 
 set -xg LC_CTYPE en_US.UTF-8
@@ -68,6 +66,8 @@ if status --is-interactive
       ssh-add
     end
   end
+
+  attach_tmux_session_if_needed
 
   # anyenv
   set -xg ANYENV_ROOT ~/.anyenv
