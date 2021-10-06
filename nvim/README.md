@@ -1,24 +1,5 @@
 ## vim keymaps
 
-### 検索と置換
-
-| keybind         | operation                                  |
-| --------------- | ------------------------------------------ |
-| :%s/hage/hoge/g | hage を hoge へ置換(%はファイル全体を表す) |
-
-### fugitive
-
-| keybind      | operation                                          |
-| ------------ | -------------------------------------------------- |
-| Gstatus      | git status                                         |
-| Gwrite       | 現在開いているソースを add                         |
-| Gread        | 現在開いているソースの直前コミット時のソースを表示 |
-| Gmove [path] | 現在開いているソースを git mv する                 |
-| Gremove      | 現在開いているソースを git rm する                 |
-| Gcommit      | git commit                                         |
-| Gblame       | 現在のソースを git blame                           |
-| Gdiff        | git diff                                           |
-
 ### utils
 
 | keybind | operation                              |
