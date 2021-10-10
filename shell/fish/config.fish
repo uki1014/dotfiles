@@ -274,6 +274,10 @@ function cm
   git commit -m "$argv"
 end
 
+function cmno
+  git commit -m "$argv" --no-verify
+end
+
 # neovimのpython2と3の環境でpip-packagesのupdate
 function update_pyneovim
   pyenv activate neovim2
