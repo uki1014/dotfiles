@@ -42,6 +42,9 @@ target_brew_list_for_mac_os=(
   gnu-sed
   grep
   gzip
+  gawk
+  gnu-tar
+  wget
 )
 
 # GUI tools

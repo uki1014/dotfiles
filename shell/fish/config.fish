@@ -55,6 +55,11 @@ if status --is-interactive
     # grep
     set -xg PATH /usr/local/opt/grep/libexec/gnubin $PATH
     set -xg MANPATH /usr/local/opt/grep/libexec/gnuman $MANPATH
+    # awk
+    alias awk='gawk'
+    # tar
+    set -xg PATH /usr/local/opt/gnu-tar/libexec/gnubin $PATH
+    set -xg MANPATH /usr/local/opt/gnu-tar/libexec/gnuman $MANPATH
 
   else if [ (uname) = 'Linux' ]
     eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
