@@ -41,8 +41,14 @@ fish_vi_key_bindings
 if status --is-interactive
   # macOSとLinuxそれぞれの設定
   if [ (uname) = 'Darwin' ]
-    set -xg PATH $HOME/nvim-osx64/bin $PATH
     alias sa='ssh-add -K ~/.ssh/id_rsa'
+    if [ $SHLVL = 1 ]
+      sa
+    end
+
+    # neovim
+    set -xg PATH $HOME/nvim/bin $PATH
+
     # coreutils
     set -xg PATH /usr/local/opt/coreutils/libexec/gnubin $PATH
     set -xg MANPATH /usr/local/opt/coreutils/libexec/gnuman $MANPATH
@@ -137,11 +143,6 @@ function docker-exec
   docker exec -it $name $argv
 end
 
-function fish_user_key_bindings
-  bind \cr peco_select_history # Bind for prco history to Ctrl+r
-  bind \cs 'peco_cd'
-end
-
 function ide
   tmux split-window -v -p 21
   tmux split-window -h -p 66
@@ -208,18 +209,31 @@ function update_nvim
 
   if [ (uname) = 'Darwin' ]
     cd
-    sudo mv ~/nvim-osx64 ~/nvim_backup/nvim-osx64-(date '+%Y-%m-%d_%H:%M:%S')
+    sudo mv ~/nvim ~/nvim_backup/nvim-(date '+%Y-%m-%d_%H:%M:%S')
     curl -LO https://github.com/neovim/neovim/releases/download/nightly/nvim-macos.tar.gz
     tar xzf ~/nvim-macos.tar.gz
     sudo rm -f ~/nvim-macos.tar.gz
+    mv nvim-osx64 nvim
   else if [ (uname) = 'Linux' ]
     cd
-    sudo mv /usr/local/bin/nvim ~/nvim_backup/nvim-linux-(date '+%Y-%m-%d_%H:%M:%S')
+    sudo mv /usr/local/bin/nvim ~/nvim_backup/nvim-(date '+%Y-%m-%d_%H:%M:%S')
     curl -LO https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage
     chmod u+x ~/nvim.appimage
     sudo mv ~/nvim.appimage ~/nvim
     sudo mv ~/nvim /usr/local/bin
   end
+end
+
+function restore_nvim
+  cd ~/nvim_backup
+  if [ (uname) = 'Darwin' ]
+    sudo rm -rf ~/nvim
+    mv (ls -c | head -n 3 | awk 'END{print $1}') ~/nvim
+  else if [ (uname) = 'Linux' ]
+    sudo rm -rf /usr/local/bin/nvim
+    mv (ls -c | head -n 3 | awk 'END{print $1}') /usr/local/bin
+  end
+  cd
 end
 
 function update_nvim_v5
