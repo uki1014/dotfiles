@@ -28,6 +28,10 @@ maps.nmap('<Leader>bi', ':call append(line("."), "binding.pry")<CR>', maps.n)
 -- yank
 maps.nmap('Y', 'y$', maps.n)
 
+-- move lines
+maps.nmap('gj', 'ddp', maps.n)
+maps.nmap('gk', 'dd2kp', maps.n)
+
 -- current cursorより前を削除
 maps.nmap('fd', 'v^d', maps.n)
 

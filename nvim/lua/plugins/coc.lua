@@ -9,7 +9,6 @@ vim.api.nvim_set_keymap('n', 'gy', '<Plug>(coc-type-definition)', { silent = tru
 vim.api.nvim_set_keymap('n', 'gi', '<Plug>(coc-implementation)', { silent = true })
 vim.api.nvim_set_keymap('n', 'gr', '<Plug>(coc-references)', { silent = true })
 vim.api.nvim_set_keymap('n', 'K', ':lua show_documentation()<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', 'R', '<Plug>(coc-rename)', { silent = true })
 
 
 -- Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
