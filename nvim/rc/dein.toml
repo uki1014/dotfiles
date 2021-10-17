@@ -154,6 +154,7 @@ lua vim.g.workspace_session_directory = os.getenv('HOME')..'/.config/nvim/sessio
 repo = 'uki1014/vim-trailing-whitespace'
 hook_add = """
 lua vim.api.nvim_set_keymap('n', '<Leader>y', ':FixWhitespace<CR>', { noremap = true })
+lua vim.g.extra_whitespace_ignored_filetypes = { 'denite', 'defx' }
 """
 
 [[plugins]]
