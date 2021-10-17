@@ -494,6 +494,7 @@ alias chilf='cd ~/program/projects/chillers/frontend'
 alias update_apt='sudo apt update && sudo apt upgrade'
 alias mysqlstatus='sudo service mysql status'
 alias load_back_up_mysql='mysql -u mysql -proot --protocol tcp < tmp/development-backup.sql'
+alias brewall='brew update && brew upgrade && brew doctor && brew cleanup'
 
 if [ -d $DOTFILES_PATH/freee ]
   source $DOTFILES_PATH/freee/freee.config.fish
