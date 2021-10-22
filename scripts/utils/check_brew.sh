@@ -24,5 +24,5 @@ check_brew() {
   fi
 }
 
-# If you want to run check_dotfiles, pass something as an argument
+# If you want to run, pass something as an argument
 [ ! $# == 0 ] && check_brew

@@ -6,7 +6,6 @@ DOTFILES_DIR="$HOME/dotfiles"
 DOT_TARBALL="https://github.com/uki1014/dotfiles/tarball/master"
 DOT_REMOTE_URL="https://github.com/uki1014/dotfiles.git"
 
-# Install my dotfile
 check_dotfiles() {
   if [ ! -d $DOTFILES_DIR ]; then
     echo "Downloading dotfiles..."
@@ -30,5 +29,5 @@ check_dotfiles() {
   fi
 }
 
-# If you want to run check_dotfiles, pass something as an argument
+# If you want to run, pass something as an argument
 [ ! $# == 0 ] && check_dotfiles
