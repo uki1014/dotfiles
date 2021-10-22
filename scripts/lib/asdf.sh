@@ -40,6 +40,12 @@ TERRAFORM_VERSIONS=(
   0.14.5
 )
 
+TARGET_TOOLS=(
+  neovim
+  # awscli
+  docker-compose-v1
+)
+
 install_languages() {
   for TARGET_LANG in ${TARGET_LANGUAGES[@]}; do
     echo "Install asdf plugin $TARGET_LANG..."
@@ -81,6 +87,26 @@ install_languages() {
   done
 }
 
+install_tools() {
+  for TARGET_TOOL in ${TARGET_TOOLS[@]}; do
+    echo "Install asdf plugin $TARGET_TOOL..."
+    asdf plugin add $TARGET_TOOL
+
+    case $TARGET_TOOL in
+      'neovim')
+        echo "Install $TARGET_TOOL..."
+        asdf install $TARGET_TOOL stable
+        asdf global $TARGET_TOOL stable
+        ;;
+      'docker-compose-v1')
+        echo "Install $TARGET_TOOL..."
+        asdf install $TARGET_TOOL 1.29.2
+        asdf global $TARGET_TOOL 1.29.2
+        ;;
+    esac
+  done
+}
+
 set +e
 check_brew
 set -e
@@ -88,6 +114,7 @@ set -e
 if has 'asdf'; then
   echo "asdf has been already installed."
   install_languages
+  install_tools
 else
   if ! has 'gpg'; then
     brew install gpg
@@ -95,4 +122,5 @@ else
   brew install asdf
   source ~/.config/fish/config.fish
   install_languages
+  install_tools
 fi
