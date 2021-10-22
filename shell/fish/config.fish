@@ -48,7 +48,7 @@ if status --is-interactive
     end
 
     # neovim
-    set -xg PATH $HOME/nvim/bin $PATH
+    # set -xg PATH $HOME/nvim/bin $PATH
 
     # coreutils
     set -xg PATH /usr/local/opt/coreutils/libexec/gnubin $PATH
@@ -301,7 +301,7 @@ function cmno
 end
 
 # neovimのpython2と3の環境でpip-packagesのupdate
-function update_pyneovim
+function update_pyneovim_pyenv
   pyenv activate neovim2
   pip install --upgrade pip
   pip install --upgrade pynvim
@@ -310,6 +310,13 @@ function update_pyneovim
   pip install --upgrade pip
   pip install --upgrade pynvim
   pyenv deactivate neovim3
+end
+
+function update_pyneovim
+  pip2 install --upgrade pip
+  pip2 install --upgrade pynvim
+  pip3 install --upgrade pip
+  pip3 install --upgrade pynvim
 end
 
 # ===Alias===
