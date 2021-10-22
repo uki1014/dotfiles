@@ -30,6 +30,7 @@ set -xg GHQ_SELECTOR peco
 set -xg theme_date_format "+%Y-%m-%d %H:%M:%S"
 set -g fish_prompt_pwd_dir_length 0
 set -g fish_user_paths "/usr/local/opt/openssl@1.1/bin" $fish_user_paths
+set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
 
 if [ -e $DOTFILES_PATH/git/token.fish ]
   source $DOTFILES_PATH/git/token.fish
