@@ -1,12 +1,6 @@
-#!/bin/bash
+#!/bin/bash -ue
 
-# 実行したコマンドを表示
-# set -x
-set -ue
-
-has() {
-  type "$1" > /dev/null 2>&1
-}
+source ~/dotfiles/scripts/utils/source_all_utils.sh
 
 # CUI tools
 target_brew_list=(
@@ -20,7 +14,6 @@ target_brew_list=(
   fzf
   bat
   git-flow
-  gitmoji
   git
   tree
   direnv
@@ -33,6 +26,7 @@ target_brew_list=(
   tree-sitter
   luajit
   docui
+  gpg
 )
 
 # CUI tools for macOS
@@ -57,17 +51,17 @@ target_brew_cask_list=(
   docker
   xquartz
   google-chrome
-  spotify
+  # spotify
   tableplus
   fork
   deepl
-  typora
+  # typora
   teensy
   virtualbox
   visual-studio-code
   karabiner-elements
   postman
-  homebrew/cask-versions/iterm2-nightly
+  # homebrew/cask-versions/iterm2-nightly
   hyper
   alfred
 )
@@ -78,18 +72,7 @@ target_brew_cask_list=(
 # - JIRA
 # - Slack
 
-if ! has "brew"; then
-  echo "Installing Homebrew..."
-  bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-else
-  echo "Homebrew has been already installed."
-fi
-
-echo "brew update..."
-brew update
-
-echo "brew upgrade..."
-brew upgrade
+check_brew
 
 for target in ${target_brew_list[@]}; do
   if ! has "$target"; then
@@ -99,7 +82,7 @@ for target in ${target_brew_list[@]}; do
   fi
 done
 
-if [ "$(uname)" == "Darwin" ]; then
+if is_darwin; then
   echo 'Darwin'
   for target in ${target_brew_list_for_mac_os[@]}; do
     if ! has "$target"; then
