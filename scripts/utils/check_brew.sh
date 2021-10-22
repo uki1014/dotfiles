@@ -1,4 +1,5 @@
-#!/bin/bash -ue
+#!/bin/bash -u
+# brew cleanup後に勝手にexitしてしまうので-eはつけない
 
 source ~/dotfiles/scripts/utils/has.sh
 
@@ -25,4 +26,6 @@ check_brew() {
 }
 
 # If you want to run, pass something as an argument
-[ ! $# == 0 ] && check_brew
+if [ $# != 0 ]; then
+  check_brew
+fi

@@ -9,4 +9,6 @@ change_keyrepeat() {
 }
 
 # If you want to run, pass something as an argument
-[ ! $# == 0 ] && change_keyrepeat
+if [ $# != 0 ]; then
+  change_keyrepeat
+fi

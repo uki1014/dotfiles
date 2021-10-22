@@ -117,7 +117,6 @@ link_to_config_dir() {
   fi
 }
 
-
 setup_symlink() {
   link_to_root
   link_to_config_dir
@@ -125,4 +124,6 @@ setup_symlink() {
 }
 
 # If you want to run, pass something as an argument
-[ ! $# == 0 ] && setup_symlink
+if [ $# != 0 ]; then
+  setup_symlink
+fi

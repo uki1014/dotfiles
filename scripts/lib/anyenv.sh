@@ -1,8 +1,4 @@
-#!/bin/bash
-
-# 実行したコマンドを表示
-# set -x
-set -ue
+#!/bin/bash -ue
 
 if [ ! -d ${HOME}/.anyenv ]; then
   git clone https://github.com/anyenv/anyenv ~/.anyenv

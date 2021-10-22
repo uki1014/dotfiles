@@ -25,9 +25,11 @@ check_dotfiles() {
     echo $(tput setaf 2)Download dotfiles complete!. ✔︎$(tput sgr0)
     cd $DOTFILES_DIR
   else
-    echo "you're Dotfiles has been already installed."
+    echo "your Dotfiles has been already installed."
   fi
 }
 
 # If you want to run, pass something as an argument
-[ ! $# == 0 ] && check_dotfiles
+if [ $# != 0 ]; then
+  check_dotfiles
+fi
