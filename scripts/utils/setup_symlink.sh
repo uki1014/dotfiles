@@ -36,52 +36,59 @@ get_target_config_dir() {
 
 create_dotbackup() {
   BACKUP_PATH=$1
-  if [ ! -d "$HOME/$BACKUP_PATH" ]; then
-    echo "Create ~/$BACKUP_PATH directory for backup old dotfiles..."
-    mkdir ~/$BACKUP_PATH
+  echo $BACKUP_PATH
+  if [ ! -d $BACKUP_PATH ]; then
+    echo "Create $BACKUP_PATH directory for backup old dotfiles..."
+    mkdir $BACKUP_PATH
   else
     echo "$BACKUP_PATH is already created."
   fi
 }
 
-is_dotfile_exist() {
-  TARGET_DOTFILE=$1
-  [ -e "$HOME/`basename $TARGET_DOTFILE`" ] > /dev/null 2>&1
+create_backup() {
+  DOTFILE_PATH=$1 # ファイルを配置したいPATH Ex. $HOME/.config
+  TARGET_DOTFILE_OR_DIR_NAME=$2 # Ex. .bashrc, fish/
+  BACKUP_PATH=$3 # Ex. ~/dotbackup or ~/dotbackup/.config
+
+  # ディレクトリがすでに存在する場合はbackup
+  if [ -e "$DOTFILE_PATH/$TARGET_DOTFILE_OR_DIR_NAME" ]; then
+    # backupがすでにある場合はそのままにする
+    if [ -e "$BACKUP_PATH/$TARGET_DOTFILE_OR_DIR_NAME" ]; then
+      echo "The target backup was founded and make a backup..."
+      rm -rf "$HOME/.config/$TARGET_DOTFILE_OR_DIR_NAME"
+    else
+      echo "The target directory was founded and make a backup..."
+      echo $HOME/.config/$TARGET_DOTFILE_OR_DIR_NAME
+      mv "$DOTFILE_PATH/$TARGET_DOTFILE_OR_DIR_NAME" $BACKUP_PATH
+    fi
+  fi
 }
 
-is_dotbackup_exist() {
-  TARGET_DOTFILE=$1
-  [ -e "$HOME/dotbackup/`basename $TARGET_DOTFILE`" ] > /dev/null 2>&1
+check_and_unlink() {
+  TARGET_PATH=$1
+  # Symリンクがすでに存在していた場合はunlink
+  if [ -L "$TARGET_PATH" ]; then
+    echo "Already exists $TARGET_DOTFILE symbolic link..."
+    unlink "$TARGET_PATH"
+  fi
 }
 
 link_to_root() {
-  create_dotbackup 'dotbackup'
+  BACKUP_PATH="$HOME/dotbackup"
+  create_dotbackup $BACKUP_PATH
 
   if [ $HOME != $DOTFILES_DIR ]; then
     echo "Start setup symbolic link..."
 
+    # Ex. TARGET_DOTFILE: .bashrc
     for TARGET_DOTFILE in ${TARGET_DOTFILES[@]}; do
+      # Ex. TARGET_PATH: /Users/username/.bashrc
       TARGET_PATH=`get_target_dotfiles_path $TARGET_DOTFILE`
 
-      # ファイルがすでに存在する場合はbackup
-      if is_dotfile_exist; then
-        # backupがすでにある場合はそのままにする
-        if is_dotbackup_exist $TARGET_DOTFILE; then
-          rm -rf "$HOME/`basename $TARGET_DOTFILE`"
-        else
-          echo "The target file was founded and make a backup..."
-          echo $HOME/`basename $TARGET_DOTFILE`
-          mv "$HOME/`basename $TARGET_DOTFILE`" "$HOME/dotbackup"
-        fi
-      fi
+      create_backup "$HOME" $TARGET_DOTFILE $BACKUP_PATH
+      check_and_unlink $TARGET_PATH
 
-      # Symリンクがすでに存在していた場合はunlink
-      if [ -L "$HOME/`basename $TARGET_DOTFILE`" ]; then
-        echo "Already exists $TARGET_DOTFILE symbolic link..."
-        unlink "$HOME/`basename $TARGET_DOTFILE`"
-      fi
-
-      echo "Put "$TARGET_DOTFILE" symbolic link ..."
+      echo "Put "~/$TARGET_DOTFILE" symbolic link ..."
       ln -snf $TARGET_PATH $HOME
     done
   else
@@ -90,29 +97,19 @@ link_to_root() {
 }
 
 link_to_config_dir() {
-  create_dotbackup 'dotbackup/.config'
+  BACKUP_PATH="$HOME/dotbackup/.config"
+  create_dotbackup $BACKUP_PATH
 
   if [ $HOME != $DOTFILES_DIR ]; then
+    # Ex. TARGET_CONFIG_DIR: fish
     for TARGET_CONFIG_DIR in ${TARGET_CONFIG_DIRS[@]}; do
+      # Ex. TARGET_PATH: /Users/username/dotfiles/shell/fish
       TARGET_PATH=`get_target_config_dir $TARGET_CONFIG_DIR`
 
-      # ディレクトリがすでに存在する場合はbackup
-      if [ -d "$HOME/.config/`basename $TARGET_CONFIG_DIR`" ]; then
-        if [ -d "$HOME/dotbackup/.config/`basename $TARGET_CONFIG_DIR`" ]; then
-          rm -rf "$HOME/.config/`basename $TARGET_CONFIG_DIR`"
-        else
-          echo "The target directory was founded and make a backup..."
-          echo $HOME/.config/`basename $TARGET_CONFIG_DIR`
-          mv "$HOME/.config/`basename $TARGET_CONFIG_DIR`" "$HOME/dotbackup/.config"
-        fi
-      fi
+      create_backup "$HOME/.config" $TARGET_CONFIG_DIR $BACKUP_PATH
+      check_and_unlink $TARGET_PATH
 
-      # Symリンクがすでに存在していた場合はunlink
-      if [ -L "$HOME/.config/`basename TARGET_CONFIG_DIR`" ]; then
-        echo "Already exists TARGET_CONFIG_DIR symbolic link"
-        unlink "$HOME/.config/`basename TARGET_CONFIG_DIR`"
-      fi
-
+      echo "Put "~/.config/$TARGET_DOTFILE" symbolic link ..."
       ln -snf $TARGET_PATH $HOME/.config
     done
   else
@@ -121,10 +118,11 @@ link_to_config_dir() {
 }
 
 
-main() {
+setup_symlink() {
   link_to_root
   link_to_config_dir
+  echo $(tput setaf 2)Setup symbolic links complete!. ✔︎$(tput sgr0)
 }
 
 # If you want to run, pass something as an argument
-[ ! $# == 0 ] && main
+[ ! $# == 0 ] && setup_symlink
