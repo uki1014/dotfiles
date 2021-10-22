@@ -16,18 +16,31 @@ RUBY_VERSIONS=(
   2.6.6
   2.7.4
 )
+RUBY_GLOBAL_PACKAGES=(
+  solargraph
+  neovim
+)
 
 GLOBAL_NODE_VERSION=12.20.1
 NODE_VERSIONS=(
   12.20.1
   14.17.5
 )
+NODE_GLOBAL_PACKAGES=(
+  neovim
+  yarn
+  typescript
+)
 
 GLOBAL_PYTHON2_VERSION=2.7.16
 GLOBAL_PYTHON3_VERSION=3.9.0
-PYTHON_VERSIONS=(
-  2.7.16
-  3.9.0
+PYTHON2_GLOBAL_PACKAGES=(
+  neovim
+  pynvim
+)
+PYTHON3_GLOBAL_PACKAGES=(
+  neovim
+  pynvim
 )
 
 GLOBAL_GOLANG_VERSION=1.12
@@ -57,19 +70,40 @@ install_languages() {
           echo "Install $TARGET_LANG $VERSION..."
           asdf install $TARGET_LANG $VERSION
           asdf global $TARGET_LANG $GLOBAL_RUBY_VERSION
+
+          for PACKAGE in $RUBY_GLOBAL_PACKAGES; do
+            gem install $PACKAGE
+          done
         done;;
       'nodejs')
         for VERSION in ${NODE_VERSIONS[@]}; do
           echo "Install $TARGET_LANG $VERSION..."
           asdf install $TARGET_LANG $VERSION
           asdf global $TARGET_LANG $GLOBAL_NODE_VERSION
+
+          for PACKAGE in $NODE_GLOBAL_PACKAGES; do
+            npm install -g $PACKAGE
+          done
         done;;
       'python')
-        for VERSION in ${PYTHON_VERSIONS[@]}; do
-          echo "Install $TARGET_LANG $VERSION..."
-          asdf install $TARGET_LANG $VERSION
-          asdf global $TARGET_LANG $GLOBAL_PYTHON2_VERSION
-          asdf global $TARGET_LANG $GLOBAL_PYTHON3_VERSION
+        echo "Install Python $GLOBAL_PYTHON3_VERSION..."
+        asdf install python $GLOBAL_PYTHON3_VERSION
+
+        echo "Install Python $GLOBAL_PYTHON2_VERSION..."
+        asdf install python $GLOBAL_PYTHON2_VERSION
+
+        asdf global python $GLOBAL_PYTHON3_VERSION $GLOBAL_PYTHON2_VERSION
+
+        for PACKAGE in $PYTHON2_GLOBAL_PACKAGES; do
+          pip2 install --upgrade pip
+          pip2 install $PACKAGE
+          pip2 install --upgrade $PACKAGE
+        done
+
+        for PACKAGE in $PYTHON3_GLOBAL_PACKAGES; do
+          pip3 install --upgrade pip
+          pip3 install $PACKAGE
+          pip3 install --upgrade $PACKAGE
         done;;
       'golang')
         for VERSION in ${GOLANG_VERSIONS[@]}; do
