@@ -81,36 +81,38 @@ if status --is-interactive
 
   attach_tmux_session_if_needed
 
+  source /usr/local/opt/asdf/libexec/asdf.fish
+
   # anyenv
-  set -xg ANYENV_ROOT ~/.anyenv
-  set -xg PATH $HOME/.anyenv/bin $PATH
+  # set -xg ANYENV_ROOT ~/.anyenv
+  # set -xg PATH $HOME/.anyenv/bin $PATH
   # anyenv init - fish | source
 
   # nodenv
-  set -xg NODENV_ROOT $ANYENV_ROOT/envs/nodenv
-  set -xg PATH $NODENV_ROOT/bin $NODENV_ROOT/shims $PATH
+  # set -xg NODENV_ROOT $ANYENV_ROOT/envs/nodenv
+  # set -xg PATH $NODENV_ROOT/bin $NODENV_ROOT/shims $PATH
 
   # rbenv
-  set -xg RBENV_ROOT $ANYENV_ROOT/envs/rbenv
-  set -xg PATH $RBENV_ROOT/bin $RBENV_ROOT/shims $PATH
+  # set -xg RBENV_ROOT $ANYENV_ROOT/envs/rbenv
+  # set -xg PATH $RBENV_ROOT/bin $RBENV_ROOT/shims $PATH
 
   # pyenv
-  set -xg PYENV_ROOT $ANYENV_ROOT/envs/pyenv
-  set -xg PATH $PYENV_ROOT/bin $PYENV_ROOT/shims $PATH
-  status is-login; and pyenv init --path fish | source
-  pyenv init - fish | source
+  # set -xg PYENV_ROOT $ANYENV_ROOT/envs/pyenv
+  # set -xg PATH $PYENV_ROOT/bin $PYENV_ROOT/shims $PATH
+  # status is-login; and pyenv init --path fish | source
+  # pyenv init - fish | source
   # pyenv-virtualenv
-  pyenv virtualenv-init - fish | source
+  # pyenv virtualenv-init - fish | source
 
   # goenv
-  set -xg GOENV_ROOT $ANYENV_ROOT/envs/goenv
-  set -xg PATH $GOENV_ROOT/bin $GOENV_ROOT/shims $PATH
-  set -xg GOPATH "$HOME/go"
-  set -xg GO111MODULE on
+  # set -xg GOENV_ROOT $ANYENV_ROOT/envs/goenv
+  # set -xg PATH $GOENV_ROOT/bin $GOENV_ROOT/shims $PATH
+  # set -xg GOPATH "$HOME/go"
+  # set -xg GO111MODULE on
 
   # tfenv
-  set -xg TFENV_ROOT $ANYENV_ROOT/envs/tfenv
-  set -xg PATH $TFENV_ROOT/bin $TFENV_ROOT/shims $PATH
+  # set -xg TFENV_ROOT $ANYENV_ROOT/envs/tfenv
+  # set -xg PATH $TFENV_ROOT/bin $TFENV_ROOT/shims $PATH
 
   # direnv
   eval (direnv hook fish)
@@ -494,7 +496,7 @@ alias chilf='cd ~/program/projects/chillers/frontend'
 alias update_apt='sudo apt update && sudo apt upgrade'
 alias mysqlstatus='sudo service mysql status'
 alias load_back_up_mysql='mysql -u mysql -proot --protocol tcp < tmp/development-backup.sql'
-alias brewall='brew update && brew upgrade && brew doctor && brew cleanup'
+alias brewall='~/dotfiles/scripts/utils/check_brew.sh 0'
 
 if [ -d $DOTFILES_PATH/freee ]
   source $DOTFILES_PATH/freee/freee.config.fish
