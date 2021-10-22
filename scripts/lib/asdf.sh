@@ -81,9 +81,9 @@ install_languages() {
   done
 }
 
-# set +e
-# check_brew
-# set -e
+set +e
+check_brew
+set -e
 
 if has 'asdf'; then
   echo "asdf has been already installed."
