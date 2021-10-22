@@ -1,6 +1,6 @@
 #!/bin/bash -ue
 
-source ~/dotfiles/scripts/utils/source_all_utils.sh
+source ~/dotfiles/scripts/utils/has.sh
 
 check_brew() {
   if ! has "brew"; then
@@ -24,5 +24,5 @@ check_brew() {
   fi
 }
 
-# 引数になにか渡せばcheck_brewを実行できる
+# If you want to run check_dotfiles, pass something as an argument
 [ ! $# == 0 ] && check_brew
