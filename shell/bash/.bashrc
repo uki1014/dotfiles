@@ -1,26 +1,5 @@
 export LANG=ja_JP.UTF-8
 export LC_CTYPE=ja_JP.UTF-8
-# anyenv
-export PATH="$HOME/.anyenv/bin:$PATH"
-eval "$(anyenv init -)"
-# nodenv
-# export PATH="$HOME/.anyenv/envs/nodenv/versions/*/bin:$PATH"
-# pyenv
-# export PATH="$HOME/.anyenv/envs/pyenv/versions/*/bin:$PATH"
-# rbenv
-# export PATH="$HOME/.anyenv/envs/rbenv/versions/*/bin:$PATH"
-# Flutter
-export PATH="$PATH:$HOME/Program/flutter/bin"
-
-# postresql
-export PGDATA=/usr/local/var/postgres
-
-# nv code
-export PATH=$HOME/.local/bin:$PATH
-export CLICOLOR=1
-export LSCOLORS="GxFxCxDxBxegedabagaced"
-export IS_FISH_START=YES
-
 # ===Alias===
 # Git
 alias cm='git commit -m "$1"'
@@ -114,27 +93,27 @@ if [ -d ~/dotfiles/freee ]; then
   source ~/dotfiles/freee/freee.bash
 fi
 
-if [[ $IS_FISH_START == YES ]]; then
-  # 最後にfish起動
-  exec fish
-else
-  # fishを読み込まない時はtmuxの起動確認と秘密鍵の読み込み
-  if [[ ! -n $TMUX && $- == *l* ]]; then
-    # get the IDs
-    ID="`tmux list-sessions`"
-    if [[ -z "$ID" ]]; then
-      tmux new-session
-    fi
-    create_new_session="Create New Session"
-    ID="$ID\n${create_new_session}:"
-    ID="`echo $ID | $PERCOL | cut -d: -f1`"
-    if [[ "$ID" = "${create_new_session}" ]]; then
-      tmux new-session
-    elif [[ -n "$ID" ]]; then
-      tmux attach-session -t "$ID"
-    else
-      :  # Start terminal normally
-    fi
-  fi
-  sa
-fi
+# if [[ $IS_FISH_START == YES ]]; then
+#   # 最後にfish起動
+#   exec fish
+# else
+#   # fishを読み込まない時はtmuxの起動確認と秘密鍵の読み込み
+#   if [[ ! -n $TMUX && $- == *l* ]]; then
+#     # get the IDs
+#     ID="`tmux list-sessions`"
+#     if [[ -z "$ID" ]]; then
+#       tmux new-session
+#     fi
+#     create_new_session="Create New Session"
+#     ID="$ID\n${create_new_session}:"
+#     ID="`echo $ID | $PERCOL | cut -d: -f1`"
+#     if [[ "$ID" = "${create_new_session}" ]]; then
+#       tmux new-session
+#     elif [[ -n "$ID" ]]; then
+#       tmux attach-session -t "$ID"
+#     else
+#       :  # Start terminal normally
+#     fi
+#   fi
+#   sa
+# fi

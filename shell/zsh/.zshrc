@@ -1,26 +1,6 @@
 export LANG=ja_JP.UTF-8
 export LC_CTYPE=ja_JP.UTF-8
 
-# anyenv
-export PATH="$HOME/.anyenv/bin:$PATH"
-eval "$(anyenv init - zsh)"
-# nodenv
-export PATH="$HOME/.anyenv/envs/nodenv/versions/*/bin:$PATH"
-# pyenv
-export PATH="$HOME/.anyenv/envs/pyenv/versions/*/bin:$PATH"
-# rbenv
-export PATH="$HOME/.anyenv/envs/rbenv/versions/*/bin:$PATH"
-# Flutter
-export PATH="$PATH:$HOME/Program/flutter/bin"
-
-export PATH=$HOME/.local/bin:$PATH
-export CLICOLOR=1
-export LSCOLORS="GxFxCxDxBxegedabagaced"
-export IS_FISH_START=YES
-
-autoload -U +X bashcompinit && bashcompinit
-complete -o nospace -C /usr/local/bin/bit bit
-
 if [ -d ~/dotfiles/freee ]; then
   echo 'source freee.zsh!'
   source ~/dotfiles/freee/freee.zsh
@@ -29,78 +9,133 @@ fi
 if [[ $IS_FISH_START == YES ]]; then
   exec fish
 else
-  # # fishを読み込まない時はtmuxの起動確認と秘密鍵の読み込み
-  # if [[ ! -n $TMUX && $- == *l* ]]; then
-  #   # get the IDs
-  #   ID="`tmux list-sessions`"
-  #   if [[ -z "$ID" ]]; then
-  #     tmux new-session
-  #   fi
-  #   create_new_session="Create New Session"
-  #   ID="$ID\n${create_new_session}:"
-  #   ID="`echo $ID | $PERCOL | cut -d: -f1`"
-  #   if [[ "$ID" = "${create_new_session}" ]]; then
-  #     tmux new-session
-  #   elif [[ -n "$ID" ]]; then
-  #     tmux attach-session -t "$ID"
-  #   else
-  #     :  # Start terminal normally
-  #   fi
-  # fi
-  # sa
+  # fishを読み込まない時はtmuxの起動確認と秘密鍵の読み込み
+  if [[ ! -n $TMUX && $- == *l* ]]; then
+    # get the IDs
+    ID="`tmux list-sessions`"
+    if [[ -z "$ID" ]]; then
+      tmux new-session
+    fi
+    create_new_session="Create New Session"
+    ID="$ID\n${create_new_session}:"
+    ID="`echo $ID | $PERCOL | cut -d: -f1`"
+    if [[ "$ID" = "${create_new_session}" ]]; then
+      tmux new-session
+    elif [[ -n "$ID" ]]; then
+      tmux attach-session -t "$ID"
+    else
+      :  # Start terminal normally
+    fi
+  fi
+  sa
 fi
 
 # ===Alias===
+# Ubuntu
+# package情報キャッシュの削除
+alias ubuntu_cache_delete='sudo rm -rf /var/lib/apt/lists/*'
+# GPG-agentの再起動
+alias regpg='gpg-connect-agent reloadagent /bye'
+alias gpgc='v ~/.gnupg/gpg-agent.conf'
+
 # Git
-alias cm='git commit -m "$1"'
+alias git='hub'
+alias g='git'
+alias aad='git add .'
 alias ad='git add'
+alias aad='git add .'
+alias unst='git restore --staged *'
 alias pu='git push'
 alias puf='git push -f'
-alias pui='git push --set-upstream origin $1'
+alias puno='git push --no-verify'
+alias pufno='git push -f --no-verify'
+alias pui='git push --set-upstream origin'
+alias puino='git push --set-upstream origin --no-verify'
+alias puod='git push origin develop'
+alias puom='git push origin master'
+alias puoma='git push origin main'
 alias pul='git pull'
-alias puld='git pull pr develop'
+alias puld='git pull upstream develop'
+alias pulm='git pull upstream master'
+alias pulma='git pull upstream main'
+alias pulr='git pull --rebase'
+alias pulrd='git pull --rebase upstream develop'
+alias pulrm='git pull --rebase upstream master'
+alias pulrma='git pull --rebase upstream main'
+alias pr='gh pr list --assignee $GITHUB_USERNAME | fzf | cut -f1 | xargs -I {} gh pr checkout {}'
 alias st='git status'
 alias gl='git log'
-alias gd='git diff'
-alias gr='git reset'
-alias ga='git commit --amend'
-alias gb='git branch'
-alias gf='git fetch'
-alias gct='git checkout'
-alias gctb='git checkout -b'
-alias gct-='git checkout -'
+alias te='git tree'
+alias gm='git merge'
+alias dif='git diff'
+alias difst='git diff --staged'
+alias gr='git reset --mixed HEAD^'
+alias amend='git commit --amend'
+alias br='git branch'
+alias brd='git branch -D'
+alias bd='git branch --sort=-authordate | peco | xargs git branch -D '
+alias brm='git branch -m'
+alias bro='git branch --sort=-authordate | peco | xargs git checkout '
+alias fe='git fetch'
+alias cout='git checkout'
+alias coutb='git switch -C'
+alias cout-='git switch -'
+alias coutr='git checkout .'
 alias clone='git clone'
-alias ctd='git checkout develop'
-
-# Docker
-alias dc='docker'
-alias dce='docker-compose exec'
-alias dcp='docker-compose'
-alias dps='docker ps'
-alias dcup='docker-compose up'
-alias dcdown='docker-compose down'
-alias dcbuild='docker-compose build'
-alias dcrun='docker-compose run'
-alias dprune='docker system prune' # 停止コンテナ、タグ無しイメージ、未使用ボリューム、未使用ネットワーク一括削除
-alias diprune='docker image prune' # 未使用イメージ一括削除
-alias dvprune='docker volume prune' # 未使用ボリューム一括削除
-alias dnprune='docker network prune' # 未使用ネットワーク一括削除
+alias scloned='git clone --branch develop --depth 1'
+alias sclonem='git clone --branch master --depth 1'
+alias sclonema='git clone --branch main --depth 1'
+alias coutd='git switch develop'
+alias coutm='git switch master'
+alias coutma='git switch main'
+alias fepul='git fetch upstream pull/$argv[1]/head:$argv[2]'
+alias gopen='git open'
+alias lz='lazygit'
+alias sync='hub sync'
+alias ggrep='git grep $argv[1] -- ':!mysql/' . '
 
 # tmux
 alias t='tmux'
 alias tn='tmux new -s'
 alias tls='tmux ls' # セッションの一覧表示
 alias tlsc='tmux lsc' # 接続クライアントの一覧表示
-alias ta='tmux attach -t' # セッションを再開
+alias ta='tmux a'
+alias tat='tmux attach -t' # セッションを再開
+alias td='tmux detach'
 alias tk='tmux kill-session'
 alias tkt='tmux kill-session -t'
 alias tks='tmux kill-server' # tmux全体を終了
+alias ret='tmux source ~/.tmux.conf'
+
+# Docker
+alias d='docker'
+alias dip='docker inspect'
+alias dps='docker ps'
+alias dpsa='docker ps -a'
+alias dnl='docker network ls'
+alias dis='docker images'
+alias drmi='docker rmi'
+alias dco='docker container'
+alias dcm='docker commit'
+alias dc='docker compose'
+alias dce='docker compose exec'
+alias dcup='docker compose up'
+alias dcdown='docker compose down'
+alias dcbuild='docker compose build'
+alias dcrun='docker compose run'
+alias dprune='docker system prune' # 停止コンテナ、タグ無しイメージ、未使用ボリューム、未使用ネットワーク一括削除
+alias diprune='docker image prune' # 未使用イメージ一括削除
+alias dvprune='docker volume prune' # 未使用ボリューム一括削除
+alias dnprune='docker network prune' # 未使用ネットワーク一括削除
+alias dbprune='docker builder prune' # build cacheの削除
+alias ddf='docker system df' # Dockerが使っているストレージ容量を確認
+alias dcu='docui'
 
 # Rails
+alias b='bundle'
 alias be='bundle exec'
 alias rd='bin/rails d'
-alias rg='bin/rails g'
-alias rs='bin/rails s -b 0.0.0.0'
+alias rs='bin/rails s'
 alias rc='bin/rails c'
 alias rr='bin/rails routes'
 alias rseed='bin/rails db:seed'
@@ -108,47 +143,75 @@ alias rdrop='bin/rails db:drop'
 alias rroll='bin/rails db:rollback'
 alias rcr='bin/rails db:create'
 alias rmi='bin/rails db:migrate'
-
-# Django
-alias prun='python manage.py runserver 0.0.0.0:8000'
-alias pmmi='python manage.py makemigrations'
-alias pmi='python manage.py migrate'
-alias pcsu='python manage.py createsuperuser'
-alias psh='python manage.py shell'
+alias tmi='bundle exec rake tasks:migrate'
+alias resque='env "QUEUE=*" VVERBOSE=true bundle exec rake environment resque:work'
 
 # Npm
 alias nr='npm run'
 alias nw='npm run watch'
+alias nb='npm run build'
 alias nsb='npm run storybook'
 alias nc='npm run clean'
 alias ninfo='npm info'
 alias ni='npm install'
+alias nid='npm install -D'
+alias nig='npm install -g'
+alias nui='npm uninstall'
 alias nci='npm ci'
 alias npmlistg='npm list --depth=0 -g'
+alias reflow='npx flow stop && npx flow start'
 
 # yarn
 alias ya='yarn add'
 alias yr='yarn run'
 alias yw='yarn run watch'
+alias yb='yarn run build'
 alias ysb='yarn run storybook'
 alias yc='yarn run clean'
 
 # Util
-alias sa='ssh-add -K'
-alias rel='exec $SHELL -l'
+alias re='exec $SHELL -l'
 alias ressh='sudo launchctl stop com.openssh.sshd'
-alias bashc='cd && nvim ~/dotfiles/.bashrc'
-alias zshrc='cd && nvim ~/dotfiles/.zshrc'
-alias fishc='cd && nvim ~/dotfiles/fish/config.fish'
-alias tmuxc='cd && nvim ~/dotfiles/.tmux.conf'
-alias cdd='cd && cd dotfiles/'
-alias vi='nvim'
-alias ls='exa --icons -a'
-alias lsl='exa -1 --icons -a'
-alias cdnote='cd && cd note'
-alias cdynote='cd && cd ../yucchini/note'
+alias bashc='nvim $DOTFILES_PATH/shell/bash/.bashrc'
+alias zshc='nvim $DOTFILES_PATH/shell/zsh/.zshrc'
+alias fishc='nvim $DOTFILES_PATH/shell/fish/config.fish'
+alias tmuxc='nvim $DOTFILES_PATH/tmux/.tmux.conf'
+alias vimc='nvim $DOTFILES_PATH/nvim/init.lua'
+alias maps='nvim $DOTFILES_PATH/nvim/lua/keymap.lua'
+alias cdd='cd $DOTFILES_PATH'
+alias diary='cd ~/diary'
+alias vim='nvim'
+alias v='nvim'
+# カレントディレクトリを指定した場合はDefxを起動させるために下記のファイルを同時に読み込む
+alias vi='nvim . -S $DOTFILES_PATH/nvim/lua/plugins/defx.start.lua'
+alias ls='ls -a1'
+alias ll='ls -a1l'
+alias note='cd ~/note'
+alias ynote='cd ~/../yucchini/note'
 alias vs='code .'
 alias lslink='ls -la | grep "\->"'
-alias lg='ls | grep'
-alias cl='clear'
-alias sshc='cd && nvim .ssh/config'
+alias lg='ls | rg'
+alias c='clear'
+alias sshc='nvim ~/.ssh/config'
+alias ..="cd .."
+alias ...='cd ../../'
+alias cp='cp -i'
+alias mv='mv -i'
+alias rm='rm -i'
+alias rmr='rm -r'
+alias rf='rm -rf'
+alias python3='python3.8'
+alias shell='echo $SHELL'
+alias p='pwd'
+alias i='install'
+alias ukios='cd ~/program/projects/uki_os'
+alias drunuo='docker run -it --rm --privileged -e DISPLAY=(hostname):0 -v ~/.Xauthority:/root/.Xauthority -v $HOME/program/projects/uki_os/os:/root/os/ uki-os'
+alias xlaunch='xhost + 127.0.0.1'
+alias kl='kill -9'
+alias chil='cd ~/program/projects/Chillers'
+alias chils='cd ~/program/projects/chillers/server'
+alias chilf='cd ~/program/projects/chillers/frontend'
+alias update_apt='sudo apt update && sudo apt upgrade'
+alias mysqlstatus='sudo service mysql status'
+alias load_back_up_mysql='mysql -u mysql -proot --protocol tcp < tmp/development-backup.sql'
+alias brewall='~/dotfiles/scripts/utils/check_brew.sh 0'
