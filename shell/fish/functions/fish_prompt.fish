@@ -1138,7 +1138,7 @@ function fish_prompt -d 'bobthefish, a fish theme optimized for awesome'
     # Virtual environments
     __bobthefish_prompt_nix
     __bobthefish_prompt_desk
-    __bobthefish_prompt_rubies
+    # __bobthefish_prompt_rubies
     __bobthefish_prompt_virtualfish
     __bobthefish_prompt_virtualgo
     __bobthefish_prompt_node
