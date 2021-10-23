@@ -1,4 +1,4 @@
-#!/bin/bash -ue
+#!/bin/bash -u
 
 source ~/dotfiles/scripts/utils/source_all_utils.sh
 
@@ -51,17 +51,17 @@ target_brew_cask_list=(
   docker
   xquartz
   google-chrome
-  # spotify
+  spotify
   tableplus
   fork
   deepl
-  # typora
+  typora
   teensy
   virtualbox
   visual-studio-code
   karabiner-elements
   postman
-  # homebrew/cask-versions/iterm2-nightly
+  homebrew/cask-versions/iterm2-nightly
   hyper
   alfred
 )
@@ -72,23 +72,25 @@ target_brew_cask_list=(
 # - JIRA
 # - Slack
 
+set +e
 check_brew
+set -e
 
 for target in ${target_brew_list[@]}; do
   if ! has "$target"; then
     brew install $target
   else
-    echo "$target has been already installed."
+    echo $(tput setaf 2)$target has been already installed.$(tput sgr0)
   fi
 done
 
 if is_darwin; then
-  echo 'Darwin'
+  echo $(tput setaf 2)Darwin$(tput sgr0)
   for target in ${target_brew_list_for_mac_os[@]}; do
     if ! has "$target"; then
       brew install $target
     else
-      echo "$target has been already installed."
+      echo $(tput setaf 2)$target has been already installed.$(tput sgr0)
     fi
   done
 
@@ -96,9 +98,9 @@ if is_darwin; then
     if ! has "$target"; then
       brew install --cask $target
     else
-      echo "$target has been already installed."
+      echo $(tput setaf 2)$target has been already installed.$(tput sgr0)
     fi
   done
 else
-  echo 'Linuxにはcask installしません'
+  echo $(tput setaf 2)No cask install for Linux.$(tput sgr0)
 fi

@@ -61,13 +61,13 @@ TARGET_TOOLS=(
 
 install_languages() {
   for TARGET_LANG in ${TARGET_LANGUAGES[@]}; do
-    echo "Install asdf plugin $TARGET_LANG..."
-    asdf plugin add $TARGET_LANG
+    echo $(tput setaf 2)Install asdf plugin $TARGET_LANG...$(tput sgr0)
+    asdf plugin add $TARGET_LANG && true # すでにpluginが入っているとexit2してしまうのでtrue
 
     case $TARGET_LANG in
       'ruby')
         for VERSION in ${RUBY_VERSIONS[@]}; do
-          echo "Install $TARGET_LANG $VERSION..."
+          echo $(tput setaf 2)Install $TARGET_LANG $VERSION...$(tput sgr0)
           asdf install $TARGET_LANG $VERSION
           asdf global $TARGET_LANG $GLOBAL_RUBY_VERSION
 
@@ -77,7 +77,7 @@ install_languages() {
         done;;
       'nodejs')
         for VERSION in ${NODE_VERSIONS[@]}; do
-          echo "Install $TARGET_LANG $VERSION..."
+          echo $(tput setaf 2)Install $TARGET_LANG $VERSION...$(tput sgr0)
           asdf install $TARGET_LANG $VERSION
           asdf global $TARGET_LANG $GLOBAL_NODE_VERSION
 
@@ -86,10 +86,10 @@ install_languages() {
           done
         done;;
       'python')
-        echo "Install Python $GLOBAL_PYTHON3_VERSION..."
+        echo $(tput setaf 2)Install Python $GLOBAL_PYTHON3_VERSION...$(tput sgr0)
         asdf install python $GLOBAL_PYTHON3_VERSION
 
-        echo "Install Python $GLOBAL_PYTHON2_VERSION..."
+        echo $(tput setaf 2)Install Python $GLOBAL_PYTHON2_VERSION...$(tput sgr0)
         asdf install python $GLOBAL_PYTHON2_VERSION
 
         asdf global python $GLOBAL_PYTHON3_VERSION $GLOBAL_PYTHON2_VERSION
@@ -107,13 +107,13 @@ install_languages() {
         done;;
       'golang')
         for VERSION in ${GOLANG_VERSIONS[@]}; do
-          echo "Install $TARGET_LANG $VERSION..."
+          echo $(tput setaf 2)Install $TARGET_LANG $VERSION...$(tput sgr0)
           asdf install $TARGET_LANG $VERSION
           asdf global $TARGET_LANG $GLOBAL_GOLANG_VERSION
         done;;
       'terraform')
         for VERSION in ${TERRAFORM_VERSIONS[@]}; do
-          echo "Install $TARGET_LANG $VERSION..."
+          echo $(tput setaf 2)Install $TARGET_LANG $VERSION...$(tput sgr0)
           asdf install $TARGET_LANG $VERSION
           asdf global $TARGET_LANG $GLOBAL_TERRAFORM_VERSION
         done;;
@@ -123,17 +123,17 @@ install_languages() {
 
 install_tools() {
   for TARGET_TOOL in ${TARGET_TOOLS[@]}; do
-    echo "Install asdf plugin $TARGET_TOOL..."
-    asdf plugin add $TARGET_TOOL
+    echo $(tput setaf 2)Install asdf plugin $TARGET_TOOL...$(tput sgr0)
+    asdf plugin add $TARGET_TOOL && true
 
     case $TARGET_TOOL in
       'neovim')
-        echo "Install $TARGET_TOOL..."
+        echo $(tput setaf 2)Install $TARGET_TOOL...$(tput sgr0)
         asdf install $TARGET_TOOL stable
         asdf global $TARGET_TOOL stable
         ;;
       'docker-compose-v1')
-        echo "Install $TARGET_TOOL..."
+        echo $(tput setaf 2)Install $TARGET_TOOL...$(tput sgr0)
         asdf install $TARGET_TOOL 1.29.2
         asdf global $TARGET_TOOL 1.29.2
         ;;
@@ -146,7 +146,7 @@ check_brew
 set -e
 
 if has 'asdf'; then
-  echo "asdf has been already installed."
+  echo $(tput setaf 2)asdf has been already installed.$(tput sgr0)
   install_languages
   install_tools
 else

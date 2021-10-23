@@ -1,96 +1,47 @@
-#!/bin/bash
+#!/bin/bash -u
 
-# 実行したコマンドを表示
-# set -x
-set -ue
-OS="$(uname -s)"
-DOT_DIRECTORY="${HOME}/dotfiles"
-DOT_TARBALL="https://github.com/uki1014/dotfiles/tarball/master"
-DOT_REMOTE_URL="https://github.com/uki1014/dotfiles.git"
+# STEP
+# 1. check_dotfiles()
+# 2. setup_tools()
+#    - Setup brew
+#    - Setup default shell
+#    - Setup asdf
 
-function has() {
-  type "$1" > /dev/null 2>&1
-}
+source ~/dotfiles/scripts/utils/source_all_utils.sh
 
-function usage() {
-  name=`basename $0`
-  cat << EOF
-Usage:
-  $name [arguments] [command]
-Commands:
-  ~/dotfiles/script/install.sh link
-  ~/dotfiles/script/install.sh tools
-EOF
-}
-
-
-# Install my dotfile
-function check_dotfiles() {
-  if [ ! -d ${DOT_DIRECTORY} ]; then
-    echo "Downloading dotfiles..."
-
-    mkdir dotfiles
-
-    if has "git"; then
-      # git cloneするディレクトリは空である必要があるので先にdotfilesディレクトリを作成し、
-      # そのディレクトリの中に中身だけをcloneする
-      git clone ${DOT_REMOTE_URL} ${DOT_DIRECTORY}
-    else
-      curl -fsSLo ${HOME}/dotfiles.tar.gz ${DOT_TARBALL}
-      tar -zxf ${HOME}/dotfiles.tar.gz --strip-components 1 -C ${DOT_DIRECTORY}
-      rm -f ${HOME}/dotfiles.tar.gz
-    fi
-
-    echo $(tput setaf 2)Download dotfiles complete!. ✔︎$(tput sgr0)
-  fi
-  cd ${DOT_DIRECTORY}
-}
-
-function setup_tools() {
-  echo 'setup tools...'
+setup_tools() {
+  echo $(tput setaf 2)Setup tools...$(tput sgr0)
 
   # Setup Homebrew
-  ~/dotfiles/script/lib/brew.sh
+  echo $(tput setaf 2)Setup tools...$(tput sgr0)
+  ~/dotfiles/scripts/lib/brew.sh
 
   # Setup default shell
-  [ ${SHELL} != "$(which fish)"  ] && sudo chsh -s $(which fish)
+  if [ ${SHELL} != "$(which fish)"  ]; then
+    sudo chsh -s $(which fish) && true
+    source ~/dotfiles/shell/fish/config.fish && true
+  fi
 
-  # Setup Neovim nightly
-  ~/dotfiles/script/lib/neovim.sh
-
-  # Setup anyenv
-  ~/dotfiles/script/lib/anyenv.sh
+  # Setup asdf
+  source ~/dotfiles/scripts/lib/asdf.sh
 
   echo $(tput setaf 2)Setup Tools complete!. ✔︎$(tput sgr0)
 }
 
-# Setup Symbolic links
-function setup_symlink() {
-  ~/dotfiles/script/setup_symlink.sh
-
-  echo $(tput setaf 2)Setup symbolic links complete!. ✔︎$(tput sgr0)
-}
-
-###################
-#####   main  #####
-###################
 check_dotfiles
 
 if [ $# == 0 ]; then
-  echo "Initialize all..."
   setup_tools
   setup_symlink
 else
   case $1 in
     "link")
-      echo 'link files...'
+      echo $(tput setaf 2)✔︎ Link files...$(tput sgr0)
       setup_symlink
       ;;
     "tools")
+      echo $(tput setaf 2)✔︎ Setup tools...$(tput sgr0)
       setup_tools
-      ;;
-    "help")
-      usage
       ;;
   esac
 fi

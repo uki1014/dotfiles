@@ -5,23 +5,23 @@ source ~/dotfiles/scripts/utils/has.sh
 
 check_brew() {
   if ! has "brew"; then
-    echo "Installing Homebrew..."
-    curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh
+    echo $(tput setaf 2)Installing Homebrew...$(tput sgr0)
+    curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh && true
   else
-    echo "Homebrew has been already installed."
+    echo $(tput setaf 2)Homebrew has been already installed.$(tput sgr0)
 
-    echo "brew update..."
-    brew update
+    echo $(tput setaf 2)brew update$(tput sgr0)
+    brew update && true
 
-    echo "brew upgrade..."
-    brew upgrade
+    echo $(tput setaf 2)brew upgrade...$(tput sgr0)
+    brew upgrade && true
 
 
-    echo "brew doctor..."
-    brew doctor
+    echo $(tput setaf 2)brew doctor...$(tput sgr0)
+    brew doctor && true
 
-    echo "brew cleanup..."
-    brew cleanup
+    echo $(tput setaf 2)brew cleanup...$(tput sgr0)
+    brew cleanup && true
   fi
 }
 

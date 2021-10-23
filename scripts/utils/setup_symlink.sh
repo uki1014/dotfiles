@@ -36,12 +36,11 @@ get_target_config_dir() {
 
 create_dotbackup() {
   BACKUP_PATH=$1
-  echo $BACKUP_PATH
   if [ ! -d $BACKUP_PATH ]; then
-    echo "Create $BACKUP_PATH directory for backup old dotfiles..."
+    echo $(tput setaf 2)Create $BACKUP_PATH directory for backup old dotfiles...$(tput sgr0)
     mkdir $BACKUP_PATH
   else
-    echo "$BACKUP_PATH is already created."
+    echo $(tput setaf 2)$BACKUP_PATH is already created.$(tput sgr0)
   fi
 }
 
@@ -54,11 +53,11 @@ create_backup() {
   if [ -e "$DOTFILE_PATH/$TARGET_DOTFILE_OR_DIR_NAME" ]; then
     # backupがすでにある場合はそのままにする
     if [ -e "$BACKUP_PATH/$TARGET_DOTFILE_OR_DIR_NAME" ]; then
-      echo "The target backup was founded and make a backup..."
+      echo $(tput setaf 2)The target backup was founded and make a backup...$(tput sgr0)
       rm -rf "$HOME/.config/$TARGET_DOTFILE_OR_DIR_NAME"
     else
-      echo "The target directory was founded and make a backup..."
-      echo $HOME/.config/$TARGET_DOTFILE_OR_DIR_NAME
+      echo $(tput setaf 2)The target directory was founded and make a backup...$(tput sgr0)
+      echo $(tput setaf 2)$HOME/.config/$TARGET_DOTFILE_OR_DIR_NAME$(tput sgr0)
       mv "$DOTFILE_PATH/$TARGET_DOTFILE_OR_DIR_NAME" $BACKUP_PATH
     fi
   fi
@@ -68,7 +67,7 @@ check_and_unlink() {
   TARGET_PATH=$1
   # Symリンクがすでに存在していた場合はunlink
   if [ -L "$TARGET_PATH" ]; then
-    echo "Already exists $TARGET_DOTFILE symbolic link..."
+    echo $(tput setaf 2)Already exists $TARGET_DOTFILE symbolic link...$(tput sgr0)
     unlink "$TARGET_PATH"
   fi
 }
@@ -78,7 +77,7 @@ link_to_root() {
   create_dotbackup $BACKUP_PATH
 
   if [ $HOME != $DOTFILES_DIR ]; then
-    echo "Start setup symbolic link..."
+    echo $(tput setaf 2)Start setup symbolic link...$(tput sgr0)
 
     # Ex. TARGET_DOTFILE: .bashrc
     for TARGET_DOTFILE in ${TARGET_DOTFILES[@]}; do
@@ -88,7 +87,7 @@ link_to_root() {
       create_backup "$HOME" $TARGET_DOTFILE $BACKUP_PATH
       check_and_unlink $TARGET_PATH
 
-      echo "Put "~/$TARGET_DOTFILE" symbolic link ..."
+      echo $(tput setaf 2)Put "~/$TARGET_DOTFILE" symbolic link ...$(tput sgr0)
       ln -snf $TARGET_PATH $HOME
     done
   else
@@ -109,11 +108,11 @@ link_to_config_dir() {
       create_backup "$HOME/.config" $TARGET_CONFIG_DIR $BACKUP_PATH
       check_and_unlink $TARGET_PATH
 
-      echo "Put "~/.config/$TARGET_DOTFILE" symbolic link ..."
+      echo $(tput setaf 2)Put "~/.config/$TARGET_DOTFILE" symbolic link ...$(tput sgr0)
       ln -snf $TARGET_PATH $HOME/.config
     done
   else
-    echo "HOME == DOTFILES_DIR. You should change DOTFIELS_DIR."
+    echo $(tput setaf 2)HOME == DOTFILES_DIR. You should change DOTFIELS_DIR.$(tput sgr0)
   fi
 }
 

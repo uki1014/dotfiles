@@ -8,24 +8,24 @@ DOT_REMOTE_URL="https://github.com/uki1014/dotfiles.git"
 
 check_dotfiles() {
   if [ ! -d $DOTFILES_DIR ]; then
-    echo "Downloading dotfiles..."
+    echo $(tput setaf 2)Downloading dotfiles...$(tput sgr0)
 
     mkdir $DOTFILES_DIR
 
     if has "git"; then
       # The directory to clone needs to be empty,
       # so you'll need to create a dotfiles directory first, then clone the contents into that directory.
-      git clone ${DOT_REMOTE_URL} ${DOTFILES_DIR}
+      git clone ${DOT_REMOTE_URL} ${DOTFILES_DIR} && true
     else
       curl -fsSLo ${HOME}/dotfiles.tar.gz ${DOT_TARBALL}
       tar -zxf ${HOME}/dotfiles.tar.gz --strip-components 1 -C ${DOTFILES_DIR}
-      rm -f ${HOME}/dotfiles.tar.gz
+      rm -f ${HOME}/dotfiles.tar.gz && true
     fi
 
     echo $(tput setaf 2)Download dotfiles complete!. ✔︎$(tput sgr0)
     cd $DOTFILES_DIR
   else
-    echo "your Dotfiles has been already installed."
+    echo $(tput setaf 2)Your dotfiles has been already installed.$(tput sgr0)
   fi
 }
 
