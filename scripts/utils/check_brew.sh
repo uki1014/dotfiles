@@ -1,5 +1,4 @@
-#!/bin/bash -u
-# brew cleanup後に勝手にexitしてしまうので-eはつけない
+#!/bin/bash -ue
 
 source ~/dotfiles/scripts/utils/has.sh
 

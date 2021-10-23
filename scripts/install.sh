@@ -7,14 +7,15 @@
 #    - Setup default shell
 #    - Setup asdf
 
+source ~/dotfiles/scripts/lib/asdf.sh
+source ~/dotfiles/scripts/lib/brew.sh
 source ~/dotfiles/scripts/utils/source_all_utils.sh
 
 setup_tools() {
   echo $(tput setaf 2)Setup tools...$(tput sgr0)
 
   # Setup Homebrew
-  echo $(tput setaf 2)Setup tools...$(tput sgr0)
-  ~/dotfiles/scripts/lib/brew.sh
+  install_brew_packages
 
   # Setup default shell
   if [ ${SHELL} != "$(which fish)"  ]; then
@@ -23,7 +24,7 @@ setup_tools() {
   fi
 
   # Setup asdf
-  source ~/dotfiles/scripts/lib/asdf.sh
+  install_asdf
 
   echo $(tput setaf 2)Setup Tools complete!. ✔︎$(tput sgr0)
 }

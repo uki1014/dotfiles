@@ -6,6 +6,12 @@
 bash <(curl -s https://raw.githubusercontent.com/uki1014/dotfiles/master/scripts/install.sh)
 ```
 
+- for fish
+
+```
+bash <(curl -s https://raw.githubusercontent.com/uki1014/dotfiles/master/scripts/install.sh | psub)
+```
+
 ## Supported OS
 
 - Linux (ubuntu recommended)

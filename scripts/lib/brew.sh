@@ -72,21 +72,10 @@ target_brew_cask_list=(
 # - JIRA
 # - Slack
 
-set +e
-check_brew
-set -e
+install_brew_packages() {
+  check_brew
 
-for target in ${target_brew_list[@]}; do
-  if ! has "$target"; then
-    brew install $target
-  else
-    echo $(tput setaf 2)$target has been already installed.$(tput sgr0)
-  fi
-done
-
-if is_darwin; then
-  echo $(tput setaf 2)Darwin$(tput sgr0)
-  for target in ${target_brew_list_for_mac_os[@]}; do
+  for target in ${target_brew_list[@]}; do
     if ! has "$target"; then
       brew install $target
     else
@@ -94,13 +83,28 @@ if is_darwin; then
     fi
   done
 
-  for target in ${target_brew_cask_list[@]}; do
-    if ! has "$target"; then
-      brew install --cask $target
-    else
-      echo $(tput setaf 2)$target has been already installed.$(tput sgr0)
-    fi
-  done
-else
-  echo $(tput setaf 2)No cask install for Linux.$(tput sgr0)
+  if is_darwin; then
+    echo $(tput setaf 2)Darwin$(tput sgr0)
+    for target in ${target_brew_list_for_mac_os[@]}; do
+      if ! has "$target"; then
+        brew install $target
+      else
+        echo $(tput setaf 2)$target has been already installed.$(tput sgr0)
+      fi
+    done
+
+    for target in ${target_brew_cask_list[@]}; do
+      if ! has "$target"; then
+        brew install --cask $target
+      else
+        echo $(tput setaf 2)$target has been already installed.$(tput sgr0)
+      fi
+    done
+  else
+    echo $(tput setaf 2)No cask install for Linux.$(tput sgr0)
+  fi
+}
+
+if [ $# != 0 ]; then
+  install_brew_packages
 fi

@@ -141,20 +141,25 @@ install_tools() {
   done
 }
 
-set +e
-check_brew
-set -e
 
-if has 'asdf'; then
-  echo $(tput setaf 2)asdf has been already installed.$(tput sgr0)
-  install_languages
-  install_tools
-else
-  if ! has 'gpg'; then
-    brew install gpg
+install_asdf() {
+  if has 'asdf'; then
+    echo $(tput setaf 2)asdf has been already installed.$(tput sgr0)
+    install_languages
+    install_tools
+  else
+    if ! has 'gpg'; then
+      brew install gpg
+    fi
+    brew install asdf
+    source ~/.config/fish/config.fish
+    install_languages
+    install_tools
   fi
-  brew install asdf
-  source ~/.config/fish/config.fish
-  install_languages
-  install_tools
+}
+
+if [ $# != 0 ]; then
+  check_brew
+
+  install_asdf
 fi
