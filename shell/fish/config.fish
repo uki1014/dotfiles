@@ -16,6 +16,14 @@ function attach_tmux_session_if_needed
   end
 end
 
+function is_darwin
+  [ (uname) = 'Darwin' ] > /dev/null 2>&1
+end
+
+function is_linux
+  [ (uname) = 'Linux' ] > /dev/null 2>&1
+end
+
 set -xg LC_CTYPE en_US.UTF-8
 set -xg LC_ALL en_US.UTF-8
 set -xg LANG en_US.UTF-8
@@ -41,7 +49,7 @@ fish_vi_key_bindings
 
 if status --is-interactive
   # macOSとLinuxそれぞれの設定
-  if [ (uname) = 'Darwin' ]
+  if is_darwin
     alias sa='ssh-add -K ~/.ssh/id_rsa'
     if [ $SHLVL = 1 ]
       sa
@@ -68,7 +76,7 @@ if status --is-interactive
     set -xg PATH /usr/local/opt/gnu-tar/libexec/gnubin $PATH
     set -xg MANPATH /usr/local/opt/gnu-tar/libexec/gnuman $MANPATH
 
-  else if [ (uname) = 'Linux' ]
+  else if is_linux
     eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
     source ~/.asdf/asdf.fish
     alias sa='ssh-add'
@@ -210,14 +218,14 @@ function update_nvim
     mkdir ~/nvim_backup
   end
 
-  if [ (uname) = 'Darwin' ]
+  if is_darwin
     cd
     sudo mv ~/nvim ~/nvim_backup/nvim-(date '+%Y-%m-%d_%H:%M:%S')
     curl -LO https://github.com/neovim/neovim/releases/download/nightly/nvim-macos.tar.gz
     tar xzf ~/nvim-macos.tar.gz
     sudo rm -f ~/nvim-macos.tar.gz
     mv nvim-osx64 nvim
-  else if [ (uname) = 'Linux' ]
+  else if is_linux
     cd
     sudo mv /usr/local/bin/nvim ~/nvim_backup/nvim-(date '+%Y-%m-%d_%H:%M:%S')
     curl -LO https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage
@@ -229,10 +237,10 @@ end
 
 function restore_nvim
   cd ~/nvim_backup
-  if [ (uname) = 'Darwin' ]
+  if is_darwin
     sudo rm -rf ~/nvim
     mv (ls -c | head -n 3 | awk 'END{print $1}') ~/nvim
-  else if [ (uname) = 'Linux' ]
+  else if is_linux
     sudo rm -rf /usr/local/bin/nvim
     mv (ls -c | head -n 3 | awk 'END{print $1}') /usr/local/bin
   end
@@ -240,13 +248,13 @@ function restore_nvim
 end
 
 function update_nvim_v5
-  if [ (uname) = 'Darwin' ]
+  if is_darwin
     cd
     sudo rm -rf ~/nvim-osx64
     curl -LO https://github.com/neovim/neovim/releases/download/v0.5.0/nvim-macos.tar.gz
     tar xzf ~/nvim-macos.tar.gz
     sudo rm -f ~/nvim-macos.tar.gz
-  else if [ (uname) = 'Linux' ]
+  else if is_linux
     cd
     sudo rm ~/nvim.appimage
     curl -LO https://github.com/neovim/neovim/releases/download/v0.5.0/nvim.appimage
