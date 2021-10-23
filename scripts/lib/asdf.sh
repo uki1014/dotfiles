@@ -1,5 +1,4 @@
-#!/bin/bash -u
-# asdf plugin add でalready addedで終了してしまうので-eはつけない
+#!/bin/bash -ue
 
 source ~/dotfiles/scripts/utils/source_all_utils.sh
 
@@ -41,6 +40,7 @@ PYTHON2_GLOBAL_PACKAGES=(
 PYTHON3_GLOBAL_PACKAGES=(
   neovim
   pynvim
+  powerline-status
 )
 
 GLOBAL_GOLANG_VERSION=1.12
@@ -74,6 +74,7 @@ install_languages() {
           for PACKAGE in $RUBY_GLOBAL_PACKAGES; do
             gem install $PACKAGE
           done
+          asdf reshim $TARGET_LANG
         done;;
       'nodejs')
         for VERSION in ${NODE_VERSIONS[@]}; do
@@ -84,6 +85,7 @@ install_languages() {
           for PACKAGE in $NODE_GLOBAL_PACKAGES; do
             npm install -g $PACKAGE
           done
+          asdf reshim $TARGET_LANG
         done;;
       'python')
         echo $(tput setaf 2)Install Python $GLOBAL_PYTHON3_VERSION...$(tput sgr0)
@@ -105,17 +107,20 @@ install_languages() {
           pip3 install $PACKAGE
           pip3 install --upgrade $PACKAGE
         done;;
+        asdf reshim $TARGET_LANG
       'golang')
         for VERSION in ${GOLANG_VERSIONS[@]}; do
           echo $(tput setaf 2)Install $TARGET_LANG $VERSION...$(tput sgr0)
           asdf install $TARGET_LANG $VERSION
           asdf global $TARGET_LANG $GLOBAL_GOLANG_VERSION
+          asdf reshim $TARGET_LANG
         done;;
       'terraform')
         for VERSION in ${TERRAFORM_VERSIONS[@]}; do
           echo $(tput setaf 2)Install $TARGET_LANG $VERSION...$(tput sgr0)
           asdf install $TARGET_LANG $VERSION
           asdf global $TARGET_LANG $GLOBAL_TERRAFORM_VERSION
+          asdf reshim $TARGET_LANG
         done;;
     esac
   done
