@@ -8,6 +8,8 @@
 #    - Setup git-token.fish
 #    - Setup asdf
 
+check_dotfiles
+
 source ~/dotfiles/scripts/lib/asdf.sh
 source ~/dotfiles/scripts/lib/brew_and_apt.sh
 source ~/dotfiles/scripts/lib/git.sh
@@ -33,8 +35,6 @@ setup_tools() {
 
   echo $(tput setaf 2)Setup Tools complete!. ✔︎$(tput sgr0)
 }
-
-check_dotfiles
 
 if [ $# == 0 ]; then
   setup_tools
