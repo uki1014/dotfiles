@@ -1,14 +1,16 @@
-#!/bin/bash -u
+#!/bin/bash -ue
 
 # STEP
 # 1. check_dotfiles()
 # 2. setup_tools()
 #    - Setup brew
 #    - Setup default shell
+#    - Setup git-token.fish
 #    - Setup asdf
 
 source ~/dotfiles/scripts/lib/asdf.sh
 source ~/dotfiles/scripts/lib/brew_and_apt.sh
+source ~/dotfiles/scripts/lib/git.sh
 source ~/dotfiles/scripts/utils/source_all_utils.sh
 
 setup_tools() {
@@ -22,6 +24,9 @@ setup_tools() {
     sudo chsh -s $(which fish) && true
     source ~/dotfiles/shell/fish/config.fish && true
   fi
+
+  # Setup git-token.fish
+  create_token_file
 
   # Setup asdf
   install_asdf
