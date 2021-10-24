@@ -8,7 +8,7 @@
 #    - Setup asdf
 
 source ~/dotfiles/scripts/lib/asdf.sh
-source ~/dotfiles/scripts/lib/brew.sh
+source ~/dotfiles/scripts/lib/brew_and_apt.sh
 source ~/dotfiles/scripts/utils/source_all_utils.sh
 
 setup_tools() {
