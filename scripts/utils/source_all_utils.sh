@@ -2,7 +2,6 @@
 
 utils=(
   check_brew
-  check_dotfiles
   has
   os
   setup_symlink
