@@ -57,9 +57,6 @@ if status --is-interactive
       sa
     end
 
-    # neovim
-    # set -xg PATH $HOME/nvim/bin $PATH
-
     # coreutils
     set -xg PATH /usr/local/opt/coreutils/libexec/gnubin $PATH
     set -xg MANPATH /usr/local/opt/coreutils/libexec/gnuman $MANPATH
@@ -91,63 +88,9 @@ if status --is-interactive
 
   attach_tmux_session_if_needed
 
-
-  # anyenv
-  # set -xg ANYENV_ROOT ~/.anyenv
-  # set -xg PATH $HOME/.anyenv/bin $PATH
-  # anyenv init - fish | source
-
-  # nodenv
-  # set -xg NODENV_ROOT $ANYENV_ROOT/envs/nodenv
-  # set -xg PATH $NODENV_ROOT/bin $NODENV_ROOT/shims $PATH
-
-  # rbenv
-  # set -xg RBENV_ROOT $ANYENV_ROOT/envs/rbenv
-  # set -xg PATH $RBENV_ROOT/bin $RBENV_ROOT/shims $PATH
-
-  # pyenv
-  # set -xg PYENV_ROOT $ANYENV_ROOT/envs/pyenv
-  # set -xg PATH $PYENV_ROOT/bin $PYENV_ROOT/shims $PATH
-  # status is-login; and pyenv init --path fish | source
-  # pyenv init - fish | source
-  # pyenv-virtualenv
-  # pyenv virtualenv-init - fish | source
-
-  # goenv
-  # set -xg GOENV_ROOT $ANYENV_ROOT/envs/goenv
-  # set -xg PATH $GOENV_ROOT/bin $GOENV_ROOT/shims $PATH
-  # set -xg GOPATH "$HOME/go"
-  # set -xg GO111MODULE on
-
-  # tfenv
-  # set -xg TFENV_ROOT $ANYENV_ROOT/envs/tfenv
-  # set -xg PATH $TFENV_ROOT/bin $TFENV_ROOT/shims $PATH
-
   # direnv
   eval (direnv hook fish)
 end
-
-# function ssh
-#   # tmux起動時
-#   if [[ -e printenv TMUX ]]
-#       # 現在のペインIDを記録
-#       set pane_id=(tmux display -p '#{pane_id}')
-#       # 接続先ホスト名に応じて背景色を切り替え
-#       if [[ `echo 1 | grep 'prd'` ]]
-#           tmux select-pane -P 'bg=colour52,fg=white'
-#       elif [[ `echo 1 | grep 'stg'` ]]
-#           tmux select-pane -P 'bg=colour25,fg=white'
-#       end
-
-#       # 通常通りssh続行
-#       command ssh $argv[1]
-
-#       # デフォルトの背景色に戻す
-#       tmux select-pane -t $pane_id -P 'default'
-#   else
-#       command ssh $argv[1]
-#   end
-# end
 
 # Dockerコンテナのシェルアクセスをfzfで簡単にする
 function docker-exec
