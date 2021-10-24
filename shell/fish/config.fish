@@ -150,8 +150,8 @@ end
 
 # Dockerコンテナのシェルアクセスをfzfで簡単にする
 function docker-exec
-  set name (docker ps --format "{{.Names}}" | fzf)
-  docker exec -it $name $argv
+  set NAME (docker ps --format "{{.Names}}" | fzf)
+  docker exec -it $NAME $argv
 end
 
 function ide
