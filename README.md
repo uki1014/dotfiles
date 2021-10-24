@@ -38,4 +38,4 @@ bash <(curl -s https://raw.githubusercontent.com/uki1014/dotfiles/master/scripts
 
 ## Homebrew & Apt packages
 
-- See [`scripts/lib/brew_and_apt.sh`](https://github.com/uki1014/dotfiles/blob/master/scripts/lib/brew_and_apt.sh.sh).
+- See [`scripts/lib/brew_and_apt.sh`](https://github.com/uki1014/dotfiles/blob/master/scripts/lib/brew_and_apt.sh).
