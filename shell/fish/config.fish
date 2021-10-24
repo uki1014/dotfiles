@@ -50,6 +50,8 @@ fish_vi_key_bindings
 if status --is-interactive
   # macOSとLinuxそれぞれの設定
   if is_darwin
+    source /usr/local/opt/asdf/libexec/asdf.fish
+
     alias sa='ssh-add -K ~/.ssh/id_rsa'
     if [ $SHLVL = 1 ]
       sa
@@ -78,7 +80,7 @@ if status --is-interactive
 
   else if is_linux
     eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-    source ~/.asdf/asdf.fish
+    source /home/linuxbrew/.linuxbrew/opt/asdf/libexec/asdf.fish
     alias sa='ssh-add'
 
     if [ $SHLVL = 1 ]
@@ -89,7 +91,6 @@ if status --is-interactive
 
   attach_tmux_session_if_needed
 
-  source /usr/local/opt/asdf/libexec/asdf.fish
 
   # anyenv
   # set -xg ANYENV_ROOT ~/.anyenv
