@@ -252,18 +252,6 @@ function cmno
   git commit -m "$argv" --no-verify
 end
 
-# neovimのpython2と3の環境でpip-packagesのupdate
-function update_pyneovim_pyenv
-  pyenv activate neovim2
-  pip install --upgrade pip
-  pip install --upgrade pynvim
-  pyenv deactivate neovim2
-  pyenv activate neovim3
-  pip install --upgrade pip
-  pip install --upgrade pynvim
-  pyenv deactivate neovim3
-end
-
 function update_pyneovim
   pip2 install --upgrade pip
   pip2 install --upgrade pynvim
