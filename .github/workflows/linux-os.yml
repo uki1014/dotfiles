@@ -3,12 +3,12 @@ name: Setup my dotfiles for Linux
 on:
   push:
     paths:
+      - '.github/**'
       - 'scripts/**'
       - 'shell/**'
-    paths-ignore:
-      - 'shell/alias.sh'
-      - '**.md'
-      - '*ignore'
+      - '!shell/alias.sh'
+      - '!**.md'
+      - '!*ignore'
 
 jobs:
   installer-test:
