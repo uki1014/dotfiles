@@ -1,5 +1,8 @@
 # dotfiles
 
+[![Setup my dotfiles for Linux](https://github.com/uki1014/dotfiles/actions/workflows/linux-os.yml/badge.svg)](https://github.com/uki1014/dotfiles/actions/workflows/linux-os.yml)
+[![Setup my dotfiles for macOS](https://github.com/uki1014/dotfiles/actions/workflows/mac-os.yml/badge.svg)](https://github.com/uki1014/dotfiles/actions/workflows/mac-os.yml)
+
 ## Install In One Command
 
 ```sh
