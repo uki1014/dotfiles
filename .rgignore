@@ -16,7 +16,6 @@ dict/
 .bundle
 public/
 norinium/
-integration_test/
 images/
 dist/
 Session.vim
