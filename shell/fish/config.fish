@@ -216,11 +216,11 @@ if not functions -q fisher
 end
 
 function fl
-  fzf --preview 'bat --style=numbers --color=always --theme="Solarized (light)" --line-range :500 {}'
+  fzf --preview 'bat --style=numbers --color=always --theme="Visual Studio Dark+" --line-range :500 {}'
 end
 
 function cat
-  bat --style=numbers --color=always --theme="Solarized (light)" --line-range :500 $argv
+  bat --style=numbers --color=always --theme="Visual Studio Dark+" --line-range :500 $argv
 end
 
 function unset
