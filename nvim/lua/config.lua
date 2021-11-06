@@ -91,7 +91,9 @@ vim.cmd('augroup END')
 -------------------------------------------------------------------------------
 -- Extensions
 -------------------------------------------------------------------------------
-vim.opt.suffixesadd = '.js,.es,.jsx,.ts,.tsx,.json,.css,.less,.sass,.style,.php,.py,.md,.java,.rb,.vim,.lua,.vimrc,.conf,.go'
+
+-- suffixaddを追加するとgfでファイル検索するときの対象になる
+vim.opt.suffixesadd = '.sh,.bash,.zsh,.fish,.js,.es,.jsx,.ts,.tsx,.json,.css,.less,.sass,.style,.php,.py,.rs,.md,.java,.rb,.vim,.lua,.vimrc,.conf,.go,.coffee,.eco,.jst.eco'
 vim.opt.path:append('**')
 vim.opt.wildignore:append('*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store/*,*/node_modules/*')
 -- Enable json comment(only tsconfig)
@@ -102,6 +104,10 @@ vim.cmd('au BufNewFile,BufRead *.es6 setf javascript')
 -- TypeScript
 vim.cmd('au BufNewFile,BufRead *.ts setf typescript')
 vim.cmd('au BufNewFile,BufRead *.tsx setf typescript.tsx')
+-- CoffeeScript
+vim.cmd('au BufNewFile,BufRead *.coffee setf coffee')
+-- Eco (masonは全く別のテンプレートエンジンだが、適してるので使う)
+vim.cmd('au BufNewFile,BufRead *.eco setf mason')
 -- Markdown
 vim.cmd('au BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} setf markdown')
 -- Flow
