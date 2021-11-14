@@ -114,6 +114,8 @@ vim.cmd('au BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} setf markdown')
 vim.cmd('au BufNewFile,BufRead *.flow setf javascript')
 -- fish
 vim.cmd('au BufNewFile,BufRead *.fish setf fish')
+-- Ruby
+vim.cmd('au BufNewFile,BufRead Dangerfile* setf ruby')
 
 -- vim.cmd('augroup ReactFiletypes')
 -- vim.cmd('au!')
