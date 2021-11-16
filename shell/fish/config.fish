@@ -90,6 +90,9 @@ if status --is-interactive
 
   # direnv
   eval (direnv hook fish)
+
+  # Go
+  set -x GOPATH $HOME/go
 end
 
 # Dockerコンテナのシェルアクセスをfzfで簡単にする
