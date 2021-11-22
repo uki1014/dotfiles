@@ -2,6 +2,8 @@
 # Ubuntu
 # package情報キャッシュの削除
 alias ubuntu_cache_delete='sudo rm -rf /var/lib/apt/lists/*'
+alias update_apt='sudo apt update && sudo apt upgrade && sudo apt autoremove'
+alias ubuntu_memory_cache_clear='free -h && sudo sysctl -w vm.drop_caches=3 && free -h'
 # GPG-agentの再起動
 alias regpg='gpg-connect-agent reloadagent /bye'
 alias gpgc='v ~/.gnupg/gpg-agent.conf'
@@ -180,8 +182,6 @@ alias kl='kill -9'
 alias chil='cd ~/program/projects/Chillers'
 alias chils='cd ~/program/projects/chillers/server'
 alias chilf='cd ~/program/projects/chillers/frontend'
-alias update_apt='sudo apt update && sudo apt upgrade && sudo apt autoremove'
-alias ubuntu_cache_clear='sudo sysctl -w vm.drop_caches=3'
 alias mysqlstatus='sudo service mysql status'
 alias load_back_up_mysql='mysql -u mysql -proot --protocol tcp < tmp/development-backup.sql'
 alias brewall='~/dotfiles/scripts/utils/check_brew.sh 0'
