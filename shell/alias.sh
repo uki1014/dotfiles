@@ -7,7 +7,7 @@ alias regpg='gpg-connect-agent reloadagent /bye'
 alias gpgc='v ~/.gnupg/gpg-agent.conf'
 
 # Git
-alias git='hub'
+# alias git='hub'
 alias g='git'
 alias aad='git add .'
 alias ad='git add'
