@@ -89,7 +89,7 @@ if status --is-interactive
   attach_tmux_session_if_needed
 
   # direnv
-  eval (direnv hook fish)
+  direnv hook fish | source
 
   # Go
   set -x GOPATH $HOME/go
