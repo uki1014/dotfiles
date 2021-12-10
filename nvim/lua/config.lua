@@ -93,7 +93,7 @@ vim.cmd('augroup END')
 -------------------------------------------------------------------------------
 
 -- suffixaddを追加するとgfでファイル検索するときの対象になる
-vim.opt.suffixesadd = '.sh,.bash,.zsh,.fish,.js,.es,.jsx,.ts,.tsx,.json,.css,.less,.sass,.style,.php,.py,.rs,.md,.java,.rb,.vim,.lua,.vimrc,.conf,.go,.coffee,.eco,.jst.eco'
+vim.opt.suffixesadd = '.sh,.bash,.zsh,.fish,.js,.es,.jsx,.ts,.tsx,.json,.css,.less,.sass,.style,.php,.py,.rs,.md,.java,.rb,.vim,.lua,.vimrc,.conf,.go,.coffee,.eco,.jst.eco,.erb'
 vim.opt.path:append('**')
 vim.opt.wildignore:append('*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store/*,*/node_modules/*')
 -- Enable json comment(only tsconfig)
@@ -116,6 +116,7 @@ vim.cmd('au BufNewFile,BufRead *.flow setf javascript')
 vim.cmd('au BufNewFile,BufRead *.fish setf fish')
 -- Ruby
 vim.cmd('au BufNewFile,BufRead Dangerfile* setf ruby')
+vim.cmd('au BufNewFile,BufRead .pryrc setf ruby')
 
 -- vim.cmd('augroup ReactFiletypes')
 -- vim.cmd('au!')
