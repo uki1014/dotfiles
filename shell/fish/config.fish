@@ -262,6 +262,12 @@ function update_pyneovim
   pip3 install --upgrade pynvim
 end
 
+function diary
+  tmux new-window
+  tmux rename-window diary
+  cd ~/diary
+end
+
 if [ -e $DOTFILES_PATH/shell/alias.sh ]
   source $DOTFILES_PATH/shell/alias.sh
 end

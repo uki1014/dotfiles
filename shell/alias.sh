@@ -151,7 +151,7 @@ alias tmuxc='nvim $DOTFILES_PATH/tmux/.tmux.conf'
 alias vimc='nvim $DOTFILES_PATH/nvim/init.lua'
 alias maps='nvim $DOTFILES_PATH/nvim/lua/keymap.lua'
 alias cdd='cd $DOTFILES_PATH'
-alias diary='cd ~/diary'
+alias cdiary='cd ~/diary'
 alias vim='nvim'
 alias v='nvim'
 # カレントディレクトリを指定した場合はDefxを起動させるために下記のファイルを同時に読み込む
