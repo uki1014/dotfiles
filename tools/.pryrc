@@ -2,6 +2,7 @@ Pry.commands.alias.command 'c', 'continue'
 Pry.commands.alias.command 's', 'step'
 Pry.commands.alias.command 'n', 'next'
 Pry.commands.alias.command 'f', 'finish'
+Pry.commands.alias.command 'd', 'disable-pry'
 
 # Hit Enter to repeat last command
 Pry::Commands.command /^$/, "repeat last command" do
