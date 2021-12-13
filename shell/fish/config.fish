@@ -93,6 +93,7 @@ if status --is-interactive
 
   # Go
   set -x GOPATH $HOME/go
+  set -xg PATH $GOPATH/bin $PATH
 end
 
 # Dockerコンテナのシェルアクセスをfzfで簡単にする
