@@ -51,6 +51,13 @@ hook_add = """
 source ~/.config/nvim/lua/plugins/defx.lua
 """
 
+[[plugins]]
+repo = 'tamago324/lir.nvim'
+depends = ['plenary.nvim']
+hook_add = """
+source ~/.config/nvim/lua/plugins/lir.lua
+"""
+
 ##################
 # Fuzzy Finder
 ##################
