@@ -116,6 +116,8 @@ alias rcr='bin/rails db:create'
 alias rmi='bin/rails db:migrate'
 alias tmi='bundle exec rake tasks:migrate'
 alias resque='env "QUEUE=*" VVERBOSE=true bundle exec rake environment resque:work'
+alias devlog='tail -f log/development.log'
+alias testlog='tail -f log/test.log'
 
 # Npm
 alias nr='npm run'
