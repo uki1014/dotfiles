@@ -62,6 +62,7 @@ alias coutma='git switch main'
 alias fepul='git fetch upstream pull/$argv[1]/head:$argv[2]'
 alias gopen='git open'
 alias lz='lazygit'
+alias ld='lazydocker'
 alias sync='hub sync'
 alias ggrep='git grep $argv[1] -- ':!mysql/' . '
 
