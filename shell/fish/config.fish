@@ -108,14 +108,6 @@ function ide
   tmux split-window -h -p 50
 end
 
-# 下に4つのpaneをつくる
-function idef
-  tmux split-window -v -p 21
-  tmux split-window -h -p 75
-  tmux split-window -h -p 66
-  tmux split-window -h -p 50
-end
-
 # 下に2つのpaneを作る
 function idet
   tmux split-window -v -p 21
@@ -159,57 +151,6 @@ function cide
   tmux select-pane -t :.+
   tmux select-pane -t :.+
   tmux split-window -h -p 50
-end
-
-function update_nvim
-  if not [ -d ~/nvim_backup ]
-    mkdir ~/nvim_backup
-  end
-
-  if is_darwin
-    cd
-    sudo mv ~/nvim ~/nvim_backup/nvim-(date '+%Y-%m-%d_%H:%M:%S')
-    curl -LO https://github.com/neovim/neovim/releases/download/nightly/nvim-macos.tar.gz
-    tar xzf ~/nvim-macos.tar.gz
-    sudo rm -f ~/nvim-macos.tar.gz
-    mv nvim-osx64 nvim
-  else if is_linux
-    cd
-    sudo mv /usr/local/bin/nvim ~/nvim_backup/nvim-(date '+%Y-%m-%d_%H:%M:%S')
-    curl -LO https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage
-    chmod u+x ~/nvim.appimage
-    sudo mv ~/nvim.appimage ~/nvim
-    sudo mv ~/nvim /usr/local/bin
-  end
-end
-
-function restore_nvim
-  cd ~/nvim_backup
-  if is_darwin
-    sudo rm -rf ~/nvim
-    mv (ls -c | head -n 3 | awk 'END{print $1}') ~/nvim
-  else if is_linux
-    sudo rm -rf /usr/local/bin/nvim
-    mv (ls -c | head -n 3 | awk 'END{print $1}') /usr/local/bin
-  end
-  cd
-end
-
-function update_nvim_v5
-  if is_darwin
-    cd
-    sudo rm -rf ~/nvim-osx64
-    curl -LO https://github.com/neovim/neovim/releases/download/v0.5.0/nvim-macos.tar.gz
-    tar xzf ~/nvim-macos.tar.gz
-    sudo rm -f ~/nvim-macos.tar.gz
-  else if is_linux
-    cd
-    sudo rm ~/nvim.appimage
-    curl -LO https://github.com/neovim/neovim/releases/download/v0.5.0/nvim.appimage
-    chmod u+x nvim.appimage
-    sudo mv ~/nvim.appimage ~/nvim
-    sudo mv ~/nvim /usr/local/bin
-  end
 end
 
 # Install fisher
