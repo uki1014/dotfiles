@@ -50,6 +50,9 @@ maps.nmap('<S-u>', '<C-r>', maps.n)
 -- 現在開いているファイルのパスをcopyする
 maps.nmap('<Leader>b', ':lua CopyCurrentPath()<CR>', maps.ns)
 
+-- nvimのprofile取る
+maps.nmap('<Leader>ag', ':lua GetProfile()<CR>', maps.ns)
+
 -- 外部コマンド
 maps.nmap('<Leader>ca', ':!', maps.n)
 

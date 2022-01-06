@@ -184,6 +184,12 @@ function CopyCurrentPath()
   vim.cmd('echo expand("%")')
 end
 
+function GetProfile()
+  vim.cmd('profile start ~/dotfiles/profile.log')
+  vim.cmd('profile func *')
+  vim.cmd('profile file *')
+end
+
 -------------------------------------------------------------------------------
 -- Color scheme
 -------------------------------------------------------------------------------
