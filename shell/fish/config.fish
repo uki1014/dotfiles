@@ -24,6 +24,25 @@ function is_linux
   [ (uname) = 'Linux' ] > /dev/null 2>&1
 end
 
+if test (uname) = 'Darwin' && test (uname -m) = 'arm64' > /dev/null 2>&1
+  set -xg HOMEBREW_PATH "/opt/homebrew"
+  set -xg PATH /opt/homebrew/bin $PATH
+  set -xg PATH /opt/homebrew/sbin $PATH
+  eval (/opt/homebrew/bin/brew shellenv)
+
+  set -xg RUBY_CFLAGS "-Wno-error=implicit-function-declaration"
+  set -xg RUBY_CONFIGURE_OPTS "--with-openssl-dir=/opt/homebrew/opt/openssl@1.1"
+  set -xg LDFLAGS "-L/opt/homebrew/opt/readline/lib"
+  set -xg CPPFLAGS "-I/opt/homebrew/opt/readline/include"
+  set -xg PKG_CONFIG_PATH "/opt/homebrew/opt/readline/lib/pkgconfig"
+  set -xg optflags "-Wno-error=implicit-function-declaration"
+  set -xg LDFLAGS "-L/opt/homebrew/opt/libffi/lib"
+  set -xg CPPFLAGS "-I/opt/homebrew/opt/libffi/include"
+  set -xg PKG_CONFIG_PATH "/opt/homebrew/opt/libffi/lib/pkgconfig"
+else if test (uname) = 'Darwin' && test (uname -m) = 'x86_64' > /dev/null 2>&1
+  set -xg HOMEBREW_PATH "/usr/local"
+end
+
 set -xg LC_CTYPE en_US.UTF-8
 set -xg LC_ALL en_US.UTF-8
 set -xg LANG en_US.UTF-8
@@ -37,8 +56,8 @@ set -xg DOCKER_HOST_NAME 172.17.0.1
 set -xg GHQ_SELECTOR peco
 set -xg theme_date_format "+%Y-%m-%d %H:%M:%S"
 set -g fish_prompt_pwd_dir_length 0
-set -g fish_user_paths "/usr/local/opt/openssl@1.1/bin" $fish_user_paths
-set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
+set -g fish_user_paths "$HOMEBRW_PATH/opt/openssl@1.1/bin" $fish_user_paths
+set -g fish_user_paths "$HOMEBRW_PATH/sbin" $fish_user_paths
 
 if [ -e $DOTFILES_PATH/git/token.fish ]
   source $DOTFILES_PATH/git/token.fish
@@ -50,7 +69,7 @@ fish_vi_key_bindings
 if status --is-interactive
   # macOSとLinuxそれぞれの設定
   if is_darwin
-    source /usr/local/opt/asdf/libexec/asdf.fish
+    source $HOMEBREW_PATH/opt/asdf/libexec/asdf.fish
 
     alias sa='ssh-add -K ~/.ssh/id_rsa'
     if [ $SHLVL = 1 ]
@@ -58,22 +77,22 @@ if status --is-interactive
     end
 
     # coreutils
-    set -xg PATH /usr/local/opt/coreutils/libexec/gnubin $PATH
-    set -xg MANPATH /usr/local/opt/coreutils/libexec/gnuman $MANPATH
+    set -xg PATH $HOMEBREW_PATH/opt/coreutils/libexec/gnubin $PATH
+    set -xg MANPATH $HOMEBREW_PATH/opt/coreutils/libexec/gnuman $MANPATH
     # findutils
-    set -xg PATH /usr/local/opt/findutils/libexec/gnubin $PATH
-    set -xg MANPATH /usr/local/opt/findutils/libexec/gnuman $MANPATH
+    set -xg PATH $HOMEBREW_PATH/opt/findutils/libexec/gnubin $PATH
+    set -xg MANPATH $HOMEBREW_PATH/opt/findutils/libexec/gnuman $MANPATH
     # gnu-sed
-    set -xg PATH /usr/local/opt/gnu-sed/libexec/gnubin $PATH
-    set -xg MANPATH /usr/local/opt/gnu-sed/libexec/gnuman $MANPATH
+    set -xg PATH $HOMEBREW_PATH/opt/gnu-sed/libexec/gnubin $PATH
+    set -xg MANPATH $HOMEBREW_PATH/opt/gnu-sed/libexec/gnuman $MANPATH
     # grep
-    set -xg PATH /usr/local/opt/grep/libexec/gnubin $PATH
-    set -xg MANPATH /usr/local/opt/grep/libexec/gnuman $MANPATH
+    set -xg PATH $HOMEBREW_PATH/opt/grep/libexec/gnubin $PATH
+    set -xg MANPATH $HOMEBREW_PATH/opt/grep/libexec/gnuman $MANPATH
     # awk
     alias awk='gawk'
     # tar
-    set -xg PATH /usr/local/opt/gnu-tar/libexec/gnubin $PATH
-    set -xg MANPATH /usr/local/opt/gnu-tar/libexec/gnuman $MANPATH
+    set -xg PATH $HOMEBREW_PATH/opt/gnu-tar/libexec/gnubin $PATH
+    set -xg MANPATH $HOMEBREW_PATH/opt/gnu-tar/libexec/gnuman $MANPATH
 
   else if is_linux
     eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
