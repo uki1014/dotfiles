@@ -64,5 +64,13 @@ lua vim.api.nvim_set_keymap('n', '<Leader>1', ':A<CR>', { noremap = true })
 """
 
 [[plugins]]
+repo = 'joker1007/vim-ruby-heredoc-syntax'
+on_ft = ['ruby']
+
+[[plugins]]
+repo = 'joker1007/vim-markdown-quote-syntax'
+on_ft = ['markdown']
+
+[[plugins]]
 repo = 'tbastos/vim-lua'
 on_ft = ['lua']
