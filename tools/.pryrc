@@ -1,3 +1,9 @@
+$LOAD_PATH << '~/.asdf/installs/ruby/2.6.6/lib/ruby/gems/2.6.0/gems/awesome_print-1.9.2/lib'
+require 'awesome_print'
+
+AwesomePrint.irb!
+AwesomePrint.pry!
+
 if defined?(Pry)
   Pry.commands.alias_command 'c', 'continue'
   Pry.commands.alias_command 's', 'step'
@@ -10,7 +16,7 @@ if defined?(Pry)
   Pry::Commands.command /^$/, "repeat last command" do
     command = Pry.history.to_a.last
 
-    _pry_.run_command(command) unless command == "exit" # 起動直後にenter押下で即終了するのを防ぐ
+    pry_instance.run_command(command) unless command == "exit" # 起動直後にenter押下で即終了するのを防ぐ
   end
 
   # prompt

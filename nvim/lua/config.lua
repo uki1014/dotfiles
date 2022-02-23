@@ -116,7 +116,7 @@ vim.cmd('au BufNewFile,BufRead *.flow setf javascript')
 vim.cmd('au BufNewFile,BufRead *.fish setf fish')
 -- Ruby
 vim.cmd('au BufNewFile,BufRead Dangerfile* setf ruby')
-vim.cmd('au BufNewFile,BufRead .pryrc setf ruby')
+vim.cmd('au BufNewFile,BufRead .pryrc,.aprc setf ruby')
 
 -- vim.cmd('augroup ReactFiletypes')
 -- vim.cmd('au!')
