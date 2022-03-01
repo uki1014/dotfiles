@@ -9,7 +9,7 @@ if defined?(Pry)
   Pry.commands.alias_command 's', 'step'
   Pry.commands.alias_command 'n', 'next'
   Pry.commands.alias_command 'f', 'finish'
-  Pry.commands.alias_command 'd', 'disable-pry'
+  Pry.commands.alias_command 'dd', 'disable-pry'
   Pry.commands.alias_command 'ei', 'exit'
 
   # Hit Enter to repeat last command
