@@ -87,6 +87,13 @@ vim.cmd('au!')
 vim.cmd('au BufReadPost * lua RestoreCursorPosition()')
 vim.cmd('augroup END')
 
+-------------------------------------------------------------------------------
+-- Highlight
+-------------------------------------------------------------------------------
+vim.cmd('augroup highlight_yank')
+vim.cmd('au!')
+  vim.cmd('au TextYankPost * silent! lua vim.highlight.on_yank{higroup="IncSearch", timeout=700}')
+vim.cmd('augroup END')
 
 -------------------------------------------------------------------------------
 -- Extensions
