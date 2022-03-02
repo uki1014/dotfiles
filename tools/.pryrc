@@ -20,13 +20,13 @@ if defined?(Pry)
   end
 
   # prompt
-  Pry.config.prompt = proc do |obj, nest_level, _pry_|
-    prompt = ""
-    prompt << "#{Pry.config.prompt_name.to_s.blue}"
-    prompt << "(#{Pry.view_clip(obj).to_s.cyan})"
-    prompt << "[#{RUBY_VERSION.to_s.green}]"
-    prompt << "> "
-  end
+  Pry.config.prompt = Pry::Prompt.new(
+    'custom',
+    'my custom prompt',
+    [
+      proc {|obj, nest_level, _pry_| "#{Pry.config.prompt_name.to_s.blue}(#{Pry.view_clip(obj).to_s.cyan})[#{RUBY_VERSION.to_s.green}]> " },
+    ]
+  )
 
   # 外部gemのコードを省いた call stack
   def caller_products
