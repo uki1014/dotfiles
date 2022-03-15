@@ -97,7 +97,7 @@ maps.nmap('\\', '\be', maps.none)
 maps.nmap('-', ':noh<CR>', maps.ns)
 
 -- syntax highlight再読み込み
-maps.nmap('<F9>', ':syntax sync fromstart<CR>', maps.n)
+maps.nmap('<F12>', ':syntax sync fromstart<CR>', maps.n)
 
 -- Tabs
 maps.nmap('te', ':tabedit<Return>sf', maps.s)
