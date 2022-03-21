@@ -406,7 +406,8 @@ exe "hi! Normal"         .s:fmt_none   .s:fg_base1  .s:bg_back
 
 " コメントアウトの色
 " exe "hi! Comment"        .s:fmt_ital   .s:fg_turquoise .s:bg_none
-exe "hi! Comment"        .s:fmt_ital   .s:fg_base1 .s:bg_none
+" exe "hi! Comment"        .s:fmt_ital   .s:fg_base1 .s:bg_none
+exe "hi! Comment"        .s:fmt_ital   .s:fg_base00 .s:bg_none
 
 "       *Comment         any comment
 
