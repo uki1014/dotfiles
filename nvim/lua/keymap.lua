@@ -36,8 +36,8 @@ maps.nmap('gk', 'dd2kp', maps.n)
 maps.nmap('fd', 'v^d', maps.n)
 
 -- bufferの再読み込み
-maps.nmap('<Leader>e', ':edit<CR>', maps.n)
-maps.nmap('<Leader>te', ':tabdo edit<CR>', maps.n)
+maps.nmap('<Leader>e', ':bufdo edit!<CR>', maps.n)
+maps.nmap('<Leader>te', ':tabdo edit!<CR>', maps.n)
 
 -- set number
 maps.nmap('<Leader>s', ':set number<CR>', maps.ns)
