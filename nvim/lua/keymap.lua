@@ -6,12 +6,6 @@ maps.nmap('<S-C-p>ud', '"0p', maps.n)
 maps.nmap('<Leader>d', '"_d', maps.n)
 maps.nmap('x', '"_x', maps.n)
 
---[[
- Increment/decrement(memo用)
- nnoremap <C-a>
- nnoremap <C-x>
-]]
-
 -- 補完表示時のEnterで改行をしない
 maps.imap('<CR>', 'pumvisible() ? "<C-y>" : "<CR>"', maps.ne)
 maps.imap('<C-n>', 'pumvisible() ? "<Down>" : "<C-n>"', maps.ne)
@@ -104,6 +98,11 @@ maps.nmap('te', ':tabedit<Return>sf', maps.s)
 maps.nmap('fl', ':tabnext<Return>', maps.s)
 maps.nmap('fj', ':tabprev<Return>', maps.s)
 maps.nmap('cl', ':tabclose<Return>', maps.s)
+
+-- fold
+maps.nmap('fz', 'za', maps.s)
+maps.nmap('zs', ':mkview<CR>', maps.s)
+maps.nmap('zl', ':loadview<CR>', maps.s)
 
 -- Windows
 maps.nmap('ss', ':split<Return><C-w>w', maps.none)
