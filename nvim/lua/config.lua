@@ -60,6 +60,9 @@ vim.opt.mouse = 'a'
 
 vim.cmd('filetype plugin indent on')
 
+-- golangでindentLineを上手く効かせるため
+vim.cmd('au FileType go setlocal expandtab')
+
 vim.cmd('augroup fileTypeIndent')
 vim.cmd('au!')
 vim.cmd('au FileType go setlocal tabstop=4 shiftwidth=4')
