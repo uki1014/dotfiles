@@ -4,6 +4,7 @@
 alias ubuntu_cache_delete='sudo rm -rf /var/lib/apt/lists/*'
 alias update_apt='sudo apt update && sudo apt upgrade && sudo apt autoremove'
 alias ubuntu_memory_cache_clear='free -h && sudo sysctl -w vm.drop_caches=3 && free -h'
+alias lszombie='ps axo stat,ppid,pid,comm | grep -w defunct'
 # GPG-agentの再起動
 alias regpg='gpg-connect-agent reloadagent /bye'
 alias gpgc='v ~/.gnupg/gpg-agent.conf'
