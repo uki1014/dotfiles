@@ -54,23 +54,20 @@ source ~/.config/nvim/lua/plugins/defx.lua
 ##################
 # Fuzzy Finder
 ##################
+# [[plugins]]
+# repo = 'Shougo/denite.nvim'
+# hook_add = """
+# source ~/.config/nvim/lua/plugins/denite.lua
+# """
+
 [[plugins]]
-repo = 'Shougo/denite.nvim'
+repo = 'nvim-lua/popup.nvim'
+
+[[plugins]]
+repo = 'nvim-telescope/telescope.nvim'
 hook_add = """
-source ~/.config/nvim/lua/plugins/denite.lua
+source ~/.config/nvim/lua/plugins/telescope.lua
 """
-
-#[[plugins]]
-#repo = 'nvim-lua/popup.nvim'
-
-#[[plugins]]
-#repo = 'nvim-lua/plenary.nvim'
-
-#[[plugins]]
-#repo = 'nvim-telescope/telescope.nvim'
-#hook_add = """
-#source ~/.config/nvim/lua/plugins/telescope.lua
-#"""
 
 [[plugins]]
 repo = "neoclide/coc.nvim"
@@ -171,8 +168,8 @@ lua vim.cmd('call wilder#setup({"modes": [":", "/", "?"], "next_key": "<Tab>", "
 lua vim.cmd('call wilder#set_option("renderer", wilder#popupmenu_renderer({ "highlighter": wilder#basic_highlighter() }))')
 """
 
-[[plugins]]
-repo = 'github/copilot.vim'
+# [[plugins]]
+# repo = 'github/copilot.vim'
 
 # [[plugins]]
 # repo = 'jamestthompson3/nvim-remote-containers'
