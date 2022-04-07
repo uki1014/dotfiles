@@ -162,20 +162,10 @@ lua vim.api.nvim_set_keymap('n', '<Leader>ba', ':BufOnly<CR>', { noremap = true 
 """
 
 [[plugins]]
-repo = 'gelguy/wilder.nvim'
-hook_add = """
-lua vim.cmd('call wilder#setup({"modes": [":", "/", "?"], "next_key": "<Tab>", "previous_key": "<S-Tab>", "accept_key": "<Down>", "reject_key": "<Up>"})')
-lua vim.cmd('call wilder#set_option("renderer", wilder#popupmenu_renderer({ "highlighter": wilder#basic_highlighter() }))')
-"""
-
-[[plugins]]
 repo = 'windwp/nvim-spectre'
 hook_add = """
 source ~/.config/nvim/lua/plugins/nvim-spectre.lua
 """
-
-# [[plugins]]
-# repo = 'github/copilot.vim'
 
 # [[plugins]]
 # repo = 'jamestthompson3/nvim-remote-containers'
