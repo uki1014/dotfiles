@@ -10,6 +10,7 @@ target_brew_list=(
   tmux
   hub
   lazygit
+  lazydocker
   jq
   fzf
   bat
@@ -25,7 +26,6 @@ target_brew_list=(
   shared-mime-info
   tree-sitter
   luajit
-  docui
   gpg
   fd
 )
