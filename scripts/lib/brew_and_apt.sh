@@ -27,6 +27,7 @@ target_brew_list=(
   luajit
   docui
   gpg
+  fd
 )
 
 # CUI tools for macOS
