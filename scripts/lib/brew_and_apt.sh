@@ -28,6 +28,7 @@ target_brew_list=(
   luajit
   gpg
   fd
+  neofetch
 )
 
 # CUI tools for macOS
