@@ -100,7 +100,8 @@ maps.nmap('fj', ':tabprev<Return>', maps.s)
 maps.nmap('cl', ':tabclose<Return>', maps.s)
 
 -- fold
-maps.nmap('fz', 'za', maps.s)
+maps.map('fz', 'zf', maps.s) -- fold
+maps.nmap('zf', 'za', maps.s) -- toggle fold
 maps.nmap('zs', ':mkview<CR>', maps.s)
 maps.nmap('zl', ':loadview<CR>', maps.s)
 
