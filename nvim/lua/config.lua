@@ -128,11 +128,8 @@ vim.cmd('au BufNewFile,BufRead *.fish setf fish')
 vim.cmd('au BufNewFile,BufRead Dangerfile* setf ruby')
 vim.cmd('au BufNewFile,BufRead .pryrc,.aprc setf ruby')
 
--- vim.cmd('augroup ReactFiletypes')
--- vim.cmd('au!')
--- vim.cmd('au BufRead,BufNewFile *.jsx setf javascriptreact')
--- vim.cmd('au BufRead,BufNewFile *.tsx setf typescriptreact')
--- vim.cmd('augroup END')
+-- html
+vim.cmd('au BufNewFile,BufRead .jet setf html')
 --[[
 ]]
 
