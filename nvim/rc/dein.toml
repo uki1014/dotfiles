@@ -133,6 +133,9 @@ repo = 'norcalli/nvim-colorizer.lua'
 repo = 'tpope/vim-surround'
 
 [[plugins]]
+repo = 'tpope/vim-repeat'
+
+[[plugins]]
 repo = 'previm/previm'
 hook_add = """
 lua vim.g.previm_open_cmd = 'open -a "Google Chrome"'
