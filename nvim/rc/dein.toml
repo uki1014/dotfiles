@@ -170,5 +170,8 @@ hook_add = """
 source ~/.config/nvim/lua/plugins/nvim-spectre.lua
 """
 
+[[plugins]]
+repo = 'mtdl9/vim-log-highlighting'
+
 # [[plugins]]
 # repo = 'jamestthompson3/nvim-remote-containers'
