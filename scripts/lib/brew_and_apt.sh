@@ -29,6 +29,7 @@ target_brew_list=(
   gpg
   fd
   neofetch
+  mycli
 )
 
 # CUI tools for macOS
