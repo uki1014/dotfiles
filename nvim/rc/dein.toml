@@ -152,10 +152,11 @@ lua vim.g.workspace_session_directory = os.getenv('HOME')..'/.config/nvim/sessio
 """
 
 [[plugins]]
-repo = 'uki1014/vim-trailing-whitespace'
+repo = 'ntpeters/vim-better-whitespace'
 hook_add = """
-lua vim.api.nvim_set_keymap('n', '<Leader>y', ':FixWhitespace<CR>', { noremap = true })
-lua vim.g.extra_whitespace_ignored_filetypes = { 'denite', 'defx' }
+lua vim.g.better_whitespace_guicolor = 'darkred'
+lua vim.g.strip_whitespace_on_save = 0
+lua vim.api.nvim_set_keymap('n', '<Leader>y', ':StripWhitespace<CR>', { noremap = true })
 """
 
 [[plugins]]
