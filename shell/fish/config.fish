@@ -71,7 +71,7 @@ if status --is-interactive
   if is_darwin
     source $HOMEBREW_PATH/opt/asdf/libexec/asdf.fish
 
-    alias sa='ssh-add -K ~/.ssh/id_rsa'
+    alias sa='ssh-add --apple-use-keychain'
     if [ $SHLVL = 1 ]
       sa
     end
