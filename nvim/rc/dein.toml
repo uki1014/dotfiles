@@ -54,12 +54,6 @@ source ~/.config/nvim/lua/plugins/defx.lua
 ##################
 # Fuzzy Finder
 ##################
-# [[plugins]]
-# repo = 'Shougo/denite.nvim'
-# hook_add = """
-# source ~/.config/nvim/lua/plugins/denite.lua
-# """
-
 [[plugins]]
 repo = 'nvim-lua/popup.nvim'
 
