@@ -79,6 +79,7 @@ vim.g.coc_global_extensions = {
   'coc-cssmodules',
   'coc-styled-components',
   'coc-vimlsp',
+  'coc-prisma'
 }
 
 
