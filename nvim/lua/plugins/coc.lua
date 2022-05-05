@@ -78,6 +78,7 @@ vim.g.coc_global_extensions = {
   'coc-tabnine',
   'coc-cssmodules',
   'coc-styled-components',
+  'coc-vimlsp',
 }
 
 
