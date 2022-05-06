@@ -187,7 +187,7 @@ alias drunuo='docker run -it --rm --privileged -e DISPLAY=(hostname):0 -v ~/.Xau
 alias xlaunch='xhost + 127.0.0.1'
 alias kl='kill -9'
 alias mysqlstatus='sudo service mysql status'
-alias load_back_up_mysql='mysql -u mysql -proot --protocol tcp < tmp/development-backup.sql'
+alias load_back_up_mysql='mysql -u mysql -proot --protocol tcp < tmp/development.sql'
 alias brewall='~/dotfiles/scripts/utils/check_brew.sh 0'
 alias update_nvim_stable='asdf uninstall neovim stable && asdf install neovim stable'
 alias dactyl='cd ~/qmk_firmware'
