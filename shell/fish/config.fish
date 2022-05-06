@@ -133,25 +133,32 @@ function idet
   tmux split-window -h -p 50
 end
 
-function chilide
+function drawide
   # dotfiles
   tmux rename-window dotfiles
-  chils
+  cd ~/program/projects/draw-server
 
-  # chillers-server
+  # draw-server
   tmux new-window
-  tmux rename-window chill-server
-  ide
-  chilf
+  tmux rename-window draw-server
+  idet
+  cd ~/program/projects/draw-web
 
-  # chillers-frontend
+  # draw-web
   tmux new-window
-  tmux rename-window chill-frontend
-  ide
+  tmux rename-window draw-web
+  idet
+  cd ~/program/projects/draw-desktop
+
+  # draw-desktop
+  tmux new-window
+  tmux rename-window draw-desktop
+  idet
 
   # 順番にやるとおかしくなるので最後にdotfilesに移動
   tmux next-window
   cdd
+  clear
 end
 
 # rails/npm/resque/gitなどeditor以外のpane
