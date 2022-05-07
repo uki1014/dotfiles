@@ -33,6 +33,7 @@ repo = 'nvim-lua/plenary.nvim'
 [[plugins]]
 repo = 'lewis6991/gitsigns.nvim'
 depends = ['plenary.nvim']
+rev = "release"
 hook_add = """
 lua require('gitsigns').setup()
 lua vim.api.nvim_set_keymap('n', '<Leader>gl', ':lua require"gitsigns".blame_line(true)<CR>', { noremap = true })
