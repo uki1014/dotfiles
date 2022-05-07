@@ -43,9 +43,9 @@ PYTHON3_GLOBAL_PACKAGES=(
   powerline-status
 )
 
-GLOBAL_GOLANG_VERSION=1.12
+GLOBAL_GOLANG_VERSION=1.18.1
 GOLANG_VERSIONS=(
-  1.12
+  1.18.1
 )
 
 GLOBAL_TERRAFORM_VERSION=0.14.5
@@ -144,6 +144,8 @@ install_tools() {
         ;;
     esac
   done
+  # nvim上で使うpluginをinstall
+  go install github.com/skanehira/getpr@latest
 }
 
 
