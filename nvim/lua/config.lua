@@ -37,9 +37,6 @@ vim.opt.smartcase = true
 vim.opt.inccommand = 'split'
 
 -- 文字色・描画
--- vim.opt.t_8f = '\b<Esc>[38;2;%lu;%lu;%lum'
--- vim.opt.t_8b = '\b<Esc>[48;2;%lu;%lu;%lum'
--- vim.opt.t_BE = ''
 vim.opt.lazyredraw = true
 vim.opt.showmatch = true
 vim.opt.mat = 2
@@ -130,9 +127,6 @@ vim.cmd('au BufNewFile,BufRead .pryrc,.aprc setf ruby')
 
 -- html
 vim.cmd('au BufNewFile,BufRead .jet setf html')
---[[
-]]
-
 
 if vim.fn.has('conceal') == 0 then
   vim.opt.conceallevel = 2
@@ -159,22 +153,6 @@ vim.g.python_host_prog = '~/.asdf/shims/python2.7'
 vim.g.python3_host_prog = '~/.asdf/shims/python3.9'
 vim.g.ruby_host_prog = '~/.asdf/shims/neovim-ruby-host'
 vim.g.node_host_prog = '~/.asdf/shims/neovim-node-host'
-
---[[
-" ペーストするときに自動インデントでずれないようにする
-if &term =~ "xterm"
-  let &t_SI .= "\e[?2004h"
-  let &t_EI .= "\e[?2004l"
-  let &pastetoggle = "\e[201~"
-
-  function XTermPasteBegin(ret)
-    set paste
-    return a:ret
-  endfunction
-
-  inoremap <special> <expr> <Esc>[200~ XTermPasteBegin("")
-endif
-]]
 
 -- undo保存先
 if vim.fn.has('persistent_undo') == 1 then
