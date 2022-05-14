@@ -126,6 +126,9 @@ alias resque='env "QUEUE=*" VVERBOSE=true bundle exec rake environment resque:wo
 alias devlog='tail -f log/development.log'
 alias testlog='tail -f log/test.log'
 
+# Rspec
+alias brs='bundle exec rspec'
+
 # Npm
 alias nr='npm run'
 alias nw='npm run watch'
