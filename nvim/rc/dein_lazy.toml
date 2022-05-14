@@ -75,3 +75,20 @@ on_ft = ['lua']
 [[plugins]]
 repo = 'pantharshit00/vim-prisma'
 on_ft = ['prisma']
+
+[[plugins]]
+repo = 'ap/vim-css-color'
+on_ft = [
+'javascript',
+'javascript.jsx',
+'javascriptreact',
+'typescript',
+'typescript.tsx',
+'typescriptreact',
+'html',
+'css',
+'scss',
+'less',
+'vim',
+'lua',
+]

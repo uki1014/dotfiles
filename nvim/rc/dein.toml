@@ -122,9 +122,6 @@ lua vim.g['zenspace#default_mode'] = 'on'
 repo = 'jiangmiao/auto-pairs'
 
 [[plugins]]
-repo = 'norcalli/nvim-colorizer.lua'
-
-[[plugins]]
 repo = 'tpope/vim-surround'
 
 [[plugins]]
