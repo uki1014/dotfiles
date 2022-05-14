@@ -46,9 +46,7 @@ target_brew_list_for_mac_os=(
 
 # GUI tools
 target_brew_cask_list=(
-  alacritty
   figma
-  sketch
   chromedriver
   firefox
   docker
@@ -56,7 +54,6 @@ target_brew_cask_list=(
   google-chrome
   spotify
   tableplus
-  fork
   deepl
   typora
   teensy
@@ -65,7 +62,6 @@ target_brew_cask_list=(
   karabiner-elements
   postman
   homebrew/cask-versions/iterm2-nightly
-  hyper
   alfred
 )
 
