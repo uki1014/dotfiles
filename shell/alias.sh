@@ -197,6 +197,5 @@ alias update_nvim_stable='asdf uninstall neovim stable && asdf install neovim st
 alias dactyl='cd ~/qmk_firmware'
 alias make_keymap='dactyl && make handwired/dactyl_manuform/4x5:uki1014'
 alias flash_keymap='dactyl && make handwired/dactyl_manuform/4x5:uki1014:flash'
-alias dactyl='cd ~/qmk_firmware'
 alias keymap='cat ~/qmk_firmware/keyboards/handwired/dactyl_manuform/4x5/keymaps/uki1014/keymap.c'
 alias edit_keymap='nvim ~/qmk_firmware/keyboards/handwired/dactyl_manuform/4x5/keymaps/uki1014/keymap.c'
