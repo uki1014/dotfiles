@@ -31,6 +31,7 @@ target_brew_list=(
   neofetch
   mycli
   shellcheck
+  hadolint
 )
 
 # CUI tools for macOS
