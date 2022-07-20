@@ -19,6 +19,7 @@ lua vim.api.nvim_set_keymap('n', '<Leader>gb', ':ToGithubBlameDevelopBranch<CR>'
 lua vim.api.nvim_set_keymap('n', '<Leader>G', ':ToGithubBlobCommitHash<CR>', { noremap = true })
 lua vim.api.nvim_set_keymap('n', '<Leader>GB', ':ToGithubBlameCommitHash<CR>', { noremap = true })
 lua vim.api.nvim_set_keymap('n', '<Leader>g', ':ToGithubTargetPullRequest<CR>', { noremap = true })
+lua vim.api.nvim_set_keymap('n', '<Leader>j', ':ToGithubTargetPullRequestFromCommitHash<CR>', { noremap = true })
 """
 
 [[plugins]]
