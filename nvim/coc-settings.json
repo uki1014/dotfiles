@@ -10,15 +10,15 @@
     "typescriptreact",
     "prisma"
   ],
-  "eslint.options": {
-    "$or": [
-      { "configFile": "./.eslintrc.json" },
-      { "configFile": "./.eslintrc.js" },
-      { "configFile": "./.eslintrc" },
-      { "configFile": "./.eslintrc.yml" },
-      { "configFile": "./.eslintrc.yaml" }
-    ]
-  },
+  // "eslint.options": {
+  //  "$or": [
+  //    { "configFile": "./.eslintrc.json" },
+  //    { "configFile": "./.eslintrc.js" },
+  //    { "configFile": "./.eslintrc" },
+  //    { "configFile": "./.eslintrc.yml" },
+  //    { "configFile": "./.eslintrc.yaml" }
+  //  ]
+  // },
   "prettier.singleQuote": true,
   "prettier.trailingComma": "es5",
   "prettier.semi": true,
