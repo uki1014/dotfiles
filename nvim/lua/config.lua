@@ -1,6 +1,13 @@
 vim.g.loaded_netrwPlugin = '1'
 vim.g.loaded_matchparen = '1'
 
+-- https://qiita.com/delphinus/items/3c47567e1af13add968e
+-- vim.fn.setcellwidths {
+--   { 0x2500, 0x257f, 2  },
+--   { 0x2100, 0x214d, 2  },
+--     ...
+-- }
+
 vim.opt.backup = false
 vim.opt.hidden = true
 -- vimrcでマルチバイト文字を使用しているため設定
