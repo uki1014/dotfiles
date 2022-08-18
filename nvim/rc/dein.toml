@@ -67,7 +67,7 @@ source ~/.config/nvim/lua/plugins/telescope.lua
 [[plugins]]
 repo = "neoclide/coc.nvim"
 merged = 0
-rev = "v0.0.81"
+release = "v0.0.81"
 hook_add = """
 source ~/.config/nvim/lua/plugins/coc.lua
 """
