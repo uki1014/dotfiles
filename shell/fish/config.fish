@@ -236,6 +236,15 @@ function diary
   cd ~/diary
 end
 
+function getpr_commithash
+  set GITHUB_URL 'https://github.com/'
+  set REPO_NAME (git remote -v | grep -E "github\.com.*\(fetch\)" | tail -n 1 | sed -E "s/.*com[:\/](.*).*/\\1/" | cut -d " " -f 1 | sed -E "s/\.git//")
+  set COMMIT_HASH $argv
+  set PR_NUMBER (git log --merges --oneline --reverse --ancestry-path $COMMIT_HASH...develop | grep -o "#[0-9]*" -m 1 | sed s/#//g)
+
+  echo $GITHUB_URL$REPO_NAME/$PR_NUMBER
+end
+
 if [ -e $DOTFILES_PATH/shell/alias.sh ]
   source $DOTFILES_PATH/shell/alias.sh
 end
