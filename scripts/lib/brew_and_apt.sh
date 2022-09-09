@@ -32,6 +32,7 @@ target_brew_list=(
   mycli
   shellcheck
   hadolint
+  xauth # x11でclipboard共有の時に必要
 )
 
 # CUI tools for macOS
