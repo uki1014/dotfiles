@@ -71,6 +71,8 @@ alias lz='lazygit'
 alias ld='lazydocker'
 alias sync='hub sync'
 alias ggrep='git grep $argv[1] -- ':!mysql/' . '
+alias reabo='git rebase --abort'
+alias reco='git rebase --continue'
 
 # tmux
 alias t='tmux'
