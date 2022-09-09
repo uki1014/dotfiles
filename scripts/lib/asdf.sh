@@ -40,7 +40,7 @@ PYTHON2_GLOBAL_PACKAGES=(
 PYTHON3_GLOBAL_PACKAGES=(
   neovim
   pynvim
-  powerline-status
+  powerline-status # reshimとtmuxの再起動が必要
 )
 
 GLOBAL_GOLANG_VERSION=1.18.1
