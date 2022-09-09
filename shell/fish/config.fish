@@ -98,6 +98,7 @@ if status --is-interactive
     eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
     source /home/linuxbrew/.linuxbrew/opt/asdf/libexec/asdf.fish
     alias sa='ssh-add'
+    set -xg HOMEBREW_CURL_PATH (which curl)
 
     if [ $SHLVL = 1 ]
       eval (ssh-agent -c)
