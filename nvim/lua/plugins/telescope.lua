@@ -28,8 +28,8 @@ end
 maps.nmap(';f', ':Telescope find_files find_command=rg,--ignore-case,--hidden,--files<CR>', maps.ns)
 maps.nmap(';r', ':Telescope live_grep find_command=rg,--ignore-case,--hidden,--files<CR>', maps.ns)
 maps.nmap(';;', ':Telescope grep_string find_command=rg,--ignore-case,--hidden,--files<CR>', maps.ns)
-maps.nmap(';t', ':lua require("telescope.builtin").command_history{}<CR>', maps.ns)
-maps.nmap(';c', ':lua require("telescope.builtin").commands{}<CR>', maps.ns)
+maps.nmap(';t', ':lua require("telescope.builtin").resume()<CR>', maps.ns)
+maps.nmap(';c', ':lua require("telescope.builtin").command_history{}<CR>', maps.ns)
 maps.nmap(';e', ':Telescope buffers<CR>', maps.ns)
 
 -- only ruby
