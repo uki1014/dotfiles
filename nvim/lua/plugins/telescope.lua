@@ -15,7 +15,7 @@ local function open_file_browser(initial_mode)
     path = "%:p:h",
     cwd = telescope_buffer_dir(),
     respect_gitignore = false,
-    hidden = true,
+    hidden = false,
     grouped = true,
     all_previewer = true,
     initial_mode = initial_mode,
