@@ -74,7 +74,7 @@ lua vim.g.closetag_filenames = '*.html,*.xhtml,*xml,*.phtml,*.erb,*.php,*.vue,*.
 [[plugins]]
 repo = 'Yggdroot/indentLine'
 hook_add = """
-lua vim.g.indentLine_fileTypeExclude = {'help', 'nerdtree', 'calendar', 'thumbnail', 'tweetvim', 'defx'}
+lua vim.g.indentLine_fileTypeExclude = {'help', 'nerdtree', 'calendar', 'thumbnail', 'tweetvim', 'defx', 'TelescopePrompt'}
 lua vim.g.indentLine_color_term = '239'
 lua vim.g.indentLine_color_gui = '#708090'
 lua vim.g.indentLine_char_list = {'┊', '┊', '┊', '┊'}
