@@ -43,14 +43,8 @@ lua vim.api.nvim_set_keymap('n', '<Leader>gl', ':lua require"gitsigns".blame_lin
 # Filer
 ##################
 [[plugins]]
-repo = 'kristijanhusak/defx-git'
 
 [[plugins]]
-repo = 'uki1014/defx.nvim'
-depends = ['defx-git']
-hook_add = """
-source ~/.config/nvim/lua/plugins/defx.lua
-"""
 
 ##################
 # Fuzzy Finder
