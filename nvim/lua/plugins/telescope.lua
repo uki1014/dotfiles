@@ -6,9 +6,6 @@ vim.api.nvim_set_keymap('n', ';;', ':Telescope grep_string find_command=rg,--ign
 vim.api.nvim_set_keymap('n', ';t', ':lua require("telescope.builtin").command_history{}<CR>', opt)
 vim.api.nvim_set_keymap('n', ';c', ':lua require("telescope.builtin").commands{}<CR>', opt)
 vim.api.nvim_set_keymap('n', ';e', ':Telescope buffers<CR>', opt)
-vim.api.nvim_set_keymap('n', ';g', ':Telescope help_tags<CR>', opt)
--- builtin command lists
-vim.api.nvim_set_keymap('n', ';b', ':lua require"telescope.builtin".builtin{}<CR>', opt)
 
 -- only ruby
 vim.api.nvim_set_keymap('n', ';h', ':Telescope find_files find_command=rg,--ignore-case,--hidden,--files,--type=ruby<CR>', opt)
@@ -23,8 +20,7 @@ vim.api.nvim_set_keymap('n', ';j', ':Telescope find_files find_command=rg,--igno
 vim.api.nvim_set_keymap('n', ';jr', ':lua require("telescope.builtin").live_grep({ additional_args = function() return { "--type=js", "--type=ts" } end })<CR>', opt)
 
 local actions = require('telescope.actions')
--- Global remapping
-------------------------------
+
 require('telescope').setup{
   defaults = {
     initial_mode = 'insert',
