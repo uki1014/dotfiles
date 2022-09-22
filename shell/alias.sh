@@ -169,8 +169,6 @@ alias cdd='cd $DOTFILES_PATH'
 alias cdiary='cd ~/diary'
 alias vim='nvim'
 alias v='nvim'
-# カレントディレクトリを指定した場合はDefxを起動させるために下記のファイルを同時に読み込む
-alias vi='nvim . -S $DOTFILES_PATH/nvim/lua/plugins/defx.start.lua'
 alias ls='ls -a1'
 alias ll='ls -a1l'
 alias note='cd ~/Note'
