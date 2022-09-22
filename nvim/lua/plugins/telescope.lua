@@ -68,6 +68,10 @@ telescope.setup({
   defaults = {
     initial_mode = 'insert',
     mappings = {
+      i = {
+        ['<Down>'] = telescope_actions.cycle_history_next,
+        ['<Up>'] = telescope_actions.cycle_history_prev,
+      },
       n = {
         ['q'] = telescope_actions.close
       },
@@ -77,7 +81,7 @@ telescope.setup({
     file_browser = {
       hijack_netrw = true,
       mappings = {
-        ['n'] = {
+        n = {
           ['h'] = file_browser_actions.goto_parent_dir,
         }
       }
