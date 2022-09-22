@@ -1,5 +1,5 @@
-vim.api.nvim_set_keymap('n', 'sf', ":<C-u>Defx -listed -resume -columns=indent:mark:icon:icons:filename:git:size -buffer-name=tab`tabpagenr()` -search=`expand('%:p')` `expand('%:p:h')`<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', 'fs', ":<C-u>Defx -new -columns=indent:mark:icon:icons:filename:git:size -buffer-name=tab`tabpagenr()` -search=`expand('%:p')` `expand('%:p:h')`<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', ';sf', ":<C-u>Defx -listed -resume -columns=indent:mark:icon:icons:filename:git:size -buffer-name=tab`tabpagenr()` -search=`expand('%:p')` `expand('%:p:h')`<CR>", { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap('n', ';fs', ":<C-u>Defx -new -columns=indent:mark:icon:icons:filename:git:size -buffer-name=tab`tabpagenr()` -search=`expand('%:p')` `expand('%:p:h')`<CR>", { noremap = true, silent = true })
 
 function defx_settings()
   opt = { noremap = true, silent = true, expr = true }

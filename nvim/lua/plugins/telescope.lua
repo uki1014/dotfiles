@@ -1,23 +1,24 @@
-local opt = { noremap = true, silent = true }
+local maps = require('maps')
+local telescope = require('telescope')
 
-vim.api.nvim_set_keymap('n', ';f', ':Telescope find_files find_command=rg,--ignore-case,--hidden,--files<CR>', opt)
-vim.api.nvim_set_keymap('n', ';r', ':Telescope live_grep find_command=rg,--ignore-case,--hidden,--files<CR>', opt)
-vim.api.nvim_set_keymap('n', ';;', ':Telescope grep_string find_command=rg,--ignore-case,--hidden,--files<CR>', opt)
-vim.api.nvim_set_keymap('n', ';t', ':lua require("telescope.builtin").command_history{}<CR>', opt)
-vim.api.nvim_set_keymap('n', ';c', ':lua require("telescope.builtin").commands{}<CR>', opt)
-vim.api.nvim_set_keymap('n', ';e', ':Telescope buffers<CR>', opt)
+maps.nmap(';f', ':Telescope find_files find_command=rg,--ignore-case,--hidden,--files<CR>', maps.ns)
+maps.nmap(';r', ':Telescope live_grep find_command=rg,--ignore-case,--hidden,--files<CR>', maps.ns)
+maps.nmap(';;', ':Telescope grep_string find_command=rg,--ignore-case,--hidden,--files<CR>', maps.ns)
+maps.nmap(';t', ':lua require("telescope.builtin").command_history{}<CR>', maps.ns)
+maps.nmap(';c', ':lua require("telescope.builtin").commands{}<CR>', maps.ns)
+maps.nmap(';e', ':Telescope buffers<CR>', maps.ns)
 
 -- only ruby
-vim.api.nvim_set_keymap('n', ';h', ':Telescope find_files find_command=rg,--ignore-case,--hidden,--files,--type=ruby<CR>', opt)
-vim.api.nvim_set_keymap('n', ';hr', ':lua require("telescope.builtin").live_grep({ additional_args = function() return { "--type=ruby" } end })<CR>', opt)
+maps.nmap(';h', ':Telescope find_files find_command=rg,--ignore-case,--hidden,--files,--type=ruby<CR>', maps.ns)
+maps.nmap(';hr', ':lua require("telescope.builtin").live_grep({ additional_args = function() return { "--type=ruby" } end })<CR>', maps.ns)
 
 -- ignore spec directory
-vim.api.nvim_set_keymap('n', ';w', ':Telescope find_files find_command=rg,--ignore-case,--hidden,--files,--type=ruby,--glob=!spec<CR>', opt)
-vim.api.nvim_set_keymap('n', ';wr', ':lua require("telescope.builtin").live_grep({ additional_args = function() return { "--type=ruby", "--glob=!spec" } end })<CR>', opt)
+maps.nmap(';w', ':Telescope find_files find_command=rg,--ignore-case,--hidden,--files,--type=ruby,--glob=!spec<CR>', maps.ns)
+maps.nmap(';wr', ':lua require("telescope.builtin").live_grep({ additional_args = function() return { "--type=ruby", "--glob=!spec" } end })<CR>', maps.ns)
 
 -- only javascript / typescript
-vim.api.nvim_set_keymap('n', ';j', ':Telescope find_files find_command=rg,--ignore-case,--hidden,--files,--type=js,--type=ts<CR>', opt)
-vim.api.nvim_set_keymap('n', ';jr', ':lua require("telescope.builtin").live_grep({ additional_args = function() return { "--type=js", "--type=ts" } end })<CR>', opt)
+maps.nmap(';j', ':Telescope find_files find_command=rg,--ignore-case,--hidden,--files,--type=js,--type=ts<CR>', maps.ns)
+maps.nmap(';jr', ':lua require("telescope.builtin").live_grep({ additional_args = function() return { "--type=js", "--type=ts" } end })<CR>', maps.ns)
 
 local actions = require('telescope.actions')
 

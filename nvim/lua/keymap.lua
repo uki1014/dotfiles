@@ -1,4 +1,4 @@
-local maps = require 'maps'
+local maps = require('maps')
 
 vim.g.mapleader = ","
 
