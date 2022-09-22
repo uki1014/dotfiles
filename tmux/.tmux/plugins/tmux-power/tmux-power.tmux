@@ -21,12 +21,12 @@ tmux_set() {
 # Options
 right_arrow_icon=$(tmux_get '@tmux_power_right_arrow_icon' '')
 left_arrow_icon=$(tmux_get '@tmux_power_left_arrow_icon' '')
-upload_speed_icon=$(tmux_get '@tmux_power_upload_speed_icon' '')
-download_speed_icon=$(tmux_get '@tmux_power_download_speed_icon' '')
-session_icon="$(tmux_get '@tmux_power_session_icon' '')"
-user_icon="$(tmux_get '@tmux_power_user_icon' '')"
-time_icon="$(tmux_get '@tmux_power_time_icon' '')"
-date_icon="$(tmux_get '@tmux_power_date_icon' '')"
+upload_speed_icon=$(tmux_get '@tmux_power_upload_speed_icon' '')
+download_speed_icon=$(tmux_get '@tmux_power_download_speed_icon' '')
+session_icon="$(tmux_get '@tmux_power_session_icon' '')"
+user_icon="$(tmux_get '@tmux_power_user_icon' '')"
+time_icon="$(tmux_get '@tmux_power_time_icon' '')"
+date_icon="$(tmux_get '@tmux_power_date_icon' '')"
 show_upload_speed="$(tmux_get @tmux_power_show_upload_speed false)"
 show_download_speed="$(tmux_get @tmux_power_show_download_speed false)"
 show_web_reachable="$(tmux_get @tmux_power_show_web_reachable false)"
@@ -119,7 +119,7 @@ tmux_set status-left "$LS"
 tmux_set status-right-bg "$G04"
 tmux_set status-right-fg "G12"
 tmux_set status-right-length 150
-RS="#[fg=$G06]$left_arrow_icon#[fg=$TC,bg=$G06] $time_icon $time_format #[fg=$TC,bg=$G06]$left_arrow_icon#[fg=$G04,bg=$TC] $date_icon $date_format "
+RS="#[fg=$G06]$left_arrow_icon#[fg=$TC,bg=$G06] #(TZ='Asia/Tokyo' date +'%%Y-%%m-%%d %%H:%%M:%S')"
 if "$show_download_speed"; then
     RS="#[fg=$G05,bg=$BG]$left_arrow_icon#[fg=$TC,bg=$G05] $download_speed_icon #{download_speed} $RS"
 fi
@@ -132,14 +132,11 @@ fi
 tmux_set status-right "$RS"
 
 # Window status
-tmux_set window-status-format " #I:#W#F "
-tmux_set window-status-current-format "#[fg=$BG,bg=$G06]$right_arrow_icon#[fg=$TC,bold] #I:#W#F #[fg=$G06,bg=$BG,nobold]$right_arrow_icon"
+tmux_set window-status-format " #I #W "
+tmux_set window-status-current-format "#[fg=$BG,bg=$G06]$right_arrow_icon#[fg=$TC,bold] #I #W #[fg=$G06,bg=$BG,nobold]$right_arrow_icon"
 
 # Window separator
 tmux_set window-status-separator ""
-
-# Window status alignment
-tmux_set status-justify centre
 
 # Current window status
 tmux_set window-status-current-statys "fg=$TC,bg=$BG"
