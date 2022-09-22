@@ -93,12 +93,6 @@ maps.nmap('-', ':noh<CR>', maps.ns)
 -- syntax highlight再読み込み
 maps.nmap('<F12>', ':syntax sync fromstart<CR>', maps.n)
 
--- Tabs
-maps.nmap('te', ':tabedit<Return>sf', maps.s)
-maps.nmap('fl', ':tabnext<Return>', maps.s)
-maps.nmap('fj', ':tabprev<Return>', maps.s)
-maps.nmap('cl', ':tabclose<Return>', maps.s)
-
 -- fold
 maps.map('fz', 'zf', maps.s) -- fold
 maps.nmap('zf', 'za', maps.s) -- toggle fold
