@@ -1,19 +1,21 @@
-vim.api.nvim_set_keymap('n', '<Leader>co', ':call coc#util#install()<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<Leader>col', ':CocOpenLog<CR>', { noremap = true })
--- vim.api.nvim_set_keymap('n', '<Esc>', ':call coc#float#close_all()', { noremap = true })
-vim.api.nvim_set_keymap('n', '<Leader>cre', ':call coc#refresh()<CR>', { noremap = true })
+local maps = require('maps')
+
+maps.nmap('<Leader>co', ':call coc#util#install()<CR>', maps.n)
+maps.nmap('<Leader>col', ':CocOpenLog<CR>', maps.n)
+-- maps.nmap('<Esc>', ':call coc#float#close_all()', maps.n)
+maps.nmap('<Leader>cre', ':call coc#refresh()<CR>', maps.n)
 
 -- Remap keys for gotos
-vim.api.nvim_set_keymap('n', 'gd', '<Plug>(coc-definition)', { silent = true })
-vim.api.nvim_set_keymap('n', 'gy', '<Plug>(coc-type-definition)', { silent = true })
-vim.api.nvim_set_keymap('n', 'gi', '<Plug>(coc-implementation)', { silent = true })
-vim.api.nvim_set_keymap('n', 'gr', '<Plug>(coc-references)', { silent = true })
-vim.api.nvim_set_keymap('n', 'K', ':lua show_documentation()<CR>', { noremap = true, silent = true })
+maps.nmap('gd', '<Plug>(coc-definition)', maps.s)
+maps.nmap('gy', '<Plug>(coc-type-definition)', maps.s)
+maps.nmap('gi', '<Plug>(coc-implementation)', maps.s)
+maps.nmap('gr', '<Plug>(coc-references)', maps.s)
+maps.nmap('K', ':lua show_documentation()<CR>', maps.ns)
 
 
 -- Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
 -- Coc only does snippet and additional edit on confirm.
-vim.api.nvim_set_keymap('i', '<CR>', 'pumvisible() ? "<C-y>" : "<C-g>u<CR>"', { noremap = true, expr = true })
+vim.api.nvim_set_keymap('i', '<CR>', 'pumvisible() ? "<C-y>" : "<C-g>u<CR>"', maps.ne)
 
 -- Use tab for trigger completion with characters ahead and navigate.
 --Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.

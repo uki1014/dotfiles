@@ -1,7 +1,7 @@
-local opt = { noremap = true, silent = true }
+local maps = require('maps')
 
-vim.api.nvim_set_keymap('n', '<Leader>m', '<cmd>lua require("spectre").open_visual({select_word=true})<CR>', opt)
-vim.api.nvim_set_keymap('n', '<Leader>w', '<cmd>lua require("spectre").open_visual()<CR>', opt)
+maps.nmap('<Leader>m', '<cmd>lua require("spectre").open_visual({select_word=true})<CR>', maps.ns)
+maps.nmap('<Leader>w', '<cmd>lua require("spectre").open_visual()<CR>', maps.ns)
 
 require('spectre').setup()
 
