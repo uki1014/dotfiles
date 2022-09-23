@@ -92,7 +92,6 @@ return packer.startup(function(use)
         'coc-cssmodules',
         'coc-styled-components',
         'coc-vimlsp',
-        'coc-prisma'
       }
 
 
