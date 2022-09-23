@@ -20,6 +20,8 @@ return packer.startup(function(use)
     config = function()
       maps.nmap('<Leader>uf', ':PackerCompile<CR>', maps.n)
       maps.nmap('<Leader>ud', ':PackerSync<CR>', maps.n)
+      maps.nmap('<Leader>uy', ':PackerInstall<CR>', maps.n)
+      maps.nmap('<Leader>uc', ':PackerClean<CR>', maps.n)
     end
   }
 
