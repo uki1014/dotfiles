@@ -362,7 +362,6 @@ return packer.startup(function(use)
 
   use {
     'elzr/vim-json',
-    opt = true,
     ft = { 'json' },
     config = function()
       vim.g.vim_json_syntax_conceal = '0'
@@ -371,67 +370,56 @@ return packer.startup(function(use)
 
   use {
     'stephpy/vim-yaml',
-    opt = true,
     ft = { 'yaml' },
   }
 
   use {
     'kchmck/vim-coffee-script',
-    opt = true,
     ft = { 'coffee' },
   }
 
   use {
     'dag/vim-fish',
-    opt = true,
     ft = { 'fish' },
   }
 
   use {
     'cespare/vim-toml',
-    opt = true,
     ft = { 'toml' },
   }
 
   use {
     'yuezk/vim-js',
-    opt = true,
     ft = { 'javascript', 'javascript.jsx', 'javascriptreact', 'typescript', 'typescript.tsx', 'typescriptreact' },
   }
 
   use {
     'maxmellon/vim-jsx-pretty',
-    opt = true,
     ft = { 'javascript', 'javascript.jsx', 'javascriptreact', 'typescript', 'typescript.tsx', 'typescriptreact' },
   }
 
   use {
     'jparise/vim-graphql',
-    opt = true,
     ft = { 'javascript', 'javascript.jsx', 'javascriptreact', 'typescript', 'typescript.tsx', 'typescriptreact' },
   }
 
   use {
     'styled-components/vim-styled-components',
-    opt = true,
     ft = { 'javascript', 'javascript.jsx', 'javascriptreact', 'typescript', 'typescript.tsx', 'typescriptreact' },
   }
 
   use {
     'leafgarland/typescript-vim',
-    opt = true,
     ft = { 'typescript', 'typescript.tsx', 'typescriptreact' },
   }
 
   use {
     'neoclide/jsonc.vim',
-    opt = true,
     ft = { 'jsonc' },
   }
 
   use {
     'fatih/vim-go',
-    opt = true,
     ft = { 'go' },
     config = function()
       vim.g.go_disable_autoinstall = '1'
@@ -441,7 +429,6 @@ return packer.startup(function(use)
 
   use {
     'tpope/vim-rails',
-    opt = true,
     ft = { 'ruby' },
     config = function()
       maps.nmap('<Leader>1', ':A<CR>', maps.n)
@@ -450,31 +437,26 @@ return packer.startup(function(use)
 
   use {
     'joker1007/vim-ruby-heredoc-syntax',
-    opt = true,
     ft = { 'ruby' },
   }
 
   use {
     'joker1007/vim-markdown-quote-syntax',
-    opt = true,
     ft = { 'markdown' },
   }
 
   use {
     'tbastos/vim-lua',
-    opt = true,
     ft = { 'lua' },
   }
 
   use {
     'pantharshit00/vim-prisma',
-    opt = true,
     ft = { 'prisma' },
   }
 
   use {
     'ap/vim-css-color',
-    opt = true,
     ft = {
       'javascript',
       'javascript.jsx',
@@ -493,7 +475,6 @@ return packer.startup(function(use)
 
   use {
     'mechatroner/rainbow_csv',
-    opt = true,
     ft = { 'csv', 'tsv' },
   }
 
