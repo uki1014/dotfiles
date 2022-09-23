@@ -1,4 +1,5 @@
--- NOTE: keymapを先に読み込まないとdein.tomlのpluginたちのLeaderが効かない
 require('keymap')
-require('plugins/dein')
+require('plugins')
 require('config')
+
+vim.cmd[[autocmd BufWritePost plugins.lua PackerCompile]]
