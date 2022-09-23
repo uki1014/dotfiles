@@ -7,3 +7,4 @@ Session.vim
 token.fish
 *.log
 memo
+packer_compiled.lua
