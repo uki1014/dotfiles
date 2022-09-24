@@ -370,8 +370,13 @@ return packer.startup(function(use)
       'nvim-lua/plenary.nvim'
     },
     config = function()
-      require('gitsigns').setup()
-      maps.nmap('<Leader>gl', ':lua require("gitsigns").blame_line({ full = true })<CR>', maps.ns)
+      local gitsigns = require('gitsigns')
+      gitsigns.setup()
+      maps.nmap('<Leader>gl', function()
+        gitsigns.blame_line({
+          full = true
+        })
+      end, maps.ns)
     end
   }
 
@@ -467,10 +472,15 @@ return packer.startup(function(use)
   use {
     'windwp/nvim-spectre',
     config = function()
-      require('spectre').setup()
+      local spectre = require('spectre')
+      spectre.setup()
 
-      maps.nmap('<Leader>m', '<cmd>lua require("spectre").open_visual({select_word=true})<CR>', maps.ns)
-      maps.nmap('<Leader>w', '<cmd>lua require("spectre").open_visual()<CR>', maps.ns)
+      maps.nmap('<Leader>m', function()
+        spectre.open_visual({
+          select_word = true
+        })
+      end, maps.ns)
+      maps.nmap('<Leader>w', function() spectre.open_visual() end, maps.ns)
     end
   }
 
