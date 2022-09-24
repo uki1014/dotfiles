@@ -228,21 +228,21 @@ return packer.startup(function(use)
 
       maps.nmap(';f', function()
         builtin.find_files({
-          find_command = 'rg',
+          find_command = rg,
           ignore_case = true,
           hidden = true,
         })
       end, maps.ns)
       maps.nmap(';r', function()
         builtin.live_grep({
-          find_command = 'rg',
+          find_command = rg,
           ignore_case = true,
           hidden = true,
         })
       end, maps.ns)
       maps.nmap(';;', function()
         builtin.grep_string({
-          find_command = 'rg',
+          find_command = rg,
           ignore_case = true,
           hidden = true,
         })
@@ -256,7 +256,7 @@ return packer.startup(function(use)
       -- only ruby
       maps.nmap(';h', function()
         builtin.find_files({
-          find_command = 'rg',
+          find_command = rg,
           ignore_case = true,
           hidden = true,
           type = ruby
@@ -264,7 +264,7 @@ return packer.startup(function(use)
       end, maps.ns)
       maps.nmap(';hr', function()
         builtin.live_grep({
-          find_command = 'rg',
+          find_command = rg,
           ignore_case = true,
           hidden = true,
           additional_args = function() return { '--type=ruby' } end
@@ -274,7 +274,7 @@ return packer.startup(function(use)
       -- ignore spec directory
       maps.nmap(';w', function()
         builtin.find_files({
-          find_command = 'rg',
+          find_command = rg,
           ignore_case = true,
           hidden = true,
           type = ruby,
@@ -283,7 +283,7 @@ return packer.startup(function(use)
       end, maps.ns)
       maps.nmap(';wr', function()
         builtin.live_grep({
-          find_command = 'rg',
+          find_command = rg,
           ignore_case = true,
           hidden = true,
           glob = '!spec',
@@ -294,7 +294,7 @@ return packer.startup(function(use)
       -- only javascript / typescript
       maps.nmap(';j', function()
         builtin.find_files({
-          find_command = 'rg',
+          find_command = rg,
           ignore_case = true,
           hidden = true,
           type = { 'js', 'ts' }
@@ -302,7 +302,7 @@ return packer.startup(function(use)
       end, maps.ns)
       maps.nmap(';jr', function()
         builtin.live_grep({
-          find_command = 'rg',
+          find_command = rg,
           ignore_case = true,
           hidden = true,
           additional_args = function() return { '--type=js', '--type=ts' } end
@@ -344,6 +344,7 @@ return packer.startup(function(use)
         },
         extensions = {
           file_browser = {
+            theme = 'dropdown',
             hijack_netrw = true,
             mappings = {
               n = {
