@@ -1,8 +1,6 @@
 local status, lspconfig = pcall(require, 'lspconfig')
 if (not status) then return end
 
-local protocol = require('vim.lsp.protocol')
-
 local on_attach = function(client, bufnr)
   -- LSPサーバーのフォーマット機能を無効にするには下の行をコメントアウト
   -- 例えばtypescript-language-serverにはコードのフォーマット機能が付いているが代わりにprettierでフォーマットしたいときなどに使う
@@ -31,35 +29,6 @@ require("mason-lspconfig").setup_handlers {
       on_attach = on_attach
     }
   end,
-}
-
--- "default": "\uf29c"
-protocol.CompletionItemKind = {
-  'ue612', -- Text
-  'uf09a', -- Method
-  'u0192', -- Function
-  'uf475', -- Constructor
-  'ue624', -- Field
-  'ue79b', -- Variable
-  'uf0e8', -- Class
-  'uf417', -- Interface
-  'uf40d', -- Module
-  'ue624', -- Property
-  'uf475', -- Unit
-  'uf89f', -- Value
-  'uf435', -- Enum
-  'uf1de', -- Keyword
-  'ue60b﬌', -- Snippet
-  'ue22b', -- Color
-  'uf723', -- File
-  'ufa46', -- Reference
-  'uf114', -- Folder
-  'uf02b', -- EnumMember
-  'uf8fe', -- Constant
-  'ufb44', -- Struct
-  'ufacd', -- Event
-  'u03a8', -- Operator
-  'uf728', -- TypeParameter
 }
 
 local capabilities = require('cmp_nvim_lsp').update_capabilities(
