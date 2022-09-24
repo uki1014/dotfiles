@@ -438,12 +438,12 @@ return packer.startup(function(use)
   }
 
   use {
-    'thaerkh/vim-workspace',
+    'rmagatti/auto-session',
     config = function()
-      vim.g.workspace_autocreate = '1'
-      vim.g.workspace_undodir = os.getenv('HOME')..'/.config/nvim/sessions/'
-      vim.g.workspace_autosave = '0'
-      vim.g.workspace_session_directory = os.getenv('HOME')..'/.config/nvim/sessions/'
+      require("auto-session").setup {
+        log_level = "error",
+        auto_session_suppress_dirs = { "~/" },
+      }
     end
   }
 
