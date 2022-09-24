@@ -26,11 +26,11 @@ return packer.startup(function(use)
   use 'neovim/nvim-lspconfig'
   use 'williamboman/mason.nvim'
   use 'williamboman/mason-lspconfig.nvim'
-  use "hrsh7th/nvim-cmp"
-  use "hrsh7th/cmp-nvim-lsp"
-  use "hrsh7th/cmp-vsnip"
-  use "hrsh7th/cmp-buffer"
-  use "hrsh7th/vim-vsnip"
+  use 'hrsh7th/nvim-cmp'
+  use 'hrsh7th/cmp-nvim-lsp'
+  use 'hrsh7th/cmp-vsnip'
+  use 'hrsh7th/cmp-buffer'
+  use 'hrsh7th/vim-vsnip'
   use {
     'nvim-treesitter/nvim-treesitter',
     run = function()
@@ -84,9 +84,9 @@ return packer.startup(function(use)
   use {
     'rmagatti/auto-session',
     config = function()
-      require("auto-session").setup {
+      require('auto-session').setup {
         auto_session_suppress_dirs = { '~/Projects', '~/Downloads', '~/' },
-        log_level = "error",
+        log_level = 'error',
         auto_session_enable_last_session = false,
         auto_session_root_dir = vim.fn.stdpath('data') .. '/sessions/',
         auto_session_enabled = true,
