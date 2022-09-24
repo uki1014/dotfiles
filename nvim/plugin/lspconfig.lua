@@ -2,10 +2,6 @@ local status, lspconfig = pcall(require, 'lspconfig')
 if (not status) then return end
 
 local on_attach = function(client, bufnr)
-  -- LSPサーバーのフォーマット機能を無効にするには下の行をコメントアウト
-  -- 例えばtypescript-language-serverにはコードのフォーマット機能が付いているが代わりにprettierでフォーマットしたいときなどに使う
-  client.resolved_capabilities.document_formatting = false
-
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
 
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
@@ -22,7 +18,22 @@ local on_attach = function(client, bufnr)
 end
 
 require("mason").setup()
-require("mason-lspconfig").setup()
+require("mason-lspconfig").setup({
+  ensure_installed = {
+    'html-lsp',
+    'css-lsp',
+    'deno',
+    'dockerls',
+    'sumneko_lua',
+    'typescript-language-server',
+    'solargraph',
+    'yamlls',
+    'gopls',
+    'sqls',
+    'eslint_d',
+    'prettierd'
+  }
+})
 require("mason-lspconfig").setup_handlers {
   function(server_name)
     require("lspconfig")[server_name].setup {
@@ -37,6 +48,12 @@ local capabilities = require('cmp_nvim_lsp').update_capabilities(
 
 lspconfig.flow.setup {
   on_attach = on_attach,
+  settings = { document_formatting = false },
+  capabilities = capabilities
+}
+
+lspconfig.dockerls.setup {
+  on_attach = on_attach,
   capabilities = capabilities
 }
 
@@ -45,12 +62,14 @@ lspconfig.tsserver.setup {
   filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
   cmd = { "typescript-language-server", "--stdio" },
   root_dir = lspconfig.util.root_pattern("package.json", "tsconfig.json", "jsconfig.json"),
+  settings = { document_formatting = false },
   capabilities = capabilities
 }
 
 lspconfig.solargraph.setup{
   cmd = { 'bundle', 'exec', 'solargraph', 'stdio' },
   filetypes = {"ruby", "rakefile", "rspec"},
+  settings = { document_formatting = false },
   capabilities = capabilities
 }
 
