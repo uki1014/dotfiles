@@ -150,6 +150,26 @@ return packer.startup(function(use)
     ft = { 'javascript', 'javascript.jsx', 'javascriptreact', 'typescript', 'typescript.tsx', 'typescriptreact' },
   }
   use {
+    'MunifTanjim/prettier.nvim',
+    ft = { 'javascript', 'javascript.jsx', 'javascriptreact', 'typescript', 'typescript.tsx', 'typescriptreact'  },
+    config = function()
+      require('prettier').setup({
+        bin = 'prettierd',
+        filetypes = {
+          'css',
+          'javascript',
+          'javascriptreact',
+          'javascript.jsx',
+          'typescript',
+          'typescriptreact',
+          'typescript.tsx',
+          'json',
+          'scss',
+        }
+      })
+    end
+  }
+  use {
     'leafgarland/typescript-vim',
     ft = { 'typescript', 'typescript.tsx', 'typescriptreact' },
   }
