@@ -2,6 +2,10 @@ local status, lspconfig = pcall(require, 'lspconfig')
 if (not status) then return end
 
 local on_attach = function(client, bufnr)
+  if client.name == 'tsserver' or client.name == 'solargraph' or client.name == 'flow' then
+    client.resolved_capabilities.document_formatting = false
+  end
+
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
 
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
@@ -25,7 +29,7 @@ require("mason-lspconfig").setup({
     'deno',
     'dockerls',
     'sumneko_lua',
-    'typescript-language-server',
+    'tsserver',
     'solargraph',
     'yamlls',
     'gopls',
@@ -34,58 +38,55 @@ require("mason-lspconfig").setup({
     'prettierd'
   }
 })
-require("mason-lspconfig").setup_handlers {
+require("mason-lspconfig").setup_handlers({
   function(server_name)
-    require("lspconfig")[server_name].setup {
+    require("lspconfig")[server_name].setup({
       on_attach = on_attach
-    }
+    })
   end,
-}
+})
 
 local capabilities = require('cmp_nvim_lsp').update_capabilities(
   vim.lsp.protocol.make_client_capabilities()
 )
 
-lspconfig.flow.setup {
-  on_attach = on_attach,
-  settings = { document_formatting = false },
-  capabilities = capabilities
-}
-
-lspconfig.dockerls.setup {
+lspconfig.flow.setup({
   on_attach = on_attach,
   capabilities = capabilities
-}
+})
 
-lspconfig.tsserver.setup {
+lspconfig.dockerls.setup({
+  on_attach = on_attach,
+  capabilities = capabilities
+})
+
+lspconfig.tsserver.setup({
   on_attach = on_attach,
   filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
   cmd = { "typescript-language-server", "--stdio" },
   root_dir = lspconfig.util.root_pattern("package.json", "tsconfig.json", "jsconfig.json"),
-  settings = { document_formatting = false },
   capabilities = capabilities
-}
+})
 
-lspconfig.solargraph.setup{
+lspconfig.solargraph.setup({
   cmd = { 'bundle', 'exec', 'solargraph', 'stdio' },
   filetypes = {"ruby", "rakefile", "rspec"},
-  settings = { document_formatting = false },
   capabilities = capabilities
-}
+})
 
-lspconfig.yamlls.setup{
+lspconfig.yamlls.setup({
   capabilities = capabilities
-}
+})
 
-lspconfig.gopls.setup{
+lspconfig.gopls.setup({
   capabilities = capabilities
-}
+})
 
-lspconfig.denols.setup{
+lspconfig.denols.setup({
   root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc")
-}
+})
 
-lspconfig.sumneko_lua.setup {
+lspconfig.sumneko_lua.setup({
   on_attach = on_attach,
   settings = {
     Lua = {
@@ -101,7 +102,7 @@ lspconfig.sumneko_lua.setup {
       },
     },
   },
-}
+})
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
