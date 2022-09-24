@@ -57,7 +57,7 @@ end
 
 Maps.nmap(';f', function()
   builtin.find_files({
-    find_command = 'rg',
+    find_command = rg,
     ignore_case = true,
     hidden = true,
   })
