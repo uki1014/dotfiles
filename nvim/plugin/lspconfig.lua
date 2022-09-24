@@ -1,4 +1,4 @@
-local status, nvim_lsp = pcall(require, 'lspconfig')
+local status, lspconfig = pcall(require, 'lspconfig')
 if (not status) then return end
 
 local protocol = require('vim.lsp.protocol')
@@ -15,12 +15,12 @@ local on_attach = function(client, bufnr)
   --Enable completion triggered by <c-x><c-o>
   buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
-  buf_set_keymap('n', 'gD', function() vim.lsp.buf.declaration() end, Maps.ns)
-  buf_set_keymap('n', 'gd', function() vim.lsp.buf.definition() end, Maps.ns)
-  buf_set_keymap('n', 'gi', function() vim.lsp.buf.implementation() end, Maps.ns)
-  buf_set_keymap('n', 'K', function() vim.lsp.buf.hover() end, Maps.ns)
-  buf_set_keymap("n", "gr", function() vim.lsp.buf.references() end, Maps.none)
-  buf_set_keymap("n", "<space>D", function() vim.lsp.buf.type_definition() end, Maps.none)
+  buf_set_keymap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', Maps.ns)
+  buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', Maps.ns)
+  buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', Maps.ns)
+  buf_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', Maps.ns)
+  buf_set_keymap("n", "gr", '<cmd>lua vim.lsp.buf.references()<CR>', Maps.none)
+  buf_set_keymap("n", "<space>D", '<cmd>lua vim.lsp.buf.type_definition()<CR>', Maps.none)
 end
 
 require("mason").setup()
@@ -62,28 +62,42 @@ protocol.CompletionItemKind = {
   'uf728', -- TypeParameter
 }
 
--- Set up completion using nvim_cmp with LSP source
 local capabilities = require('cmp_nvim_lsp').update_capabilities(
   vim.lsp.protocol.make_client_capabilities()
 )
 
-nvim_lsp.flow.setup {
+lspconfig.flow.setup {
   on_attach = on_attach,
   capabilities = capabilities
 }
 
-nvim_lsp.tsserver.setup {
+lspconfig.tsserver.setup {
   on_attach = on_attach,
   filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
   cmd = { "typescript-language-server", "--stdio" },
+  root_dir = lspconfig.util.root_pattern("package.json", "tsconfig.json", "jsconfig.json"),
   capabilities = capabilities
 }
 
-nvim_lsp.sourcekit.setup {
-  on_attach = on_attach,
+lspconfig.solargraph.setup{
+  cmd = { 'bundle', 'exec', 'solargraph', 'stdio' },
+  filetypes = {"ruby", "rakefile", "rspec"},
+  capabilities = capabilities
 }
 
-nvim_lsp.sumneko_lua.setup {
+lspconfig.yamlls.setup{
+  capabilities = capabilities
+}
+
+lspconfig.gopls.setup{
+  capabilities = capabilities
+}
+
+lspconfig.denols.setup{
+  root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc")
+}
+
+lspconfig.sumneko_lua.setup {
   on_attach = on_attach,
   settings = {
     Lua = {
@@ -94,7 +108,7 @@ nvim_lsp.sumneko_lua.setup {
 
       workspace = {
         -- Make the server aware of Neovim runtime files
-        library = vim.api.nvim_get_runtime_file("", true),
+        library = vim.api.nvim_get_runtime_file('', true),
         checkThirdParty = false
       },
     },
