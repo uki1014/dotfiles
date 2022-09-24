@@ -202,7 +202,8 @@ return packer.startup(function(use)
     config = function()
       local telescope = require('telescope')
       telescope.load_extension("file_browser")
-      local telescope_actions = require('telescope.actions')
+      local actions = require('telescope.actions')
+      local builtin = require('telescope.builtin')
       local file_browser_actions = telescope.extensions.file_browser.actions
 
       local function telescope_buffer_dir()
@@ -225,26 +226,88 @@ return packer.startup(function(use)
         })
       end
 
-      maps.nmap(';f', ':Telescope find_files find_command=rg,--ignore-case,--hidden,--files<CR>', maps.ns)
-      maps.nmap(';r', ':Telescope live_grep find_command=rg,--ignore-case,--hidden,--files<CR>', maps.ns)
-      maps.nmap(';;', ':Telescope grep_string find_command=rg,--ignore-case,--hidden,--files<CR>', maps.ns)
-      maps.nmap(';m', ':lua require("telescope.builtin").resume()<CR>', maps.ns)
-      maps.nmap(';c', ':lua require("telescope.builtin").command_history{}<CR>', maps.ns)
-      maps.nmap(';e', ':Telescope buffers<CR>', maps.ns)
-      maps.nmap(';t', ':Telescope man_pages<CR>', maps.ns)
-      maps.nmap(';g', ':Telescope git_status<CR>', maps.ns)
+      maps.nmap(';f', function()
+        builtin.find_files({
+          find_command = 'rg',
+          ignore_case = true,
+          hidden = true,
+        })
+      end, maps.ns)
+      maps.nmap(';r', function()
+        builtin.live_grep({
+          find_command = 'rg',
+          ignore_case = true,
+          hidden = true,
+        })
+      end, maps.ns)
+      maps.nmap(';;', function()
+        builtin.grep_string({
+          find_command = 'rg',
+          ignore_case = true,
+          hidden = true,
+        })
+      end, maps.ns)
+      maps.nmap(';m', function() builtin.resume() end, maps.ns)
+      maps.nmap(';c', function() builtin.command_history() end, maps.ns)
+      maps.nmap(';e', function() builtin.buffers() end, maps.ns)
+      maps.nmap(';t', function() builtin.man_pages() end, maps.ns)
+      maps.nmap(';g', function() builtin.git_status() end, maps.ns)
 
       -- only ruby
-      maps.nmap(';h', ':Telescope find_files find_command=rg,--ignore-case,--hidden,--files,--type=ruby<CR>', maps.ns)
-      maps.nmap(';hr', ':lua require("telescope.builtin").live_grep({ additional_args = function() return { "--type=ruby" } end })<CR>', maps.ns)
+      maps.nmap(';h', function()
+        builtin.find_files({
+          find_command = 'rg',
+          ignore_case = true,
+          hidden = true,
+          type = ruby
+        })
+      end, maps.ns)
+      maps.nmap(';hr', function()
+        builtin.live_grep({
+          find_command = 'rg',
+          ignore_case = true,
+          hidden = true,
+          additional_args = function() return { '--type=ruby' } end
+        })
+      end, maps.ns)
 
       -- ignore spec directory
-      maps.nmap(';w', ':Telescope find_files find_command=rg,--ignore-case,--hidden,--files,--type=ruby,--glob=!spec<CR>', maps.ns)
-      maps.nmap(';wr', ':lua require("telescope.builtin").live_grep({ additional_args = function() return { "--type=ruby", "--glob=!spec" } end })<CR>', maps.ns)
+      maps.nmap(';w', function()
+        builtin.find_files({
+          find_command = 'rg',
+          ignore_case = true,
+          hidden = true,
+          type = ruby,
+          glob = '!spec',
+        })
+      end, maps.ns)
+      maps.nmap(';wr', function()
+        builtin.live_grep({
+          find_command = 'rg',
+          ignore_case = true,
+          hidden = true,
+          glob = '!spec',
+          additional_args = function() return { '--type=ruby' } end
+        })
+      end, maps.ns)
 
       -- only javascript / typescript
-      maps.nmap(';j', ':Telescope find_files find_command=rg,--ignore-case,--hidden,--files,--type=js,--type=ts<CR>', maps.ns)
-      maps.nmap(';jr', ':lua require("telescope.builtin").live_grep({ additional_args = function() return { "--type=js", "--type=ts" } end })<CR>', maps.ns)
+      maps.nmap(';j', function()
+        builtin.find_files({
+          find_command = 'rg',
+          ignore_case = true,
+          hidden = true,
+          type = { 'js', 'ts' }
+        })
+      end, maps.ns)
+      maps.nmap(';jr', function()
+        builtin.live_grep({
+          find_command = 'rg',
+          ignore_case = true,
+          hidden = true,
+          additional_args = function() return { '--type=js', '--type=ts' } end
+        })
+      end, maps.ns)
 
       -- Telescope-file-browser
       maps.nmap(
@@ -271,11 +334,11 @@ return packer.startup(function(use)
           initial_mode = 'insert',
           mappings = {
             i = {
-              ['<Down>'] = telescope_actions.cycle_history_next,
-              ['<Up>'] = telescope_actions.cycle_history_prev,
+              ['<Down>'] = actions.cycle_history_next,
+              ['<Up>'] = actions.cycle_history_prev,
             },
             n = {
-              ['q'] = telescope_actions.close
+              ['q'] = actions.close
             },
           },
         },
