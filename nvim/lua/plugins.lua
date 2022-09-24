@@ -20,6 +20,7 @@ return packer.startup(function(use)
       maps.nmap('<Leader>ud', ':PackerSync<CR>', maps.n)
       maps.nmap('<Leader>uy', ':PackerInstall<CR>', maps.n)
       maps.nmap('<Leader>uc', ':PackerClean<CR>', maps.n)
+      maps.nmap('<Leader>us', ':PackerStatus<CR>', maps.n)
     end
   }
   use 'neovim/nvim-lspconfig'
