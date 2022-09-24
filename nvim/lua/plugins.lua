@@ -345,9 +345,13 @@ return packer.startup(function(use)
         extensions = {
           file_browser = {
             theme = 'dropdown',
+            layout_config = {
+              width = 150,
+            },
             hijack_netrw = true,
             mappings = {
               n = {
+                ["N"] = file_browser_actions.create,
                 ['h'] = file_browser_actions.goto_parent_dir,
               }
             }
