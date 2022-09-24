@@ -7,10 +7,10 @@ vim.g.NERDDefaultAlign = 'left'
 -- fishのコメントアウトが対応していなかったので追加
 vim.g.NERDCustomDelimiters = { fish = { left = '#' } }
 
-maps.nmap('<Leader>f', '<Plug>NERDCommenterToggle', maps.none)
-maps.vmap('<Leader>f', '<Plug>NERDCommenterToggle', maps.none)
+Maps.nmap('<Leader>f', '<Plug>NERDCommenterToggle', Maps.none)
+Maps.vmap('<Leader>f', '<Plug>NERDCommenterToggle', Maps.none)
 -- コメントアウトしてインサートモード
-maps.nmap('<Leader>r', '<Plug>NERDCommenterAppend', maps.none)
+Maps.nmap('<Leader>r', '<Plug>NERDCommenterAppend', Maps.none)
 -- ブロックコメントアウト
-maps.nmap('<Leader>bf', '<Plug>NERDCommenterSexy', maps.none)
-maps.vmap('<Leader>bf', '<Plug>NERDCommenterSexy', maps.none)
+Maps.nmap('<Leader>bf', '<Plug>NERDCommenterSexy', Maps.none)
+Maps.vmap('<Leader>bf', '<Plug>NERDCommenterSexy', Maps.none)

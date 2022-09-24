@@ -1,7 +1,8 @@
 require('keymap')
 require('plugins')
 require('config')
-maps = require('maps')
+
+Maps = require('maps')
 
 vim.cmd[[autocmd BufWritePost plugins.lua PackerCompile]]
 

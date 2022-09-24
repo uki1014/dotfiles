@@ -1,115 +1,113 @@
-local maps = require('maps')
-
 vim.g.mapleader = ","
 
-maps.nmap('<S-C-p>ud', '"0p', maps.n)
-maps.nmap('<Leader>d', '"_d', maps.n)
-maps.nmap('x', '"_x', maps.n)
+Maps.nmap('<S-C-p>ud', '"0p', Maps.n)
+Maps.nmap('<Leader>d', '"_d', Maps.n)
+Maps.nmap('x', '"_x', Maps.n)
 
 -- 補完表示時のEnterで改行をしない
-maps.imap('<CR>', 'pumvisible() ? "<C-y>" : "<CR>"', maps.ne)
-maps.imap('<C-n>', 'pumvisible() ? "<Down>" : "<C-n>"', maps.ne)
-maps.imap('<C-p>', 'pumvisible() ? "<Up>" : "<C-p>"', maps.ne)
+Maps.imap('<CR>', 'pumvisible() ? "<C-y>" : "<CR>"', Maps.ne)
+Maps.imap('<C-n>', 'pumvisible() ? "<Down>" : "<C-n>"', Maps.ne)
+Maps.imap('<C-p>', 'pumvisible() ? "<Up>" : "<C-p>"', Maps.ne)
 
 -- よく使うText挿入
 -- debugger
-maps.nmap('<Leader>de', ':call append(line("."), "debugger;")<CR>', maps.n)
+Maps.nmap('<Leader>de', ':call append(line("."), "debugger;")<CR>', Maps.n)
 -- console.log
-maps.nmap('<Leader>log', ':call append(line("."), "console.log();")<CR>', maps.n)
+Maps.nmap('<Leader>log', ':call append(line("."), "console.log();")<CR>', Maps.n)
 -- binding.pry
-maps.nmap('<Leader>bi', ':call append(line("."), "binding.pry")<CR>', maps.n)
+Maps.nmap('<Leader>bi', ':call append(line("."), "binding.pry")<CR>', Maps.n)
 
 -- yank
-maps.nmap('Y', 'y$', maps.n)
+Maps.nmap('Y', 'y$', Maps.n)
 
 -- move lines
-maps.nmap('gj', 'ddp', maps.n)
-maps.nmap('gk', 'dd2kp', maps.n)
+Maps.nmap('gj', 'ddp', Maps.n)
+Maps.nmap('gk', 'dd2kp', Maps.n)
 
 -- current cursorより前を削除
-maps.nmap('fd', 'v^d', maps.n)
+Maps.nmap('fd', 'v^d', Maps.n)
 
 -- bufferの再読み込み
-maps.nmap('<Leader>e', ':edit<CR>', maps.n)
-maps.nmap('<Leader>te', ':tabdo edit<CR>', maps.n)
+Maps.nmap('<Leader>e', ':edit<CR>', Maps.n)
+Maps.nmap('<Leader>te', ':tabdo edit<CR>', Maps.n)
 
 -- set number
-maps.nmap('<Leader>s', ':set number<CR>', maps.ns)
+Maps.nmap('<Leader>s', ':set number<CR>', Maps.ns)
 -- set nonumber
-maps.nmap('<Leader>ns', ':set nonumber<CR>', maps.ns)
+Maps.nmap('<Leader>ns', ':set nonumber<CR>', Maps.ns)
 
 -- redo
-maps.nmap('<S-u>', '<C-r>', maps.n)
+Maps.nmap('<S-u>', '<C-r>', Maps.n)
 
 -- 現在開いているファイルのパスをcopyする
-maps.nmap('<Leader>b', ':lua CopyCurrentPath()<CR>', maps.ns)
+Maps.nmap('<Leader>b', ':lua CopyCurrentPath()<CR>', Maps.ns)
 
 -- nvimのprofile取る
-maps.nmap('<Leader>ag', ':lua GetProfile()<CR>', maps.ns)
+Maps.nmap('<Leader>ag', ':lua GetProfile()<CR>', Maps.ns)
 
 -- 外部コマンド
-maps.nmap('<Leader>ca', ':!', maps.n)
+Maps.nmap('<Leader>ca', ':!', Maps.n)
 
 -- [[
 -- 置換
 --  /g: 対象全て
 --  /c: 1つずつ確認しながら
 -- ]]
-maps.nmap('<Leader>c', ':%s//', maps.n)
+Maps.nmap('<Leader>c', ':%s//', Maps.n)
 
 -- 文字列一括削除
-maps.nmap('<Leader>d', ':g//d', maps.n)
+Maps.nmap('<Leader>d', ':g//d', Maps.n)
 
 -- 保存・終了
-maps.nmap(';s', ':w<CR>', maps.n)
-maps.nmap(';d', ':q!<CR>', maps.n)
-maps.nmap(';a', ':qa<CR>', maps.n)
+Maps.nmap(';s', ':w<CR>', Maps.n)
+Maps.nmap(';d', ':q!<CR>', Maps.n)
+Maps.nmap(';a', ':qa<CR>', Maps.n)
 
 -- messages
-maps.nmap(';h', ':messages<CR>', maps.n)
+Maps.nmap(';h', ':messages<CR>', Maps.n)
 
 -- 改行してnormal mode
-maps.nmap('<Space><CR>', 'o<ESC>', maps.ns)
+Maps.nmap('<Space><CR>', 'o<ESC>', Maps.ns)
 
 -- open init.lua
-maps.nmap('<Leader>.', ':new ~/.config/nvim/init.lua<CR>', maps.n)
-maps.nmap('<Leader>vi', ':source~/.config/nvim/init.lua<CR>', maps.n)
+Maps.nmap('<Leader>.', ':new ~/.config/nvim/init.lua<CR>', Maps.n)
+Maps.nmap('<Leader>vi', ':source~/.config/nvim/init.lua<CR>', Maps.n)
 
 -- UpdateRemotePlugins
-maps.nmap('<Leader>ur', ':UpdateRemotePlugins<CR>', maps.n)
+Maps.nmap('<Leader>ur', ':UpdateRemotePlugins<CR>', Maps.n)
 
 -- backspaceキーで削除
-maps.nmap('dw', 'vb"_d', maps.ns)
+Maps.nmap('dw', 'vb"_d', Maps.ns)
 
 -- Select All
-maps.nmap('aa', 'gg<S-v>G', maps.s)
+Maps.nmap('aa', 'gg<S-v>G', Maps.s)
 
 -- Open BufExplorer
-maps.nmap('\\', '\be', maps.none)
+Maps.nmap('\\', '\be', Maps.none)
 
 -- ハイライトを解除する
-maps.nmap('-', ':noh<CR>', maps.ns)
+Maps.nmap('-', ':noh<CR>', Maps.ns)
 
 -- syntax highlight再読み込み
-maps.nmap('<F12>', ':syntax sync fromstart<CR>', maps.n)
+Maps.nmap('<F12>', ':syntax sync fromstart<CR>', Maps.n)
 
 -- fold
-maps.map('fz', 'zf', maps.s) -- fold
-maps.nmap('zf', 'za', maps.s) -- toggle fold
-maps.nmap('zs', ':mkview<CR>', maps.s)
-maps.nmap('zl', ':loadview<CR>', maps.s)
+Maps.map('fz', 'zf', Maps.s) -- fold
+Maps.nmap('zf', 'za', Maps.s) -- toggle fold
+Maps.nmap('zs', ':mkview<CR>', Maps.s)
+Maps.nmap('zl', ':loadview<CR>', Maps.s)
 
 -- Windows
-maps.nmap('ss', ':split<Return><C-w>w', maps.none)
-maps.nmap('sv', ':vsplit<Return><C-w>w', maps.none)
+Maps.nmap('ss', ':split<Return><C-w>w', Maps.none)
+Maps.nmap('sv', ':vsplit<Return><C-w>w', Maps.none)
 -- Move Window
-maps.map('sh', '<C-w>h', maps.s)
-maps.map('sk', '<C-w>k', maps.s)
-maps.map('sj', '<C-w>j', maps.s)
-maps.map('sl', '<C-w>l', maps.s)
+Maps.map('sh', '<C-w>h', Maps.s)
+Maps.map('sk', '<C-w>k', Maps.s)
+Maps.map('sj', '<C-w>j', Maps.s)
+Maps.map('sl', '<C-w>l', Maps.s)
 -- Resize Window
-maps.nmap('<Leader>h', '<C-w><', maps.s)
-maps.nmap('<Leader>k', '<C-w>>', maps.s)
-maps.nmap('<Leader>j', '<C-w>+', maps.s)
-maps.nmap('<Leader>l', '<C-w>-', maps.s)
+Maps.nmap('<Leader>h', '<C-w><', Maps.s)
+Maps.nmap('<Leader>k', '<C-w>>', Maps.s)
+Maps.nmap('<Leader>j', '<C-w>+', Maps.s)
+Maps.nmap('<Leader>l', '<C-w>-', Maps.s)
 

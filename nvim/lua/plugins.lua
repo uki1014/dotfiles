@@ -16,11 +16,11 @@ return packer.startup(function(use)
   use {
     'wbthomason/packer.nvim',
     config = function()
-      maps.nmap('<Leader>uf', ':PackerCompile<CR>', maps.n)
-      maps.nmap('<Leader>ud', ':PackerSync<CR>', maps.n)
-      maps.nmap('<Leader>uy', ':PackerInstall<CR>', maps.n)
-      maps.nmap('<Leader>uc', ':PackerClean<CR>', maps.n)
-      maps.nmap('<Leader>us', ':PackerStatus<CR>', maps.n)
+      Maps.nmap('<Leader>uf', ':PackerCompile<CR>', Maps.n)
+      Maps.nmap('<Leader>ud', ':PackerSync<CR>', Maps.n)
+      Maps.nmap('<Leader>uy', ':PackerInstall<CR>', Maps.n)
+      Maps.nmap('<Leader>uc', ':PackerClean<CR>', Maps.n)
+      Maps.nmap('<Leader>us', ':PackerStatus<CR>', Maps.n)
     end
   }
   use 'neovim/nvim-lspconfig'
@@ -73,7 +73,7 @@ return packer.startup(function(use)
     config = function()
       vim.g.previm_open_cmd = 'open -a "Google Chrome"'
 
-      maps.nmap('<Leader>a', ':PrevimOpen<CR>', maps.n)
+      Maps.nmap('<Leader>a', ':PrevimOpen<CR>', Maps.n)
     end
   }
   use {
@@ -91,13 +91,13 @@ return packer.startup(function(use)
       vim.g.better_whitespace_guicolor = 'darkred'
       vim.g.strip_whitespace_on_save = 0
 
-      maps.nmap('<Leader>y', ':StripWhitespace<CR>', maps.n)
+      Maps.nmap('<Leader>y', ':StripWhitespace<CR>', Maps.n)
     end
   }
   use {
     'numToStr/BufOnly.nvim',
     config = function()
-      maps.nmap('<Leader>ba', ':BufOnly<CR>', maps.n)
+      Maps.nmap('<Leader>ba', ':BufOnly<CR>', Maps.n)
     end
   }
   use 'windwp/nvim-spectre'
@@ -139,14 +139,14 @@ return packer.startup(function(use)
     ft = { 'go' },
     config = function()
       vim.g.go_disable_autoinstall = '1'
-      maps.nmap('<Leader>gr', ':GoRun<CR>', maps.n)
+      Maps.nmap('<Leader>gr', ':GoRun<CR>', Maps.n)
     end
   }
   use {
     'tpope/vim-rails',
     ft = { 'ruby' },
     config = function()
-      maps.nmap('<Leader>1', ':A<CR>', maps.n)
+      Maps.nmap('<Leader>1', ':A<CR>', Maps.n)
     end
   }
   use { 'joker1007/vim-ruby-heredoc-syntax', ft = { 'ruby' } }

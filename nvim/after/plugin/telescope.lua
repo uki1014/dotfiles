@@ -42,7 +42,6 @@ telescope.load_extension("file_browser")
 
 local function open_file_browser(initial_mode)
   telescope.extensions.file_browser.file_browser({
-    dir_icon = "",
     path = "%:p:h",
     cwd = telescope_buffer_dir(),
     respect_gitignore = false,
@@ -56,101 +55,101 @@ local function open_file_browser(initial_mode)
   })
 end
 
-maps.nmap(';f', function()
+Maps.nmap(';f', function()
   builtin.find_files({
-    find_command = rg,
+    find_command = 'rg',
     ignore_case = true,
     hidden = true,
   })
-end, maps.ns)
-maps.nmap(';r', function()
+end, Maps.ns)
+Maps.nmap(';r', function()
   builtin.live_grep({
-    find_command = rg,
+    find_command = 'rg',
     ignore_case = true,
     hidden = true,
   })
-end, maps.ns)
-maps.nmap(';;', function()
+end, Maps.ns)
+Maps.nmap(';;', function()
   builtin.grep_string({
-    find_command = rg,
+    find_command = 'rg',
     ignore_case = true,
     hidden = true,
   })
-end, maps.ns)
-maps.nmap(';m', function() builtin.resume() end, maps.ns)
-maps.nmap(';c', function() builtin.command_history() end, maps.ns)
-maps.nmap(';e', function() builtin.buffers() end, maps.ns)
-maps.nmap(';t', function() builtin.man_pages() end, maps.ns)
-maps.nmap(';g', function() builtin.git_status() end, maps.ns)
+end, Maps.ns)
+Maps.nmap(';m', function() builtin.resume() end, Maps.ns)
+Maps.nmap(';c', function() builtin.command_history() end, Maps.ns)
+Maps.nmap(';e', function() builtin.buffers() end, Maps.ns)
+Maps.nmap(';t', function() builtin.man_pages() end, Maps.ns)
+Maps.nmap(';g', function() builtin.git_status() end, Maps.ns)
 
 -- only ruby
-maps.nmap(';h', function()
+Maps.nmap(';h', function()
   builtin.find_files({
-    find_command = rg,
+    find_command = 'rg',
     ignore_case = true,
     hidden = true,
-    type = ruby
+    type = 'ruby'
   })
-end, maps.ns)
-maps.nmap(';hr', function()
+end, Maps.ns)
+Maps.nmap(';hr', function()
   builtin.live_grep({
-    find_command = rg,
+    find_command = 'rg',
     ignore_case = true,
     hidden = true,
     additional_args = function() return { '--type=ruby' } end
   })
-end, maps.ns)
+end, Maps.ns)
 
 -- ignore spec directory
-maps.nmap(';w', function()
+Maps.nmap(';w', function()
   builtin.find_files({
-    find_command = rg,
+    find_command = 'rg',
     ignore_case = true,
     hidden = true,
-    type = ruby,
+    type = 'ruby',
     glob = '!spec',
   })
-end, maps.ns)
-maps.nmap(';wr', function()
+end, Maps.ns)
+Maps.nmap(';wr', function()
   builtin.live_grep({
-    find_command = rg,
+    find_command = 'rg',
     ignore_case = true,
     hidden = true,
     glob = '!spec',
     additional_args = function() return { '--type=ruby' } end
   })
-end, maps.ns)
+end, Maps.ns)
 
 -- only javascript / typescript
-maps.nmap(';j', function()
+Maps.nmap(';j', function()
   builtin.find_files({
-    find_command = rg,
+    find_command = 'rg',
     ignore_case = true,
     hidden = true,
     type = { 'js', 'ts' }
   })
-end, maps.ns)
-maps.nmap(';jr', function()
+end, Maps.ns)
+Maps.nmap(';jr', function()
   builtin.live_grep({
-    find_command = rg,
+    find_command = 'rg',
     ignore_case = true,
     hidden = true,
     additional_args = function() return { '--type=js', '--type=ts' } end
   })
-end, maps.ns)
+end, Maps.ns)
 
 -- Telescope-file-browser
-maps.nmap('sf', function() open_file_browser('normal') end, maps.n)
+Maps.nmap('sf', function() open_file_browser('normal') end, Maps.n)
 
 -- tab
-maps.nmap(
+Maps.nmap(
   'te',
   function()
     vim.cmd('tabedit')
     open_file_browser('insert')
   end,
-  maps.n
+  Maps.n
 )
 -- Tabs
-maps.nmap('fl', ':tabnext<Return>', maps.s)
-maps.nmap('fj', ':tabprev<Return>', maps.s)
+Maps.nmap('fl', ':tabnext<Return>', Maps.s)
+Maps.nmap('fj', ':tabprev<Return>', Maps.s)
