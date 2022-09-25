@@ -102,6 +102,18 @@ return packer.startup(function(use)
 		end,
 	})
 	use({
+		"folke/trouble.nvim",
+		config = function()
+			require("trouble").setup({
+				icons = false,
+				fold_open = "v",
+				fold_closed = ">",
+				use_diagnostic_signs = true,
+			})
+			Maps.nmap("<Leader>x", ":TroubleToggle<CR>", Maps.ns)
+		end,
+	})
+	use({
 		"ntpeters/vim-better-whitespace",
 		config = function()
 			vim.g.better_whitespace_guicolor = "darkred"
