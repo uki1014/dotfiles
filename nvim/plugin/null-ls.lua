@@ -17,6 +17,7 @@ null_ls.setup({
 	on_attach = function(client)
 		if client.server_capabilities.documentFormattingProvider then
 			vim.cmd("autocmd BufWritePost <buffer> lua vim.lsp.buf.formatting()")
+			vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
 		end
 	end,
 })
