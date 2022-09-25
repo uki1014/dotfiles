@@ -191,6 +191,10 @@ return packer.startup(function(use)
 		"mechatroner/rainbow_csv",
 		ft = { "csv", "tsv" },
 	})
+	use({
+		"RRethy/nvim-treesitter-endwise",
+		ft = { "ruby", "lua", "vimscript", "bash" },
+	})
 
 	if packer_bootstrap() then
 		require("packer").sync()

@@ -13,7 +13,6 @@ treesitter.setup({
 		disable = {},
 	},
 	ensure_installed = {
-		"tsx",
 		"toml",
 		"fish",
 		"php",
@@ -22,11 +21,20 @@ treesitter.setup({
 		"css",
 		"html",
 		"lua",
-	},
-	autotag = {
-		enable = true,
+		"ruby",
+		"javascript",
+		"typescript",
+		"tsx",
+		"proto",
+		"lua",
+		"python",
+		"scss",
+		"prisma",
 	},
 	matchup = {
+		enable = true,
+	},
+	endwise = {
 		enable = true,
 	},
 })
