@@ -26,7 +26,6 @@ require("mason-lspconfig").setup({
   ensure_installed = {
     'html-lsp',
     'css-lsp',
-    'deno',
     'dockerls',
     'sumneko_lua',
     'tsserver',
@@ -34,7 +33,6 @@ require("mason-lspconfig").setup({
     'yamlls',
     'gopls',
     'sqls',
-    'eslint_d',
     'prettierd'
   }
 })
