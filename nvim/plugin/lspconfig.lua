@@ -40,7 +40,7 @@ require("mason-lspconfig").setup({
 		"dockerls",
 		"sumneko_lua",
 		"stylua",
-		"tsserver",
+		"typescript-language-server",
 		"solargraph",
 		"yamlls",
 		"gopls",
@@ -48,13 +48,6 @@ require("mason-lspconfig").setup({
 		"eslint-lsp",
 		"prettierd",
 	},
-})
-require("mason-lspconfig").setup_handlers({
-	function(server_name)
-		require("lspconfig")[server_name].setup({
-			on_attach = on_attach,
-		})
-	end,
 })
 
 local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
@@ -72,7 +65,6 @@ lspconfig.dockerls.setup({
 lspconfig.tsserver.setup({
 	on_attach = on_attach,
 	filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
-	cmd = { "typescript-language-server", "--stdio" },
 	root_dir = lspconfig.util.root_pattern("package.json", "tsconfig.json"),
 	capabilities = capabilities,
 })
@@ -88,8 +80,8 @@ lspconfig.solargraph.setup({
 lspconfig.eslint.setup({
 	on_attach = on_attach,
 	capabilities = capabilities,
-	filetypes = { "javascript", "javascriptreact", "javascript.jsx" },
-	root_dir = lspconfig.util.root_pattern("package.json", "eslintrc.js", "babel.config.js"),
+	filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
+	root_dir = lspconfig.util.root_pattern("eslintrc.js", "babel.config.js"),
 })
 
 lspconfig.yamlls.setup({
