@@ -1,8 +1,8 @@
 local packer_bootstrap = function()
   local fn = vim.fn
-  local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+  local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
   if fn.empty(fn.glob(install_path)) > 0 then
-    fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+    fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path })
     vim.cmd [[packadd packer.nvim]]
     return true
   end
@@ -95,9 +95,9 @@ return packer.startup(function(use)
     'thaerkh/vim-workspace',
     config = function()
       vim.g.workspace_autocreate = '1'
-      vim.g.workspace_undodir = os.getenv('HOME')..'/.config/nvim/sessions/'
+      vim.g.workspace_undodir = os.getenv('HOME') .. '/.config/nvim/sessions/'
       vim.g.workspace_autosave = '0'
-      vim.g.workspace_session_directory = os.getenv('HOME')..'/.config/nvim/sessions/'
+      vim.g.workspace_session_directory = os.getenv('HOME') .. '/.config/nvim/sessions/'
     end
   }
   use {

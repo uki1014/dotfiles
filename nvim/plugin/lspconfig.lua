@@ -17,12 +17,12 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', Maps.ns)
   buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', Maps.ns)
   buf_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', Maps.ns)
-  buf_set_keymap("n", "gr", '<cmd>lua vim.lsp.buf.references()<CR>', Maps.none)
-  buf_set_keymap("n", "<space>D", '<cmd>lua vim.lsp.buf.type_definition()<CR>', Maps.none)
+  buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', Maps.none)
+  buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', Maps.none)
 end
 
-require("mason").setup()
-require("mason-lspconfig").setup({
+require('mason').setup()
+require('mason-lspconfig').setup({
   ensure_installed = {
     'html-lsp',
     'css-lsp',
@@ -37,9 +37,9 @@ require("mason-lspconfig").setup({
     'prettierd'
   }
 })
-require("mason-lspconfig").setup_handlers({
+require('mason-lspconfig').setup_handlers({
   function(server_name)
-    require("lspconfig")[server_name].setup({
+    require('lspconfig')[server_name].setup({
       on_attach = on_attach
     })
   end,
@@ -81,10 +81,6 @@ lspconfig.gopls.setup({
   capabilities = capabilities
 })
 
-lspconfig.denols.setup({
-  root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc")
-})
-
 lspconfig.sumneko_lua.setup({
   on_attach = on_attach,
   settings = {
@@ -103,7 +99,7 @@ lspconfig.sumneko_lua.setup({
   },
 })
 
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
   underline = true,
   update_in_insert = false,
@@ -114,16 +110,16 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 vim.cmd('au CursorHold * silent lua vim.lsp.diagnostic.show_line_diagnostics()')
 
 -- Diagnostic symbols in the sign column (gutter)
-local signs = { Error = "✘ ", Warn = "▲ ", Hint = "●", Info = "> " }
+local signs = { Error = '✘', Warn = '▲', Hint = '●', Info = '>' }
 for type, icon in pairs(signs) do
-  local hl = "DiagnosticSign" .. type
-  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
+  local hl = 'DiagnosticSign' .. type
+  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = '' })
 end
 
 vim.diagnostic.config({
   virtual_text = false,
   update_in_insert = true,
   float = {
-    source = 'always', -- Or "if_many"
+    source = 'always', -- Or 'if_many'
   },
 })
