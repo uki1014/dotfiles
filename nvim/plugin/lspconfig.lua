@@ -47,69 +47,78 @@ require("mason-lspconfig").setup({
 		"sqls",
 		"eslint-lsp",
 		"prettierd",
+		"rubocop",
 	},
 })
+require("mason-lspconfig").setup_handlers({
+	function()
+		local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
-local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
+		lspconfig.flow.setup({
+			on_attach = on_attach,
+			capabilities = capabilities,
+		})
 
-lspconfig.flow.setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
-})
+		lspconfig.dockerls.setup({
+			on_attach = on_attach,
+			capabilities = capabilities,
+		})
 
-lspconfig.dockerls.setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
-})
+		lspconfig.tsserver.setup({
+			on_attach = on_attach,
+			filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
+			root_dir = lspconfig.util.root_pattern("package.json", "tsconfig.json"),
+			capabilities = capabilities,
+		})
 
-lspconfig.tsserver.setup({
-	on_attach = on_attach,
-	filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
-	root_dir = lspconfig.util.root_pattern("package.json", "tsconfig.json"),
-	capabilities = capabilities,
-})
+		lspconfig.solargraph.setup({
+			on_attach = on_attach,
+			capabilities = capabilities,
+			filetypes = { "ruby", "rakefile", "rspec" },
+			cmd = { "bundle", "exec", "solargraph", "stdio" },
+		})
 
-lspconfig.solargraph.setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
-	filetypes = { "ruby", "rakefile", "rspec" },
-	cmd = { "bundle", "exec", "solargraph", "stdio" },
-	document_formatting = false,
-})
-
-lspconfig.eslint.setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
-	filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
-	root_dir = lspconfig.util.root_pattern("eslintrc.js", "babel.config.js"),
-})
-
-lspconfig.yamlls.setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
-})
-
-lspconfig.gopls.setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
-})
-
-lspconfig.sumneko_lua.setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
-	settings = {
-		Lua = {
-			diagnostics = {
-				-- Get the language server to recognize the `vim` global
-				globals = { "vim" },
+		lspconfig.eslint.setup({
+			on_attach = on_attach,
+			capabilities = capabilities,
+			filetypes = {
+				"javascript",
+				"javascriptreact",
+				"javascript.jsx",
+				"typescript",
+				"typescriptreact",
+				"typescript.tsx",
 			},
-			workspace = {
-				-- Make the server aware of Neovim runtime files
-				library = vim.api.nvim_get_runtime_file("", true),
-				checkThirdParty = false,
+			root_dir = lspconfig.util.root_pattern("eslintrc.js", "babel.config.js"),
+		})
+
+		lspconfig.yamlls.setup({
+			on_attach = on_attach,
+			capabilities = capabilities,
+		})
+
+		lspconfig.gopls.setup({
+			on_attach = on_attach,
+			capabilities = capabilities,
+		})
+
+		lspconfig.sumneko_lua.setup({
+			on_attach = on_attach,
+			capabilities = capabilities,
+			settings = {
+				Lua = {
+					diagnostics = {
+						globals = { "vim" },
+					},
+					workspace = {
+						-- Make the server aware of Neovim runtime files
+						library = vim.api.nvim_get_runtime_file("", true),
+						checkThirdParty = false,
+					},
+				},
 			},
-		},
-	},
+		})
+	end,
 })
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
@@ -121,7 +130,6 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagn
 
 vim.cmd("au CursorHold * silent lua vim.lsp.diagnostic.show_line_diagnostics()")
 
--- Diagnostic symbols in the sign column (gutter)
 local signs = { Error = "✘", Warn = "▲", Hint = "●", Info = ">" }
 for type, icon in pairs(signs) do
 	local hl = "DiagnosticSign" .. type
