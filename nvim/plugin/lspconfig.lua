@@ -28,6 +28,7 @@ require("mason-lspconfig").setup({
     'css-lsp',
     'dockerls',
     'sumneko_lua',
+    'stylua',
     'tsserver',
     'solargraph',
     'yamlls',
