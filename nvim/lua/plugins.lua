@@ -95,7 +95,7 @@ return packer.startup(function(use)
 		"thaerkh/vim-workspace",
 		config = function()
 			vim.g.workspace_autocreate = "1"
-			vim.g.workspace_undodir = os.getenv("HOME") .. "/.config/nvim/sessions/"
+			vim.g.workspace_undodir = os.getenv("HOME") .. "/.config/nvim/undo/"
 			vim.g.workspace_autosave = "0"
 			vim.g.workspace_session_directory = os.getenv("HOME") .. "/.config/nvim/sessions/"
 		end,
