@@ -168,7 +168,7 @@ return packer.startup(function(use)
 	use({ "joker1007/vim-ruby-heredoc-syntax", ft = { "ruby" } })
 	use({ "joker1007/vim-markdown-quote-syntax", ft = { "markdown" } })
 	use({ "tbastos/vim-lua", ft = { "lua" } })
-	use({ "L3MON4D3/LuaSnip", tag = "v<CurrentMajor>.*", ft = { "lua" } })
+	use({ "L3MON4D3/LuaSnip", ft = { "lua" } })
 	use({ "pantharshit00/vim-prisma", ft = { "prisma" } })
 	use({
 		"ap/vim-css-color",
