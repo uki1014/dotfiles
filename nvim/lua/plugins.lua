@@ -47,6 +47,7 @@ return packer.startup(function(use)
 			require("nvim-treesitter.install").update({ with_sync = true })
 		end,
 	})
+	use({ "yioneko/nvim-yati", requires = "nvim-treesitter/nvim-treesitter" })
 	use("uki1014/vim-to-github")
 	use({
 		"akinsho/git-conflict.nvim",
