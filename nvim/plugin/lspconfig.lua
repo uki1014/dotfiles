@@ -34,6 +34,7 @@ require('mason-lspconfig').setup({
     'yamlls',
     'gopls',
     'sqls',
+    'eslint-lsp',
     'prettierd'
   }
 })
@@ -61,28 +62,40 @@ lspconfig.dockerls.setup({
 
 lspconfig.tsserver.setup({
   on_attach = on_attach,
-  filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
-  cmd = { "typescript-language-server", "--stdio" },
-  root_dir = lspconfig.util.root_pattern("package.json", "tsconfig.json", "jsconfig.json"),
+  filetypes = { 'typescript', 'typescriptreact', 'typescript.tsx' },
+  cmd = { 'typescript-language-server', '--stdio' },
+  root_dir = lspconfig.util.root_pattern('package.json', 'tsconfig.json'),
   capabilities = capabilities
 })
 
 lspconfig.solargraph.setup({
+  on_attach = on_attach,
+  capabilities = capabilities,
+  filetypes = { 'ruby', 'rakefile', 'rspec' },
   cmd = { 'bundle', 'exec', 'solargraph', 'stdio' },
-  filetypes = {"ruby", "rakefile", "rspec"},
-  capabilities = capabilities
+  document_formatting = false,
+})
+
+lspconfig.eslint.setup({
+  on_attach = on_attach,
+  capabilities = capabilities,
+  filetypes = { 'javascript', 'javascriptreact', 'javascript.jsx' },
+  root_dir = lspconfig.util.root_pattern('package.json', 'eslintrc.js', 'babel.config.js'),
 })
 
 lspconfig.yamlls.setup({
+  on_attach = on_attach,
   capabilities = capabilities
 })
 
 lspconfig.gopls.setup({
+  on_attach = on_attach,
   capabilities = capabilities
 })
 
 lspconfig.sumneko_lua.setup({
   on_attach = on_attach,
+  capabilities = capabilities,
   settings = {
     Lua = {
       diagnostics = {
