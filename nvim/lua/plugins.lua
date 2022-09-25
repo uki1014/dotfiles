@@ -81,6 +81,7 @@ return packer.startup(function(use)
 		end,
 	})
 	use("jiangmiao/auto-pairs")
+	use("andymass/vim-matchup")
 	use("tpope/vim-surround")
 	use("tpope/vim-repeat")
 	use({
