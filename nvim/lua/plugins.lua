@@ -85,6 +85,15 @@ return packer.startup(function(use)
 			vim.g.closetag_filenames = "*.html,*.xhtml,*xml,*.phtml,*.erb,*.php,*.vue,*.js,*.jsx,*.ts,*.tsx"
 		end,
 	})
+	use({
+		"folke/todo-comments.nvim",
+		requires = "nvim-lua/plenary.nvim",
+		config = function()
+			require("todo-comments").setup({
+				signs = false,
+			})
+		end,
+	})
 	use("Yggdroot/indentLine")
 	use("preservim/nerdcommenter")
 	use({
