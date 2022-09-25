@@ -48,6 +48,18 @@ return packer.startup(function(use)
 		end,
 	})
 	use("uki1014/vim-to-github")
+	use({
+		"akinsho/git-conflict.nvim",
+		tag = "*",
+		config = function()
+			require("git-conflict").setup({
+				highlights = { -- They must have background color, otherwise the default color will be used
+					incoming = "DiffText",
+					current = "DiffAdd",
+				},
+			})
+		end,
+	})
 	use("itchyny/lightline.vim")
 	-- Finder / Filer
 	use("nvim-lua/plenary.nvim")
