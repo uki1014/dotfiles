@@ -55,12 +55,16 @@ local function open_file_browser(initial_mode)
 	})
 end
 
-Maps.nmap(";f", function()
+local function find_files()
 	builtin.find_files({
 		find_command = rg,
 		ignore_case = true,
 		hidden = true,
 	})
+end
+
+Maps.nmap(";f", function()
+	find_files()
 end, Maps.ns)
 Maps.nmap(";r", function()
 	builtin.live_grep({
@@ -162,7 +166,7 @@ end, Maps.n)
 -- tab
 Maps.nmap("te", function()
 	vim.cmd("tabedit")
-	open_file_browser("insert")
+	find_files()
 end, Maps.n)
 -- Tabs
 Maps.nmap("fl", ":tabnext<Return>", Maps.s)
