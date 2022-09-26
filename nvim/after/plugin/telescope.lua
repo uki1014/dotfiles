@@ -93,7 +93,9 @@ Maps.nmap(";t", function()
 	builtin.man_pages()
 end, Maps.ns)
 Maps.nmap(";g", function()
-	builtin.git_status()
+	builtin.git_status({
+		initial_mode = "normal",
+	})
 end, Maps.ns)
 
 -- only ruby
