@@ -25,7 +25,7 @@ telescope.setup({
 			theme = "dropdown",
 			layout_config = {
 				width = 150,
-				height = 50,
+				height = 30,
 			},
 			hijack_netrw = true,
 			mappings = {
