@@ -97,6 +97,13 @@ return packer.startup(function(use)
 		config = function()
 			require("todo-comments").setup({
 				signs = false,
+				keywords = {
+					NOTE = { color = "hint", alt = { "INFO", "MEMO" } },
+				},
+				highlight = {
+					keyword = "bg",
+					after = "",
+				},
 			})
 		end,
 	})
