@@ -64,7 +64,6 @@ target_brew_cask_list=(
   visual-studio-code
   karabiner-elements
   postman
-  homebrew/cask-versions/iterm2-nightly
   alfred
 )
 
