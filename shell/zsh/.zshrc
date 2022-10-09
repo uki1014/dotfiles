@@ -28,3 +28,7 @@ if [[ ! -n $TMUX && $- == *l* ]]; then
     :  # Start terminal normally
   fi
 fi
+
+export PATH=/opt/homebrew/bin:$PATH
+export PATH=/opt/homebrew/sbin:$PATH
+eval $(/opt/homebrew/bin/brew shellenv)
