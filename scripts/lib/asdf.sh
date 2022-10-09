@@ -7,13 +7,11 @@ TARGET_LANGUAGES=(
   nodejs
   python
   golang
-  terraform
 )
 
 GLOBAL_RUBY_VERSION=2.6.6
 RUBY_VERSIONS=(
-  2.6.6
-  2.7.4
+  2.7.6
 )
 RUBY_GLOBAL_PACKAGES=(
   solargraph
@@ -22,24 +20,13 @@ RUBY_GLOBAL_PACKAGES=(
 
 GLOBAL_NODE_VERSION=14.18.2
 NODE_VERSIONS=(
-  14.17.5
   14.18.2
+  16.14.2
 )
 NODE_GLOBAL_PACKAGES=(
   neovim
   yarn
   typescript
-)
-
-GLOBAL_PYTHON2_VERSION=2.7.16
-GLOBAL_PYTHON3_VERSION=3.9.1
-PYTHON2_GLOBAL_PACKAGES=(
-  neovim
-  pynvim
-)
-PYTHON3_GLOBAL_PACKAGES=(
-  neovim
-  pynvim
 )
 
 GLOBAL_GOLANG_VERSION=1.18.1
@@ -86,27 +73,6 @@ install_languages() {
           done
           asdf reshim $TARGET_LANG
         done;;
-      'python')
-        echo $(tput setaf 2)Install Python $GLOBAL_PYTHON3_VERSION...$(tput sgr0)
-        asdf install python $GLOBAL_PYTHON3_VERSION
-
-        echo $(tput setaf 2)Install Python $GLOBAL_PYTHON2_VERSION...$(tput sgr0)
-        asdf install python $GLOBAL_PYTHON2_VERSION
-
-        asdf global python $GLOBAL_PYTHON3_VERSION $GLOBAL_PYTHON2_VERSION
-
-        for PACKAGE in $PYTHON2_GLOBAL_PACKAGES; do
-          pip2 install --upgrade pip
-          pip2 install $PACKAGE
-          pip2 install --upgrade $PACKAGE
-        done
-
-        for PACKAGE in $PYTHON3_GLOBAL_PACKAGES; do
-          pip3 install --upgrade pip
-          pip3 install $PACKAGE
-          pip3 install --upgrade $PACKAGE
-        done;;
-        asdf reshim $TARGET_LANG
       'golang')
         for VERSION in ${GOLANG_VERSIONS[@]}; do
           echo $(tput setaf 2)Install $TARGET_LANG $VERSION...$(tput sgr0)
