@@ -49,19 +49,30 @@ end
 require("mason").setup()
 require("mason-lspconfig").setup({
 	ensure_installed = {
-		"html-lsp",
-		"css-lsp",
+		"html",
+		"cssls",
+		"cssmodules_ls",
 		"dockerls",
 		"sumneko_lua",
-		"stylua",
-		"typescript-language-server",
+		-- "stylua",
+		"tsserver",
 		"solargraph",
 		"yamlls",
 		"gopls",
 		"sqls",
-		"eslint-lsp",
-		"prettierd",
-		"rubocop",
+		"eslint",
+		"clangd",
+		"graphql",
+		"jsonls",
+		"marksman",
+		"prismals",
+		"sorbet",
+		"taplo", -- toml
+		"vimls",
+		"volar", -- vue
+		"yamlls",
+		-- "prettierd",
+		-- "rubocop",
 	},
 })
 require("mason-lspconfig").setup_handlers({
