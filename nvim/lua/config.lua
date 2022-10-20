@@ -162,11 +162,6 @@ vim.cmd(
 	'au WinEnter,BufRead,BufNew,Syntax * call matchadd("Todo", "\bW\bzs\b(TODO\b|\b|FIXME\b|CHANGED\b|XXX\b|BUG\b|HACK\b|NOTE\b|MEMO\b|INFO\b|IDEA\b)")'
 )
 
--- vim.g.python_host_prog = "~/.asdf/shims/python2.7"
--- vim.g.python3_host_prog = "~/.asdf/shims/python3.9"
-vim.g.ruby_host_prog = "~/.asdf/shims/neovim-ruby-host"
-vim.g.node_host_prog = "~/.asdf/shims/neovim-node-host"
-
 -- undo保存先
 if vim.fn.has("persistent_undo") == 1 then
 	local undo_path = vim.fn.expand("~/.config/nvim/undo")
