@@ -16,6 +16,7 @@ RUBY_VERSIONS=(
 RUBY_GLOBAL_PACKAGES=(
   solargraph
   neovim
+  awesome_print
 )
 
 GLOBAL_NODE_VERSION=14.18.2
