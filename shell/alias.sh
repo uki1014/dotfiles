@@ -10,7 +10,6 @@ alias regpg='gpg-connect-agent reloadagent /bye'
 alias gpgc='v ~/.gnupg/gpg-agent.conf'
 
 # Git
-# alias git='hub'
 alias g='git'
 alias aad='git add .'
 alias ad='git add'
@@ -95,21 +94,12 @@ alias dpsa='docker ps -a'
 alias dnl='docker network ls'
 alias dis='docker images'
 alias drmi='docker rmi'
-alias dco='docker container'
-alias dcm='docker commit'
-alias dc='docker compose'
-alias dce='docker compose exec'
-alias dcup='docker compose up'
-alias dcdown='docker compose down'
-alias dcbuild='docker compose build'
-alias dcrun='docker compose run'
 alias dprune='docker system prune' # 停止コンテナ、タグ無しイメージ、未使用ボリューム、未使用ネットワーク一括削除
 alias diprune='docker image prune' # 未使用イメージ一括削除
 alias dvprune='docker volume prune' # 未使用ボリューム一括削除
 alias dnprune='docker network prune' # 未使用ネットワーク一括削除
 alias dbprune='docker builder prune' # build cacheの削除
 alias ddf='docker system df' # Dockerが使っているストレージ容量を確認
-alias dcu='docui'
 
 # Rails
 alias b='bundle'
@@ -117,13 +107,7 @@ alias be='bundle exec'
 alias rd='bin/rails d'
 alias rs='bin/rails s'
 alias rc='bin/rails c'
-alias rr='bin/rails routes'
-alias rseed='bin/rails db:seed'
-alias rdrop='bin/rails db:drop'
-alias rroll='bin/rails db:rollback'
-alias rcr='bin/rails db:create'
 alias rmi='bin/rails db:migrate'
-alias rdbp='bin/rails db -p'
 alias tmi='bundle exec rake tasks:migrate'
 alias devlog='tail -f log/development.log'
 alias testlog='tail -f log/test.log'
@@ -184,8 +168,6 @@ alias mv='mv -i'
 alias rm='rm -i'
 alias rmr='rm -r'
 alias rf='rm -rf'
-alias ukios='cd ~/program/projects/uki_os'
-alias drunuo='docker run -it --rm --privileged -e DISPLAY=(hostname):0 -v ~/.Xauthority:/root/.Xauthority -v $HOME/program/projects/uki_os/os:/root/os/ uki-os'
 alias xlaunch='xhost + 127.0.0.1'
 alias kl='kill -9'
 alias mysqlstatus='sudo service mysql status'
