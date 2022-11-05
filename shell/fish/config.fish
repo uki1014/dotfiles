@@ -246,6 +246,10 @@ function getpr_commithash
   echo $GITHUB_URL$REPO_NAME/$PR_NUMBER
 end
 
+function killport
+  kill -9 (lsof -t -i:$argv[1])
+end
+
 if [ -e $DOTFILES_PATH/shell/alias.sh ]
   source $DOTFILES_PATH/shell/alias.sh
 end
