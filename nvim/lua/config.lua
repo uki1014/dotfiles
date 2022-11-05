@@ -113,6 +113,7 @@ vim.opt.path:append("**")
 vim.opt.wildignore:append("*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store/*,*/node_modules/*")
 -- Enable json comment(only tsconfig)
 vim.cmd("au BufNewFile,BufRead *.json setf jsonc")
+vim.cmd("au BufNewFile,BufRead *.swcrc setf jsonc")
 -- JavaScript
 vim.cmd("au BufNewFile,BufRead *.es6 setf javascript")
 -- TypeScript
