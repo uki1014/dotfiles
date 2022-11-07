@@ -30,6 +30,7 @@ treesitter.setup({
 		"python",
 		"scss",
 		"prisma",
+		"markdown",
 	},
 	matchup = {
 		enable = true,
