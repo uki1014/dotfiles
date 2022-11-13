@@ -143,17 +143,17 @@ function drawide
   tmux new-window
   tmux rename-window draw-server
   idet
-  cd ~/program/projects/draw-web
-
-  # draw-web
-  tmux new-window
-  tmux rename-window draw-web
-  idet
   cd ~/program/projects/draw-desktop
 
   # draw-desktop
   tmux new-window
   tmux rename-window draw-desktop
+  idet
+  cd ~/program/projects/draw-web
+
+  # draw-web
+  tmux new-window
+  tmux rename-window draw-web
   idet
 
   # 順番にやるとおかしくなるので最後にdotfilesに移動
