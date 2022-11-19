@@ -24,7 +24,7 @@ local on_attach = function(client, bufnr)
 		or client.name == "flow"
 		or client.name == "sumneko_lua"
 	then
-		client.resolved_capabilities.document_formatting = false
+		client.server_capabilities.documentFormattingProvider = false
 	end
 
 	local function buf_set_keymap(...)
@@ -54,7 +54,6 @@ require("mason-lspconfig").setup({
 		"cssmodules_ls",
 		"dockerls",
 		"sumneko_lua",
-		-- "stylua",
 		"tsserver",
 		"solargraph",
 		"yamlls",
@@ -71,6 +70,7 @@ require("mason-lspconfig").setup({
 		"vimls",
 		"volar", -- vue
 		"yamlls",
+		-- "stylua",
 		-- "prettierd",
 		-- "rubocop",
 	},
@@ -153,7 +153,7 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagn
 	severity_sort = true,
 })
 
-vim.cmd("au CursorHold * silent lua vim.lsp.diagnostic.show_line_diagnostics()")
+vim.cmd("au CursorHold * silent lua vim.diagnostic.open_float()")
 
 local signs = { Error = "✘", Warn = "▲", Hint = "●", Info = ">" }
 for type, icon in pairs(signs) do
