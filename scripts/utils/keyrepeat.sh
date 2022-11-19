@@ -6,6 +6,9 @@ change_keyrepeat() {
 
   defaults write -g InitialKeyRepeat -int 13
   defaults write -g KeyRepeat -int 2
+
+  # 隠しファイルを常に表示させる
+  defaults write com.apple.finder AppleShowAllFiles TRUE
 }
 
 # If you want to run, pass something as an argument
