@@ -65,14 +65,13 @@ require("mason-lspconfig").setup({
 		"jsonls",
 		"marksman",
 		"prismals",
-		-- "sorbet",
 		"taplo", -- toml
 		"vimls",
 		"volar", -- vue
 		"yamlls",
-		-- "stylua",
-		-- "prettierd",
-		-- "rubocop",
+		-- "stylua", -- TODO: コメントアウトはずしたらauto installが走らないけど必要なので手動で入れる
+		-- "prettierd", -- TODO: コメントアウトはずしたらauto installが走らないけど必要なので手動で入れる
+		"rubocop",
 	},
 })
 require("mason-lspconfig").setup_handlers({
