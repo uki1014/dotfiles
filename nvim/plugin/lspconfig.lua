@@ -65,7 +65,7 @@ require("mason-lspconfig").setup({
 		"jsonls",
 		"marksman",
 		"prismals",
-		"sorbet",
+		-- "sorbet",
 		"taplo", -- toml
 		"vimls",
 		"volar", -- vue
