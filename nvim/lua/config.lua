@@ -136,9 +136,10 @@ vim.cmd("au BufNewFile,BufRead .pryrc,.aprc setf ruby")
 vim.cmd("au BufNewFile,BufRead *.csv setf csv")
 -- tsv
 vim.cmd("au BufNewFile,BufRead *.tsv setf tsv")
-
 -- html
 vim.cmd("au BufNewFile,BufRead .jet setf html")
+-- envrc
+vim.cmd("au BufNewFile,BufRead .envrc setf sh")
 
 if vim.fn.has("conceal") == 0 then
 	vim.opt.conceallevel = 2
