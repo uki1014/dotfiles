@@ -1,5 +1,6 @@
 Maps = require("maps")
 
+require("impatient").enable_profile()
 require("keymap")
 require("plugins")
 require("config")
