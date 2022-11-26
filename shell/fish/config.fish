@@ -134,26 +134,26 @@ function idet
   tmux split-window -h -p 50
 end
 
-function drawide
+function dockside
   # dotfiles
   tmux rename-window dotfiles
-  cd ~/program/projects/draw-server
+  cd ~/program/projects/docks-server
 
-  # draw-server
+  # docks-server
   tmux new-window
-  tmux rename-window draw-server
+  tmux rename-window docks-server
   idet
-  cd ~/program/projects/draw-desktop
+  cd ~/program/projects/docks-desktop
 
-  # draw-desktop
+  # docks-desktop
   tmux new-window
-  tmux rename-window draw-desktop
+  tmux rename-window docks-desktop
   idet
-  cd ~/program/projects/draw-web
+  cd ~/program/projects/docks-web
 
-  # draw-web
+  # docks-web
   tmux new-window
-  tmux rename-window draw-web
+  tmux rename-window docks-web
   idet
 
   # 順番にやるとおかしくなるので最後にdotfilesに移動
