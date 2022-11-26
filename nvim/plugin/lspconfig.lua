@@ -71,7 +71,7 @@ require("mason-lspconfig").setup({
 		"yamlls",
 		-- "stylua", -- TODO: コメントアウトはずしたらauto installが走らないけど必要なので手動で入れる
 		-- "prettierd", -- TODO: コメントアウトはずしたらauto installが走らないけど必要なので手動で入れる
-		"rubocop",
+		-- "rubocop", -- TODO: コメントアウトはずしたらauto installが走らないけど必要なので手動で入れる
 	},
 })
 require("mason-lspconfig").setup_handlers({
