@@ -113,7 +113,7 @@ require("mason-lspconfig").setup_handlers({
 				"typescriptreact",
 				"typescript.tsx",
 			},
-			-- root_dir = lspconfig.util.root_pattern("eslintrc.js", "babel.config.js"),
+			root_dir = lspconfig.util.root_pattern("eslintrc.js"),
 		})
 
 		lspconfig.yamlls.setup({
