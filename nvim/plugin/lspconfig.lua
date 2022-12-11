@@ -69,6 +69,8 @@ require("mason-lspconfig").setup({
 		"vimls",
 		"volar", -- vue
 		"yamlls",
+		"rust_analyzer",
+		-- "rustfmt",
 		-- "stylua", -- TODO: コメントアウトはずしたらauto installが走らないけど必要なので手動で入れる
 		-- "prettierd", -- TODO: コメントアウトはずしたらauto installが走らないけど必要なので手動で入れる
 		-- "rubocop", -- TODO: コメントアウトはずしたらauto installが走らないけど必要なので手動で入れる
@@ -131,6 +133,13 @@ require("mason-lspconfig").setup_handlers({
 			on_attach = on_attach,
 			capabilities = capabilities,
 			filetypes = { "go" },
+		})
+
+		lspconfig.rust_analyzer.setup({
+			on_attach = on_attach,
+			capabilities = capabilities,
+			filetypes = { "rust" },
+			root_dir = lspconfig.util.root_pattern("Cargo.toml"),
 		})
 
 		lspconfig.sumneko_lua.setup({
