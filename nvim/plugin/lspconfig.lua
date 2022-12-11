@@ -81,6 +81,11 @@ require("mason-lspconfig").setup_handlers({
 		lspconfig.flow.setup({
 			on_attach = on_attach,
 			capabilities = capabilities,
+			filetypes = {
+				"javascript",
+				"javascriptreact",
+				"javascript.jsx",
+			},
 		})
 
 		lspconfig.dockerls.setup({
@@ -119,16 +124,19 @@ require("mason-lspconfig").setup_handlers({
 		lspconfig.yamlls.setup({
 			on_attach = on_attach,
 			capabilities = capabilities,
+			filetypes = { "yaml", "yml" },
 		})
 
 		lspconfig.gopls.setup({
 			on_attach = on_attach,
 			capabilities = capabilities,
+			filetypes = { "go" },
 		})
 
 		lspconfig.sumneko_lua.setup({
 			on_attach = on_attach,
 			capabilities = capabilities,
+			filetypes = { "lua" },
 			settings = {
 				Lua = {
 					diagnostics = {
