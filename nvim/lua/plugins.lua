@@ -243,6 +243,11 @@ return packer.startup(function(use)
 		ft = { "ruby", "lua", "vimscript", "bash" },
 	})
 
+	use({
+		"hashivim/vim-terraform",
+		ft = { "terraform" },
+	})
+
 	if packer_bootstrap() then
 		require("packer").sync()
 	end
