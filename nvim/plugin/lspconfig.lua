@@ -55,6 +55,7 @@ require("mason-lspconfig").setup({
 		"taplo", -- toml
 		"vimls",
 		"volar", -- vue
+		"terraformls",
 		"yamlls",
 		"rust_analyzer",
 		-- "rustfmt",
@@ -103,6 +104,15 @@ require("mason-lspconfig").setup_handlers({
 		--   cmd = { "bundle", "exec", "ruby-lsp" },
 		--   root_dir = lspconfig.util.root_pattern("Gemfile", ".git"),
 		-- })
+
+		lspconfig.terraformls.setup({
+			on_attach = on_attach,
+			capabilities = capabilities,
+			filetypes = {
+				"terraform",
+			},
+			root_dir = lspconfig.util.root_pattern(".git"),
+		})
 
 		lspconfig.eslint.setup({
 			on_attach = on_attach,
