@@ -2,25 +2,12 @@ local status, lspconfig = pcall(require, "lspconfig")
 if not status then
 	return
 end
--- local lspconfig_config = require("lspconfig.configs")
-
--- if not lspconfig_config.ruby_lsp then
---   lspconfig_config.ruby_lsp = {
---     default_config = {
---       cmd = { "bundle", "exec", "ruby-lsp" },
---       init_options = {
---         enabledFeatures = { "formatting", "codeActions" },
---       },
---       filetypes = { "ruby" },
---       root_dir = require("lspconfig.util").root_pattern("Gemfile", ".git"),
---     },
---   }
--- end
 
 local on_attach = function(client, bufnr)
 	if
 		client.name == "tsserver"
 		or client.name == "solargraph"
+		or client.name == "ruby_ls"
 		or client.name == "flow"
 		or client.name == "sumneko_lua"
 	then
@@ -108,6 +95,14 @@ require("mason-lspconfig").setup_handlers({
 			filetypes = { "ruby", "rakefile", "rspec" },
 			cmd = { "bundle", "exec", "solargraph", "stdio" },
 		})
+
+		-- lspconfig.ruby_ls.setup({
+		--   on_attach = on_attach,
+		--   capabilities = capabilities,
+		--   filetypes = { "ruby", "rakefile", "rspec" },
+		--   cmd = { "bundle", "exec", "ruby-lsp" },
+		--   root_dir = lspconfig.util.root_pattern("Gemfile", ".git"),
+		-- })
 
 		lspconfig.eslint.setup({
 			on_attach = on_attach,
