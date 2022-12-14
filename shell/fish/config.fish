@@ -257,3 +257,7 @@ end
 if [ -d $DOTFILES_PATH/freee ]
   source $DOTFILES_PATH/freee/freee.config.fish
 end
+
+if [ -d $DOTFILES_PATH/primeNumber ]
+  source $DOTFILES_PATH/primeNumber/primeNumber.config.fish
+end
