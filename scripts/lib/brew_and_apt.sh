@@ -4,11 +4,9 @@ source ~/dotfiles/scripts/utils/source_all_utils.sh
 
 # CUI tools
 target_brew_list=(
-  ag
   ripgrep
   peco
   tmux
-  hub
   lazygit
   lazydocker
   jq
