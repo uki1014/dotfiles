@@ -48,6 +48,7 @@ set -xg LC_ALL en_US.UTF-8
 set -xg LANG en_US.UTF-8
 set -xg PATH $PATH $HOME
 set -xg DOTFILES_PATH $HOME/dotfiles
+set -xg MYPROJECTS_PATH $HOME/myprojects
 set -xg EDITOR nvim
 set -xg TERM screen-256color
 set -xg OSTYPE darwin20
@@ -135,21 +136,32 @@ function idet
 end
 
 function dockside
+  set -xg DOCKS_PATH $MYPROJECTS_PATH/docks
+  if [ ! -d $DOCKS_PATH ]
+    mkdir $MYPROJECTS_PATH/docks && \
+    cd $MYPROJECTS_PATH/docks && \
+    git clone git@github.com:docks-tools/docks-server.git && \
+    git clone git@github.com:docks-tools/docks-desktop && \
+    git clone git@github.com:docks-tools/docks-web && \
+    git clone git@github.com:docks-tools/eslint-config-docks && \
+    git clone git@github.com:docks-tools/eslint-config-docks-react && \
+    git clone git@github.com:docks-tools/prettier-config-docks
+  end
   # dotfiles
   tmux rename-window dotfiles
-  cd ~/program/projects/docks-server
+  cd $DOCKS_PATH/docks-server
 
   # docks-server
   tmux new-window
   tmux rename-window docks-server
   idet
-  cd ~/program/projects/docks-desktop
+  cd $DOCKS_PATH/docks-desktop
 
   # docks-desktop
   tmux new-window
   tmux rename-window docks-desktop
   idet
-  cd ~/program/projects/docks-web
+  cd $DOCKS_PATH/docks-web
 
   # docks-web
   tmux new-window
