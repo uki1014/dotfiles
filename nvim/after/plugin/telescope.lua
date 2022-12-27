@@ -146,7 +146,7 @@ Maps.nmap(";j", function()
 		find_command = "rg",
 		ignore_case = true,
 		hidden = true,
-		type = { "js", "ts" },
+		type = { "js", "jsx", "ts", "tsx" },
 	})
 end, Maps.ns)
 Maps.nmap(";jr", function()
@@ -155,7 +155,7 @@ Maps.nmap(";jr", function()
 		ignore_case = true,
 		hidden = true,
 		additional_args = function()
-			return { "--type=js", "--type=ts" }
+			return { "--type=js", "--type=jsx", "--type=ts", "--type=tsx" }
 		end,
 	})
 end, Maps.ns)
