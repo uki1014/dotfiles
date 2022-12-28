@@ -174,7 +174,7 @@ return packer.startup(function(use)
 		end,
 	})
 	use({ "stephpy/vim-yaml", ft = { "yaml" } })
-	use({ "kchmck/vim-coffee-script", ft = { "coffee" } })
+	-- use({ "kchmck/vim-coffee-script", ft = { "coffee" } })
 	use({ "dag/vim-fish", ft = { "fish" } })
 	use({ "cespare/vim-toml", ft = { "toml" } })
 	use({
