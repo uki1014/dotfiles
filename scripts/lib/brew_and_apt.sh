@@ -52,7 +52,6 @@ target_brew_cask_list=(
   firefox
   docker
   xquartz
-  google-chrome
   spotify
   tableplus
   deepl
