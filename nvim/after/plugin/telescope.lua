@@ -28,6 +28,7 @@ telescope.setup({
 				height = 30,
 			},
 			hijack_netrw = true,
+			dir_icon = "",
 			mappings = {
 				n = {
 					["N"] = file_browser_actions.create,
