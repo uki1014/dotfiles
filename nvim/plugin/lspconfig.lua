@@ -30,6 +30,8 @@ local on_attach = function(client, bufnr)
 	buf_set_keymap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", Maps.ns)
 	buf_set_keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", Maps.ns)
 	buf_set_keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", Maps.none)
+	buf_set_keymap("n", "L", "<cmd>lua vim.diagnostic.goto_next()<CR>", Maps.none)
+	buf_set_keymap("n", "H", "<cmd>lua vim.diagnostic.goto_prev()<CR>", Maps.none)
 	buf_set_keymap("n", "<space>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", Maps.none)
 end
 
