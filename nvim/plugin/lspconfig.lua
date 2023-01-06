@@ -99,6 +99,7 @@ require("mason-lspconfig").setup_handlers({
 			cmd = { "bundle", "exec", "solargraph", "stdio" },
 		})
 
+		-- NOTE: brew install watchman が必要
 		lspconfig.sorbet.setup({
 			on_attach = on_attach,
 			capabilities = capabilities,
