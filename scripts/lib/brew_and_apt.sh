@@ -31,6 +31,7 @@ target_brew_list=(
   shellcheck
   hadolint
   xauth # x11でclipboard共有の時に必要
+  watchman # for sorbet
 )
 
 # CUI tools for macOS
