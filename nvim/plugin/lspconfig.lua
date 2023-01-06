@@ -99,6 +99,12 @@ require("mason-lspconfig").setup_handlers({
 			cmd = { "bundle", "exec", "solargraph", "stdio" },
 		})
 
+		lspconfig.sorbet.setup({
+			on_attach = on_attach,
+			capabilities = capabilities,
+			cmd = { "bundle", "exec", "srb", "tc", "--lsp" },
+		})
+
 		-- lspconfig.ruby_ls.setup({
 		--   on_attach = on_attach,
 		--   capabilities = capabilities,
