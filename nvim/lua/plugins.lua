@@ -242,7 +242,6 @@ return packer.startup(function(use)
 		"RRethy/nvim-treesitter-endwise",
 		ft = { "ruby", "lua", "vimscript", "bash" },
 	})
-
 	use({
 		"hashivim/vim-terraform",
 		ft = { "terraform" },

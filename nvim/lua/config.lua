@@ -132,6 +132,7 @@ vim.cmd("au BufNewFile,BufRead *.fish setf fish")
 -- Ruby
 vim.cmd("au BufNewFile,BufRead Dangerfile* setf ruby")
 vim.cmd("au BufNewFile,BufRead .pryrc,.aprc setf ruby")
+vim.cmd("au BufNewFile,BufRead *.rbi,.aprc setf ruby")
 -- csv
 vim.cmd("au BufNewFile,BufRead *.csv setf csv")
 -- tsv
