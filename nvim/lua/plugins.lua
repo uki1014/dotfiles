@@ -246,6 +246,13 @@ return packer.startup(function(use)
 		"hashivim/vim-terraform",
 		ft = { "terraform" },
 	})
+	use({
+		"wuelnerdotexe/vim-astro",
+		ft = { "astro" },
+		config = function()
+			vim.g.astro_typescript = "enable"
+		end,
+	})
 
 	if packer_bootstrap() then
 		require("packer").sync()
