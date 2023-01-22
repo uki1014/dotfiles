@@ -92,6 +92,13 @@ require("mason-lspconfig").setup_handlers({
 			capabilities = capabilities,
 		})
 
+		lspconfig.astro.setup({
+			on_attach = on_attach,
+			filetypes = { "astro" },
+			root_dir = lspconfig.util.root_pattern("package.json", "tsconfig.json"),
+			capabilities = capabilities,
+		})
+
 		lspconfig.solargraph.setup({
 			on_attach = on_attach,
 			capabilities = capabilities,
