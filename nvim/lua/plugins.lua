@@ -121,14 +121,6 @@ return packer.startup(function(use)
 	use("tpope/vim-surround")
 	use("tpope/vim-repeat")
 	use({
-		"previm/previm",
-		config = function()
-			vim.g.previm_open_cmd = 'open -a "Google Chrome"'
-
-			Maps.nmap("<Leader>a", ":PrevimOpen<CR>", Maps.n)
-		end,
-	})
-	use({
 		"thaerkh/vim-workspace",
 		config = function()
 			vim.g.workspace_autocreate = "1"
@@ -251,6 +243,15 @@ return packer.startup(function(use)
 		ft = { "astro" },
 		config = function()
 			vim.g.astro_typescript = "enable"
+		end,
+	})
+	use({
+		"previm/previm",
+		ft = { "markdown" },
+		config = function()
+			vim.g.previm_open_cmd = 'open -a "Google Chrome"'
+
+			Maps.nmap("<Leader>a", ":PrevimOpen<CR>", Maps.n)
 		end,
 	})
 
