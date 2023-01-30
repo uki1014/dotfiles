@@ -4,7 +4,7 @@
 " License:  MIT
 " Modified: Mon Sep 26 14:45:22 CST 2016
 
-" Usage "{{{
+" Usage
 "
 " ---------------------------------------------------------------------
 " ABOUT:
@@ -103,9 +103,8 @@
 " http://vimcasts.org/episodes/creating-colorschemes-for-vim/
 " http://www.frexx.de/xterm-256-notes/"
 "
-" }}}
 
-" Default option values"{{{
+" Default option values
 " ---------------------------------------------------------------------
 
 let g:neosolarized_contrast = get(g:, "neosolarized_contrast", "normal")
@@ -117,9 +116,7 @@ let g:neosolarized_italic = get(g:, "neosolarized_italic", 0)
 let g:neosolarized_termtrans = get(g:, "neosolarized_termtrans", 0)
 let g:neosolarized_vertSplitBgTrans = get(g:, "neosolarized_vertSplitBgTrans", 1)
 
-"}}}
-
-" Colorscheme initialization "{{{
+" Colorscheme initialization
 " ---------------------------------------------------------------------
 hi clear
 if exists("syntax_on")
@@ -127,9 +124,7 @@ if exists("syntax_on")
 endif
 let colors_name = "NeoSolarized"
 
-"}}}
-
-" GUI & CSApprox hexadecimal palettes"{{{
+" GUI & CSApprox hexadecimal palettes
 " ---------------------------------------------------------------------
 "
 " Set gui and terminal at the same time.
@@ -183,9 +178,8 @@ let colors_name = "NeoSolarized"
     let s:term_cyan        = "6"
     let s:term_green       = "2"
 
-"}}}
 
-" Formatting options and null values for passthrough effect "{{{
+" Formatting options and null values for passthrough effect
 " ---------------------------------------------------------------------
     let s:gui_none        = "NONE"
     let s:term_none       = "NONE"
@@ -195,9 +189,8 @@ let colors_name = "NeoSolarized"
     let s:s               = ",standout"
     let s:ou              = ""
     let s:ob              = ""
-"}}}
 
-" Background value based on termtrans setting "{{{
+" Background value based on termtrans setting
 " ---------------------------------------------------------------------
 if (has("gui_running") || g:neosolarized_termtrans == 0)
     let s:gui_back        = s:gui_base03
@@ -206,9 +199,8 @@ else
     let s:gui_back        = "NONE"
     let s:term_back        = "NONE"
 endif
-"}}}
 
-" Alternate light scheme "{{{
+" Alternate light scheme
 " ---------------------------------------------------------------------
 if &background == "light"
     " GUI
@@ -245,9 +237,8 @@ if &background == "light"
         let s:term_back =   s:term_base03
     endif
 endif
-"}}}
 
-" Optional contrast schemes "{{{
+" Optional contrast schemes
 " ---------------------------------------------------------------------
 if g:neosolarized_contrast == "high"
     let s:gui_base01      = s:gui_base00
@@ -269,9 +260,8 @@ if g:neosolarized_contrast == "low"
     let s:term_back        = s:term_base02
     let s:ou          = ",underline"
 endif
-"}}}
 
-" Overrides dependent on user specified values and environment "{{{
+" Overrides dependent on user specified values and environment
 " ---------------------------------------------------------------------
 if (g:neosolarized_bold == 0 || &t_Co == 8 )
     let s:b           = ""
@@ -292,9 +282,8 @@ if g:neosolarized_italic == 0
 else
     let s:i           = ",italic"
 endif
-"}}}
 
-" Highlighting primitives"{{{
+" Highlighting primitives
 " ---------------------------------------------------------------------
 
 exe "let s:bg_none      = ' "   .   "guibg=".s:gui_none     .   " ctermbg=".s:term_none      .   "'"
@@ -394,9 +383,7 @@ else
     let s:sp_cyan           =   ""
 endif
 
-"}}}
-
-" Basic highlighting"{{{
+" Basic highlighting
 " ---------------------------------------------------------------------
 " note that link syntax to avoid duplicate configuration doesn't work with the
 " exe compiled formats
@@ -471,9 +458,8 @@ exe "hi! Error"          .s:fmt_bold   .s:fg_red    .s:bg_none
 "       *Todo            anything that needs extra attention; mostly the
 "                        keywords TODO FIXME and XXX
 "
-"}}}
 
-" Extended highlighting "{{{
+" Extended highlighting
 " ---------------------------------------------------------------------
 if  (g:neosolarized_visibility=="high")
     exe "hi! SpecialKey" .s:fmt_revr   .s:fg_red    .s:bg_none
@@ -549,9 +535,7 @@ exe "hi! Cursor"         .s:fmt_none   .s:fg_base03 .s:bg_base0
 hi! link lCursor Cursor
 exe "hi! MatchParen"     .s:fmt_bold   .s:fg_red    .s:bg_base01
 
-"}}}
-
-" vim syntax highlighting "{{{
+" vim syntax highlighting
 " ---------------------------------------------------------------------
 "exe "hi! vimLineComment" . s:fg_base01 .s:bg_none   .s:fmt_ital
 "hi! link vimComment Comment
@@ -578,15 +562,13 @@ exe "hi! vimSynType"        .s:fmt_none    .s:fg_cyan   .s:bg_none
 exe "hi! vimHiLink"         .s:fmt_none    .s:fg_blue   .s:bg_none
 exe "hi! vimHiGroup"        .s:fmt_none    .s:fg_blue   .s:bg_none
 exe "hi! vimGroup"          .s:fmt_undb    .s:fg_blue   .s:bg_none
-"}}}
 
-" diff highlighting "{{{
+" diff highlighting
 " ---------------------------------------------------------------------
 hi! link diffAdded Statement
 hi! link diffLine Identifier
-"}}}
 
-" git & gitcommit highlighting "{{{
+" git & gitcommit highlighting
 "git
 "exe "hi! gitDateHeader"
 "exe "hi! gitIdentityHeader"
@@ -635,9 +617,9 @@ hi! link gitcommitUnmergedArrow  gitcommitUnmergedFile
 "exe "hi! gitcommitArrow"
 "exe "hi! gitcommitOverflow"
 "exe "hi! gitcommitBlank"
-" }}}
 "
-" html highlighting "{{{
+"
+" html highlighting
 " ---------------------------------------------------------------------
 " exe "hi! htmlTag"           .s:fmt_none .s:fg_base01 .s:bg_none
 exe "hi! htmlTag"         .s:fmt_none   .s:fg_base1  .s:bg_back
@@ -650,26 +632,23 @@ exe "hi! htmlSpecialTagName".s:fmt_ital .s:fg_blue   .s:bg_none
 " exe "hi! htmlArg"           .s:fmt_none .s:fg_base00 .s:bg_none
 exe "hi! htmlArg"         .s:fmt_none   .s:fg_base1  .s:bg_back
 exe "hi! javaScript"        .s:fmt_none .s:fg_yellow .s:bg_none
-"}}}
 
-" perl highlighting "{{{
+" perl highlighting
 " ---------------------------------------------------------------------
 exe "hi! perlHereDoc"    . s:fg_base1  .s:bg_back   .s:fmt_none
 exe "hi! perlVarPlain"   . s:fg_yellow .s:bg_back   .s:fmt_none
 exe "hi! perlStatementFileDesc". s:fg_cyan.s:bg_back.s:fmt_none
 
-"}}}
 
-" tex highlighting "{{{
+" tex highlighting
 " ---------------------------------------------------------------------
 exe "hi! texStatement"   . s:fg_cyan   .s:bg_back   .s:fmt_none
 exe "hi! texMathZoneX"   . s:fg_yellow .s:bg_back   .s:fmt_none
 exe "hi! texMathMatcher" . s:fg_yellow .s:bg_back   .s:fmt_none
 exe "hi! texMathMatcher" . s:fg_yellow .s:bg_back   .s:fmt_none
 exe "hi! texRefLabel"    . s:fg_yellow .s:bg_back   .s:fmt_none
-"}}}
 
-" ruby highlighting "{{{
+" ruby highlighting
 " ---------------------------------------------------------------------
 exe "hi! rubyDefine"     . s:fg_base1  .s:bg_back   .s:fmt_bold
 "rubyInclude
@@ -692,9 +671,8 @@ exe "hi! rubyDefine"     . s:fg_base1  .s:bg_back   .s:fmt_bold
 "hi! link rubyGlobalVariable    Identifier
 "hi! link rubyClassVariable     Identifier
 "hi! link rubyConstant          Type
-"}}}
 
-" haskell syntax highlighting"{{{
+" haskell syntax highlighting
 " ---------------------------------------------------------------------
 " For use with syntax/haskell.vim : Haskell Syntax File
 " http://www.vim.org/scripts/script.php?script_id=3034
@@ -736,9 +714,8 @@ hi! link hsModuleWhereLabel  hsModuleStartLabel
 exe "hi! hsNiceOperator"     . s:fg_cyan   .s:bg_none   .s:fmt_none
 exe "hi! hsniceoperator"     . s:fg_cyan   .s:bg_none   .s:fmt_none
 
-"}}}
 
-" pandoc markdown syntax highlighting "{{{
+" pandoc markdown syntax highlighting
 " ---------------------------------------------------------------------
 
 "PandocHiLink pandocNormalBlock
@@ -859,40 +836,33 @@ exe "hi! pandocMetadataKey"              .s:fg_blue   .s:bg_none   .s:fmt_none
 exe "hi! pandocMetadata"                 .s:fg_blue   .s:bg_none   .s:fmt_bold
 hi! link pandocMetadataTitle             pandocMetadata
 
-"}}}
-
-" neomake highlighting "{{{
+" neomake highlighting
 " ---------------------------------------------------------------------
 exe "hi! NeomakeErrorSign"          . s:fg_orange   .s:bg_none   .s:fmt_none
 exe "hi! NeomakeWarningSign"        . s:fg_yellow   .s:bg_none   .s:fmt_none
 exe "hi! NeomakeMessageSign"        . s:fg_cyan     .s:bg_none   .s:fmt_none
 exe "hi! NeomakeNeomakeInfoSign"    . s:fg_green    .s:bg_none   .s:fmt_none
 
-"}}}
-
-" gitgutter highlighting "{{{
+" gitgutter highlighting
 " ---------------------------------------------------------------------
 exe "hi! GitGutterAdd"              . s:fg_green    .s:bg_none  .s:fmt_none
 exe "hi! GitGutterChange"           . s:fg_yellow   .s:bg_none  .s:fmt_none
 exe "hi! GitGutterDelete"           . s:fg_red      .s:bg_none  .s:fmt_none
 exe "hi! GitGutterChangeDelete"     . s:fg_red      .s:bg_none  .s:fmt_none
-" }}}"
 
-" signify highlighting "{{{
+" signify highlighting
 " ---------------------------------------------------------------------
 exe "hi! SignifySignAdd"            . s:fg_green    .s:bg_none  .s:fmt_none
 exe "hi! SignifySignChange"         . s:fg_yellow   .s:bg_none  .s:fmt_none
 exe "hi! SignifySignDelete"         . s:fg_red      .s:bg_none  .s:fmt_none
 exe "hi! SignifySignChangeDelete"   . s:fg_red      .s:bg_none  .s:fmt_none
-" }}}"
 
-" coc.nvim highlighting "{{{
+" coc.nvim highlighting
 " ---------------------------------------------------------------------
 hi! CocErrorSign guifg=#d1666a
 hi! CocWarningSign guifg=#d1cd66
-" }}}"
 
-" NeoVim terminal buffer colours "{{{
+" NeoVim terminal buffer colours
 " ---------------------------------------------------------------------
 let g:terminal_color_0 = s:gui_base03
 let g:terminal_color_1 = s:gui_red
@@ -910,9 +880,8 @@ let g:terminal_color_12 = s:gui_base0
 let g:terminal_color_13 = s:gui_violet
 let g:terminal_color_14 = s:gui_base1
 let g:terminal_color_15 = s:gui_base3
-"}}}
 
-" Utility autocommand "{{{
+" Utility autocommand
 " ---------------------------------------------------------------------
 " In cases where Solarized is initialized inside a terminal vim session and
 " then transferred to a gui session via the command `:gui`, the gui vim process
@@ -930,9 +899,8 @@ let g:terminal_color_15 = s:gui_base3
 " other potential terminal customizations that might make gui mode suboptimal.
 "
 autocmd GUIEnter * if (has('gui_running')) | exe "colorscheme " . g:colors_name | endif
-"}}}
 
-" License "{{{
+" License
 " ---------------------------------------------------------------------
 "
 " Copyright (c) 2011 Ethan Schoonover
@@ -957,4 +925,3 @@ autocmd GUIEnter * if (has('gui_running')) | exe "colorscheme " . g:colors_name 
 " THE SOFTWARE.
 "
 " vim: set foldmethod=marker foldlevel=0:
-"}}}
