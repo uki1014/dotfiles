@@ -166,7 +166,6 @@ return packer.startup(function(use)
 		end,
 	})
 	use({ "stephpy/vim-yaml", ft = { "yaml" } })
-	-- use({ "kchmck/vim-coffee-script", ft = { "coffee" } })
 	use({ "dag/vim-fish", ft = { "fish" } })
 	use({ "cespare/vim-toml", ft = { "toml" } })
 	use({
@@ -190,14 +189,6 @@ return packer.startup(function(use)
 		ft = { "typescript", "typescript.tsx", "typescriptreact" },
 	})
 	use({ "neoclide/jsonc.vim", ft = { "jsonc" } })
-	-- use({
-	--   "fatih/vim-go",
-	--   ft = { "go" },
-	--   config = function()
-	--     vim.g.go_disable_autoinstall = "1"
-	--     Maps.nmap("<Leader>gr", ":GoRun<CR>", Maps.n)
-	--   end,
-	-- })
 	use({
 		"tpope/vim-rails",
 		ft = { "ruby" },
