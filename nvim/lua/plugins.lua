@@ -207,6 +207,7 @@ return packer.startup(function(use)
 	})
 	use({ "joker1007/vim-ruby-heredoc-syntax", ft = { "ruby" } })
 	use({ "joker1007/vim-markdown-quote-syntax", ft = { "markdown" } })
+	use({ "SidOfc/mkdx", ft = { "markdown" } })
 	use({ "tbastos/vim-lua", ft = { "lua" } })
 	use({ "pantharshit00/vim-prisma", ft = { "prisma" } })
 	use({
