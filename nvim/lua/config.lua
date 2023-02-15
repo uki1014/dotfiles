@@ -29,6 +29,7 @@ vim.cmd("set noswapfile")
 vim.opt.shell = "fish"
 vim.opt.undolevels = 100
 vim.opt.completeopt = "menuone,noinsert"
+vim.opt.laststatus = 1
 
 -- work well in tmux
 vim.cmd("set t_8f=^[[38;2;%lu;%lu;%lum]]")
