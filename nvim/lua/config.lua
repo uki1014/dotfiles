@@ -24,7 +24,6 @@ vim.opt.showtabline = 2
 vim.opt.belloff = "all"
 vim.opt.title = true
 vim.opt.cmdheight = 1
-vim.opt.laststatus = 2
 vim.cmd("set noswapfile")
 vim.opt.shell = "fish"
 vim.opt.undolevels = 100
