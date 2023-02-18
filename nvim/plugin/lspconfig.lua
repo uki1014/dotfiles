@@ -9,7 +9,7 @@ local on_attach = function(client, bufnr)
 		or client.name == "solargraph"
 		or client.name == "ruby_ls"
 		or client.name == "flow"
-		or client.name == "sumneko_lua"
+		or client.name == "lua_ls"
 	then
 		client.server_capabilities.documentFormattingProvider = false
 	end
@@ -42,7 +42,7 @@ require("mason-lspconfig").setup({
 		"cssls",
 		"cssmodules_ls",
 		"dockerls",
-		"sumneko_lua",
+		"lua_ls",
 		"tsserver",
 		"solargraph",
 		"yamlls",
@@ -163,7 +163,7 @@ require("mason-lspconfig").setup_handlers({
 			root_dir = lspconfig.util.root_pattern("Cargo.toml"),
 		})
 
-		lspconfig.sumneko_lua.setup({
+		lspconfig.lua_ls.setup({
 			on_attach = on_attach,
 			capabilities = capabilities,
 			filetypes = { "lua" },
