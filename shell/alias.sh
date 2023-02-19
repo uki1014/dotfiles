@@ -134,6 +134,7 @@ alias reflow='npx flow stop && npx flow start'
 # yarn
 alias ya='yarn add'
 alias yr='yarn run'
+alias yd='yarn run dev'
 alias yw='yarn run watch'
 alias yb='yarn run build'
 alias ysb='yarn run storybook'
