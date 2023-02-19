@@ -273,3 +273,7 @@ end
 if [ -d $DOTFILES_PATH/primeNumber ]
   source $DOTFILES_PATH/primeNumber/primeNumber.config.fish
 end
+
+if [ -d $DOTFILES_PATH/things ]
+  source $DOTFILES_PATH/things/things.config.fish
+end
