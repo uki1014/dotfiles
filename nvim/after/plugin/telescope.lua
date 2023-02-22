@@ -10,6 +10,7 @@ end
 telescope.setup({
 	defaults = {
 		initial_mode = "insert",
+		-- sorting_strategy = "ascending",
 		mappings = {
 			i = {
 				["<Down>"] = actions.cycle_history_next,
