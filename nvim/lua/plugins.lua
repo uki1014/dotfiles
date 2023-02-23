@@ -246,6 +246,7 @@ return packer.startup(function(use)
 			Maps.nmap("<Leader>a", ":PrevimOpen<CR>", Maps.n)
 		end,
 	})
+	use({ "github/copilot.vim" })
 
 	if packer_bootstrap() then
 		require("packer").sync()
