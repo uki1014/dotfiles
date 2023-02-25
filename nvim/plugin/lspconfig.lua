@@ -56,10 +56,8 @@ require("mason-lspconfig").setup({
 		"prismals",
 		"taplo", -- toml
 		"vimls",
-		"volar", -- vue
 		"terraformls",
-		"yamlls",
-		"rust_analyzer",
+		-- "rust_analyzer",
 		-- "rustfmt",
 		-- "stylua", -- TODO: コメントアウトはずしたらauto installが走らないけど必要なので手動で入れる
 		-- "prettierd", -- TODO: コメントアウトはずしたらauto installが走らないけど必要なので手動で入れる
