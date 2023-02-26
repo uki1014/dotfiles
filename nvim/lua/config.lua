@@ -56,8 +56,7 @@ vim.opt.tabstop = 2
 vim.opt.expandtab = true
 vim.opt.formatoptions:remove("ro") -- 改行時のコメントアウトをoff
 vim.cmd("au FileType * setlocal formatoptions-=ro")
--- vim.opt.nowrap = false
-vim.cmd("set nowrap")
+vim.wo.wrap = false
 vim.opt.wildmenu = true
 vim.opt.wildmode = "list:full"
 vim.opt.mouse = "a"
