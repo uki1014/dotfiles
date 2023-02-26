@@ -23,9 +23,10 @@ telescope.setup({
 	},
 	extensions = {
 		file_browser = {
-			theme = "dropdown",
+			sorting_strategy = "ascending",
+			previewer = false,
 			layout_config = {
-				width = 150,
+				width = 100,
 				height = 30,
 			},
 			hijack_netrw = true,
