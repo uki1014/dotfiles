@@ -20,6 +20,10 @@ telescope.setup({
 				["q"] = actions.close,
 			},
 		},
+		layout_config = {
+			width = 180,
+			height = 40,
+		},
 	},
 	extensions = {
 		file_browser = {
