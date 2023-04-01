@@ -6,8 +6,8 @@ end
 local on_attach = function(client, bufnr)
 	if
 		client.name == "tsserver"
-		or client.name == "solargraph"
-		or client.name == "ruby_ls"
+		-- or client.name == "solargraph"
+		-- or client.name == "ruby_ls"
 		or client.name == "lua_ls"
 	then
 		client.server_capabilities.documentFormattingProvider = false
@@ -43,7 +43,7 @@ require("mason-lspconfig").setup({
 		"dockerls",
 		"lua_ls",
 		"tsserver",
-		"solargraph",
+		-- "solargraph",
 		"yamlls",
 		"gopls",
 		"sqls",
@@ -96,19 +96,19 @@ require("mason-lspconfig").setup_handlers({
 			capabilities = capabilities,
 		})
 
-		lspconfig.solargraph.setup({
-			on_attach = on_attach,
-			capabilities = capabilities,
-			filetypes = { "ruby", "rakefile", "rspec" },
-			cmd = { "bundle", "exec", "solargraph", "stdio" },
-		})
+		-- lspconfig.solargraph.setup({
+		--   on_attach = on_attach,
+		--   capabilities = capabilities,
+		--   filetypes = { "ruby", "rakefile", "rspec" },
+		--   cmd = { "bundle", "exec", "solargraph", "stdio" },
+		-- })
 
 		-- NOTE: brew install watchman が必要
-		lspconfig.sorbet.setup({
-			on_attach = on_attach,
-			capabilities = capabilities,
-			cmd = { "bundle", "exec", "srb", "tc", "--lsp" },
-		})
+		-- lspconfig.sorbet.setup({
+		--   on_attach = on_attach,
+		--   capabilities = capabilities,
+		--   cmd = { "bundle", "exec", "srb", "tc", "--lsp" },
+		-- })
 
 		-- lspconfig.ruby_ls.setup({
 		--   on_attach = on_attach,
