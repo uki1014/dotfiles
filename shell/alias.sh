@@ -116,6 +116,9 @@ alias yb='yarn run build'
 alias ysb='yarn run storybook'
 alias yc='yarn run clean'
 
+# rg
+alias rgfiles='rg --files -g'
+
 # Util
 alias re='exec $SHELL -l'
 alias ressh='sudo launchctl stop com.openssh.sshd'
