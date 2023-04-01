@@ -8,7 +8,6 @@ local on_attach = function(client, bufnr)
 		client.name == "tsserver"
 		or client.name == "solargraph"
 		or client.name == "ruby_ls"
-		or client.name == "flow"
 		or client.name == "lua_ls"
 	then
 		client.server_capabilities.documentFormattingProvider = false
@@ -68,15 +67,15 @@ require("mason-lspconfig").setup_handlers({
 	function()
 		local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
-		lspconfig.flow.setup({
-			on_attach = on_attach,
-			capabilities = capabilities,
-			filetypes = {
-				"javascript",
-				"javascriptreact",
-				"javascript.jsx",
-			},
-		})
+		-- lspconfig.flow.setup({
+		--   on_attach = on_attach,
+		--   capabilities = capabilities,
+		--   filetypes = {
+		--     "javascript",
+		--     "javascriptreact",
+		--     "javascript.jsx",
+		--   },
+		-- })
 
 		lspconfig.dockerls.setup({
 			on_attach = on_attach,
