@@ -147,7 +147,7 @@ if vim.fn.has("conceal") == 0 then
 end
 
 -- clipboard
-vim.opt.clipboard:append("unnamedplus")
+vim.opt.clipboard = "unnamedplus"
 
 -------------------------------------------------------------------------------
 -- Utils
@@ -199,5 +199,4 @@ if vim.fn.exists("&termguicolors") and vim.fn.exists("&winblend") then
 	vim.opt.pumblend = 5
 	vim.g.solarized_termcolors = 256
 	vim.cmd("colorscheme NeoSolarized")
-	-- vim.cmd('runtime ../colors/NeoSolarized.vim')
 end
