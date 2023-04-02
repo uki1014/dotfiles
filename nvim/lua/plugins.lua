@@ -41,7 +41,6 @@ return packer.startup(function(use)
 		"jose-elias-alvarez/null-ls.nvim",
 		requires = "nvim-lua/plenary.nvim",
 	})
-	use("lewis6991/impatient.nvim")
 	use({
 		"j-hui/fidget.nvim",
 		config = function()
