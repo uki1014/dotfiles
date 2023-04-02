@@ -1,3 +1,4 @@
+vim.loader.enable()
 
 Maps = require("maps")
 
