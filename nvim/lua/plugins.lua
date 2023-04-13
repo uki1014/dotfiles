@@ -189,15 +189,15 @@ return packer.startup(function(use)
 		ft = { "typescript", "typescript.tsx", "typescriptreact" },
 	})
 	use({ "neoclide/jsonc.vim", ft = { "jsonc" } })
-	-- use({
-	--   "tpope/vim-rails",
-	--   ft = { "ruby" },
-	--   config = function()
-	--     Maps.nmap("<Leader>1", ":A<CR>", Maps.n)
-	--   end,
-	-- })
-	-- use({ "joker1007/vim-ruby-heredoc-syntax", ft = { "ruby" } })
-	use({ "joker1007/vim-markdown-quote-syntax", ft = { "markdown" } })
+	use({
+		"tpope/vim-markdown",
+		ft = { "markdown" },
+		config = function()
+			vim.g.markdown_fenced_languages =
+				{ "html", "python", "bash=sh", "json", "javascript", "typescript", "ruby", "lua", "vim" }
+			vim.g.markdown_syntax_conceal = 1
+		end,
+	})
 	use({ "SidOfc/mkdx", ft = { "markdown" } })
 	use({ "tbastos/vim-lua", ft = { "lua" } })
 	use({ "pantharshit00/vim-prisma", ft = { "prisma" } })
