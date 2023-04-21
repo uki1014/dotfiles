@@ -116,7 +116,12 @@ return packer.startup(function(use)
 			vim.g["zenspace#default_mode"] = "on"
 		end,
 	})
-	use("jiangmiao/auto-pairs")
+	use({
+		"windwp/nvim-autopairs",
+		config = function()
+			require("nvim-autopairs").setup({})
+		end,
+	})
 	use("andymass/vim-matchup")
 	use("tpope/vim-surround")
 	use("tpope/vim-repeat")
