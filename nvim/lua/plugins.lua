@@ -111,12 +111,19 @@ return packer.startup(function(use)
 		end,
 	})
 	use("Yggdroot/indentLine")
-	-- use("preservim/nerdcommenter")
-
 	use({
 		"numToStr/Comment.nvim",
 		config = function()
-			require("Comment").setup()
+			require("Comment").setup({
+				toggler = {
+					line = ";e",
+					block = ";b",
+				},
+				opleader = {
+					line = ";e",
+					block = ";b",
+				},
+			})
 		end,
 	})
 	use({
