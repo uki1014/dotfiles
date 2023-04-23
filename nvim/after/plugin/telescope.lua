@@ -93,57 +93,12 @@ end, Maps.ns)
 Maps.nmap(";c", function()
 	builtin.command_history()
 end, Maps.ns)
-Maps.nmap(";e", function()
-	builtin.buffers()
-end, Maps.ns)
 Maps.nmap(";t", function()
 	builtin.man_pages()
 end, Maps.ns)
 Maps.nmap(";g", function()
 	builtin.git_status({
 		initial_mode = "normal",
-	})
-end, Maps.ns)
-
--- only ruby
-Maps.nmap(";h", function()
-	builtin.find_files({
-		find_command = "rg",
-		ignore_case = true,
-		hidden = true,
-		type = "ruby",
-	})
-end, Maps.ns)
-Maps.nmap(";hr", function()
-	builtin.live_grep({
-		find_command = "rg",
-		ignore_case = true,
-		hidden = true,
-		additional_args = function()
-			return { "--type=ruby" }
-		end,
-	})
-end, Maps.ns)
-
--- ignore spec directory
-Maps.nmap(";w", function()
-	builtin.find_files({
-		find_command = "rg",
-		ignore_case = true,
-		hidden = true,
-		type = "ruby",
-		glob = "!spec",
-	})
-end, Maps.ns)
-Maps.nmap(";wr", function()
-	builtin.live_grep({
-		find_command = "rg",
-		ignore_case = true,
-		hidden = true,
-		glob = "!spec",
-		additional_args = function()
-			return { "--type=ruby" }
-		end,
 	})
 end, Maps.ns)
 

@@ -111,7 +111,14 @@ return packer.startup(function(use)
 		end,
 	})
 	use("Yggdroot/indentLine")
-	use("preservim/nerdcommenter")
+	-- use("preservim/nerdcommenter")
+
+	use({
+		"numToStr/Comment.nvim",
+		config = function()
+			require("Comment").setup()
+		end,
+	})
 	use({
 		"uki1014/vim-zenspace",
 		config = function()
