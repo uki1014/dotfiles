@@ -14,8 +14,6 @@ Maps.imap("<C-p>", 'pumvisible() ? "<Up>" : "<C-p>"', Maps.ne)
 Maps.nmap("<Leader>de", ':call append(line("."), "debugger;")<CR>', Maps.n)
 -- console.log
 Maps.nmap("<Leader>log", ':call append(line("."), "console.log();")<CR>', Maps.n)
--- binding.pry
-Maps.nmap("<Leader>bi", ':call append(line("."), "binding.pry")<CR>', Maps.n)
 
 -- yank
 Maps.nmap("Y", "y$", Maps.n)
@@ -45,9 +43,6 @@ Maps.nmap("<Leader>b", ":lua CopyCurrentPath()<CR>", Maps.ns)
 -- nvimのprofile取る
 Maps.nmap("<Leader>ag", ":lua GetProfile()<CR>", Maps.ns)
 
--- 外部コマンド
-Maps.nmap("<Leader>ca", ":!", Maps.n)
-
 -- [[
 -- 置換
 --  /g: 対象全て
@@ -68,13 +63,6 @@ Maps.nmap(";h", ":messages<CR>", Maps.n)
 
 -- 改行してnormal mode
 Maps.nmap("<Space><CR>", "o<ESC>", Maps.ns)
-
--- open init.lua
-Maps.nmap("<Leader>.", ":new ~/.config/nvim/init.lua<CR>", Maps.n)
-Maps.nmap("<Leader>vi", ":source~/.config/nvim/init.lua<CR>", Maps.n)
-
--- UpdateRemotePlugins
-Maps.nmap("<Leader>ur", ":UpdateRemotePlugins<CR>", Maps.n)
 
 -- backspaceキーで削除
 Maps.nmap("dw", 'vb"_d', Maps.ns)
@@ -105,8 +93,3 @@ Maps.map("sh", "<C-w>h", Maps.s)
 Maps.map("sk", "<C-w>k", Maps.s)
 Maps.map("sj", "<C-w>j", Maps.s)
 Maps.map("sl", "<C-w>l", Maps.s)
--- Resize Window
-Maps.nmap("<Leader>h", "<C-w><", Maps.s)
-Maps.nmap("<Leader>k", "<C-w>>", Maps.s)
-Maps.nmap("<Leader>j", "<C-w>+", Maps.s)
-Maps.nmap("<Leader>l", "<C-w>-", Maps.s)
