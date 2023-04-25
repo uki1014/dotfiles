@@ -44,11 +44,11 @@ require("mason-lspconfig").setup({
 		"lua_ls",
 		"tsserver",
 		-- "solargraph",
-		"yamlls",
+		-- "yamlls",
 		"gopls",
 		"sqls",
 		"eslint",
-		"clangd",
+		-- "clangd",
 		"graphql",
 		"jsonls",
 		"marksman",
@@ -141,11 +141,11 @@ require("mason-lspconfig").setup_handlers({
 			root_dir = lspconfig.util.root_pattern("package.json", "babel.config.js"),
 		})
 
-		lspconfig.yamlls.setup({
-			on_attach = on_attach,
-			capabilities = capabilities,
-			filetypes = { "yaml", "yml" },
-		})
+		-- lspconfig.yamlls.setup({
+		-- 	on_attach = on_attach,
+		-- 	capabilities = capabilities,
+		-- 	filetypes = { "yaml", "yml" },
+		-- })
 
 		lspconfig.gopls.setup({
 			on_attach = on_attach,
