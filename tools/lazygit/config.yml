@@ -1,0 +1,9 @@
+customCommands:
+  - key: "N"
+    prompts:
+      - type: "input"
+        title: "Commit message"
+        initialValue: ""
+    command: "git commit --no-verify -m '{{index .PromptResponses 0}}'"
+    context: "files"
+    description: "commit changes with no verify"
