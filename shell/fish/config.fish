@@ -24,7 +24,7 @@ function is_linux
   [ (uname) = 'Linux' ] > /dev/null 2>&1
 end
 
-if test (uname) = 'Darwin' && test (uname -m) = 'arm64' > /dev/null 2>&1
+if is_darwin && test (uname -m) = 'arm64' > /dev/null 2>&1
   set -xg HOMEBREW_PATH "/opt/homebrew"
   set -xg PATH /opt/homebrew/bin $PATH
   set -xg PATH /opt/homebrew/sbin $PATH
@@ -95,6 +95,7 @@ if status --is-interactive
     set -xg PATH $HOMEBREW_PATH/opt/gnu-tar/libexec/gnubin $PATH
     set -xg MANPATH $HOMEBREW_PATH/opt/gnu-tar/libexec/gnuman $MANPATH
 
+    set -xg XDG_CONFIG_HOME $HOME/.config
   else if is_linux
     eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
     source /home/linuxbrew/.linuxbrew/opt/asdf/libexec/asdf.fish
