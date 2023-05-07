@@ -219,7 +219,7 @@ return packer.startup(function(use)
 		end,
 	})
 	use({ "SidOfc/mkdx", ft = { "markdown" } })
-	use({ "tbastos/vim-lua", ft = { "lua" } })
+	-- use({ "tbastos/vim-lua", ft = { "lua" } })
 	use({ "pantharshit00/vim-prisma", ft = { "prisma" } })
 	use({
 		"ap/vim-css-color",
