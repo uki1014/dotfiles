@@ -4,6 +4,8 @@ if not status then
 end
 
 local on_attach = function(client, bufnr)
+	client.server_capabilities.semanticTokensProvider = nil
+
 	if client.name == "tsserver" or client.name == "lua_ls" then
 		client.server_capabilities.documentFormattingProvider = false
 	end
