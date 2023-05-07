@@ -2,8 +2,9 @@
 	excludesfile = ~/.gitignore_global
   editor = nvim
   quotepath = false
-[include]
-  path = ~/.gitconfig.user
+[user]
+	name = Yuki Shimizu
+	email = yuki.shimizu.contact@gmail.com
 [url "ssh://git@github.com/"]
   insteadOf = https://github.com/
 [filter "lfs"]
@@ -18,27 +19,9 @@
   interactive = auto
   grep = auto
   ui = auto
-[hub]
-  protocol = https
 [github]
 	user = uki1014
 [alias]
-  a = "!git status --short | peco | awk '{print $2}' | xargs git add"
-  d = diff
-  co = checkout
-  ci = commit
-  ca = commit -a
-  ps = "!git push origin $(git rev-parse --abbrev-ref HEAD)"
-  pl = "!git pull origin $(git rev-parse --abbrev-ref HEAD)"
-  st = status
-  br = branch
-  ba = branch -a
-  bm = branch --merged
-  bn = branch --no-merged
-  df = "!git hist | peco | awk '{print $2}' | xargs -I {} git diff {}^ {}"
-  hist = log --pretty=format:\"%Cgreen%h %Creset%cd %Cblue[%cn] %Creset%s%C(yellow)%d%C(reset)\" --graph --date=relative --decorate --all
-  llog = log --graph --name-status --pretty=format:\"%C(red)%h %C(reset)(%cd) %C(green)%an %Creset%s %C(yellow)%d%Creset\" --date=relative
-  open = "!hub browse"
   type = cat-file -t
   dump = cat-file -p
   find = "!f() { git log --pretty=format:\"%h %cd [%cn] %s%d\" --date=relative -S'pretty' -S\"$@\" | peco | awk '{print $1}' | xargs -I {} git diff {}^ {}; }; f"
@@ -46,7 +29,6 @@
   edit-unmerged = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; nvim`f`"
   # add conflicted file on merge
   add-unmerged = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; git add `f`"
-  tree = log --graph --pretty=format:'%x09%C(auto) %h %Cgreen %ar %Creset%x09by"%C(cyan ul)%an%Creset" %x09%C(auto)%s %d'
 [init]
 	defaultBranch = main
 	templatedir = ~/dotfiles/git/.git-templates/git-secrets
