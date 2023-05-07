@@ -46,7 +46,7 @@ require("lazy").setup({
 	},
 	"nvim-treesitter/nvim-treesitter",
 	{ "yioneko/nvim-yati", requires = "nvim-treesitter/nvim-treesitter" },
-	{ "uki1014/vim-to-github", lazy = true },
+	{ "uki1014/vim-to-github" },
 	{
 		"akinsho/git-conflict.nvim",
 		version = "*",
@@ -82,7 +82,6 @@ require("lazy").setup({
 		config = function()
 			vim.g.closetag_filenames = "*.html,*.xhtml,*xml,*.phtml,*.erb,*.php,*.vue,*.js,*.jsx,*.ts,*.tsx"
 		end,
-		lazy = true,
 	},
 	{
 		"folke/todo-comments.nvim",
@@ -121,7 +120,6 @@ require("lazy").setup({
 		config = function()
 			vim.g["zenspace#default_mode"] = "on"
 		end,
-		lazy = true,
 	},
 	{
 		"windwp/nvim-autopairs",
@@ -152,7 +150,6 @@ require("lazy").setup({
 			})
 			Maps.nmap("<Leader>x", ":TroubleToggle<CR>", Maps.ns)
 		end,
-		lazy = true,
 	},
 	{
 		"ntpeters/vim-better-whitespace",
@@ -162,7 +159,6 @@ require("lazy").setup({
 
 			Maps.nmap("<Leader>y", ":StripWhitespace<CR>", Maps.n)
 		end,
-		lazy = true,
 	},
 	{
 		"numToStr/BufOnly.nvim",
@@ -193,7 +189,6 @@ require("lazy").setup({
 	{
 		"jparise/vim-graphql",
 		ft = { "javascript", "javascript.jsx", "javascriptreact", "typescript", "typescript.tsx", "typescriptreact" },
-		lazy = true,
 	},
 	{
 		"styled-components/vim-styled-components",
