@@ -1,65 +1,42 @@
--- https://dotfyle.com/
-
-local packer_bootstrap = function()
-	local fn = vim.fn
-	local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
-	if fn.empty(fn.glob(install_path)) > 0 then
-		fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path })
-		vim.cmd([[packadd packer.nvim]])
-		return true
-	end
-	vim.cmd([[packadd packer.nvim]])
-	return false
-end
-
-local packer = require("packer")
-
-return packer.startup(function(use)
-	use({
-		"wbthomason/packer.nvim",
-		config = function()
-			Maps.nmap("<Leader>uf", ":PackerCompile<CR>", Maps.n)
-			Maps.nmap("<Leader>ud", ":PackerSync<CR>", Maps.n)
-			Maps.nmap("<Leader>uy", ":PackerInstall<CR>", Maps.n)
-			Maps.nmap("<Leader>uc", ":PackerClean<CR>", Maps.n)
-			Maps.nmap("<Leader>us", ":PackerStatus<CR>", Maps.n)
-		end,
-	})
-	use("neovim/nvim-lspconfig")
-	use("williamboman/mason.nvim")
-	use("williamboman/mason-lspconfig.nvim")
-	use({
+return {
+	"neovim/nvim-lspconfig",
+	"williamboman/mason.nvim",
+	"williamboman/mason-lspconfig.nvim",
+	{
+		"L3MON4D3/LuaSnip",
+		-- follow latest release.
+		version = "<CurrentMajor>.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+		-- install jsregexp (optional!).
+		build = "make install_jsregexp",
+	},
+	"saadparwaiz1/cmp_luasnip",
+	{
 		"hrsh7th/nvim-cmp",
 		requires = {
 			{ "L3MON4D3/LuaSnip" },
 			{ "saadparwaiz1/cmp_luasnip" },
 		},
-	})
-	use("hrsh7th/cmp-nvim-lsp")
-	use("hrsh7th/cmp-vsnip")
-	use("hrsh7th/cmp-buffer")
-	use("hrsh7th/vim-vsnip")
-	use({
+	},
+	"hrsh7th/cmp-nvim-lsp",
+	"hrsh7th/cmp-vsnip",
+	"hrsh7th/cmp-buffer",
+	"hrsh7th/vim-vsnip",
+	{
 		"jose-elias-alvarez/null-ls.nvim",
 		requires = "nvim-lua/plenary.nvim",
-	})
-	use({
+	},
+	{
 		"j-hui/fidget.nvim",
 		config = function()
 			require("fidget").setup()
 		end,
-	})
-	use({
-		"nvim-treesitter/nvim-treesitter",
-		run = function()
-			require("nvim-treesitter.install").update({ with_sync = true })
-		end,
-	})
-	use({ "yioneko/nvim-yati", requires = "nvim-treesitter/nvim-treesitter" })
-	use("uki1014/vim-to-github")
-	use({
+	},
+	"nvim-treesitter/nvim-treesitter",
+	{ "yioneko/nvim-yati", requires = "nvim-treesitter/nvim-treesitter" },
+	{ "uki1014/vim-to-github", lazy = true },
+	{
 		"akinsho/git-conflict.nvim",
-		tag = "*",
+		version = "*",
 		config = function()
 			require("git-conflict").setup({
 				highlights = {
@@ -68,32 +45,33 @@ return packer.startup(function(use)
 				},
 			})
 		end,
-	})
-	use("itchyny/lightline.vim")
+	},
+	"itchyny/lightline.vim",
 	-- Finder / Filer
-	use("nvim-lua/plenary.nvim")
-	use("nvim-telescope/telescope-file-browser.nvim")
-	use({
+	"nvim-lua/plenary.nvim",
+	"nvim-telescope/telescope-file-browser.nvim",
+	{
 		"nvim-telescope/telescope.nvim",
 		requires = {
 			"nvim-lua/plenary.nvim",
 		},
-	})
+	},
 	-- Git
-	use({
+	{
 		"lewis6991/gitsigns.nvim",
 		requires = {
 			"nvim-lua/plenary.nvim",
 		},
-	})
+	},
 	-- Utils
-	use({
+	{
 		"alvan/vim-closetag",
 		config = function()
 			vim.g.closetag_filenames = "*.html,*.xhtml,*xml,*.phtml,*.erb,*.php,*.vue,*.js,*.jsx,*.ts,*.tsx"
 		end,
-	})
-	use({
+		lazy = true,
+	},
+	{
 		"folke/todo-comments.nvim",
 		requires = "nvim-lua/plenary.nvim",
 		config = function()
@@ -108,9 +86,9 @@ return packer.startup(function(use)
 				},
 			})
 		end,
-	})
-	use("Yggdroot/indentLine")
-	use({
+	},
+	"Yggdroot/indentLine",
+	{
 		"numToStr/Comment.nvim",
 		config = function()
 			require("Comment").setup({
@@ -124,32 +102,33 @@ return packer.startup(function(use)
 				},
 			})
 		end,
-	})
-	use({
+	},
+	{
 		"uki1014/vim-zenspace",
 		config = function()
 			vim.g["zenspace#default_mode"] = "on"
 		end,
-	})
-	use({
+		lazy = true,
+	},
+	{
 		"windwp/nvim-autopairs",
 		config = function()
-			require("nvim-autopairs").setup({})
+			require("nvim-autopairs").setup()
 		end,
-	})
-	use("andymass/vim-matchup")
-	use("tpope/vim-surround")
-	use("tpope/vim-repeat")
-	use({
+	},
+	"andymass/vim-matchup",
+	"tpope/vim-surround",
+	"tpope/vim-repeat",
+	{
 		"thaerkh/vim-workspace",
 		config = function()
 			vim.g.workspace_autocreate = "1"
-			vim.g.workspace_undodir = os.getenv("HOME") .. "/.config/nvim/undo/"
+			vim.g.workspace_undodir = vim.fn.getcwd() .. "/.undo/"
 			vim.g.workspace_autosave = "0"
-			vim.g.workspace_session_directory = os.getenv("HOME") .. "/.config/nvim/sessions/"
+			vim.g.workspace_undodir = vim.fn.getcwd() .. "/.sessions/"
 		end,
-	})
-	use({
+	},
+	{
 		"folke/trouble.nvim",
 		config = function()
 			require("trouble").setup({
@@ -160,8 +139,9 @@ return packer.startup(function(use)
 			})
 			Maps.nmap("<Leader>x", ":TroubleToggle<CR>", Maps.ns)
 		end,
-	})
-	use({
+		lazy = true,
+	},
+	{
 		"ntpeters/vim-better-whitespace",
 		config = function()
 			vim.g.better_whitespace_guicolor = "darkred"
@@ -169,47 +149,50 @@ return packer.startup(function(use)
 
 			Maps.nmap("<Leader>y", ":StripWhitespace<CR>", Maps.n)
 		end,
-	})
-	use({
+		lazy = true,
+	},
+	{
 		"numToStr/BufOnly.nvim",
 		config = function()
 			Maps.nmap("<Leader>ba", ":BufOnly<CR>", Maps.n)
 		end,
-	})
-	use("windwp/nvim-spectre")
-	use("mtdl9/vim-log-highlighting")
-	use({
+		lazy = true,
+	},
+	{ "windwp/nvim-spectre", lazy = true },
+	"mtdl9/vim-log-highlighting",
+	{
 		"elzr/vim-json",
 		ft = { "json" },
 		config = function()
 			vim.g.vim_json_syntax_conceal = "0"
 		end,
-	})
-	use({ "stephpy/vim-yaml", ft = { "yaml" } })
-	use({ "dag/vim-fish", ft = { "fish" } })
-	use({ "cespare/vim-toml", ft = { "toml" } })
-	use({
+	},
+	{ "stephpy/vim-yaml", ft = { "yaml" } },
+	{ "dag/vim-fish", ft = { "fish" } },
+	{ "cespare/vim-toml", ft = { "toml" } },
+	{
 		"yuezk/vim-js",
 		ft = { "javascript", "javascript.jsx", "javascriptreact", "typescript", "typescript.tsx", "typescriptreact" },
-	})
-	use({
+	},
+	{
 		"maxmellon/vim-jsx-pretty",
 		ft = { "javascript", "javascript.jsx", "javascriptreact", "typescript", "typescript.tsx", "typescriptreact" },
-	})
-	use({
+	},
+	{
 		"jparise/vim-graphql",
 		ft = { "javascript", "javascript.jsx", "javascriptreact", "typescript", "typescript.tsx", "typescriptreact" },
-	})
-	use({
+		lazy = true,
+	},
+	{
 		"styled-components/vim-styled-components",
 		ft = { "javascript", "javascript.jsx", "javascriptreact", "typescript", "typescript.tsx", "typescriptreact" },
-	})
-	use({
+	},
+	{
 		"leafgarland/typescript-vim",
 		ft = { "typescript", "typescript.tsx", "typescriptreact" },
-	})
-	use({ "neoclide/jsonc.vim", ft = { "jsonc" } })
-	use({
+	},
+	{ "neoclide/jsonc.vim", ft = { "jsonc" } },
+	{
 		"tpope/vim-markdown",
 		ft = { "markdown" },
 		config = function()
@@ -217,11 +200,10 @@ return packer.startup(function(use)
 				{ "html", "python", "bash=sh", "json", "javascript", "typescript", "ruby", "lua", "vim" }
 			vim.g.markdown_syntax_conceal = 1
 		end,
-	})
-	use({ "SidOfc/mkdx", ft = { "markdown" } })
-	-- use({ "tbastos/vim-lua", ft = { "lua" } })
-	use({ "pantharshit00/vim-prisma", ft = { "prisma" } })
-	use({
+	},
+	{ "SidOfc/mkdx", ft = { "markdown" } },
+	{ "pantharshit00/vim-prisma", ft = { "prisma" } },
+	{
 		"ap/vim-css-color",
 		ft = {
 			"javascript",
@@ -237,38 +219,41 @@ return packer.startup(function(use)
 			"vim",
 			"lua",
 		},
-	})
-	use({
+	},
+	{
 		"mechatroner/rainbow_csv",
 		ft = { "csv", "tsv" },
-	})
-	use({
+		lazy = true,
+	},
+	{
 		"RRethy/nvim-treesitter-endwise",
 		ft = { "ruby", "lua", "vimscript", "bash" },
-	})
-	use({
+		lazy = true,
+	},
+	{
 		"hashivim/vim-terraform",
 		ft = { "terraform" },
-	})
-	use({
+	},
+	{
 		"wuelnerdotexe/vim-astro",
 		ft = { "astro" },
 		config = function()
 			vim.g.astro_typescript = "enable"
 		end,
-	})
-	use({
+		lazy = true,
+	},
+	{
 		"previm/previm",
 		ft = { "markdown" },
 		config = function()
 			vim.g.previm_open_cmd = 'open -a "Google Chrome"'
-
 			Maps.nmap("<Leader>a", ":PrevimOpen<CR>", Maps.n)
 		end,
-	})
-	-- use({ "github/copilot.vim" })
+		lazy = true,
+	},
+	-- { "github/copilot.vim" },
 
-	use({
+	{
 		"zbirenbaum/copilot.lua",
 		cmd = "Copilot",
 		event = "InsertEnter",
@@ -283,16 +268,13 @@ return packer.startup(function(use)
 				},
 			})
 		end,
-	})
-	use({
+	},
+	{
 		"zbirenbaum/copilot-cmp",
 		requires = { "copilot.lua" },
 		config = function()
 			require("copilot_cmp").setup()
 		end,
-	})
-
-	if packer_bootstrap() then
-		require("packer").sync()
-	end
-end)
+		lazy = true,
+	},
+}
