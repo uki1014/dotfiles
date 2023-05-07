@@ -188,15 +188,7 @@ end
 -------------------------------------------------------------------------------
 -- Color scheme
 -------------------------------------------------------------------------------
-if vim.fn.exists("&termguicolors") and vim.fn.exists("&winblend") then
-	vim.g.syntax = true
-	vim.opt.background = "dark"
-	vim.g.colors_name = "NeoSolarized"
-	vim.g.neosolarized_termtrans = 1
-	vim.opt.termguicolors = true
-	vim.opt.winblend = 0
-	vim.opt.wildoptions = "pum"
-	vim.opt.pumblend = 5
-	vim.g.solarized_termcolors = 256
-	vim.cmd("colorscheme NeoSolarized")
-end
+vim.g.syntax = true
+vim.o.background = "dark"
+vim.o.termguicolors = true
+vim.cmd("colorscheme NeoSolarized")
