@@ -4,6 +4,12 @@ if not status then
 end
 
 treesitter.setup({
+	-- Install parsers synchronously (only applied to `ensure_installed`)
+	sync_install = false,
+	build = ":TSUpdate",
+	config = function(_, opts)
+		require("nvim-treesitter.configs").setup(opts)
+	end,
 	highlight = {
 		enable = false,
 		disable = {},
