@@ -175,6 +175,47 @@ function dockside
   clear
 end
 
+function spacedocide
+  set -xg SPACEDOC_PATH $MYPROJECTS_PATH/spacedoc
+  if [ ! -d $SPACEDOC_PATH ]
+    mkdir $SPACEDOC_PATH && \
+    cd $SPACEDOC_PATH && \
+    git clone git@github.com:spacedoc/Spacedoc.git
+  end
+  # dotfiles
+  tmux rename-window dotfiles
+  cd $SPACEDOC_PATH/Spacedoc
+
+  # root
+  tmux new-window
+  tmux rename-window spacedoc-root
+  idet
+  cd $SPACEDOC_PATH/Spacedoc/desktop
+
+  # desktop
+  tmux new-window
+  tmux rename-window spacedoc-desktop
+  idet
+  cd $SPACEDOC_PATH/Spacedoc/api
+
+  # api
+  tmux new-window
+  tmux rename-window spacedoc-api
+  idet
+  cd $SPACEDOC_PATH/Spacedoc/web
+
+  # web
+  tmux new-window
+  tmux rename-window spacedoc-web
+  idet
+
+  # 順番にやるとおかしくなるので最後にdotfilesに移動
+  tmux next-window
+  cdd
+  clear
+end
+
+
 # rails/npm/resque/gitなどeditor以外のpane
 function cide
   # 右下のpaneも縦に分割するパターン
@@ -267,14 +308,6 @@ if [ -e $DOTFILES_PATH/shell/alias.sh ]
   source $DOTFILES_PATH/shell/alias.sh
 end
 
-if [ -d $DOTFILES_PATH/freee ]
-  source $DOTFILES_PATH/freee/freee.config.fish
-end
-
-if [ -d $DOTFILES_PATH/primeNumber ]
-  source $DOTFILES_PATH/primeNumber/primeNumber.config.fish
-end
-
-if [ -d $DOTFILES_PATH/things ]
-  source $DOTFILES_PATH/things/things.config.fish
+if [ -d $DOTFILES_PATH/works ]
+  source $DOTFILES_PATH/works/work.config.fish
 end
