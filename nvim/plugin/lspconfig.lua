@@ -54,7 +54,6 @@ require("mason-lspconfig").setup({
 		-- "rustfmt",
 		-- "stylua", -- TODO: コメントアウトはずしたらauto installが走らないけど必要なので手動で入れる
 		-- "prettierd", -- TODO: コメントアウトはずしたらauto installが走らないけど必要なので手動で入れる
-		-- "rubocop", -- TODO: コメントアウトはずしたらauto installが走らないけど必要なので手動で入れる
 	},
 })
 require("mason-lspconfig").setup_handlers({

@@ -4,4 +4,4 @@ Maps = require("maps")
 
 require("keymap")
 require("config")
-require("lazy_nvim")
+require("plugins")
