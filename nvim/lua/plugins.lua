@@ -169,7 +169,6 @@ require("lazy").setup({
 		config = function()
 			Maps.nmap("<Leader>ba", ":BufOnly<CR>", Maps.n)
 		end,
-		lazy = true,
 	},
 	{ "windwp/nvim-spectre", lazy = true },
 	"mtdl9/vim-log-highlighting",
