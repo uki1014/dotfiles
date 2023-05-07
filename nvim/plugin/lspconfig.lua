@@ -127,7 +127,7 @@ require("mason-lspconfig").setup_handlers({
 						version = "LuaJIT",
 					},
 					diagnostics = {
-						globals = { "vim" },
+						globals = { "vim", "Maps" },
 					},
 					-- workspace = {
 					-- 	-- Make the server aware of Neovim runtime files
