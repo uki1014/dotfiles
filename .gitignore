@@ -1,4 +1,3 @@
-freee*/
 .netrwhist
 sessions/
 undo/
@@ -7,6 +6,4 @@ Session.vim
 token.fish
 *.log
 memo
-packer_compiled.lua
-primeNumber/
-things/
+works/
