@@ -4,12 +4,7 @@ if not status then
 end
 
 local on_attach = function(client, bufnr)
-	if
-		client.name == "tsserver"
-		-- or client.name == "solargraph"
-		-- or client.name == "ruby_ls"
-		or client.name == "lua_ls"
-	then
+	if client.name == "tsserver" or client.name == "lua_ls" then
 		client.server_capabilities.documentFormattingProvider = false
 	end
 
@@ -43,7 +38,6 @@ require("mason-lspconfig").setup({
 		"dockerls",
 		"lua_ls",
 		"tsserver",
-		-- "solargraph",
 		-- "yamlls",
 		"gopls",
 		"sqls",
@@ -67,16 +61,6 @@ require("mason-lspconfig").setup_handlers({
 	function()
 		local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
-		-- lspconfig.flow.setup({
-		--   on_attach = on_attach,
-		--   capabilities = capabilities,
-		--   filetypes = {
-		--     "javascript",
-		--     "javascriptreact",
-		--     "javascript.jsx",
-		--   },
-		-- })
-
 		lspconfig.dockerls.setup({
 			on_attach = on_attach,
 			capabilities = capabilities,
@@ -95,28 +79,6 @@ require("mason-lspconfig").setup_handlers({
 			root_dir = lspconfig.util.root_pattern("package.json", "tsconfig.json"),
 			capabilities = capabilities,
 		})
-
-		-- lspconfig.solargraph.setup({
-		--   on_attach = on_attach,
-		--   capabilities = capabilities,
-		--   filetypes = { "ruby", "rakefile", "rspec" },
-		--   cmd = { "bundle", "exec", "solargraph", "stdio" },
-		-- })
-
-		-- NOTE: brew install watchman が必要
-		-- lspconfig.sorbet.setup({
-		--   on_attach = on_attach,
-		--   capabilities = capabilities,
-		--   cmd = { "bundle", "exec", "srb", "tc", "--lsp" },
-		-- })
-
-		-- lspconfig.ruby_ls.setup({
-		--   on_attach = on_attach,
-		--   capabilities = capabilities,
-		--   filetypes = { "ruby", "rakefile", "rspec" },
-		--   cmd = { "bundle", "exec", "ruby-lsp" },
-		--   root_dir = lspconfig.util.root_pattern("Gemfile", ".git"),
-		-- })
 
 		lspconfig.terraformls.setup({
 			on_attach = on_attach,
@@ -141,24 +103,18 @@ require("mason-lspconfig").setup_handlers({
 			root_dir = lspconfig.util.root_pattern("package.json", "babel.config.js"),
 		})
 
-		-- lspconfig.yamlls.setup({
-		-- 	on_attach = on_attach,
-		-- 	capabilities = capabilities,
-		-- 	filetypes = { "yaml", "yml" },
-		-- })
-
 		lspconfig.gopls.setup({
 			on_attach = on_attach,
 			capabilities = capabilities,
 			filetypes = { "go" },
 		})
 
-		lspconfig.rust_analyzer.setup({
-			on_attach = on_attach,
-			capabilities = capabilities,
-			filetypes = { "rust" },
-			root_dir = lspconfig.util.root_pattern("Cargo.toml"),
-		})
+		-- lspconfig.rust_analyzer.setup({
+		-- 	on_attach = on_attach,
+		-- 	capabilities = capabilities,
+		-- 	filetypes = { "rust" },
+		-- 	root_dir = lspconfig.util.root_pattern("Cargo.toml"),
+		-- })
 
 		lspconfig.lua_ls.setup({
 			on_attach = on_attach,

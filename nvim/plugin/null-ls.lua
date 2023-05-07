@@ -6,14 +6,6 @@ null_ls.setup({
 		-- null_ls.builtins.diagnostics.eslint,
 		null_ls.builtins.formatting.stylua,
 		null_ls.builtins.formatting.prettierd,
-		-- null_ls.builtins.diagnostics.rubocop.with({
-		--   command = "bundle",
-		--   args = { "exec", "rubocop", "-f", "json", "--stdin", "$FILENAME" },
-		-- }),
-		-- null_ls.builtins.formatting.rubocop.with({
-		--   command = "bundle",
-		--   args = { "exec", "rubocop", "--auto-correct", "-f", "quiet", "--stderr", "--stdin", "$FILENAME" },
-		-- }),
 	},
 	on_attach = function(client)
 		if client.server_capabilities.documentFormattingProvider then
