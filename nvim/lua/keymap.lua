@@ -93,3 +93,9 @@ Maps.map("sh", "<C-w>h", Maps.s)
 Maps.map("sk", "<C-w>k", Maps.s)
 Maps.map("sj", "<C-w>j", Maps.s)
 Maps.map("sl", "<C-w>l", Maps.s)
+
+-- Lazy
+Maps.nmap("<Leader>ud", ":Lazy sync<CR>", Maps.n)
+Maps.nmap("<Leader>uy", ":Lazy install<CR>", Maps.n)
+Maps.nmap("<Leader>uc", ":Lazy clean<CR>", Maps.n)
+Maps.nmap("<Leader>us", ":Lazy profile<CR>", Maps.n)
