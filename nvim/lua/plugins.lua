@@ -34,6 +34,7 @@ require("lazy").setup({
 	"hrsh7th/cmp-vsnip",
 	"hrsh7th/cmp-buffer",
 	"hrsh7th/vim-vsnip",
+	"uki1014/vim-to-github",
 	{
 		"jose-elias-alvarez/null-ls.nvim",
 		requires = "nvim-lua/plenary.nvim",
@@ -46,7 +47,6 @@ require("lazy").setup({
 	},
 	"nvim-treesitter/nvim-treesitter",
 	{ "yioneko/nvim-yati", requires = "nvim-treesitter/nvim-treesitter" },
-	{ "uki1014/vim-to-github" },
 	{
 		"akinsho/git-conflict.nvim",
 		version = "*",
@@ -77,12 +77,6 @@ require("lazy").setup({
 		},
 	},
 	-- Utils
-	{
-		"alvan/vim-closetag",
-		config = function()
-			vim.g.closetag_filenames = "*.html,*.xhtml,*xml,*.phtml,*.erb,*.php,*.vue,*.js,*.jsx,*.ts,*.tsx"
-		end,
-	},
 	{
 		"folke/todo-comments.nvim",
 		requires = "nvim-lua/plenary.nvim",
@@ -127,6 +121,7 @@ require("lazy").setup({
 			require("nvim-autopairs").setup()
 		end,
 	},
+	"windwp/nvim-ts-autotag",
 	"andymass/vim-matchup",
 	"tpope/vim-surround",
 	"tpope/vim-repeat",
