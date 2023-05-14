@@ -93,7 +93,12 @@ require("lazy").setup({
 			})
 		end,
 	},
-	"Yggdroot/indentLine",
+	{
+		"Yggdroot/indentLine",
+		config = function()
+			vim.g.indentLine_concealLevel = 1
+		end,
+	},
 	{
 		"numToStr/Comment.nvim",
 		config = function()
