@@ -7,3 +7,7 @@ customCommands:
     command: "git commit --no-verify -m '{{index .PromptResponses 0}}'"
     context: "files"
     description: "commit changes with no verify"
+  - key: "F"
+    command: "git push --no-verify"
+    context: "files"
+    description: "push with no verify"
