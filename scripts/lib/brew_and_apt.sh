@@ -21,7 +21,6 @@ target_brew_list=(
   htop
   fish
   reattach-to-user-namespace
-  shared-mime-info
   tree-sitter
   luajit
   gpg
@@ -31,7 +30,6 @@ target_brew_list=(
   shellcheck
   hadolint
   xauth # x11でclipboard共有の時に必要
-  watchman # for sorbet
   bottom
 )
 
@@ -49,7 +47,6 @@ target_brew_list_for_mac_os=(
 
 # GUI tools
 target_brew_cask_list=(
-  figma
   chromedriver
   firefox
   docker
