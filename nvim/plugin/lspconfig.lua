@@ -4,8 +4,6 @@ if not status then
 end
 
 local on_attach = function(client, bufnr)
-	client.server_capabilities.semanticTokensProvider = nil
-
 	if client.name == "tsserver" or client.name == "lua_ls" then
 		client.server_capabilities.documentFormattingProvider = false
 	end
@@ -29,6 +27,8 @@ local on_attach = function(client, bufnr)
 	buf_set_keymap("n", "L", "<cmd>lua vim.diagnostic.goto_next()<CR>", Maps.none)
 	buf_set_keymap("n", "H", "<cmd>lua vim.diagnostic.goto_prev()<CR>", Maps.none)
 	buf_set_keymap("n", "<space>d", "<cmd>lua vim.lsp.buf.type_definition()<CR>", Maps.none)
+
+	client.server_capabilities.semanticTokensProvider = nil
 end
 
 require("mason").setup()
