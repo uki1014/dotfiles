@@ -23,3 +23,4 @@ Session.vim
 docker-entrypoint-initdb.d/
 *keep
 *.rbi
+.DS_Store
