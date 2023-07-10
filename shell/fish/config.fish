@@ -175,38 +175,38 @@ function dockside
   clear
 end
 
-function spacedocide
-  set -xg SPACEDOC_PATH $MYPROJECTS_PATH/spacedoc
-  if [ ! -d $SPACEDOC_PATH ]
-    mkdir $SPACEDOC_PATH && \
-    cd $SPACEDOC_PATH && \
-    git clone git@github.com:spacedoc/Spacedoc.git
+function postworkide
+  set -xg POSTWORK_PATH $MYPROJECTS_PATH/postworks
+  if [ ! -d $POSTWORK_PATH ]
+    mkdir $POSTWORK_PATH && \
+    cd $POSTWORK_PATH && \
+    git clone git@github.com:postworks/Postwork.git
   end
   # dotfiles
   tmux rename-window dotfiles
-  cd $SPACEDOC_PATH/Spacedoc
+  cd $POSTWORK_PATH/Postwork
 
   # root
   tmux new-window
-  tmux rename-window spacedoc-root
+  tmux rename-window postwork-root
   idet
-  cd $SPACEDOC_PATH/Spacedoc/desktop
+  cd $POSTWORK_PATH/Postwork/desktop
 
   # desktop
   tmux new-window
-  tmux rename-window spacedoc-desktop
+  tmux rename-window postwork-desktop
   idet
-  cd $SPACEDOC_PATH/Spacedoc/api
+  cd $POSTWORK_PATH/Postwork/api
 
   # api
   tmux new-window
-  tmux rename-window spacedoc-api
+  tmux rename-window postwork-api
   idet
-  cd $SPACEDOC_PATH/Spacedoc/web
+  cd $POSTWORK_PATH/Postwork/web
 
   # web
   tmux new-window
-  tmux rename-window spacedoc-web
+  tmux rename-window postwork-web
   idet
 
   # 順番にやるとおかしくなるので最後にdotfilesに移動
