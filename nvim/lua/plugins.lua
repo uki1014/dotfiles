@@ -13,7 +13,17 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
 	"neovim/nvim-lspconfig",
-	"williamboman/mason.nvim",
+	{
+		"williamboman/mason.nvim",
+		cmd = {
+			"Mason",
+			"MasonInstall",
+			"MasonUninstall",
+			"MasonUninstallAll",
+			"MasonLog",
+			"MasonUpdate",
+		},
+	},
 	"williamboman/mason-lspconfig.nvim",
 	{
 		"L3MON4D3/LuaSnip",
@@ -25,6 +35,7 @@ require("lazy").setup({
 	"saadparwaiz1/cmp_luasnip",
 	{
 		"hrsh7th/nvim-cmp",
+		event = "InsertEnter",
 		requires = {
 			{ "L3MON4D3/LuaSnip" },
 			{ "saadparwaiz1/cmp_luasnip" },
@@ -259,7 +270,6 @@ require("lazy").setup({
 		end,
 		lazy = true,
 	},
-	-- { "github/copilot.vim" },
 
 	{
 		"zbirenbaum/copilot.lua",
