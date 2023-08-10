@@ -23,7 +23,7 @@ Maps.nmap("gj", "ddp", Maps.n)
 Maps.nmap("gk", "dd2kp", Maps.n)
 
 -- current cursorより前を削除
-Maps.nmap("fd", "v^d", Maps.n)
+Maps.nmap("df", "v^d", Maps.n)
 
 -- bufferの再読み込み
 Maps.nmap("<Leader>e", ":edit<CR>", Maps.n)
@@ -69,9 +69,6 @@ Maps.nmap("dw", 'vb"_d', Maps.ns)
 
 -- Select All
 Maps.nmap("aa", "gg<S-v>G", Maps.s)
-
--- Open BufExplorer
-Maps.nmap("\\", "\be", Maps.none)
 
 -- ハイライトを解除する
 Maps.nmap("-", ":noh<CR>", Maps.ns)
