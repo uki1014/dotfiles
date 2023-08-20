@@ -52,8 +52,6 @@ require("mason-lspconfig").setup({
 		"taplo", -- toml
 		"vimls",
 		"terraformls",
-		-- "rust_analyzer",
-		-- "rustfmt",
 		-- "stylua", -- TODO: コメントアウトはずしたらauto installが走らないけど必要なので手動で入れる
 		-- "prettierd", -- TODO: コメントアウトはずしたらauto installが走らないけど必要なので手動で入れる
 	},
@@ -65,6 +63,7 @@ require("mason-lspconfig").setup_handlers({
 		lspconfig.dockerls.setup({
 			on_attach = on_attach,
 			capabilities = capabilities,
+			filetypes = { "dockerfile", "Dockerfile" },
 		})
 
 		lspconfig.tsserver.setup({
@@ -110,13 +109,6 @@ require("mason-lspconfig").setup_handlers({
 			filetypes = { "go" },
 		})
 
-		-- lspconfig.rust_analyzer.setup({
-		-- 	on_attach = on_attach,
-		-- 	capabilities = capabilities,
-		-- 	filetypes = { "rust" },
-		-- 	root_dir = lspconfig.util.root_pattern("Cargo.toml"),
-		-- })
-
 		lspconfig.lua_ls.setup({
 			on_attach = on_attach,
 			capabilities = capabilities,
@@ -124,17 +116,11 @@ require("mason-lspconfig").setup_handlers({
 			settings = {
 				Lua = {
 					runtime = {
-						-- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
 						version = "LuaJIT",
 					},
 					diagnostics = {
 						globals = { "vim", "Maps" },
 					},
-					-- workspace = {
-					-- 	-- Make the server aware of Neovim runtime files
-					-- 	library = vim.api.nvim_get_runtime_file("", true),
-					-- },
-					-- Do not send telemetry data containing a randomized but unique identifier
 					telemetry = {
 						enable = false,
 					},
