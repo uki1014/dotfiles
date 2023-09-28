@@ -76,7 +76,7 @@ require("lazy").setup({
 		"tzachar/highlight-undo.nvim",
 		config = function()
 			require("highlight-undo").setup({
-				duration = 300,
+				duration = 1000,
 				undo = {
 					hlgroup = "HighlightUndo",
 					mode = "n",
@@ -87,7 +87,7 @@ require("lazy").setup({
 				redo = {
 					hlgroup = "HighlightUndo",
 					mode = "n",
-					lhs = "<C-r>",
+					lhs = "<S-u>",
 					map = "redo",
 					opts = {},
 				},
