@@ -72,7 +72,6 @@ require("lazy").setup({
 		end,
 	},
 	{
-
 		"tzachar/highlight-undo.nvim",
 		config = function()
 			require("highlight-undo").setup({
@@ -93,6 +92,12 @@ require("lazy").setup({
 				},
 				highlight_for_count = true,
 			})
+		end,
+	},
+	{
+		"LunarVim/bigfile.nvim",
+		config = function()
+			require("bigfile").setup()
 		end,
 	},
 	"itchyny/lightline.vim",
