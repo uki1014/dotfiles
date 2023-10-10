@@ -97,7 +97,18 @@ require("lazy").setup({
 	{
 		"LunarVim/bigfile.nvim",
 		config = function()
-			require("bigfile").setup()
+			require("bigfile").setup({
+				features = {
+					"indent_blankline",
+					"illuminate",
+					"lsp",
+					"treesitter",
+					"matchparen",
+					"vimopts",
+					-- "syntax",
+					-- "filetype",
+				},
+			})
 		end,
 	},
 	"itchyny/lightline.vim",
