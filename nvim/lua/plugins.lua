@@ -172,6 +172,7 @@ require("lazy").setup({
 			vim.g["zenspace#default_mode"] = "on"
 		end,
 	},
+	"kana/vim-smartword",
 	{
 		"windwp/nvim-autopairs",
 		config = function()
