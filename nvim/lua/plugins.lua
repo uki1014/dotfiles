@@ -45,6 +45,12 @@ require("lazy").setup({
 	"hrsh7th/cmp-vsnip",
 	"hrsh7th/cmp-buffer",
 	"hrsh7th/vim-vsnip",
+	{
+		"hrsh7th/nvim-insx",
+		config = function()
+			require("insx.preset.standard").setup()
+		end,
+	},
 	"uki1014/vim-to-github",
 	{
 		"jose-elias-alvarez/null-ls.nvim",
