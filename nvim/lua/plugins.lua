@@ -51,7 +51,19 @@ require("lazy").setup({
 			require("insx.preset.standard").setup()
 		end,
 	},
-	"uki1014/vim-to-github",
+	{
+		"uki1014/vim-to-github",
+		config = function()
+			vim.g.to_github_clipboard = "1"
+
+			Maps.nmap("<Leader>gj", ":ToGithubBlobDevelopBranch<CR>", Maps.n)
+			Maps.nmap("<Leader>gb", ":ToGithubBlameDevelopBranch<CR>", Maps.n)
+			Maps.nmap("<Leader>G", ":ToGithubBlobCommitHash<CR>", Maps.n)
+			Maps.nmap("<Leader>GB", ":ToGithubBlameCommitHash<CR>", Maps.n)
+			Maps.nmap("<Leader>g", ":ToGithubTargetPullRequest<CR>", Maps.n)
+			Maps.nmap("<Leader>j", ":ToGithubTargetPullRequestFromCommitHash<CR>", Maps.n)
+		end,
+	},
 	{
 		"jose-elias-alvarez/null-ls.nvim",
 		requires = "nvim-lua/plenary.nvim",
@@ -117,7 +129,34 @@ require("lazy").setup({
 			})
 		end,
 	},
-	"itchyny/lightline.vim",
+	{
+		"itchyny/lightline.vim",
+		config = function()
+			vim.g.lightline = {
+				colorscheme = "default",
+				active = {
+					left = { { "mode", "paste" }, { "readonly", "filename", "modified" } },
+					right = {
+						{ "lineinfo" },
+						{ "percent" },
+						{ "charcode", "fileformat", "filetype" },
+					},
+				},
+				inactive = {
+					left = { { "readonly", "filename", "modified" } },
+				},
+				component = {
+					filename = "%f",
+				},
+				component_function = {
+					readonly = "MyReadonly",
+					modified = "MyModified",
+				},
+				separator = { left = "", right = "" },
+				subseparator = { left = "", right = "" },
+			}
+		end,
+	},
 	-- Finder / Filer
 	"nvim-lua/plenary.nvim",
 	"nvim-telescope/telescope-file-browser.nvim",
@@ -133,6 +172,15 @@ require("lazy").setup({
 		requires = {
 			"nvim-lua/plenary.nvim",
 		},
+		config = function()
+			local gitsigns = require("gitsigns")
+			gitsigns.setup()
+			Maps.nmap("<Leader>gl", function()
+				gitsigns.blame_line({
+					full = true,
+				})
+			end, Maps.ns)
+		end,
 	},
 	-- Utils
 	{
@@ -155,6 +203,11 @@ require("lazy").setup({
 		"Yggdroot/indentLine",
 		config = function()
 			vim.g.indentLine_concealLevel = 1
+			vim.g.indentLine_fileTypeExclude =
+				{ "help", "nerdtree", "calendar", "thumbnail", "tweetvim", "defx", "TelescopePrompt" }
+			vim.g.indentLine_color_term = "239"
+			vim.g.indentLine_color_gui = "#708090"
+			vim.g.indentLine_char_list = { "┊", "┊", "┊", "┊" }
 		end,
 	},
 	{
@@ -225,7 +278,22 @@ require("lazy").setup({
 			Maps.nmap("<Leader>ba", ":BufOnly<CR>", Maps.n)
 		end,
 	},
-	{ "windwp/nvim-spectre", lazy = true },
+	{
+		"windwp/nvim-spectre",
+		config = function()
+			local spectre = require("spectre")
+			spectre.setup()
+
+			Maps.nmap("<Leader>m", function()
+				spectre.open_visual({
+					select_word = true,
+				})
+			end, Maps.ns)
+			Maps.nmap("<Leader>w", function()
+				spectre.open_visual()
+			end, Maps.ns)
+		end,
+	},
 	"mtdl9/vim-log-highlighting",
 	{
 		"elzr/vim-json",
