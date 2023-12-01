@@ -240,7 +240,14 @@ require("lazy").setup({
 	},
 	"windwp/nvim-ts-autotag",
 	"andymass/vim-matchup",
-	"tpope/vim-surround",
+	{
+		"kylechui/nvim-surround",
+		version = "*",
+		event = "VeryLazy",
+		config = function()
+			require("nvim-surround").setup()
+		end,
+	},
 	"tpope/vim-repeat",
 	{
 		"thaerkh/vim-workspace",
