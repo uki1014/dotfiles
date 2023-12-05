@@ -31,6 +31,7 @@ require("lazy").setup({
 		-- version = "<CurrentMajor>.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
 		-- install jsregexp (optional!).
 		build = "make install_jsregexp",
+		version = "v2.1.0",
 	},
 	"saadparwaiz1/cmp_luasnip",
 	{
