@@ -48,6 +48,7 @@ require("lazy").setup({
 	"hrsh7th/vim-vsnip",
 	{
 		"hrsh7th/nvim-insx",
+		version = "v1.1.0",
 		config = function()
 			require("insx.preset.standard").setup()
 		end,
