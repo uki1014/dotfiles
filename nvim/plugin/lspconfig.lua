@@ -103,7 +103,7 @@ require("mason-lspconfig").setup_handlers({
 				"jsonc",
 			},
 			cmd = { "biome", "lsp-proxy" },
-			root_dir = lspconfig.util.root_pattern("package.json", "node_modules", ".git", "biome.json"),
+			root_dir = lspconfig.util.root_pattern("biome.json"),
 			single_file_support = true,
 		})
 
