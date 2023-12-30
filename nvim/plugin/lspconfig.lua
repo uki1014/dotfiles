@@ -52,6 +52,7 @@ require("mason-lspconfig").setup({
 		"taplo", -- toml
 		"vimls",
 		"terraformls",
+		"biome",
 		-- "stylua", -- TODO: コメントアウトはずしたらauto installが走らないけど必要なので手動で入れる
 		-- "prettierd", -- TODO: コメントアウトはずしたらauto installが走らないけど必要なので手動で入れる
 	},
@@ -87,6 +88,23 @@ require("mason-lspconfig").setup_handlers({
 				"terraform",
 			},
 			root_dir = lspconfig.util.root_pattern(".git"),
+		})
+
+		lspconfig.biome.setup({
+			on_attach = on_attach,
+			capabilities = capabilities,
+			filetypes = {
+				"javascript",
+				"javascriptreact",
+				"javascript.jsx",
+				"typescript",
+				"typescriptreact",
+				"typescript.tsx",
+				"jsonc",
+			},
+			cmd = { "biome", "lsp-proxy" },
+			root_dir = lspconfig.util.root_pattern("package.json", "node_modules", ".git", "biome.json"),
+			single_file_support = true,
 		})
 
 		lspconfig.eslint.setup({
