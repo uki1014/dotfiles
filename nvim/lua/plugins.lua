@@ -324,7 +324,15 @@ require("lazy").setup({
 	},
 	{
 		"jparise/vim-graphql",
-		ft = { "javascript", "javascript.jsx", "javascriptreact", "typescript", "typescript.tsx", "typescriptreact" },
+		ft = {
+			"graphql",
+			"javascript",
+			"javascript.jsx",
+			"javascriptreact",
+			"typescript",
+			"typescript.tsx",
+			"typescriptreact",
+		},
 	},
 	{
 		"styled-components/vim-styled-components",
