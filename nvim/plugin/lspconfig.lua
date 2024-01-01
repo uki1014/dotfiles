@@ -4,7 +4,7 @@ if not status then
 end
 
 local on_attach = function(client, bufnr)
-	if client.name == "tsserver" or client.name == "lua_ls" then
+	if client.name == "tsserver" or client.name == "lua_ls" or client.name == "biome" then
 		client.server_capabilities.documentFormattingProvider = false
 	end
 
@@ -104,7 +104,7 @@ require("mason-lspconfig").setup_handlers({
 			},
 			cmd = { "biome", "lsp-proxy" },
 			root_dir = lspconfig.util.root_pattern("biome.json"),
-			single_file_support = true,
+			single_file_support = false,
 		})
 
 		lspconfig.eslint.setup({
