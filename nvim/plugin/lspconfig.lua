@@ -4,7 +4,7 @@ if not status then
 end
 
 local on_attach = function(client, bufnr)
-	if client.name == "tsserver" or client.name == "lua_ls" or client.name == "biome" then
+	if client.name == "tsserver" or client.name == "lua_ls" or client.name == "biome" or client.name == "eslint" then
 		client.server_capabilities.documentFormattingProvider = false
 	end
 
