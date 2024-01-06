@@ -185,7 +185,7 @@ function __bobthefish_git_project_dir -S -a real_pwd -d 'Print the current git p
     or return
 
     pushd $git_dir
-    set git_dir $real_pwd
+    set git_dir (__bobthefish_pwd)
     popd
 
     switch $real_pwd/
@@ -637,12 +637,14 @@ function __bobthefish_prompt_k8s_context -S -d 'Show current Kubernetes context'
     [ "$theme_display_k8s_namespace" = 'yes' ]
     and set -l namespace (__bobthefish_k8s_namespace)
 
-    [ -z $context -o "$context" = 'default' ]
-    and [ -z $namespace -o "$namespace" = 'default' ]
+    [ -z "$context" -o "$context" = 'default' ]
+    and [ -z "$namespace" -o "$namespace" = 'default' ]
     and return
 
-    set -l segment $k8s_glyph ' ' $context
-    [ -n "$namespace" ]
+    set -l segment $k8s_glyph ' '
+    [ "$context" != 'default' ]
+    and set segment $segment $context
+    [ "$namespace" != 'default' ]
     and set segment $segment ':' $namespace
 
     __bobthefish_start_segment $color_k8s
@@ -690,7 +692,7 @@ end
 # Polyfill for fish < 2.5.0
 if not type -q prompt_hostname
     if not set -q __bobthefish_prompt_hostname
-        set -g __bobthefish_prompt_hostname (hostname | string replace -r '\..*' '')
+        set -g __bobthefish_prompt_hostname (uname -n | string replace -r '\..*' '')
     end
 
     function prompt_hostname
@@ -830,10 +832,10 @@ function __bobthefish_prompt_rubies -S -d 'Display current Ruby information'
         set -l asdf_current_ruby (asdf current ruby 2>/dev/null)
         or return
 
-        echo "$asdf_current_ruby" | read -l asdf_ruby_version asdf_provenance
+        echo "$asdf_current_ruby" | read -l _asdf_plugin asdf_ruby_version asdf_provenance
 
         # If asdf changes their ruby version provenance format, update this to match
-        [ (string trim -- "$asdf_provenance") = "(set by $HOME/.tool-versions)" ]
+        [ (string trim -- "$asdf_provenance") = "$HOME/.tool-versions" ]
         and return
 
         set ruby_version $asdf_ruby_version
@@ -895,9 +897,42 @@ function __bobthefish_prompt_desk -S -d 'Display current desk environment'
     set_color normal
 end
 
+function __bobthefish_prompt_find_file_up -S -d 'Find file(s), going up the parent directories'
+    set -l dir "$argv[1]"
+    set -l files $argv[2..-1]
+
+    if test -z "$dir"
+        or test -z "$files"
+        return 1
+    end
+
+    while [ "$dir" ]
+        for f in $files
+            if [ -e "$dir/$f" ]
+                return
+            end
+        end
+
+        [ "$dir" = '/' ]
+        and return 1
+
+        set dir (__bobthefish_dirname "$dir")
+    end
+    return 1
+end
+
 function __bobthefish_prompt_node -S -d 'Display current node version'
-    [ "$theme_display_node" = 'yes' -o "$theme_display_nvm" = 'yes' ]
-    or return
+    set -l should_show
+
+    if [ "$theme_display_node" = 'always' -o "$theme_display_nvm" = 'yes' ]
+        set should_show 1
+    else if [ "$theme_display_node" = 'yes' ]
+        __bobthefish_prompt_find_file_up "$PWD" package.json .nvmrc .node-version
+        and set should_show 1
+    end
+
+    [ -z "$should_show" ]
+    and return
 
     set -l node_manager
     set -l node_manager_dir
@@ -1138,7 +1173,7 @@ function fish_prompt -d 'bobthefish, a fish theme optimized for awesome'
     # Virtual environments
     __bobthefish_prompt_nix
     __bobthefish_prompt_desk
-    # __bobthefish_prompt_rubies
+    __bobthefish_prompt_rubies
     __bobthefish_prompt_virtualfish
     __bobthefish_prompt_virtualgo
     __bobthefish_prompt_node
