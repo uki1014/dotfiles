@@ -136,51 +136,12 @@ function idet
   tmux split-window -h -p 50
 end
 
-function dockside
-  set -xg DOCKS_PATH $MYPROJECTS_PATH/docks
-  if [ ! -d $DOCKS_PATH ]
-    mkdir $MYPROJECTS_PATH/docks && \
-    cd $MYPROJECTS_PATH/docks && \
-    git clone git@github.com:docks-tools/docks-server.git && \
-    git clone git@github.com:docks-tools/docks-desktop && \
-    git clone git@github.com:docks-tools/docks-web && \
-    git clone git@github.com:docks-tools/eslint-config-docks && \
-    git clone git@github.com:docks-tools/eslint-config-docks-react && \
-    git clone git@github.com:docks-tools/prettier-config-docks
-  end
-  # dotfiles
-  tmux rename-window dotfiles
-  cd $DOCKS_PATH/docks-server
-
-  # docks-server
-  tmux new-window
-  tmux rename-window docks-server
-  idet
-  cd $DOCKS_PATH/docks-desktop
-
-  # docks-desktop
-  tmux new-window
-  tmux rename-window docks-desktop
-  idet
-  cd $DOCKS_PATH/docks-web
-
-  # docks-web
-  tmux new-window
-  tmux rename-window docks-web
-  idet
-
-  # 順番にやるとおかしくなるので最後にdotfilesに移動
-  tmux next-window
-  cdd
-  clear
-end
-
 function postworkide
   set -xg POSTWORK_PATH $MYPROJECTS_PATH/postworks
   if [ ! -d $POSTWORK_PATH ]
-    mkdir $POSTWORK_PATH && \
+    mkdir -p $POSTWORK_PATH && \
     cd $POSTWORK_PATH && \
-    git clone git@github.com:postworks/Postwork.git
+    git clone git@github.com:postworks/postwork.git
   end
   # dotfiles
   tmux rename-window dotfiles
@@ -276,13 +237,6 @@ end
 
 function cmno
   git commit -m "$argv" --no-verify
-end
-
-function update_pyneovim
-  pip2 install --upgrade pip
-  pip2 install --upgrade pynvim
-  pip3 install --upgrade pip
-  pip3 install --upgrade pynvim
 end
 
 function diary
