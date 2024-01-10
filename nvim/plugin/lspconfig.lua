@@ -118,7 +118,7 @@ require("mason-lspconfig").setup_handlers({
 				"typescriptreact",
 				"typescript.tsx",
 			},
-			root_dir = lspconfig.util.root_pattern("package.json"),
+			root_dir = lspconfig.util.root_pattern(".eslintrc.js", ".eslintrc.json", ".eslintrc"),
 		})
 
 		lspconfig.gopls.setup({
