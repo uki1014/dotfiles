@@ -35,7 +35,7 @@
   "previm": { "branch": "master", "commit": "452e395e6bb6c1266d9b4845ca2071bcb14771a2" },
   "rainbow_csv": { "branch": "master", "commit": "6955d13a65e0161e8dad488b6045441d527d62ec" },
   "telescope-file-browser.nvim": { "branch": "master", "commit": "4bd5657b14b58e069287f5ac591a647bb860b2ed" },
-  "telescope.nvim": { "branch": "master", "commit": "4367e05c06d19f28c514e1498bcd9410f4bc65b2" },
+  "telescope.nvim": { "branch": "master", "commit": "b3ff5f33201f474d58f5be96244869f189bbc091" },
   "todo-comments.nvim": { "branch": "main", "commit": "4a6737a8d70fe1ac55c64dfa47fcb189ca431872" },
   "trouble.nvim": { "branch": "main", "commit": "f1168feada93c0154ede4d1fe9183bf69bac54ea" },
   "typescript-vim": { "branch": "master", "commit": "eafdcf5e9ee73b43d92372d69dd84458bf98c5e3" },
@@ -57,7 +57,7 @@
   "vim-terraform": { "branch": "master", "commit": "d37ae7e7828aa167877e338dea5d4e1653ed3eb1" },
   "vim-to-github": { "branch": "master", "commit": "0f1095c044c296509a2ba2d17513e4a86a2fbdc6" },
   "vim-toml": { "branch": "main", "commit": "d36caa6b1cf508a4df1c691f915572fc02143258" },
-  "vim-vsnip": { "branch": "master", "commit": "8eebdf6ab4a880d845893f210fd20516d2e2384f" },
+  "vim-vsnip": { "branch": "master", "commit": "02a8e79295c9733434aab4e0e2b8c4b7cea9f3a9" },
   "vim-workspace": { "branch": "master", "commit": "c0d1e4332a378f58bfdf363b4957168fa78e79b4" },
   "vim-yaml": { "branch": "master", "commit": "dce19542d5ec1663183b0f6844ec663b5d1f3d24" },
   "vim-zenspace": { "branch": "master", "commit": "fb6b34458ab8a48681f162970f603e360a9ad200" }
