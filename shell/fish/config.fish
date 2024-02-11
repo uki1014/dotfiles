@@ -267,4 +267,4 @@ if [ -d $DOTFILES_PATH/works ]
 end
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '~/google-cloud-sdk/path.fish.inc' ]; . '~/google-cloud-sdk/path.fish.inc'; end
+if [ -f '/Users/yuki-shimizu/google-cloud-sdk/path.fish.inc' ]; . '/Users/yuki-shimizu/google-cloud-sdk/path.fish.inc'; end
