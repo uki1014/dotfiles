@@ -125,15 +125,15 @@ function docker-exec
 end
 
 function ide
-  tmux split-window -v -p 21
-  tmux split-window -h -p 66
-  tmux split-window -h -p 50
+  tmux split-window -v -l 21%
+  tmux split-window -h -l 66%
+  tmux split-window -h -l 50%
 end
 
 # 下に2つのpaneを作る
 function idet
-  tmux split-window -v -p 21
-  tmux split-window -h -p 50
+  tmux split-window -v -l 21%
+  tmux split-window -h -l 50%
 end
 
 function postworkide
@@ -179,20 +179,12 @@ end
 
 # rails/npm/resque/gitなどeditor以外のpane
 function cide
-  # 右下のpaneも縦に分割するパターン
-  # tmux split-window -h -p 50
-  # tmux split-window -v -p 50
-  # tmux split-window -h -p 50
-  # tmux select-pane -t :.-
-  # tmux select-pane -t :.-
-  # tmux split-window -h -p 50
-
   # 右下のpaneは分割しないパターン
-  tmux split-window -h -p 50
-  tmux split-window -v -p 50
+  tmux split-window -h -l 50%
+  tmux split-window -v -l 50%
   tmux select-pane -t :.+
   tmux select-pane -t :.+
-  tmux split-window -h -p 50
+  tmux split-window -h -l 50%
 end
 
 # Install fisher
