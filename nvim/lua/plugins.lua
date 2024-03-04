@@ -394,6 +394,11 @@ require("lazy").setup({
 		lazy = true,
 	},
 	{
+		"google/vim-jsonnet",
+		ft = { "jsonnet" },
+		lazy = true,
+	},
+	{
 		"previm/previm",
 		ft = { "markdown" },
 		config = function()
