@@ -1017,6 +1017,8 @@
 			<true/>
 			<key>Draw Powerline Glyphs</key>
 			<true/>
+			<key>Faint Text Alpha</key>
+			<real>0.39611586084905659</real>
 			<key>Flashing Bell</key>
 			<false/>
 			<key>Foreground Color</key>
@@ -1037,7 +1039,7 @@
 			<key>Has Hotkey</key>
 			<false/>
 			<key>Horizontal Spacing</key>
-			<integer>1</integer>
+			<real>1</real>
 			<key>Icon</key>
 			<integer>2</integer>
 			<key>Idle Code</key>
@@ -1348,7 +1350,7 @@
 				<real>0.943634033203125</real>
 			</dict>
 			<key>Minimum Contrast</key>
-			<real>0.27326769555005498</real>
+			<real>0.23247317904062101</real>
 			<key>Mouse Reporting</key>
 			<true/>
 			<key>Name</key>
@@ -1746,7 +1748,7 @@
 			<key>Use Underline Color</key>
 			<false/>
 			<key>Vertical Spacing</key>
-			<integer>1</integer>
+			<real>1</real>
 			<key>Visual Bell</key>
 			<true/>
 			<key>Window Type</key>
@@ -1816,5 +1818,9 @@
 	<false/>
 	<key>findMode_iTerm</key>
 	<integer>0</integer>
+	<key>kCPKSelectionViewPreferredModeKey</key>
+	<integer>0</integer>
+	<key>kCPKSelectionViewShowHSBTextFieldsKey</key>
+	<false/>
 </dict>
 </plist>
