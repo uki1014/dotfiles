@@ -445,4 +445,17 @@ require("lazy").setup({
 		end,
 		lazy = true,
 	},
+  {
+    "craftzdog/solarized-osaka.nvim",
+    config = function()
+      require("solarized-osaka").setup({
+        day_brightness = 1,  -- Adjusts the brightness of the colors of the **Day** style. Number between 0 and 1, from dull to vibrant colors
+        dim_inactive = true, -- dims inactive windows
+        on_highlights = function(hl, _)
+          hl.NormalNC = { bg = 'none' }
+        end,
+      })
+      vim.cmd([[colorscheme solarized-osaka]])
+    end,
+  },
 })

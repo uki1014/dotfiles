@@ -172,11 +172,3 @@ function GetProfile()
 	vim.cmd("profile func *")
 	vim.cmd("profile file *")
 end
-
--------------------------------------------------------------------------------
--- Color scheme
--------------------------------------------------------------------------------
-vim.g.syntax = true
-vim.o.background = "dark"
-vim.o.termguicolors = true
-vim.cmd("colorscheme NeoSolarized")
