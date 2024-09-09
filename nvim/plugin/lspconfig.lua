@@ -4,7 +4,7 @@ if not status then
 end
 
 local on_attach = function(client, bufnr)
-	if client.name == "tsserver" or client.name == "lua_ls" or client.name == "biome" or client.name == "eslint" then
+	if client.name == "ts_ls" or client.name == "lua_ls" or client.name == "biome" or client.name == "eslint" then
 		client.server_capabilities.documentFormattingProvider = false
 	end
 
@@ -39,7 +39,7 @@ require("mason-lspconfig").setup({
 		"cssmodules_ls",
 		"dockerls",
 		"lua_ls",
-		"tsserver",
+		"ts_ls",
 		-- "yamlls",
 		"gopls",
 		"sqls",
@@ -67,7 +67,7 @@ require("mason-lspconfig").setup_handlers({
 			filetypes = { "dockerfile", "Dockerfile" },
 		})
 
-		lspconfig.tsserver.setup({
+		lspconfig.ts_ls.setup({
 			on_attach = on_attach,
 			filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
 			root_dir = lspconfig.util.root_pattern("package.json", "tsconfig.json"),
