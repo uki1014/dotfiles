@@ -420,42 +420,20 @@ require("lazy").setup({
 		end,
 		lazy = true,
 	},
-
 	{
-		"zbirenbaum/copilot.lua",
-		cmd = "Copilot",
-		event = "InsertEnter",
+		"github/copilot.vim",
+	},
+	{
+		"craftzdog/solarized-osaka.nvim",
 		config = function()
-			require("copilot").setup({
-				suggestion = {
-					enabled = true,
-					auto_trigger = true,
-					keymap = {
-						accept = "<Tab>",
-					},
-				},
+			require("solarized-osaka").setup({
+				day_brightness = 1, -- Adjusts the brightness of the colors of the **Day** style. Number between 0 and 1, from dull to vibrant colors
+				dim_inactive = true, -- dims inactive windows
+				on_highlights = function(hl, _)
+					hl.NormalNC = { bg = "none" }
+				end,
 			})
+			vim.cmd([[colorscheme solarized-osaka]])
 		end,
 	},
-	{
-		"zbirenbaum/copilot-cmp",
-		requires = { "copilot.lua" },
-		config = function()
-			require("copilot_cmp").setup()
-		end,
-		lazy = true,
-	},
-  {
-    "craftzdog/solarized-osaka.nvim",
-    config = function()
-      require("solarized-osaka").setup({
-        day_brightness = 1,  -- Adjusts the brightness of the colors of the **Day** style. Number between 0 and 1, from dull to vibrant colors
-        dim_inactive = true, -- dims inactive windows
-        on_highlights = function(hl, _)
-          hl.NormalNC = { bg = 'none' }
-        end,
-      })
-      vim.cmd([[colorscheme solarized-osaka]])
-    end,
-  },
 })
