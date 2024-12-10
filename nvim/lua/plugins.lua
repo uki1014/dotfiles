@@ -301,18 +301,17 @@ require("lazy").setup({
 		end,
 	},
 	{
-		"windwp/nvim-spectre",
+		"MagicDuck/grug-far.nvim",
 		config = function()
-			local spectre = require("spectre")
-			spectre.setup()
-
-			Maps.nmap("<Leader>m", function()
-				spectre.open_visual({
-					select_word = true,
-				})
+			local grugFar = require("grug-far")
+			grugFar.setup({
+				icons = "",
+			})
+			Maps.nmap("<localleader>m", function()
+				grugFar.open({ prefills = { search = vim.fn.expand("<cword>") } })
 			end, Maps.ns)
-			Maps.nmap("<Leader>w", function()
-				spectre.open_visual()
+			Maps.nmap("<localleader>w", function()
+				grugFar.open()
 			end, Maps.ns)
 		end,
 	},
