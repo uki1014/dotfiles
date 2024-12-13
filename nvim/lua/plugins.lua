@@ -202,14 +202,22 @@ require("lazy").setup({
 		end,
 	},
 	{
-		"Yggdroot/indentLine",
+		"lukas-reineke/indent-blankline.nvim",
+		main = "ibl",
 		config = function()
-			vim.g.indentLine_concealLevel = 1
-			vim.g.indentLine_fileTypeExclude =
-				{ "help", "nerdtree", "calendar", "thumbnail", "tweetvim", "defx", "TelescopePrompt" }
-			vim.g.indentLine_color_term = "239"
-			vim.g.indentLine_color_gui = "#708090"
-			vim.g.indentLine_char_list = { "┊", "┊", "┊", "┊" }
+			require("ibl").setup({
+				indent = { char = "┊" },
+				whitespace = {
+					remove_blankline_trail = true,
+				},
+				scope = {
+					show_start = false,
+					highlight = { "Function", "Label" },
+					include = {
+						node_type = { lua = { "return_statement", "table_constructor" } },
+					},
+				},
+			})
 		end,
 	},
 	{
