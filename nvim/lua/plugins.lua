@@ -67,8 +67,8 @@ require("lazy").setup({
 		end,
 	},
 	{
-		"nvimtools/none-ls.nvim",
-		requires = "nvim-lua/plenary.nvim",
+		"stevearc/conform.nvim",
+		opts = {},
 	},
 	{
 		"j-hui/fidget.nvim",
