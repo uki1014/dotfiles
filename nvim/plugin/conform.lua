@@ -28,11 +28,11 @@ local function biome_lsp_or_prettier()
 			"eslintrc.ts",
 		}, { upward = true })[1]
 		if has_eslint then
-			return { "eslint_d", "prettierd", "lsp", stop_after_first = true }
+			return { "prettierd", "eslint_d", "lsp" }
 		end
-		return { "prettierd", "lsp", stop_after_first = true }
+		return { "prettierd", "lsp" }
 	end
-	return { "biome", stop_after_first = true }
+	return { "biome" }
 end
 
 local eslint_d = require("conform.formatters.eslint_d")
