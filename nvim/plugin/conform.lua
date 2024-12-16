@@ -59,11 +59,10 @@ conform.setup({
 		timeout_ms = 2000,
 		lsp_fallback = true,
 	},
-
 	formatters = {
 		eslint_d = {
-			format_on_save = { -- Can I change the config based on the formatter used?
-				timeout_ms = 5000,
+			format_on_save = {
+				timeout_ms = 20000,
 				lsp_fallback = true,
 			},
 		},
