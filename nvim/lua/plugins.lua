@@ -211,9 +211,10 @@ require("lazy").setup({
 				},
 				scope = {
 					show_start = false,
+					show_end = false,
 					highlight = { "Function", "Label" },
 					include = {
-						node_type = { lua = { "return_statement", "table_constructor" } },
+						node_type = { ["*"] = { "*" } },
 					},
 				},
 			})
