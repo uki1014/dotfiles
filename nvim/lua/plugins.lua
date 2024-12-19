@@ -429,6 +429,16 @@ require("lazy").setup({
 	},
 	"github/copilot.vim",
 	{
+		"sindrets/diffview.nvim",
+		config = function()
+			require("diffview").setup({
+				use_icons = false,
+			})
+			Maps.nmap("<Leader>ag", ":DiffviewOpen<CR>", Maps.n)
+			Maps.nmap("<Leader>aa", ":DiffviewFileHistory<CR>", Maps.n)
+		end,
+	},
+	{
 		"craftzdog/solarized-osaka.nvim",
 		config = function()
 			require("solarized-osaka").setup({
