@@ -427,9 +427,7 @@ require("lazy").setup({
 		end,
 		lazy = true,
 	},
-	{
-		"github/copilot.vim",
-	},
+	"github/copilot.vim",
 	{
 		"craftzdog/solarized-osaka.nvim",
 		config = function()
