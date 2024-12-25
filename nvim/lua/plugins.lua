@@ -446,6 +446,7 @@ require("lazy").setup({
 				dim_inactive = true, -- dims inactive windows
 				on_highlights = function(hl, _)
 					hl.NormalNC = { bg = "none" }
+					hl.Visual = { bg = "#3c3836" }
 				end,
 			})
 			vim.cmd([[colorscheme solarized-osaka]])
