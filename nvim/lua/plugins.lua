@@ -131,31 +131,49 @@ require("lazy").setup({
 		end,
 	},
 	{
-		"itchyny/lightline.vim",
+		"nvim-lualine/lualine.nvim",
 		config = function()
-			vim.g.lightline = {
-				colorscheme = "default",
-				active = {
-					left = { { "mode", "paste" }, { "readonly", "filename", "modified" } },
-					right = {
-						{ "lineinfo" },
-						{ "percent" },
-						{ "charcode", "fileformat", "filetype" },
+			require("lualine").setup({
+				options = {
+					icons_enabled = false,
+					theme = "solarized_dark",
+				},
+				tabline = {
+					lualine_a = { "filename" },
+					lualine_b = { "tabs" },
+					lualine_c = {},
+					lualine_x = {},
+					lualine_y = {},
+					lualine_z = {},
+				},
+				inactive_winbar = {
+					lualine_a = {},
+					lualine_b = { "filename" },
+					lualine_c = {},
+					lualine_x = {},
+					lualine_y = {},
+					lualine_z = {},
+				},
+				sections = {
+					lualine_a = { "mode" },
+					lualine_b = { "branch", "diff" },
+					lualine_c = {
+						{
+							"filename",
+							path = 1,
+							shorting_target = 0,
+						},
 					},
 				},
-				inactive = {
-					left = { { "readonly", "filename", "modified" } },
+				inactive_sections = {
+					lualine_a = {},
+					lualine_b = {},
+					lualine_c = { "filename" },
+					lualine_x = { "location" },
+					lualine_y = {},
+					lualine_z = {},
 				},
-				component = {
-					filename = "%f",
-				},
-				component_function = {
-					readonly = "MyReadonly",
-					modified = "MyModified",
-				},
-				separator = { left = "", right = "" },
-				subseparator = { left = "", right = "" },
-			}
+			})
 		end,
 	},
 	-- Finder / Filer
