@@ -87,35 +87,9 @@ Maps.nmap(";;", function()
 		hidden = true,
 	})
 end, Maps.ns)
-Maps.nmap(";m", function()
-	builtin.resume()
-end, Maps.ns)
-Maps.nmap(";t", function()
-	builtin.man_pages()
-end, Maps.ns)
 Maps.nmap(";g", function()
 	builtin.git_status({
 		initial_mode = "normal",
-	})
-end, Maps.ns)
-
--- only javascript / typescript
-Maps.nmap(";j", function()
-	builtin.find_files({
-		find_command = "rg",
-		ignore_case = true,
-		hidden = true,
-		type = { "js", "jsx", "ts", "tsx" },
-	})
-end, Maps.ns)
-Maps.nmap(";jr", function()
-	builtin.live_grep({
-		find_command = "rg",
-		ignore_case = true,
-		hidden = true,
-		additional_args = function()
-			return { "--type=js", "--type=jsx", "--type=ts", "--type=tsx" }
-		end,
 	})
 end, Maps.ns)
 
