@@ -70,8 +70,6 @@ fish_vi_key_bindings
 if status --is-interactive
   # macOSとLinuxそれぞれの設定
   if is_darwin
-    source $HOMEBREW_PATH/opt/asdf/libexec/asdf.fish
-
     alias sa='ssh-add --apple-use-keychain'
     if [ $SHLVL = 1 ]
       sa
@@ -98,7 +96,6 @@ if status --is-interactive
     set -xg XDG_CONFIG_HOME $HOME/.config
   else if is_linux
     eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-    source /home/linuxbrew/.linuxbrew/opt/asdf/libexec/asdf.fish
     alias sa='ssh-add'
     set -xg HOMEBREW_CURL_PATH (which curl)
 
