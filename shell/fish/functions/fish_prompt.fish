@@ -43,9 +43,6 @@ function __bobthefish_escape_regex -a str -d 'A backwards-compatible `string esc
 end
 
 function __bobthefish_git_branch -S -d 'Get the current git branch (or commitish)'
-    set -l tag (command git describe --tags --exact-match 2>/dev/null)
-    and echo "$tag_glyph $tag "
-
     set -l branch (command git symbolic-ref HEAD 2>/dev/null | string replace -r '^refs/heads/' '')
     and begin
         [ -n "$theme_git_default_branches" ]
