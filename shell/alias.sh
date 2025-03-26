@@ -106,6 +106,14 @@ alias nui='npm uninstall'
 alias nci='npm ci'
 alias npmlistg='npm list --depth=0 -g'
 
+# pnpm
+alias p='pnpm'
+alias pd='pnpm dev'
+alias pb='pnpm build'
+alias pi='pnpm install'
+alias pid='pnpm install -D'
+alias pr='pnpm remove'
+
 # yarn
 alias ya='yarn add'
 alias yr='yarn run'
