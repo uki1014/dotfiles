@@ -1,6 +1,11 @@
 local conform = require("conform")
 
 local function biome_lsp_or_prettier()
+	local has_biome = vim.fs.find("biome.json", { upward = true })[1]
+	if has_biome then
+		return { "biome", "lsp" }
+	end
+
 	local has_prettier = vim.fs.find({
 		".prettierrc",
 		".prettierrc.json",
@@ -16,7 +21,9 @@ local function biome_lsp_or_prettier()
 	if has_prettier then
 		return { "prettierd", "lsp" }
 	end
-	return { "biome", "lsp" }
+
+	-- どちらもなければ fallback
+	return { "lsp" }
 end
 
 conform.setup({
