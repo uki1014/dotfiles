@@ -108,11 +108,13 @@ alias npmlistg='npm list --depth=0 -g'
 
 # pnpm
 alias p='pnpm'
+alias pr='pnpm run'
 alias pd='pnpm dev'
 alias pb='pnpm build'
 alias pi='pnpm install'
 alias pid='pnpm install -D'
-alias pr='pnpm remove'
+alias pui='pnpm remove'
+alias pinfo='pnpm info'
 
 # yarn
 alias ya='yarn add'
