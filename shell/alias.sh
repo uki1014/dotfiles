@@ -114,7 +114,7 @@ alias pd='pnpm dev'
 alias pb='pnpm build'
 alias pi='pnpm install'
 alias pid='pnpm install -D'
-alias pui='pnpm remove'
+alias prm='pnpm remove'
 alias pinfo='pnpm info'
 
 # yarn
