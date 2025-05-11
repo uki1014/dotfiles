@@ -373,10 +373,6 @@ require("lazy").setup({
 		},
 	},
 	{
-		"styled-components/vim-styled-components",
-		ft = { "javascript", "javascript.jsx", "javascriptreact", "typescript", "typescript.tsx", "typescriptreact" },
-	},
-	{
 		"leafgarland/typescript-vim",
 		ft = { "typescript", "typescript.tsx", "typescriptreact" },
 	},
