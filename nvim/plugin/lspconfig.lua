@@ -108,6 +108,7 @@ require("mason-lspconfig").setup_handlers({
 				"typescriptreact",
 				"typescript.tsx",
 				"jsonc",
+				"css",
 			},
 			cmd = { "biome", "lsp-proxy" },
 			root_dir = lspconfig.util.root_pattern("biome.json"),
