@@ -157,30 +157,33 @@ function postworkide
   end
   # dotfiles
   tmux rename-window dotfiles
-  cd $POSTWORK_PATH/Postwork
+  cd $POSTWORK_PATH/postwork
 
   # root
   tmux new-window
   tmux rename-window postwork-root
-  idet
-  cd $POSTWORK_PATH/Postwork/desktop
+  cd $POSTWORK_PATH/postwork/apps/desktop
 
   # desktop
   tmux new-window
   tmux rename-window postwork-desktop
-  idet
-  cd $POSTWORK_PATH/Postwork/api
-
-  # api
-  tmux new-window
-  tmux rename-window postwork-api
-  idet
-  cd $POSTWORK_PATH/Postwork/web
+  cd $POSTWORK_PATH/postwork/apps/web
 
   # web
   tmux new-window
   tmux rename-window postwork-web
-  idet
+  cd $POSTWORK_PATH/postwork
+
+  # console
+  tmux new-window
+  tmux rename-window postwork-console
+  tmux split-window -h -l 50%
+  cd $POSTWORK_PATH/postwork/apps/web
+  tmux select-pane -t :.+
+  cd $POSTWORK_PATH/postwork/apps/desktop
+  tmux split-window -v -l 50%
+  cd $POSTWORK_PATH/postwork/apps/web
+  tmux split-window -h -l 50%
 
   # 順番にやるとおかしくなるので最後にdotfilesに移動
   tmux next-window
