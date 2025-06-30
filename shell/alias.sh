@@ -64,6 +64,8 @@ alias ggrep='git grep $argv[1] . '
 alias reabo='git rebase --abort'
 alias reco='git rebase --continue'
 
+alias reviewit="npx reviewit --port 9000"
+
 # tmux
 alias t='tmux'
 alias tn='tmux new -s'
