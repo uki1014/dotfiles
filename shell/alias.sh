@@ -168,3 +168,6 @@ alias edit_keymap='nvim ~/dactyl-manuform-trackball/keyboards/handwired/wylderbu
 # alias flash_keymap='dactyl && make handwired/dactyl_manuform/4x5:uki1014:flash'
 # alias keymap='cat ~/qmk_firmware/keyboards/handwired/dactyl_manuform/4x5/keymaps/uki1014/keymap.c'
 # alias edit_keymap='nvim ~/qmk_firmware/keyboards/handwired/dactyl_manuform/4x5/keymaps/uki1014/keymap.c'
+
+# MCP
+alias addserena="claude mcp add serena -- uv run --directory ~/mcp/serena serena-mcp-server --project $(pwd)"
