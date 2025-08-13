@@ -170,5 +170,6 @@ alias edit_keymap='nvim ~/dactyl-manuform-trackball/keyboards/handwired/wylderbu
 # alias edit_keymap='nvim ~/qmk_firmware/keyboards/handwired/dactyl_manuform/4x5/keymaps/uki1014/keymap.c'
 
 # MCP
+# /mcp__serena__initial_instructions
 alias addserena="claude mcp add serena -- uv run --directory ~/mcp/serena serena-mcp-server --project $(pwd)"
 alias startserena="cd ~/mcp/serena && uv run serena-mcp-server"
