@@ -7,3 +7,4 @@ token.fish
 *.log
 memo
 works/
+.DS_Store
