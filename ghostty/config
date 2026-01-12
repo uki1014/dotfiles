@@ -1,0 +1,10 @@
+theme = Everblush
+font-family = Monaco
+font-size = 14
+macos-titlebar-style = hidden
+macos-non-native-fullscreen = true
+
+# quick-terminal周り
+quick-terminal-position = "top"
+quick-terminal-screen = "main"
+quick-terminal-animation-duration = 0

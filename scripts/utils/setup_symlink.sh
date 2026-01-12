@@ -20,6 +20,7 @@ TARGET_CONFIG_DIRS=(
   fish
   bat
   nvim
+  ghostty
 )
 
 get_target_dotfiles_path() {
