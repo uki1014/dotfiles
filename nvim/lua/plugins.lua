@@ -199,6 +199,12 @@ require("lazy").setup({
 					full = true,
 				})
 			end, Maps.ns)
+			Maps.nmap("tl", function()
+				gitsigns.next_hunk()
+			end, Maps.ns)
+			Maps.nmap("th", function()
+				gitsigns.prev_hunk()
+			end, Maps.ns)
 		end,
 	},
 	-- Utils
