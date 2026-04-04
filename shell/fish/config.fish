@@ -275,3 +275,4 @@ end
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/yuki-shimizu/google-cloud-sdk/path.fish.inc' ]; . '/Users/yuki-shimizu/google-cloud-sdk/path.fish.inc'; end
+export PATH="$HOME/.local/bin:$PATH"
