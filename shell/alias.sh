@@ -175,4 +175,5 @@ alias addserena="claude mcp add --scope user serena -- uvx --from git+https://gi
 alias startserena="cd ~/mcp/serena && uv run serena-mcp-server"
 alias adddevtoolmcp="claude mcp add chrome-devtools npx chrome-devtools-mcp@latest"
 alias updatecc="curl -fSL https://claude.ai/install.sh | sh"
+alias cl="CLAUDE_CODE_NO_FLICKER=1 claude"
 alias clc="CLAUDE_CODE_NO_FLICKER=1 claude -c"
