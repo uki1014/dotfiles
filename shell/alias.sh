@@ -171,7 +171,7 @@ alias edit_keymap='nvim ~/dactyl-manuform-trackball/keyboards/handwired/wylderbu
 
 # MCP
 # /mcp__serena__initial_instructions
-alias addserena="claude mcp add serena -- uv run --directory ~/mcp/serena serena-mcp-server --project $(pwd)"
+alias addserena="claude mcp add --scope user serena -- uvx --from git+https://github.com/oraios/serena serena start-mcp-server"
 alias startserena="cd ~/mcp/serena && uv run serena-mcp-server"
 alias adddevtoolmcp="claude mcp add chrome-devtools npx chrome-devtools-mcp@latest"
 alias updatecc="curl -fSL https://claude.ai/install.sh | sh"
