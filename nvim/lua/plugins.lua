@@ -438,15 +438,6 @@ require("lazy").setup({
 		ft = { "jsonnet" },
 		lazy = true,
 	},
-	{
-		"previm/previm",
-		ft = { "markdown" },
-		config = function()
-			vim.g.previm_open_cmd = 'open -a "Google Chrome"'
-			Maps.nmap("<Leader>a", ":PrevimOpen<CR>", Maps.n)
-		end,
-		lazy = true,
-	},
 	"github/copilot.vim",
 	{
 		"sindrets/diffview.nvim",

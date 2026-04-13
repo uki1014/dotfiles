@@ -96,3 +96,15 @@ Maps.nmap("<Leader>ud", ":Lazy sync<CR>", Maps.n)
 Maps.nmap("<Leader>uy", ":Lazy install<CR>", Maps.n)
 Maps.nmap("<Leader>uc", ":Lazy clean<CR>", Maps.n)
 Maps.nmap("<Leader>us", ":Lazy profile<CR>", Maps.n)
+
+-- Markdown preview (mo CLI)
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "markdown",
+	callback = function(args)
+		vim.keymap.set("n", "<Leader>a", function()
+			local dir = vim.fn.expand("%:p:h")
+			vim.cmd("silent !mo --open -w " .. vim.fn.shellescape(dir .. "/**/*.md"))
+			vim.cmd("redraw!")
+		end, { buffer = args.buf })
+	end,
+})
