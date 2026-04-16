@@ -19,6 +19,7 @@ nts.install({
 	"scss",
 	"prisma",
 	"markdown",
+	"markdown_inline",
 	"astro",
 	"graphql",
 	"svelte",
@@ -41,5 +42,13 @@ vim.api.nvim_create_autocmd("FileType", {
 		if lang and vim.treesitter.language.add(lang) then
 			vim.bo[args.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
 		end
+	end,
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+	group = vim.api.nvim_create_augroup("NvimTreesitterMarkdownHighlight", { clear = true }),
+	pattern = { "markdown" },
+	callback = function(args)
+		pcall(vim.treesitter.start, args.buf, "markdown")
 	end,
 })

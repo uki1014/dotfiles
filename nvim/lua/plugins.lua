@@ -382,15 +382,6 @@ require("lazy").setup({
 		ft = { "typescript", "typescript.tsx", "typescriptreact" },
 	},
 	{ "neoclide/jsonc.vim", ft = { "jsonc" } },
-	{
-		"tpope/vim-markdown",
-		ft = { "markdown" },
-		config = function()
-			vim.g.markdown_fenced_languages =
-				{ "html", "python", "bash=sh", "json", "javascript", "typescript", "ruby", "lua", "vim" }
-			vim.g.markdown_syntax_conceal = 1
-		end,
-	},
 	{ "SidOfc/mkdx", ft = { "markdown" } },
 	{ "pantharshit00/vim-prisma", ft = { "prisma" } },
 	{
