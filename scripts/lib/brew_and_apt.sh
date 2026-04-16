@@ -22,6 +22,7 @@ target_brew_list=(
   fish
   reattach-to-user-namespace
   tree-sitter
+  tree-sitter-cli
   luajit
   gpg
   fd

@@ -76,8 +76,7 @@ require("lazy").setup({
 			require("fidget").setup()
 		end,
 	},
-	"nvim-treesitter/nvim-treesitter",
-	{ "yioneko/nvim-yati", requires = "nvim-treesitter/nvim-treesitter" },
+	{ "nvim-treesitter/nvim-treesitter", branch = "main", build = ":TSUpdate" },
 	{
 		"akinsho/git-conflict.nvim",
 		version = "*",
@@ -414,11 +413,6 @@ require("lazy").setup({
 	{
 		"mechatroner/rainbow_csv",
 		ft = { "csv", "tsv" },
-		lazy = true,
-	},
-	{
-		"RRethy/nvim-treesitter-endwise",
-		ft = { "ruby", "lua", "vimscript", "bash" },
 		lazy = true,
 	},
 	{

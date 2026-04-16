@@ -1,61 +1,45 @@
-local status, treesitter = pcall(require, "nvim-treesitter.configs")
-if not status then
+local ok, nts = pcall(require, "nvim-treesitter")
+if not ok then
 	return
 end
 
-treesitter.setup({
-	-- Install parsers synchronously (only applied to `ensure_installed`)
-	sync_install = false,
-	build = ":TSUpdate",
-	config = function(_, opts)
-		require("nvim-treesitter.configs").setup(opts)
-	end,
-	highlight = {
-		enable = false,
-		disable = {},
-	},
-	indent = {
-		enable = true,
-		disable = {},
-	},
-	ensure_installed = {
-		"toml",
-		"fish",
-		-- "php",
-		"json",
-		"yaml",
-		"css",
-		"html",
-		"lua",
-		-- "ruby",
-		"javascript",
-		"typescript",
-		"tsx",
-		"proto",
-		"python",
-		"scss",
-		"prisma",
-		"markdown",
-		"astro",
-		"graphql",
-		"svelte",
-		"vim",
-		-- "vue",
-	},
-	matchup = {
-		enable = true,
-	},
-	endwise = {
-		enable = true,
-	},
+nts.install({
+	"toml",
+	"fish",
+	"json",
+	"yaml",
+	"css",
+	"html",
+	"lua",
+	"javascript",
+	"typescript",
+	"tsx",
+	"proto",
+	"python",
+	"scss",
+	"prisma",
+	"markdown",
+	"astro",
+	"graphql",
+	"svelte",
+	"vim",
 })
 
-local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
-parser_config.tsx.filetype_to_parsername = {
+vim.treesitter.language.register("tsx", {
 	"javascript",
 	"javascript.jsx",
 	"javascriptreact",
 	"typescript",
 	"typescript.tsx",
 	"typescriptreact",
-}
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+	group = vim.api.nvim_create_augroup("NvimTreesitterIndent", { clear = true }),
+	callback = function(args)
+		local lang = vim.treesitter.language.get_lang(vim.bo[args.buf].filetype)
+		if lang and vim.treesitter.language.add(lang) then
+			vim.bo[args.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+		end
+	end,
+})
