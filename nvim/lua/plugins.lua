@@ -27,11 +27,8 @@ require("lazy").setup({
 	"williamboman/mason-lspconfig.nvim",
 	{
 		"L3MON4D3/LuaSnip",
-		-- follow latest release.
-		-- version = "<CurrentMajor>.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
-		-- install jsregexp (optional!).
 		build = "make install_jsregexp",
-		version = "v2.1.0",
+		version = "*",
 	},
 	"saadparwaiz1/cmp_luasnip",
 	{
