@@ -177,14 +177,6 @@ vim.lsp.enable({
 	"lua_ls",
 })
 
--- Diagnostic handlers and configuration
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-	underline = true,
-	update_in_insert = false,
-	virtual_text = false,
-	severity_sort = true,
-})
-
 vim.cmd("au CursorHold * silent lua vim.diagnostic.open_float()")
 
 local signs = { Error = "✘", Warn = "▲", Hint = "●", Info = ">" }
@@ -194,8 +186,10 @@ for type, icon in pairs(signs) do
 end
 
 vim.diagnostic.config({
+	underline = true,
 	virtual_text = false,
 	update_in_insert = true,
+	severity_sort = true,
 	float = {
 		source = "always",
 	},
