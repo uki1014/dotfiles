@@ -102,9 +102,12 @@ vim.api.nvim_create_autocmd("FileType", {
 	pattern = "markdown",
 	callback = function(args)
 		vim.keymap.set("n", "<Leader>a", function()
-			local dir = vim.fn.expand("%:p:h")
-			vim.cmd("silent !mo --open -w " .. vim.fn.shellescape(dir .. "/**/*.md"))
-			vim.cmd("redraw!")
+			vim.system({ "mo", "--open", vim.fn.expand("%:p") }, { detach = true })
+		end, { buffer = args.buf })
+		vim.keymap.set("n", "<Leader>A", function()
+			vim.system({ "mo", "--shutdown" }):wait()
+			vim.system({ "mo", "--clear" }):wait()
+			vim.notify("mo session cleared")
 		end, { buffer = args.buf })
 	end,
 })
