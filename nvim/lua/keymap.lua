@@ -61,6 +61,10 @@ Maps.nmap(";a", ":qa<CR>", Maps.n)
 -- messages
 Maps.nmap(";h", ":messages<CR>", Maps.n)
 
+-- コメントトグル(Neovim組み込み gc / gcc)
+vim.keymap.set("n", ";e", "gcc", { remap = true, silent = true, desc = "Toggle comment line" })
+vim.keymap.set("x", ";e", "gc", { remap = true, silent = true, desc = "Toggle comment" })
+
 -- 改行してnormal mode
 Maps.nmap("<Space><CR>", "o<ESC>", Maps.ns)
 
@@ -106,7 +110,7 @@ vim.api.nvim_create_autocmd("FileType", {
 		end, { buffer = args.buf })
 		vim.keymap.set("n", "<Leader>A", function()
 			vim.system({ "mo", "--shutdown" }):wait()
-			vim.system({ "mo", "--clear" }):wait()
+			vim.system({ "mo", "--clear" }, { stdin = "Y\n" }):wait()
 			vim.notify("mo session cleared")
 		end, { buffer = args.buf })
 	end,

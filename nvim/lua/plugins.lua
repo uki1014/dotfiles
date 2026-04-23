@@ -234,22 +234,10 @@ require("lazy").setup({
 		end,
 	},
 	{
-		"numToStr/Comment.nvim",
-		config = function()
-			require("Comment").setup({
-				toggler = {
-					line = ";e",
-					block = ";b",
-				},
-				opleader = {
-					line = ";e",
-					block = ";b",
-				},
-				pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
-			})
-		end,
+		"folke/ts-comments.nvim",
+		event = "VeryLazy",
+		opts = {},
 	},
-	"JoosepAlviste/nvim-ts-context-commentstring",
 	{
 		"uki1014/vim-zenspace",
 		config = function()
