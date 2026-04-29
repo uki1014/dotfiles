@@ -177,4 +177,4 @@ alias adddevtoolmcp="claude mcp add chrome-devtools npx chrome-devtools-mcp@late
 alias updatecc="curl -fSL https://claude.ai/install.sh | sh"
 alias checkcclatest="curl -s https://api.github.com/repos/anthropics/claude-code/releases/latest | jq -r .tag_name"
 alias cl="CLAUDE_CODE_NO_FLICKER=1 claude"
-alias clc="CLAUDE_CODE_NO_FLICKER=1 claude -c"
+alias clc="CLAUDE_CODE_NO_FLICKER=1 claude -c --permission-mode auto"
