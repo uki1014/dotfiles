@@ -102,16 +102,14 @@ Maps.nmap("<Leader>uc", ":Lazy clean<CR>", Maps.n)
 Maps.nmap("<Leader>us", ":Lazy profile<CR>", Maps.n)
 
 -- Markdown preview (mo CLI)
-vim.api.nvim_create_autocmd("FileType", {
-	pattern = "markdown",
-	callback = function(args)
-		vim.keymap.set("n", "<Leader>a", function()
-			vim.system({ "mo", "--open", vim.fn.expand("%:p") }, { detach = true })
-		end, { buffer = args.buf })
-		vim.keymap.set("n", "<Leader>A", function()
-			vim.system({ "mo", "--shutdown" }):wait()
-			vim.system({ "mo", "--clear" }, { stdin = "Y\n" }):wait()
-			vim.notify("mo session cleared")
-		end, { buffer = args.buf })
-	end,
-})
+vim.keymap.set("n", "<Leader>a", function()
+	if vim.bo.filetype ~= "markdown" then
+		return
+	end
+	vim.system({ "mo", "--open", vim.fn.expand("%:p") }, { detach = true })
+end)
+vim.keymap.set("n", "<Leader>q", function()
+	vim.system({ "mo", "--shutdown" }):wait()
+	vim.system({ "mo", "--clear" }, { stdin = "Y\n" }):wait()
+	vim.notify("mo session cleared")
+end)
