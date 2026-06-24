@@ -276,3 +276,8 @@ end
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/yuki-shimizu/google-cloud-sdk/path.fish.inc' ]; . '/Users/yuki-shimizu/google-cloud-sdk/path.fish.inc'; end
 export PATH="$HOME/.local/bin:$PATH"
+
+# Added by LM Studio CLI (lms)
+set -gx PATH $PATH /Users/yuki-shimizu/.lmstudio/bin
+# End of LM Studio CLI section
+
