@@ -265,6 +265,17 @@ function killport
   kill -9 (lsof -t -i:$argv[1])
 end
 
+# Interlink VPN (サイトコントローラー疎通用)
+function vpn
+  sudo /opt/homebrew/sbin/openvpn \
+    --config $HOME/vpn/tenpct.ovpn \
+    --auth-user-pass $HOME/vpn/auth.txt
+end
+
+function vpn-stop
+  sudo pkill openvpn
+end
+
 if [ -e $DOTFILES_PATH/shell/alias.sh ]
   source $DOTFILES_PATH/shell/alias.sh
 end
