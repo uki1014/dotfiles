@@ -93,6 +93,8 @@ alias dvprune='docker volume prune' # 未使用ボリューム一括削除
 alias dnprune='docker network prune' # 未使用ネットワーク一括削除
 alias dbprune='docker builder prune' # build cacheの削除
 alias ddf='docker system df' # Dockerが使っているストレージ容量を確認
+alias dcu='docker compose up -d'
+alias dcd='docker compose down'
 
 # Npm
 alias nr='npm run'
