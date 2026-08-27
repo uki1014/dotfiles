@@ -276,6 +276,16 @@ function vpn-stop
   sudo pkill openvpn
 end
 
+# フタを閉じてもスリープさせない (caffeinate ではフタ閉じスリープを防げない)
+# -a: バッテリー / 電源接続 / UPS すべてに適用。再起動しても残るので戻し忘れに注意
+function nosleep
+  sudo pmset -a disablesleep 1
+end
+
+function resleep
+  sudo pmset -a disablesleep 0
+end
+
 if [ -e $DOTFILES_PATH/shell/alias.sh ]
   source $DOTFILES_PATH/shell/alias.sh
 end
