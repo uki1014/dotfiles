@@ -13,24 +13,6 @@ if not contains $_asdf_shims $PATH
 end
 set --erase _asdf_shims
 
-function attach_tmux_session_if_needed
-  if [ -z $TMUX ]
-    set ID (tmux list-sessions)
-    if [ -z "$ID" ]
-      tmux new-session
-      return
-    end
-
-    set new_session "Create New Session"
-    set ID (echo $ID\n$new_session | peco --on-cancel=error | cut -d: -f1)
-    if [ "$ID" = "$new_session" ]
-      tmux new-session
-    else if [ -n "$ID" ]
-      tmux attach-session -t "$ID"
-    end
-  end
-end
-
 function is_darwin
   [ (uname) = 'Darwin' ] > /dev/null 2>&1
 end
@@ -119,8 +101,6 @@ if status --is-interactive
       ssh-add
     end
   end
-
-  attach_tmux_session_if_needed
 
   # direnv
   direnv hook fish | source
