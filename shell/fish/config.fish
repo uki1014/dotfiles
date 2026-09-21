@@ -102,6 +102,13 @@ if status --is-interactive
     end
   end
 
+  # herdrの新規セッションのときだけ最初のペインでworkideのspace/paneを組む
+  if [ "$HERDR_ENV" = 1 ]; and string match -q '*:p1' -- "$HERDR_PANE_ID"
+    if test -x $DOTFILES_PATH/works/herdr-workide.sh; and $DOTFILES_PATH/works/herdr-workide.sh bootstrap
+      cd $DOTFILES_PATH
+    end
+  end
+
   # direnv
   direnv hook fish | source
 
@@ -180,6 +187,20 @@ function cide
   tmux select-pane -t :.+
   tmux select-pane -t :.+
   tmux split-window -h -l 50%
+end
+
+# herdr全体を終了する (tks相当)
+function hks
+  for s in (herdr session list | awk 'NR>1 && $1 != "default" {print $1}')
+    herdr session stop $s
+  end
+  herdr server stop
+end
+
+# herdrを状態ごと白紙に戻す。次回起動でworkideのspaceが組み直される
+function hkw
+  herdr server stop
+  rm -f ~/.config/herdr/session.json ~/.config/herdr/session-history.json
 end
 
 # Install fisher

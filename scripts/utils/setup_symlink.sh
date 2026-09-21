@@ -23,6 +23,12 @@ TARGET_CONFIG_DIRS=(
   ghostty
 )
 
+# $HOME/.config以下に個別に置きたいファイル
+# ディレクトリごとリンクするとherdrのsocketやlogまでリポジトリ側に入るため1ファイルずつ張る
+TARGET_CONFIG_FILES=(
+  herdr/config.toml
+)
+
 get_target_dotfiles_path() {
   find $DOTFILES_DIR -type f \
     -name "$1" \
@@ -117,9 +123,46 @@ link_to_config_dir() {
   fi
 }
 
+link_to_config_file() {
+  BACKUP_PATH="$HOME/dotbackup/.config"
+  create_dotbackup $BACKUP_PATH
+
+  if [ $HOME != $DOTFILES_DIR ]; then
+    # Ex. TARGET_CONFIG_FILE: herdr/config.toml
+    for TARGET_CONFIG_FILE in ${TARGET_CONFIG_FILES[@]}; do
+      TARGET_PATH="$DOTFILES_DIR/$TARGET_CONFIG_FILE"
+      LINK_PATH="$HOME/.config/$TARGET_CONFIG_FILE"
+
+      mkdir -p "`dirname $LINK_PATH`"
+
+      if [ -f "$LINK_PATH" ] && [ ! -L "$LINK_PATH" ]; then
+        if [ -e "$BACKUP_PATH/$TARGET_CONFIG_FILE" ]; then
+          echo $(tput setaf 2)The target backup was founded and make a backup...$(tput sgr0)
+          rm -f "$LINK_PATH"
+        else
+          echo $(tput setaf 2)The target file was founded and make a backup...$(tput sgr0)
+          mkdir -p "`dirname $BACKUP_PATH/$TARGET_CONFIG_FILE`"
+          mv "$LINK_PATH" "$BACKUP_PATH/$TARGET_CONFIG_FILE"
+        fi
+      fi
+
+      # check_and_unlinkは未設定のTARGET_DOTFILEを参照するためここでは使わない
+      if [ -L "$LINK_PATH" ]; then
+        unlink "$LINK_PATH"
+      fi
+
+      echo $(tput setaf 2)Put "~/.config/$TARGET_CONFIG_FILE" symbolic link ...$(tput sgr0)
+      ln -snf "$TARGET_PATH" "$LINK_PATH"
+    done
+  else
+    echo $(tput setaf 2)HOME == DOTFILES_DIR. You should change DOTFIELS_DIR.$(tput sgr0)
+  fi
+}
+
 setup_symlink() {
   link_to_root
   link_to_config_dir
+  link_to_config_file
   echo $(tput setaf 2)Setup symbolic links complete!. ✔︎$(tput sgr0)
 }
 

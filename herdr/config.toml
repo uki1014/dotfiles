@@ -1,0 +1,62 @@
+# herdr configuration
+# ~/.config/herdr/config.toml へ symlink する
+# 全設定項目は `herdr --default-config` を参照
+
+onboarding = false
+
+# tmux/.tmux.conf のキーバインドに合わせる
+[keys]
+prefix = "ctrl+f"
+
+# tmux: bind r source-file
+reload_config = "prefix+r"
+
+# tmuxはprefix+H/J/K/Lで直接リサイズするのでresize modeは使わない
+resize_mode = ""
+resize_pane_left = "prefix+shift+h"
+resize_pane_down = "prefix+shift+j"
+resize_pane_up = "prefix+shift+k"
+resize_pane_right = "prefix+shift+l"
+
+# tmux: bind -n C-h/C-j/C-k/C-l select-pane
+focus_pane_left = "ctrl+h"
+focus_pane_down = "ctrl+j"
+focus_pane_up = "ctrl+k"
+focus_pane_right = "ctrl+l"
+
+# tmux: bind -n S-Left/S-Right select-window
+# tmuxのwindow=プロジェクト単位はherdrではspaceに対応させる
+# サイドバーが縦並びなので左右ではなく上下に割り当てる
+previous_workspace = "shift+up"
+next_workspace = "shift+down"
+
+# tmux既定: prefix+, でrename-window
+rename_workspace = "prefix+comma"
+
+# tmux: bind -r j/l swap-window
+move_tab_previous = "prefix+j"
+move_tab_next = "prefix+l"
+
+# tmux: bind h split-window -h (左右に並べる)
+split_vertical = "prefix+h"
+# tmux: bind y split-window -v (上下に積む)
+split_horizontal = "prefix+y"
+
+# tmux: bind -n C-n popup lazygit
+[[keys.command]]
+key = "ctrl+n"
+type = "popup"
+command = "lazygit"
+width = "90%"
+height = "90%"
+
+# tmux: bind -n C-s popup lazydocker
+[[keys.command]]
+key = "ctrl+s"
+type = "popup"
+command = "lazydocker"
+width = "91%"
+height = "90%"
+
+[ui]
+agent_panel_sort = "spaces"

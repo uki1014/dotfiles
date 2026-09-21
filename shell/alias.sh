@@ -79,6 +79,15 @@ alias tkt='tmux kill-session -t'
 alias tks='tmux kill-server' # tmux全体を終了
 alias ret='tmux source ~/.tmux.conf'
 
+# herdr (tmuxのエイリアスと対応させたもの)
+alias h='herdr'
+alias hn='herdr --session'              # 名前付きセッションを作る/開く (tn)
+alias hls='herdr session list'          # セッションの一覧表示 (tls)
+alias hat='herdr session attach'        # セッションを再開 (tat)
+alias hk='herdr server stop'            # 今のセッションを終了 (tk)
+alias hkt='herdr session stop'          # 名前を指定して終了 (tkt)
+alias reh='herdr server reload-config'  # 設定リロード (ret)
+
 # Docker
 alias d='docker'
 alias dip='docker inspect'
