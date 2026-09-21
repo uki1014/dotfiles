@@ -61,12 +61,16 @@ height = "90%"
 [ui]
 agent_panel_sort = "spaces"
 
-# 通知はClaude Code側のStopフック(agent-config/claude/hooks/stop-notify.sh)が出す。
-# herdrの通知は「claude finished」とspace・tabしか載せられず内容が入らない
+# 通知はClaude Code側のStop/Notificationフック(agent-config/claude/hooks/stop-notify.sh)が出す。
+# herdrの自動通知は「claude finished」とspace・tabしか載せられず内容が入らない
 [ui.toast]
 delivery = "off"
 
-# バックグラウンドのspaceでエージェントの状態が変わったときに音を鳴らす
+# claude以外のエージェント用。claudeは下で止めている
 [ui.sound]
 enabled = true
 path = "sounds/glass.mp3"
+
+# フック側もGlassを鳴らすため二重に鳴っていた。herdr側を止める
+[ui.sound.agents]
+claude = "off"
