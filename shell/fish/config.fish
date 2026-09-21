@@ -109,6 +109,13 @@ if status --is-interactive
     end
   end
 
+  # resumeで起動されるClaude Codeはclcを経由しないので、同じ設定を環境変数で渡す
+  # --permission-mode auto は settings.json の permissions.defaultMode で設定済み
+  set -xg CLAUDE_CODE_SUBAGENT_MODEL opus
+  set -xg CLAUDE_CODE_NO_FLICKER 1
+  # 名前を省くと全セッションがホスト名で衝突し、後から起動したものが前を追い出す
+  set -xg CLAUDE_REMOTE_CONTROL_SESSION_NAME_PREFIX (basename $PWD)
+
   # direnv
   direnv hook fish | source
 
