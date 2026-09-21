@@ -27,6 +27,7 @@ TARGET_CONFIG_DIRS=(
 # ディレクトリごとリンクするとherdrのsocketやlogまでリポジトリ側に入るため1ファイルずつ張る
 TARGET_CONFIG_FILES=(
   herdr/config.toml
+  herdr/sounds
 )
 
 get_target_dotfiles_path() {
@@ -149,6 +150,12 @@ link_to_config_file() {
       # check_and_unlinkは未設定のTARGET_DOTFILEを参照するためここでは使わない
       if [ -L "$LINK_PATH" ]; then
         unlink "$LINK_PATH"
+      fi
+
+      # 実体のディレクトリが居座っているとln -snfが中に潜り込むので触らない
+      if [ -d "$LINK_PATH" ]; then
+        echo $(tput setaf 1)$LINK_PATH is a real directory. Skipped.$(tput sgr0)
+        continue
       fi
 
       echo $(tput setaf 2)Put "~/.config/$TARGET_CONFIG_FILE" symbolic link ...$(tput sgr0)
