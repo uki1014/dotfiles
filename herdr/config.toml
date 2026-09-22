@@ -30,6 +30,10 @@ focus_pane_right = "ctrl+l"
 previous_workspace = "shift+up"
 next_workspace = "shift+down"
 
+# space の上下移動に対する横移動版。タブバーは横並びなので左右を当てる
+previous_tab = "shift+left"
+next_tab = "shift+right"
+
 # tmux既定: prefix+, でrename-window
 rename_workspace = "prefix+comma"
 
@@ -60,6 +64,11 @@ height = "90%"
 
 [ui]
 agent_panel_sort = "spaces"
+
+# 既定は [[state_icon, workspace], [branch, git_status]] の2行で、space 20個超だと
+# サイドバーが40行を超える。branch は各ペインのプロンプトに出ているので省いて1行にする
+[ui.sidebar.spaces]
+rows = [["state_icon", "workspace"]]
 
 # 通知はClaude Code側のStop/Notificationフック(agent-config/claude/hooks/stop-notify.sh)が出す。
 # herdrの自動通知は「claude finished」とspace・tabしか載せられず内容が入らない
