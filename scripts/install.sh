@@ -85,17 +85,40 @@ source ~/dotfiles/scripts/lib/brew_and_apt.sh
 source ~/dotfiles/scripts/lib/git.sh
 source ~/dotfiles/scripts/utils/source_all_utils.sh
 
+setup_default_shell() {
+  local FISH_PATH=$(command -v fish || true)
+  if [ -z "$FISH_PATH" ]; then
+    echo $(tput setaf 1)fish is not installed. Skip changing default shell.$(tput sgr0)
+    return
+  fi
+
+  # /etc/shellsに無いシェルはchshが拒否する
+  if ! grep -qx "$FISH_PATH" /etc/shells; then
+    echo "$FISH_PATH" | sudo tee -a /etc/shells > /dev/null
+  fi
+
+  # $SHELLはこのセッション開始時の値なので、登録されているログインシェルを直接見る
+  if is_darwin; then
+    local CURRENT_SHELL=$(dscl . -read /Users/$USER UserShell | awk '{print $2}')
+  else
+    local CURRENT_SHELL=$(getent passwd $USER | cut -d: -f7)
+  fi
+
+  if [ "$CURRENT_SHELL" != "$FISH_PATH" ]; then
+    echo $(tput setaf 2)Change default shell to $FISH_PATH...$(tput sgr0)
+    sudo chsh -s "$FISH_PATH" "$USER"
+  else
+    echo $(tput setaf 2)Default shell is already fish.$(tput sgr0)
+  fi
+}
+
 setup_tools() {
   echo $(tput setaf 2)Setup tools...$(tput sgr0)
 
   # Setup Homebrew
   install_brew_packages
 
-  # Setup default shell
-  if has "fish" && [ ${SHELL} != "$(which fish)" ]; then
-    sudo chsh -s $(which fish) && true
-    source ~/dotfiles/shell/fish/config.fish && true
-  fi
+  setup_default_shell
 
   # Setup git-token.fish
   create_token_file
@@ -125,6 +148,10 @@ else
     "tools")
       echo $(tput setaf 2)✔︎ Setup tools...$(tput sgr0)
       setup_tools
+      ;;
+    "shell")
+      echo $(tput setaf 2)✔︎ Setup default shell...$(tput sgr0)
+      setup_default_shell
       ;;
     "defaults")
       echo $(tput setaf 2)✔︎ Setup macOS defaults...$(tput sgr0)
