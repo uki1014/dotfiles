@@ -31,54 +31,71 @@ TARGET_CONFIG_FILES=(
   herdr/sounds
 )
 
+# works/は仕事用の設定置き場で、同名の.gitconfigなどが見つかって個人用と取り違えるので除外する
 get_target_dotfiles_path() {
   find $DOTFILES_DIR -type f \
     -name "$1" \
-    -not -path "undo/*"
+    -not -path "*/undo/*" \
+    -not -path "$DOTFILES_DIR/works/*" \
+    -not -path "$DOTFILES_DIR/.git/*"
 }
 
 get_target_config_dir() {
   find $DOTFILES_DIR -type d \
     -name "$1" \
-    -not -path "undo/*"
+    -not -path "*/undo/*" \
+    -not -path "$DOTFILES_DIR/works/*" \
+    -not -path "$DOTFILES_DIR/.git/*"
 }
 
 create_dotbackup() {
   BACKUP_PATH=$1
   if [ ! -d $BACKUP_PATH ]; then
     echo $(tput setaf 2)Create $BACKUP_PATH directory for backup old dotfiles...$(tput sgr0)
-    mkdir $BACKUP_PATH
+    mkdir -p $BACKUP_PATH
   else
     echo $(tput setaf 2)$BACKUP_PATH is already created.$(tput sgr0)
   fi
 }
 
+# リンクを張る場所に既存のファイルがあれば退避する。symlinkは張り直すだけなので消す
 create_backup() {
-  DOTFILE_PATH=$1 # ファイルを配置したいPATH Ex. $HOME/.config
-  TARGET_DOTFILE_OR_DIR_NAME=$2 # Ex. .bashrc, fish/
-  BACKUP_PATH=$3 # Ex. ~/dotbackup or ~/dotbackup/.config
+  LINK_PATH=$1 # Ex. $HOME/.bashrc, $HOME/.config/fish
+  BACKUP_PATH=$2 # Ex. ~/dotbackup or ~/dotbackup/.config
 
-  # ディレクトリがすでに存在する場合はbackup
-  if [ -e "$DOTFILE_PATH/$TARGET_DOTFILE_OR_DIR_NAME" ]; then
-    # backupがすでにある場合はそのままにする
-    if [ -e "$BACKUP_PATH/$TARGET_DOTFILE_OR_DIR_NAME" ]; then
-      echo $(tput setaf 2)The target backup was founded and make a backup...$(tput sgr0)
-      rm -rf "$HOME/.config/$TARGET_DOTFILE_OR_DIR_NAME"
-    else
-      echo $(tput setaf 2)The target directory was founded and make a backup...$(tput sgr0)
-      echo $(tput setaf 2)$HOME/.config/$TARGET_DOTFILE_OR_DIR_NAME$(tput sgr0)
-      mv "$DOTFILE_PATH/$TARGET_DOTFILE_OR_DIR_NAME" $BACKUP_PATH
+  if [ -L "$LINK_PATH" ]; then
+    rm "$LINK_PATH"
+  elif [ -e "$LINK_PATH" ]; then
+    local NAME=`basename "$LINK_PATH"`
+    # 前回のバックアップを上書きしないよう、既にあれば日時を付ける
+    local DEST="$BACKUP_PATH/$NAME"
+    if [ -e "$DEST" ]; then
+      DEST="$DEST.`date +%Y%m%d%H%M%S`"
     fi
+    echo $(tput setaf 2)Move $LINK_PATH to $DEST...$(tput sgr0)
+    mv "$LINK_PATH" "$DEST"
   fi
 }
 
-check_and_unlink() {
+# 見つからない・複数見つかった場合にlnへそのまま渡すと、$HOME自体を上書きしようとして失敗する
+link_one() {
   TARGET_PATH=$1
-  # Symリンクがすでに存在していた場合はunlink
-  if [ -L "$TARGET_PATH" ]; then
-    echo $(tput setaf 2)Already exists $TARGET_DOTFILE symbolic link...$(tput sgr0)
-    unlink "$TARGET_PATH"
+  LINK_PATH=$2
+  BACKUP_PATH=$3
+
+  if [ -z "$TARGET_PATH" ]; then
+    echo $(tput setaf 1)`basename "$LINK_PATH"` is not found in dotfiles. Skipped.$(tput sgr0)
+    return
   fi
+  if [ `echo "$TARGET_PATH" | wc -l` -ne 1 ]; then
+    echo $(tput setaf 1)`basename "$LINK_PATH"` is found in multiple places. Skipped.$(tput sgr0)
+    echo "$TARGET_PATH"
+    return
+  fi
+
+  create_backup "$LINK_PATH" "$BACKUP_PATH"
+  echo $(tput setaf 2)Put "$LINK_PATH" symbolic link ...$(tput sgr0)
+  ln -sn "$TARGET_PATH" "$LINK_PATH"
 }
 
 link_to_root() {
@@ -90,14 +107,7 @@ link_to_root() {
 
     # Ex. TARGET_DOTFILE: .bashrc
     for TARGET_DOTFILE in ${TARGET_DOTFILES[@]}; do
-      # Ex. TARGET_PATH: /Users/username/.bashrc
-      TARGET_PATH=`get_target_dotfiles_path $TARGET_DOTFILE`
-
-      create_backup "$HOME" $TARGET_DOTFILE $BACKUP_PATH
-      check_and_unlink $TARGET_PATH
-
-      echo $(tput setaf 2)Put "~/$TARGET_DOTFILE" symbolic link ...$(tput sgr0)
-      ln -snf $TARGET_PATH $HOME
+      link_one "`get_target_dotfiles_path $TARGET_DOTFILE`" "$HOME/$TARGET_DOTFILE" $BACKUP_PATH
     done
   else
     echo "HOME == DOTFILES_DIR. You should change DOTFIELS_DIR."
@@ -107,18 +117,12 @@ link_to_root() {
 link_to_config_dir() {
   BACKUP_PATH="$HOME/dotbackup/.config"
   create_dotbackup $BACKUP_PATH
+  mkdir -p $HOME/.config
 
   if [ $HOME != $DOTFILES_DIR ]; then
     # Ex. TARGET_CONFIG_DIR: fish
     for TARGET_CONFIG_DIR in ${TARGET_CONFIG_DIRS[@]}; do
-      # Ex. TARGET_PATH: /Users/username/dotfiles/shell/fish
-      TARGET_PATH=`get_target_config_dir $TARGET_CONFIG_DIR`
-
-      create_backup "$HOME/.config" $TARGET_CONFIG_DIR $BACKUP_PATH
-      check_and_unlink $TARGET_PATH
-
-      echo $(tput setaf 2)Put "~/.config/$TARGET_DOTFILE" symbolic link ...$(tput sgr0)
-      ln -snf $TARGET_PATH $HOME/.config
+      link_one "`get_target_config_dir $TARGET_CONFIG_DIR`" "$HOME/.config/$TARGET_CONFIG_DIR" $BACKUP_PATH
     done
   else
     echo $(tput setaf 2)HOME == DOTFILES_DIR. You should change DOTFIELS_DIR.$(tput sgr0)
@@ -148,7 +152,6 @@ link_to_config_file() {
         fi
       fi
 
-      # check_and_unlinkは未設定のTARGET_DOTFILEを参照するためここでは使わない
       if [ -L "$LINK_PATH" ]; then
         unlink "$LINK_PATH"
       fi
