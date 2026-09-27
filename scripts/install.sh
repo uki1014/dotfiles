@@ -25,6 +25,28 @@ can_use_git() {
   fi
 }
 
+# gitを使えるようにするため、dotfilesを取得する前にCommand Line Toolsを入れる
+# xcode-select --installはGUIのダイアログで完了を待てないので、Homebrewのインストーラと同じくsoftwareupdateで入れる
+install_command_line_tools() {
+  if [ "$(uname -s)" != 'Darwin' ] || xcode-select -p > /dev/null 2>&1; then
+    return
+  fi
+
+  echo $(tput setaf 2)Installing Command Line Tools...$(tput sgr0)
+  local PLACEHOLDER=/tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress
+  touch $PLACEHOLDER
+  local LABEL=$(softwareupdate -l 2>/dev/null | grep -E '^\* Label: Command Line Tools' | sed -e 's/^\* Label: //' | sort -V | tail -n 1)
+  if [ -n "$LABEL" ]; then
+    sudo softwareupdate -i "$LABEL"
+  fi
+  rm -f $PLACEHOLDER
+
+  if ! xcode-select -p > /dev/null 2>&1; then
+    echo $(tput setaf 1)Failed to install Command Line Tools. Run xcode-select --install and try again.$(tput sgr0)
+    exit 1
+  fi
+}
+
 check_dotfiles() {
   # ディレクトリの有無だけで判定すると、取得に失敗して空のまま残ったディレクトリを「導入済み」と誤認する
   if [ -f $DOTFILES_DIR/scripts/install.sh ]; then
@@ -55,6 +77,7 @@ check_dotfiles() {
 }
 
 # dotfilesがない状態で実行するため、この行まではsourceができない
+install_command_line_tools
 check_dotfiles
 
 source ~/dotfiles/scripts/lib/asdf.sh

@@ -41,6 +41,10 @@ install_brew_packages() {
     echo $(tput setaf 2)brew bundle...$(tput sgr0)
     # mas行はApp Storeにサインインしていないと失敗するが、残りのパッケージは入れ切りたいので止めない
     brew bundle --file=~/dotfiles/scripts/lib/Brewfile || true
+    # Brewfileのmasで入るXcodeはライセンスに同意しないとbrewやgitが止まる
+    if [ -d /Applications/Xcode.app ]; then
+      sudo xcodebuild -license accept
+    fi
     return
   fi
 
