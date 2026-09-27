@@ -3,47 +3,19 @@
 source ~/dotfiles/scripts/utils/source_all_utils.sh
 
 TARGET_LANGUAGES=(
-  ruby
   nodejs
-  python
+  terraform
   golang
 )
 
-GLOBAL_RUBY_VERSION=2.6.6
-RUBY_VERSIONS=(
-  2.7.6
-)
-RUBY_GLOBAL_PACKAGES=(
-  solargraph
-  neovim
-  awesome_print
-)
-
-GLOBAL_NODE_VERSION=14.18.2
-NODE_VERSIONS=(
-  14.18.2
-  16.14.2
-)
 NODE_GLOBAL_PACKAGES=(
   neovim
-  yarn
   typescript
-)
-
-GLOBAL_GOLANG_VERSION=1.18.1
-GOLANG_VERSIONS=(
-  1.18.1
-)
-
-GLOBAL_TERRAFORM_VERSION=0.14.5
-TERRAFORM_VERSIONS=(
-  0.14.5
 )
 
 TARGET_TOOLS=(
   neovim
   # awscli
-  docker-compose-v1
 )
 
 install_languages() {
@@ -52,42 +24,32 @@ install_languages() {
     asdf plugin add $TARGET_LANG && true # すでにpluginが入っているとexit2してしまうのでtrue
 
     case $TARGET_LANG in
-      'ruby')
-        for VERSION in ${RUBY_VERSIONS[@]}; do
-          echo $(tput setaf 2)Install $TARGET_LANG $VERSION...$(tput sgr0)
-          asdf install $TARGET_LANG $VERSION
-          asdf global $TARGET_LANG $GLOBAL_RUBY_VERSION
-
-          for PACKAGE in $RUBY_GLOBAL_PACKAGES; do
-            gem install $PACKAGE
-          done
-          asdf reshim $TARGET_LANG
-        done;;
       'nodejs')
-        for VERSION in ${NODE_VERSIONS[@]}; do
-          echo $(tput setaf 2)Install $TARGET_LANG $VERSION...$(tput sgr0)
-          asdf install $TARGET_LANG $VERSION
-          asdf global $TARGET_LANG $GLOBAL_NODE_VERSION
+        # 固定バージョンを持たず、実行時点の最新を入れてglobalにする
+        VERSION=$(asdf latest $TARGET_LANG)
+        echo $(tput setaf 2)Install $TARGET_LANG $VERSION...$(tput sgr0)
+        asdf install $TARGET_LANG $VERSION
+        asdf set -u $TARGET_LANG $VERSION
 
-          for PACKAGE in $NODE_GLOBAL_PACKAGES; do
-            npm install -g $PACKAGE
-          done
-          asdf reshim $TARGET_LANG
-        done;;
+        for PACKAGE in ${NODE_GLOBAL_PACKAGES[@]}; do
+          asdf exec npm install -g $PACKAGE
+        done
+        asdf reshim $TARGET_LANG
+        ;;
       'golang')
-        for VERSION in ${GOLANG_VERSIONS[@]}; do
-          echo $(tput setaf 2)Install $TARGET_LANG $VERSION...$(tput sgr0)
-          asdf install $TARGET_LANG $VERSION
-          asdf global $TARGET_LANG $GLOBAL_GOLANG_VERSION
-          asdf reshim $TARGET_LANG
-        done;;
+        VERSION=$(asdf latest $TARGET_LANG)
+        echo $(tput setaf 2)Install $TARGET_LANG $VERSION...$(tput sgr0)
+        asdf install $TARGET_LANG $VERSION
+        asdf set -u $TARGET_LANG $VERSION
+        asdf reshim $TARGET_LANG
+        ;;
       'terraform')
-        for VERSION in ${TERRAFORM_VERSIONS[@]}; do
-          echo $(tput setaf 2)Install $TARGET_LANG $VERSION...$(tput sgr0)
-          asdf install $TARGET_LANG $VERSION
-          asdf global $TARGET_LANG $GLOBAL_TERRAFORM_VERSION
-          asdf reshim $TARGET_LANG
-        done;;
+        VERSION=$(asdf latest $TARGET_LANG)
+        echo $(tput setaf 2)Install $TARGET_LANG $VERSION...$(tput sgr0)
+        asdf install $TARGET_LANG $VERSION
+        asdf set -u $TARGET_LANG $VERSION
+        asdf reshim $TARGET_LANG
+        ;;
     esac
   done
 }
@@ -101,17 +63,14 @@ install_tools() {
       'neovim')
         echo $(tput setaf 2)Install $TARGET_TOOL...$(tput sgr0)
         asdf install $TARGET_TOOL stable
-        asdf global $TARGET_TOOL stable
-        ;;
-      'docker-compose-v1')
-        echo $(tput setaf 2)Install $TARGET_TOOL...$(tput sgr0)
-        asdf install $TARGET_TOOL 1.29.2
-        asdf global $TARGET_TOOL 1.29.2
+        asdf set -u $TARGET_TOOL stable
         ;;
     esac
   done
-  # nvim上で使うpluginをinstall
-  go install github.com/skanehira/getpr@latest
+
+  # getprはHomebrewにもリリースバイナリにもないので、asdfで入れたgoからビルドする
+  # bashから実行されasdfのshimsがPATHにない場合があるので、asdf exec経由で呼ぶ
+  asdf exec go install github.com/skanehira/getpr@latest
 }
 
 
