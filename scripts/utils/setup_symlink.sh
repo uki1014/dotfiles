@@ -21,6 +21,7 @@ TARGET_CONFIG_DIRS=(
   bat
   nvim
   ghostty
+  karabiner
 )
 
 # $HOME/.config以下に個別に置きたいファイル

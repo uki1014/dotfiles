@@ -9,3 +9,5 @@ memo
 works/
 .DS_Store
 .claude
+tools/karabiner/automatic_backups/
+tools/karabiner/assets/
