@@ -16,27 +16,42 @@ DOTFILES_DIR="$HOME/dotfiles"
 DOT_TARBALL="https://github.com/uki1014/dotfiles/tarball/master"
 DOT_REMOTE_URL="https://github.com/uki1014/dotfiles.git"
 
-check_dotfiles() {
-  if [ ! -d $DOTFILES_DIR ]; then
-    echo $(tput setaf 2)Downloading dotfiles...$(tput sgr0)
-
-    mkdir $DOTFILES_DIR
-
-    if has "git"; then
-      # The directory to clone needs to be empty,
-      # so you'll need to create a dotfiles directory first, then clone the contents into that directory.
-      git clone ${DOT_REMOTE_URL} ${DOTFILES_DIR} && true
-    else
-      curl -fsSLo ${HOME}/dotfiles.tar.gz ${DOT_TARBALL}
-      tar -zxf ${HOME}/dotfiles.tar.gz --strip-components 1 -C ${DOTFILES_DIR}
-      rm -f ${HOME}/dotfiles.tar.gz && true
-    fi
-
-    echo $(tput setaf 2)Download dotfiles complete!. ✔︎$(tput sgr0)
-    cd $DOTFILES_DIR
+# macOSの/usr/bin/gitはCommand Line Tools未導入だとインストールダイアログを出して失敗するだけなので、実際に使えるかで判定する
+can_use_git() {
+  if [ "$(uname -s)" == 'Darwin' ]; then
+    xcode-select -p > /dev/null 2>&1
   else
-    echo $(tput setaf 2)Your dotfiles has been already installed.$(tput sgr0)
+    has "git"
   fi
+}
+
+check_dotfiles() {
+  # ディレクトリの有無だけで判定すると、取得に失敗して空のまま残ったディレクトリを「導入済み」と誤認する
+  if [ -f $DOTFILES_DIR/scripts/install.sh ]; then
+    echo $(tput setaf 2)Your dotfiles has been already installed.$(tput sgr0)
+    return
+  fi
+
+  if [ -d $DOTFILES_DIR ] && [ -n "$(ls -A $DOTFILES_DIR)" ]; then
+    echo $(tput setaf 1)$DOTFILES_DIR exists but is not a complete dotfiles. Move or remove it and run again.$(tput sgr0)
+    exit 1
+  fi
+  rmdir $DOTFILES_DIR 2> /dev/null || true
+
+  echo $(tput setaf 2)Downloading dotfiles...$(tput sgr0)
+  if can_use_git; then
+    git clone ${DOT_REMOTE_URL} ${DOTFILES_DIR}
+  else
+    mkdir $DOTFILES_DIR
+    curl -fsSL ${DOT_TARBALL} | tar -zx --strip-components 1 -C ${DOTFILES_DIR}
+  fi
+
+  if [ ! -f $DOTFILES_DIR/scripts/install.sh ]; then
+    echo $(tput setaf 1)Failed to download dotfiles.$(tput sgr0)
+    exit 1
+  fi
+  echo $(tput setaf 2)Download dotfiles complete!. ✔︎$(tput sgr0)
+  cd $DOTFILES_DIR
 }
 
 # dotfilesがない状態で実行するため、この行まではsourceができない
@@ -54,7 +69,7 @@ setup_tools() {
   install_brew_packages
 
   # Setup default shell
-  if [ ${SHELL} != "$(which fish)"  ]; then
+  if has "fish" && [ ${SHELL} != "$(which fish)" ]; then
     sudo chsh -s $(which fish) && true
     source ~/dotfiles/shell/fish/config.fish && true
   fi
