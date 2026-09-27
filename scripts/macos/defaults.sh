@@ -65,6 +65,10 @@ defaults write com.apple.menuextra.clock ShowSeconds -bool true
 # メニューバーのバッテリー残量を%表示
 defaults -currentHost write com.apple.controlcenter BatteryShowPercentage -bool true
 
+# iTerm2の設定をdotfilesのplistから読み込む。起動中のiTerm2には再起動後に反映される
+defaults write com.googlecode.iterm2 PrefsCustomFolder -string "$HOME/dotfiles/terminal/iterm2"
+defaults write com.googlecode.iterm2 LoadPrefsFromCustomFolder -bool true
+
 # 電源接続時の効果音を鳴らさない
 defaults write com.apple.PowerChime ChimeOnNoHardware -bool true
 
