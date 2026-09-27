@@ -5,7 +5,14 @@ source ~/dotfiles/scripts/utils/has.sh
 check_brew() {
   if ! has "brew"; then
     echo $(tput setaf 2)Installing Homebrew...$(tput sgr0)
-    curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh && true
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    # 新規インストール直後はPATHに乗っていないので、この後のbrew呼び出しのために読み込む
+    for BREW_BIN in /opt/homebrew/bin/brew /usr/local/bin/brew /home/linuxbrew/.linuxbrew/bin/brew; do
+      if [ -x $BREW_BIN ]; then
+        eval "$($BREW_BIN shellenv)"
+        break
+      fi
+    done
   else
     echo $(tput setaf 2)Homebrew has been already installed.$(tput sgr0)
 
