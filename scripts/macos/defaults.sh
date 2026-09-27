@@ -44,7 +44,10 @@ defaults write com.apple.dock magnification -bool true
 defaults write com.apple.dock largesize -float 106
 defaults write com.apple.dock show-recents -bool false
 # 右下のホットコーナーでクイックメモ
-defaults write com.apple.dock wvous-br-corner -int 14
+# 会社のMDM(Kandji)がホットコーナーのどれかをスクリーンセーバーにするよう強制しているので、MDM管理下のMacでは触らない
+if ! profiles status -type enrollment 2> /dev/null | grep -q 'MDM enrollment: Yes'; then
+	defaults write com.apple.dock wvous-br-corner -int 14
+fi
 
 # Finder
 defaults write com.apple.finder AppleShowAllFiles -bool true
