@@ -2,7 +2,7 @@
 
 source ~/dotfiles/scripts/utils/source_all_utils.sh
 
-# CUI tools
+# Linux向けCUI tools（macOSはBrewfileで管理）
 target_brew_list=(
   ripgrep
   peco
@@ -34,44 +34,15 @@ target_brew_list=(
   bottom
 )
 
-# CUI tools for macOS
-target_brew_list_for_mac_os=(
-  coreutils
-  findutils
-  gnu-sed
-  grep
-  gzip
-  gawk
-  gnu-tar
-  wget
-)
-
-# GUI tools
-target_brew_cask_list=(
-  chromedriver
-  firefox
-  docker
-  xquartz
-  spotify
-  tableplus
-  deepl
-  typora
-  teensy
-  virtualbox
-  visual-studio-code
-  karabiner-elements
-  postman
-  alfred
-)
-
-# AppStore経由
-# - Trello
-# - Todoist
-# - JIRA
-# - Slack
-
 install_brew_packages() {
   check_brew
+
+  if is_darwin; then
+    echo $(tput setaf 2)brew bundle...$(tput sgr0)
+    # mas行はApp Storeにサインインしていないと失敗するが、残りのパッケージは入れ切りたいので止めない
+    brew bundle --file=~/dotfiles/scripts/lib/Brewfile || true
+    return
+  fi
 
   for target in ${target_brew_list[@]}; do
     if ! has "$target"; then
@@ -80,27 +51,6 @@ install_brew_packages() {
       echo $(tput setaf 2)$target has been already installed.$(tput sgr0)
     fi
   done
-
-  if is_darwin; then
-    echo $(tput setaf 2)Darwin$(tput sgr0)
-    for target in ${target_brew_list_for_mac_os[@]}; do
-      if ! has "$target"; then
-        brew install $target
-      else
-        echo $(tput setaf 2)$target has been already installed.$(tput sgr0)
-      fi
-    done
-
-    for target in ${target_brew_cask_list[@]}; do
-      if ! has "$target"; then
-        brew install --cask $target
-      else
-        echo $(tput setaf 2)$target has been already installed.$(tput sgr0)
-      fi
-    done
-  else
-    echo $(tput setaf 2)No cask install for Linux.$(tput sgr0)
-  fi
 }
 
 if [ $# != 0 ]; then

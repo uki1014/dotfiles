@@ -1,63 +1,202 @@
-tap "hashicorp/tap"
-tap "homebrew/bundle"
-tap "homebrew/cask"
-tap "homebrew/cask-versions"
-tap "homebrew/core"
 tap "homebrew/services"
-tap "neovim/neovim"
-tap "versent/taps"
-brew "coreutils"
+tap "supabase/tap"
+# Run your GitHub Actions locally
+brew "act"
+# News and email agent
+brew "alpine"
+# Extendable version manager with support for Ruby, Node.js, Erlang & more
 brew "asdf"
+# Official Amazon AWS command-line interface
 brew "awscli"
+# Bring your existing Azure resources under the management of Terraform
+brew "aztfexport"
+# Microsoft Azure CLI 2.0
+brew "azure-cli"
+# Bourne-Again SHell, a UNIX command interpreter
 brew "bash"
+# Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
-brew "cmake"
-brew "crc32c"
-brew "curl"
-brew "diff-pdf"
-brew "direnv"
-brew "findutils"
-brew "fish"
-brew "fswatch"
-brew "fzf"
-brew "gh"
-brew "ghq"
-brew "git"
-brew "git-secrets"
-brew "gitmoji"
-brew "gnu-sed"
-brew "gnupg"
-brew "gotop"
-brew "grep"
-brew "gzip"
-brew "htop"
-brew "hub"
-brew "jq"
-brew "lazygit"
-brew "libiconv"
-brew "libmagic"
-brew "libxml2"
-brew "libxslt"
-brew "mkcert"
-brew "protobuf"
-brew "mysql"
-brew "mysql@5.7"
-brew "peco"
-brew "perl"
-brew "python@3.8"
-brew "reattach-to-user-namespace"
-brew "ripgrep"
-brew "shared-mime-info"
-brew "the_silver_searcher"
-brew "tmux"
-brew "tree"
-brew "unison"
-brew "wget"
-brew "xclip"
+# Resource monitor. C++ version and continuation of bashtop and bpytop
+brew "btop"
+# Utility for connecting securely to your Cloud SQL instances
+brew "cloud-sql-proxy"
+# Cloudflare Tunnel client (formerly Argo Tunnel)
+brew "cloudflared"
+# GNU File, Shell, and Text utilities
+brew "coreutils"
+# Command-line csv viewer
 brew "csvlens"
-brew "hashicorp/tap/packer"
-brew "versent/taps/saml2aws"
-cask "alacritty"
-cask "chromedriver"
-cask "docker"
+# Diff that understands syntax
+brew "difftastic"
+# Load/unload environment variables based on $PWD
+brew "direnv"
+# Pack, ship and run any application as a lightweight container
+brew "docker"
+# Simple, fast and user-friendly alternative to find
+brew "fd"
+# Play, record, convert, and stream select audio and video codecs
+brew "ffmpeg"
+# Collection of GNU find, xargs, and locate
+brew "findutils"
+# User-friendly command-line shell for UNIX-like operating systems
+brew "fish"
+# Command-line fuzzy finder written in Go
+brew "fzf"
+# GNU awk utility
+brew "gawk"
+# GitHub command-line tool
+brew "gh"
+# Distributed revision control system
+brew "git"
+# GNU implementation of the famous stream editor
+brew "gnu-sed"
+# GNU version of the tar archiving utility
+brew "gnu-tar"
+# GNU grep, egrep and fgrep
+brew "grep"
+# Popular GNU data compression program
+brew "gzip"
+# Agent multiplexer that lives in your terminal
+brew "herdr"
+# C/C++ and Java libraries for Unicode and globalization
+brew "icu4c@75"
+# Tools and libraries to manipulate images in select formats
+brew "imagemagick"
+# Lazier way to manage everything docker
+brew "lazydocker"
+# Simple terminal UI for git commands
+brew "lazygit"
+# Powerful, lightweight programming language
+brew "lua"
+# Language Server for the Lua language
+brew "lua-language-server"
+# Just-In-Time Compiler (JIT) for the Lua programming language
+brew "luajit"
+# Package manager for the Lua programming language
+brew "luarocks"
+# Mac App Store command-line interface
+brew "mas"
+# Yet another part-of-speech and morphological analyzer
+brew "mecab"
+# IPA dictionary compiled for MeCab
+brew "mecab-ipadic"
+# Simple tool to make locally trusted development certificates
+brew "mkcert"
+# CLI for MySQL with auto-completion and syntax highlighting
+brew "mycli"
+# Fast, highly customisable system info script
+brew "neofetch"
+# HTTP load generator, inspired by rakyll/hey with tui animation
+brew "oha"
+# Create, run, and share large language models (LLMs)
+brew "ollama"
+# SSL/TLS VPN implementing OSI layer 2 or 3 secure network extension
+brew "openvpn"
+# Simplistic interactive filtering tool
+brew "peco"
+# Python package management tool
+brew "poetry"
+# PDF rendering library (based on the xpdf-3.0 code base)
+brew "poppler"
+# Object-relational database system
+brew "postgresql@14"
+# Search tool like grep and The Silver Searcher
+brew "ripgrep"
+# Static analysis and lint tool, for (ba)sh scripts
+brew "shellcheck"
+# SOund eXchange: universal sound sample translator
+brew "sox"
+# CLI tool to generate terraform files from existing infrastructure
+brew "terraformer"
+# Terminal multiplexer
+brew "tmux"
+# Display directories as trees (with optional color/HTML output)
+brew "tree"
+# Incremental parsing library
+brew "tree-sitter"
+# Parser generator tool
+brew "tree-sitter-cli"
+# Extremely fast Python package installer and resolver, written in Rust
+brew "uv"
+# Executes a program periodically, showing output fullscreen
+brew "watch"
+# Internet file retriever
+brew "wget"
+# X.Org Applications: xauth
+brew "xauth"
+# Supabase CLI
+brew "supabase/tap/supabase", trusted: true
+cask "1password"
+cask "alfred"
+cask "android-platform-tools"
+cask "android-studio"
+cask "arc"
+cask "brave-browser"
+cask "chatgpt"
+cask "chatgpt-atlas"
+cask "claude"
+cask "codex"
+cask "cursor"
+cask "discord"
+cask "docker-desktop"
+cask "figma"
+cask "garmin-express"
+cask "ghostty"
+cask "google-chrome"
+cask "google-drive"
+cask "google-japanese-ime"
+cask "heynote"
+cask "iterm2"
+cask "karabiner-elements"
+cask "libreoffice"
+cask "lm-studio"
+cask "microsoft-edge"
+cask "microsoft-excel"
+cask "microsoft-onenote"
+cask "microsoft-outlook"
+cask "microsoft-powerpoint"
+cask "microsoft-teams"
+cask "microsoft-word"
+cask "miro"
+cask "nani"
+cask "ngrok"
+cask "notion"
+cask "notion-calendar"
+cask "obsidian"
+cask "onedrive"
+cask "postman"
+cask "raycast"
+cask "rowboat"
+cask "spotify"
+cask "tableplus"
+cask "ticktick"
+cask "tradingview"
+cask "visual-studio-code"
 cask "xquartz"
+cask "zoom"
+mas "1Password for Safari", id: 1569813296
+mas "Clock up Top", id: 6450660420
+mas "GarageBand", id: 682658836
+mas "iMovie", id: 408981434
+mas "Keynote", id: 409183694
+mas "Kindle", id: 302584613
+mas "LINE", id: 539883307
+mas "Logic Pro", id: 634148309
+mas "MARKETSPEED", id: 946680495
+mas "Microsoft Remote Desktop", id: 1295203466
+mas "Numbers", id: 361304891
+mas "Pages", id: 409201541
+mas "Slack", id: 803453959
+mas "Xcode", id: 497799835
+mas "デジタル時計", id: 1287009111
+vscode "biomejs.biome"
+vscode "dbaeumer.vscode-eslint"
+vscode "esbenp.prettier-vscode"
+vscode "rvest.vs-code-prettier-eslint"
+vscode "saoudrizwan.claude-dev"
+npm "@playwright/cli"
+npm "corepack"
+npm "jsdom"
+npm "mermaid"
+npm "openwiki"
+npm "pnpm"
