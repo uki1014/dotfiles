@@ -68,9 +68,16 @@ setup_tools() {
   echo $(tput setaf 2)Setup Tools complete!. ✔︎$(tput sgr0)
 }
 
+setup_macos_defaults() {
+  if is_darwin; then
+    bash ~/dotfiles/scripts/macos/defaults.sh
+  fi
+}
+
 if [ $# == 0 ]; then
   setup_tools
   setup_symlink
+  setup_macos_defaults
 else
   case $1 in
     "link")
@@ -80,6 +87,10 @@ else
     "tools")
       echo $(tput setaf 2)✔︎ Setup tools...$(tput sgr0)
       setup_tools
+      ;;
+    "defaults")
+      echo $(tput setaf 2)✔︎ Setup macOS defaults...$(tput sgr0)
+      setup_macos_defaults
       ;;
   esac
 fi

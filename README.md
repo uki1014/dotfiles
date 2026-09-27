@@ -35,7 +35,8 @@ bash <(curl -s https://raw.githubusercontent.com/uki1014/dotfiles/master/scripts
 1. `xcode-select --install` を実行し、`sudo xcodebuild -license accept` でライセンスに同意する
 2. App Store にサインインする（Brewfile の `mas` 行に必要）
 3. 上の Install In One Command を実行する。Homebrew・[`Brewfile`](scripts/lib/Brewfile) のパッケージとアプリ・symlink がまとめて入る
-4. Node.js を asdf で入れたあと、`brew bundle --file=~/dotfiles/scripts/lib/Brewfile` を再実行する（`npm` 行が入る）
+4. macOS の設定（キーボード・トラックパッド・Dock・Finder など）は手順 3 で [`defaults.sh`](scripts/macos/defaults.sh) が反映されるので、一度ログアウトする
+5. Node.js を asdf で入れたあと、`brew bundle --file=~/dotfiles/scripts/lib/Brewfile` を再実行する（`npm` 行が入る）
 
 アプリやパッケージを追加したら、今の Mac で次を実行して Brewfile を更新する。dump は既存の内容を上書きするので、出力後に不要な行を削ってからコミットする。
 
