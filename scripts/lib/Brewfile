@@ -1,4 +1,3 @@
-tap "homebrew/services"
 tap "supabase/tap"
 # Run your GitHub Actions locally
 brew "act"
