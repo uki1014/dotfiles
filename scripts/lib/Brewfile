@@ -63,8 +63,8 @@ brew "luarocks"
 brew "mas"
 # CLI for MySQL with auto-completion and syntax highlighting
 brew "mycli"
-# Fast, highly customisable system info script
-brew "neofetch"
+# Like neofetch, but much faster because written mostly in C
+brew "fastfetch"
 # HTTP load generator, inspired by rakyll/hey with tui animation
 brew "oha"
 # SSL/TLS VPN implementing OSI layer 2 or 3 secure network extension

@@ -26,7 +26,7 @@ target_brew_list=(
   luajit
   gpg
   fd
-  neofetch
+  fastfetch
   mycli
   shellcheck
   hadolint
