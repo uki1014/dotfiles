@@ -189,3 +189,5 @@ alias updatecc="curl -fSL https://claude.ai/install.sh | sh"
 alias checkcclatest="curl -s https://api.github.com/repos/anthropics/claude-code/releases/latest | jq -r .tag_name"
 alias cl="CLAUDE_CODE_SUBAGENT_MODEL=opus CLAUDE_CODE_NO_FLICKER=1 claude"
 alias clc="CLAUDE_CODE_SUBAGENT_MODEL=opus CLAUDE_CODE_NO_FLICKER=1 claude -c --permission-mode auto"
+# 10pct 配下は direnv で 10pct のトークンが入り Remote Control が使えないので、そのときだけ個人の /login で起動する
+alias clc-personal="env -u CLAUDE_CODE_OAUTH_TOKEN CLAUDE_CODE_SUBAGENT_MODEL=opus CLAUDE_CODE_NO_FLICKER=1 claude -c --permission-mode auto"
