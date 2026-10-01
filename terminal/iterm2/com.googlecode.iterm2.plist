@@ -29,7 +29,7 @@
 	<key>AutoHideTmuxClientSession</key>
 	<true/>
 	<key>ClaudeCodeWorkgroupUpsellSuppressed</key>
-	<false/>
+	<true/>
 	<key>CloseBookmarksWindowAfterOpening</key>
 	<true/>
 	<key>CodeReviewSavedPrompts</key>
