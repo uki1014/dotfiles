@@ -13,7 +13,7 @@ has() {
 }
 
 DOTFILES_DIR="$HOME/dotfiles"
-DOT_TARBALL="https://github.com/uki1014/dotfiles/tarball/master"
+DOT_TARBALL="https://github.com/uki1014/dotfiles/tarball/main"
 DOT_REMOTE_URL="https://github.com/uki1014/dotfiles.git"
 
 # macOSの/usr/bin/gitはCommand Line Tools未導入だとインストールダイアログを出して失敗するだけなので、実際に使えるかで判定する

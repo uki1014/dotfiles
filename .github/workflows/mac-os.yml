@@ -16,4 +16,4 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Execute dotfiles installer.sh
-        run: bash <(curl -s https://raw.githubusercontent.com/uki1014/dotfiles/master/scripts/install.sh)
+        run: bash <(curl -s https://raw.githubusercontent.com/uki1014/dotfiles/main/scripts/install.sh)
