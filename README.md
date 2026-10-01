@@ -37,6 +37,8 @@ bash <(curl -s https://raw.githubusercontent.com/uki1014/dotfiles/master/scripts
 3. macOS の設定（キーボード・トラックパッド・Dock・Finder など）は手順 2 で [`defaults.sh`](scripts/macos/defaults.sh) が反映されるので、一度ログアウトする
 4. Node.js を asdf で入れたあと、`brew bundle --file=~/dotfiles/scripts/lib/Brewfile` を再実行する（`npm` 行が入る）
 
+herdr のワークスペースは、非公開の agent-config（`~/agent-config/herdr/workspaces.json`）に定義している。agent-config を clone したあと、herdr のペインの中で `~/dotfiles/scripts/install.sh herdr` を実行すると、未作成のワークスペースと作業フォルダ（clone / worktree）が作られる。定義と現状の差分は `~/dotfiles/herdr/workspaces.py check` で確認できる。
+
 アプリやパッケージを追加したら、今の Mac で次を実行して Brewfile を更新する。dump は既存の内容を上書きするので、出力後に不要な行を削ってからコミットする。
 
 ```sh
