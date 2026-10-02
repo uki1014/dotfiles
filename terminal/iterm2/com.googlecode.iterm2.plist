@@ -86,6 +86,20 @@
 			<key>Text</key>
 			<string></string>
 		</dict>
+		<key>0x54-0x120000-0x11</key>
+		<dict>
+			<key>Action</key>
+			<integer>25</integer>
+			<key>Apply Mode</key>
+			<integer>0</integer>
+			<key>Escaping</key>
+			<integer>0</integer>
+			<key>Text</key>
+			<string>Show Tabs in Fullscreen
+Show Tabs in Fullscreen</string>
+			<key>Version</key>
+			<integer>2</integer>
+		</dict>
 		<key>0x68-0x100000-0x4</key>
 		<dict>
 			<key>Action</key>
