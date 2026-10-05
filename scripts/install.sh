@@ -155,7 +155,7 @@ else
       ;;
     "herdr")
       echo $(tput setaf 2)✔︎ Setup herdr workspaces...$(tput sgr0)
-      python3 ~/dotfiles/herdr/workspaces.py apply
+      python3 ~/agent-config/herdr/workspaces.py apply
       ;;
     "defaults")
       echo $(tput setaf 2)✔︎ Setup macOS defaults...$(tput sgr0)
