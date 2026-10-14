@@ -310,3 +310,8 @@ export PATH="$HOME/.local/bin:$PATH"
 set -gx PATH $PATH /Users/yuki-shimizu/.lmstudio/bin
 # End of LM Studio CLI section
 
+
+# GitHub Packages (@tenpct/internal-db) の取得に使う。gh のトークンを npm の .npmrc に渡す
+if status is-interactive; and type -q gh
+    set -gx NPM_TOKEN (gh auth token 2>/dev/null)
+end
