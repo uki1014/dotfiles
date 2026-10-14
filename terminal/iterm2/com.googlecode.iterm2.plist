@@ -86,7 +86,7 @@
 			<key>Text</key>
 			<string></string>
 		</dict>
-		<key>0x54-0x120000-0x11</key>
+		<key>0x54-0x120000-0x11-0x1</key>
 		<dict>
 			<key>Action</key>
 			<integer>25</integer>
@@ -100,7 +100,7 @@ Show Tabs in Fullscreen</string>
 			<key>Version</key>
 			<integer>2</integer>
 		</dict>
-		<key>0x68-0x100000-0x4</key>
+		<key>0x68-0x100000-0x4-0x1</key>
 		<dict>
 			<key>Action</key>
 			<integer>2</integer>
@@ -111,7 +111,7 @@ Show Tabs in Fullscreen</string>
 			<key>Version</key>
 			<integer>0</integer>
 		</dict>
-		<key>0x6c-0x100000-0x25</key>
+		<key>0x6c-0x100000-0x25-0x1</key>
 		<dict>
 			<key>Action</key>
 			<integer>0</integer>
@@ -221,7 +221,7 @@ Show Tabs in Fullscreen</string>
 	<key>HotkeyMigratedFromSingleToMulti</key>
 	<true/>
 	<key>HotkeyModifiers</key>
-	<integer>1048840</integer>
+	<integer>1048576</integer>
 	<key>IRMemory</key>
 	<integer>8</integer>
 	<key>New Bookmarks</key>
@@ -845,7 +845,7 @@ Show Tabs in Fullscreen</string>
 			</array>
 			<key>Keyboard Map</key>
 			<dict>
-				<key>0xd-0x20000-0x24</key>
+				<key>0xd-0x20000-0x24-0x1</key>
 				<dict>
 					<key>Action</key>
 					<integer>11</integer>
@@ -1286,6 +1286,12 @@ Show Tabs in Fullscreen</string>
 	<false/>
 	<key>OpenNoWindowsAtStartup</key>
 	<true/>
+	<key>OpenQuicklyHotkeyChar</key>
+	<integer>0</integer>
+	<key>OpenQuicklyHotkeyCode</key>
+	<integer>0</integer>
+	<key>OpenQuicklyHotkeyModifiers</key>
+	<integer>0</integer>
 	<key>PMPrintingPanelSize</key>
 	<string>{777, 828}</string>
 	<key>PointerActions</key>
