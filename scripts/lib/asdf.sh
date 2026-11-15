@@ -34,6 +34,9 @@ install_languages() {
         for PACKAGE in ${NODE_GLOBAL_PACKAGES[@]}; do
           asdf exec npm install -g $PACKAGE
         done
+        # Claude Code の typescript-lsp プラグインが使う。asdf の global に入れると、
+        # .tool-versions で別の node を使うプロジェクトでは shim が見つからず起動しないので ~/.local に置く
+        asdf exec npm install -g --prefix ~/.local typescript-language-server typescript
         asdf reshim $TARGET_LANG
         ;;
       'golang')
